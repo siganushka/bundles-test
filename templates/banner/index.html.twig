@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  <p>
+    <a href="{{ path('app_banner_new') }}" class="btn btn-primary">{{ 'generic.add'|trans }}</a>
+  </p>
+
+  <div class="overflow-x-auto my-3">
+    <table class="table table-striped table-hover m-0">
+      <tr class="table-light">
+        <th style="min-width: 60px">ID</th>
+        <th style="min-width: 280px">{{ 'banner.img'|trans }}</th>
+        <th style="min-width: 100px">{{ 'banner.title'|trans }}</th>
+        <th style="min-width: 100px">{{ 'generic.enabled'|trans }}</th>
+        <th style="min-width: 100px">{{ 'generic.action'|trans }}</th>
+      </tr>
+      {% for entity in pagination %}
+      <tr>
+        <td>{{ entity.id }}</td>
+        <td><img src="{{ entity.img.url }}" width="240px"></td>
+        <td>{{ entity.title }}</td>
+        <td><span class="badge rounded-pill text-bg-{{ entity.enabled ? 'success' : 'secondary' }}">{{ entity.enabled ? 'generic.yes'|trans : 'generic.no'|trans }}</span></td>
+        <td>
+          <a href="{{ path('app_banner_edit', { id: entity.id }) }}">{{ 'generic.edit'|trans }}</a>
+          <a href="{{ path('app_banner_delete', { id: entity.id }) }}" onclick="return confirm('{{ 'generic.delete_confirmation'|trans }}')">{{ 'generic.delete'|trans }}</a>
+        </td>
+      </tr>
+      {% else %}
+      <tr>
+        <td colspan="65536" class="text-center text-body-secondary">{{ 'generic.no_items'|trans }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+
+  {% if pagination.totalItemCount %}
+  <div class="pagination justify-content-center">
+    {{ knp_pagination_render(pagination) }}
+  </div>
+  {% endif %}
+{% endblock %}

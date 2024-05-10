@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme form with [ '@SiganushkaMedia/Form/fields.html.twig', '@SiganushkaProduct/Form/fields.html.twig' ] %}
+
+{% block body %}
+  {{ form(form) }}
+{% endblock %}
+
+{% block stylesheets %}
+{{ parent() }}
+<style>
+.bootstrap-tagsinput {
+  min-height: 36px;
+  display: block;
+  width: 100%;
+  line-height: 1.5;
+  box-shadow: none;
+  border: var(--bs-border-width) solid var(--bs-border-color);
+  border-radius: var(--bs-border-radius);
+}
+
+.bootstrap-tagsinput:has(> input:focus) {
+  background-color: var(--bs-body-bg);
+  border-color: #86b7fe;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(13,110,253,.25)
+}
+
+.bootstrap-tagsinput:has(+ .is-invalid) {
+  border-color: var(--bs-form-invalid-border-color);
+}
+
+.bootstrap-tagsinput:has(+ .is-invalid):has(> input:focus) {
+  border-color: var(--bs-form-invalid-border-color);
+  box-shadow: 0 0 0 .25rem rgba(var(--bs-danger-rgb), .25);
+}
+
+.bootstrap-tagsinput .tag {
+  margin: 0 .2rem .2rem 0;
+}
+
+.bootstrap-tagsinput input {
+  min-width: 200px;
+}
+</style>
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+<script>
+$(function() {
+  var opitons = { tagClass: 'badge text-bg-primary', trimValue: true };
+  $('input[data-toggle="tagsinput"]').tagsinput(opitons)
+
+  $('#product_options').on('focus', 'input[data-toggle="tagsinput"]', function (event) {
+    $(event.currentTarget).tagsinput(opitons)
+    $(event.currentTarget).tagsinput('focus')
+  })
+})
+</script>
+{% endblock %}
