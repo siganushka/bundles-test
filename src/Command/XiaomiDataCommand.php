@@ -12,6 +12,7 @@ use Siganushka\ProductBundle\Entity\Product;
 use Siganushka\ProductBundle\Entity\ProductOption;
 use Siganushka\ProductBundle\Entity\ProductOptionValue;
 use Siganushka\ProductBundle\Entity\ProductVariant;
+use Siganushka\ProductBundle\Model\ProductVariantChoice;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -95,7 +96,7 @@ class XiaomiDataCommand extends Command
 
             $entity = new Product();
             $entity->setImg($productImg);
-            $entity->setName($product['product_info']['name']);
+            $entity->setName(sprintf('%s (#%s)', $product['product_info']['name'], $value['product_id']));
 
             // ProductOption
             $buyOption = $product['buy_option'] ?? [];
@@ -106,7 +107,7 @@ class XiaomiDataCommand extends Command
 
                 $option = new ProductOption($v1['name']);
                 foreach ($v1['list'] as $v2) {
-                    $option->addValue(new ProductOptionValue($v2['name'], $v2['prop_value_id']));
+                    $option->addValue(new ProductOptionValue(sprintf('prop_value_id_%d', $v2['prop_value_id']), $v2['name']));
                 }
 
                 $entity->addOption($option);
@@ -121,33 +122,18 @@ class XiaomiDataCommand extends Command
                             continue;
                         }
 
-                        $propCfgIds[] = $v2['prop_value_id'];
+                        $propCfgIds[] = sprintf('prop_value_id_%d', $v2['prop_value_id']);
                     }
 
-                    sort($propCfgIds);
-                    $key = implode('-', $propCfgIds);
-
+                    $key = ProductVariantChoice::generateValue($propCfgIds);
                     $variantsMapping[$key] = $v1['goods_info'];
                 }
             } else {
                 $variantsMapping[0] = $product['goods_list'][0]['goods_info'];
             }
 
-            $choices = $entity->getChoices();
-            if (empty($choices)) {
-                $choices[] = null;
-            }
-
-            foreach ($choices as $index => $choice) {
-                if (null === $choice) {
-                    $key = 0;
-                } else {
-                    $propCfgIds = array_map(fn (ProductOptionValue $value) => $value->getNote(), $choice->combinedOptionValues);
-
-                    sort($propCfgIds);
-                    $key = implode('-', $propCfgIds);
-                }
-
+            foreach ($entity->getChoices(true) as $index => $choice) {
+                $key = $choice->value ?? 0;
                 if (!isset($variantsMapping[$key])) {
                     continue;
                 }
@@ -156,7 +142,7 @@ class XiaomiDataCommand extends Command
                 $variantImg = $this->handleUploadMedia('product_variant_img', $variantsMapping[$key]['img_url']);
 
                 $variant = new ProductVariant($entity, $choice);
-                $variant->setPrice($variantsMapping[$key]['price'] * 100);
+                $variant->setPrice((int) ($variantsMapping[$key]['price'] * 100));
                 $variant->setImg($variantImg);
 
                 $entity->addVariant($variant);
