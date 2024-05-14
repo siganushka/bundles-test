@@ -1920,7 +1920,7 @@
             "dist": {
                 "type": "path",
                 "url": "../media-bundle",
-                "reference": "1491a6bd68bbb63b64983a0774e338fd620e93d0"
+                "reference": "09d2de0ef99c723d44acb71cc0f245df1deb8174"
             },
             "require": {
                 "doctrine/doctrine-bundle": "^2.7",
@@ -2031,7 +2031,7 @@
             "dist": {
                 "type": "path",
                 "url": "../product-bundle",
-                "reference": "14a59278db20cef4eab374eac3c199846f11b352"
+                "reference": "976d96e66b725b75769a4b4feaa16515caa98aa0"
             },
             "require": {
                 "bentools/cartesian-product": "^1.4",
@@ -6548,16 +6548,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v3.10.1",
+            "version": "v3.10.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "3af5ab2e52279e5e23dc192b1a26db3b8cffa4e7"
+                "reference": "7aaed0b8311a557cc8c4047a71fd03153a00e755"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/3af5ab2e52279e5e23dc192b1a26db3b8cffa4e7",
-                "reference": "3af5ab2e52279e5e23dc192b1a26db3b8cffa4e7",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/7aaed0b8311a557cc8c4047a71fd03153a00e755",
+                "reference": "7aaed0b8311a557cc8c4047a71fd03153a00e755",
                 "shasum": ""
             },
             "require": {
@@ -6611,7 +6611,7 @@
             ],
             "support": {
                 "issues": "https://github.com/twigphp/Twig/issues",
-                "source": "https://github.com/twigphp/Twig/tree/v3.10.1"
+                "source": "https://github.com/twigphp/Twig/tree/v3.10.2"
             },
             "funding": [
                 {
@@ -6623,7 +6623,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-05-12T06:16:18+00:00"
+            "time": "2024-05-14T06:04:16+00:00"
         }
     ],
     "packages-dev": [

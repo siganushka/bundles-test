@@ -78,20 +78,19 @@ class XiaomiDataCommand extends Command
 
         $successfully = 0;
         foreach ($list as $value) {
-            $output->writeln(sprintf('<info>第 %d 条数据：#%s 开始...</info>', $successfully, $value['product_id']));
-
-            // if ($value['product_id'] != 16677) {
-            //     $output->writeln(sprintf('<info>第 %d 条数据：已跳过。</info>', $successfully));
+            $current = sprintf('#%d [%s]', $successfully, $value['product_id']);
+            // if ($value['product_id'] != 11674) {
+            //     $output->writeln(sprintf('<info>%s: 已跳过</info>', $current));
             //     ++ $successfully;
             //     continue;
             // }
 
-            $output->writeln(sprintf('<info>第 %d 条数据：获取详情...</info>', $successfully));
+            $output->writeln(sprintf('<info>%s: 获取详情</info>', $current));
             $product = $this->handleRequest('/product/view', [
                 'product_id' => $value['product_id'],
             ]);
 
-            $output->writeln(sprintf('<info>第 %d 条数据：下载主图...</info>', $successfully));
+            $output->writeln(sprintf('<info>%s: 下载主图</info>', $current));
             $productImg = $this->handleUploadMedia('product_img', $product['goods_list'][0]['goods_info']['img_url']);
 
             $entity = new Product();
@@ -138,7 +137,7 @@ class XiaomiDataCommand extends Command
                     continue;
                 }
 
-                $output->writeln(sprintf('<info>第 %d 条数据：下载第 %d 张商品图...</info>', $successfully, $index));
+                $output->writeln(sprintf('<info>%s: 下载第 %d 张商品图</info>', $current, $index));
                 $variantImg = $this->handleUploadMedia('product_variant_img', $variantsMapping[$key]['img_url']);
 
                 $variant = new ProductVariant($entity, $choice);
@@ -150,7 +149,7 @@ class XiaomiDataCommand extends Command
 
             $this->entityManager->persist($entity);
 
-            $output->writeln(sprintf('<info>第 %d 条数据：已成功。</info>', $successfully));
+            $output->writeln(sprintf('<info>%s: 完成</info>', $current));
             ++$successfully;
         }
 
