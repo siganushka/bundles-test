@@ -151,6 +151,7 @@ class MediaController extends AbstractController
         $builder = $this->createFormBuilder()
             ->add('channel', MediaChannelType::class, [
                 'label' => 'media.channel',
+                'constraints' => new NotBlank(),
             ])
             ->add('Submit', SubmitType::class, ['label' => 'generic.submit'])
         ;
@@ -175,6 +176,7 @@ class MediaController extends AbstractController
         $builder = $this->createFormBuilder()
             ->add('file', MediaFileType::class, [
                 'label' => 'media.file',
+                // 'channel' => TestPdf::class,
                 'constraints' => new NotBlank(),
             ])
             ->add('Submit', SubmitType::class, ['label' => 'generic.submit'])

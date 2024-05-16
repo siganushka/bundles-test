@@ -12,6 +12,8 @@ use Siganushka\ProductBundle\Entity\Product;
 use Siganushka\ProductBundle\Entity\ProductOption;
 use Siganushka\ProductBundle\Entity\ProductOptionValue;
 use Siganushka\ProductBundle\Entity\ProductVariant;
+use Siganushka\ProductBundle\Media\ProductImg;
+use Siganushka\ProductBundle\Media\ProductVariantImg;
 use Siganushka\ProductBundle\Model\ProductVariantChoice;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -91,7 +93,7 @@ class XiaomiDataCommand extends Command
             ]);
 
             $output->writeln(sprintf('<info>%s: 下载主图</info>', $current));
-            $productImg = $this->handleUploadMedia('product_img', $product['goods_list'][0]['goods_info']['img_url']);
+            $productImg = $this->handleUploadMedia(ProductImg::class, $product['goods_list'][0]['goods_info']['img_url']);
 
             $entity = new Product();
             $entity->setImg($productImg);
@@ -138,7 +140,7 @@ class XiaomiDataCommand extends Command
                 }
 
                 $output->writeln(sprintf('<info>%s: 下载第 %d 张商品图</info>', $current, $index));
-                $variantImg = $this->handleUploadMedia('product_variant_img', $variantsMapping[$key]['img_url']);
+                $variantImg = $this->handleUploadMedia(ProductVariantImg::class, $variantsMapping[$key]['img_url']);
 
                 $variant = new ProductVariant($entity, $choice);
                 $variant->setPrice((int) ($variantsMapping[$key]['price'] * 100));
@@ -179,13 +181,13 @@ class XiaomiDataCommand extends Command
         return $parsedResponse['data'] ?? [];
     }
 
-    private function handleUploadMedia(string $channelAlias, string $imgUrl): ?Media
+    private function handleUploadMedia(string $channelClass, string $imgUrl): ?Media
     {
         if (str_starts_with($imgUrl, '//')) {
             $imgUrl = 'https:'.$imgUrl;
         }
 
-        $channel = $this->channelRegistry->get($channelAlias);
+        $channel = $this->channelRegistry->getByClass($channelClass);
         $event = MediaSaveEvent::createFromUrl($channel, $imgUrl);
 
         $this->eventDispatcher->dispatch($event);

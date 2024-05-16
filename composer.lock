@@ -1714,7 +1714,7 @@
             "dist": {
                 "type": "path",
                 "url": "../admin-bundle",
-                "reference": "c882ea78b147b6a024a638001882007ea2023ac0"
+                "reference": "cb9d71f6e3fd1778eb7a06a54bd70d19fb722042"
             },
             "require": {
                 "doctrine/doctrine-bundle": "^2.7",
@@ -1768,7 +1768,7 @@
             "dist": {
                 "type": "path",
                 "url": "../banner-bundle",
-                "reference": "7ddd86823a2f50a482b6998b0c30c319e3f55e6b"
+                "reference": "027342ae46cdea340ac9700db7c7d1b65950b060"
             },
             "require": {
                 "doctrine/doctrine-bundle": "^2.7",
@@ -1920,7 +1920,7 @@
             "dist": {
                 "type": "path",
                 "url": "../media-bundle",
-                "reference": "09d2de0ef99c723d44acb71cc0f245df1deb8174"
+                "reference": "2e9a95de7a556d23255cffc25f71488a655dd1ab"
             },
             "require": {
                 "doctrine/doctrine-bundle": "^2.7",
@@ -1976,7 +1976,7 @@
             "dist": {
                 "type": "path",
                 "url": "../order-bundle",
-                "reference": "0819e276f2001bd1a5bd12c07b9eaddfefb64a8e"
+                "reference": "3214563dde1edeb808b4880abc7c377ed450c2ca"
             },
             "require": {
                 "doctrine/doctrine-bundle": "^2.7",
@@ -2031,7 +2031,7 @@
             "dist": {
                 "type": "path",
                 "url": "../product-bundle",
-                "reference": "976d96e66b725b75769a4b4feaa16515caa98aa0"
+                "reference": "e845006dd8251daa141f03c77426c90a3b2aef76"
             },
             "require": {
                 "bentools/cartesian-product": "^1.4",
@@ -2087,7 +2087,7 @@
             "dist": {
                 "type": "path",
                 "url": "../region-bundle",
-                "reference": "051cf6d08fc422282b5c5e31f30a544d05e4b4cd"
+                "reference": "f912c1ce076dcc9d1e6a2de8e4d284c43dcf4c59"
             },
             "require": {
                 "doctrine/doctrine-bundle": "^2.8",
@@ -6548,16 +6548,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v3.10.2",
+            "version": "v3.10.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "7aaed0b8311a557cc8c4047a71fd03153a00e755"
+                "reference": "67f29781ffafa520b0bbfbd8384674b42db04572"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/7aaed0b8311a557cc8c4047a71fd03153a00e755",
-                "reference": "7aaed0b8311a557cc8c4047a71fd03153a00e755",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/67f29781ffafa520b0bbfbd8384674b42db04572",
+                "reference": "67f29781ffafa520b0bbfbd8384674b42db04572",
                 "shasum": ""
             },
             "require": {
@@ -6611,7 +6611,7 @@
             ],
             "support": {
                 "issues": "https://github.com/twigphp/Twig/issues",
-                "source": "https://github.com/twigphp/Twig/tree/v3.10.2"
+                "source": "https://github.com/twigphp/Twig/tree/v3.10.3"
             },
             "funding": [
                 {
@@ -6623,7 +6623,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-05-14T06:04:16+00:00"
+            "time": "2024-05-16T10:04:27+00:00"
         }
     ],
     "packages-dev": [
