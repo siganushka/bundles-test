@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
 
+{% import 'order/_macro.html.twig' as _macro %}
+
 {% block body %}
   <h3 class="mb-3">OrderBundle</h3>
 
@@ -11,7 +13,7 @@
     <table class="table table-striped table-hover m-0">
       <tr class="table-light">
         <th style="min-width: 160px">{{ 'order.number'|trans }}</th>
-        <th style="min-width: 340px">{{ 'order.items'|trans }}</th>
+        <th style="min-width: 380px">{{ 'order.items'|trans }}</th>
         <th style="min-width: 100px">{{ 'order.total'|trans }}</th>
         <th style="min-width: 160px">{{ 'generic.created_at'|trans }}</th>
         <th style="min-width: 140px">{{ 'generic.action'|trans }}</th>
@@ -19,15 +21,9 @@
       {% for entity in pagination %}
       <tr>
         <td><code>{{ entity.number }}</code></td>
-        <td class="lh-sm">
+        <td>
           {% for item in entity.items %}
-            <p class="lh-sm mb-{{ loop.last ? 0 : 2 }}">
-              {{ item.variant.product.name }}
-              <small class="text-secondary">&times;{{ item.quantity }}</small>
-              {% if item.variant.choiceLabel %}
-                <br /><small class="text-secondary">{{ item.variant.choiceLabel }}</small>
-              {% endif %}
-            </p>
+            {{ _macro.order_item_box(item, loop.index0, true) }}
           {% endfor %}
         </td>
         <td>{{ entity.total|money }}</td>
