@@ -1,0 +1,14 @@
+<div class="d-flex align-items-center mt-{{ index ? 2 : 0 }}">
+  <div class="flex-shrink-0">
+    <img src="{{ item.variant.img.url ?? item.variant.product.img.url }}" width="50px" class="img-thumbnail" />
+  </div>
+  <div class="ms-2 lh-sm">
+    <p class="mb-1">{{ item.variant.product.name }}</p>
+
+    {% if item.variant.choiceLabel %}
+      <small class="text-secondary">{{ item.variant.choiceLabel }}</small>
+    {% endif %}
+
+    <small class="text-danger">&times;{{ item.quantity }}</small>
+  </div>
+</div>

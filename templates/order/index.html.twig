@@ -1,7 +1,5 @@
 {% extends 'base.html.twig' %}
 
-{% import 'order/_macro.html.twig' as _macro %}
-
 {% block body %}
   <h3 class="mb-3">OrderBundle</h3>
 
@@ -13,10 +11,10 @@
     <table class="table table-striped table-hover m-0">
       <tr class="table-light">
         <th style="min-width: 160px">{{ 'order.number'|trans }}</th>
-        <th style="min-width: 360px">{{ 'order.items'|trans }}</th>
-        <th style="min-width: 80px">{{ 'order.items_total'|trans }}</th>
-        <th style="min-width: 80px">{{ 'order.adjustments_total'|trans }}</th>
-        <th style="min-width: 80px">{{ 'order.total'|trans }}</th>
+        <th style="min-width: 400px">{{ 'order.items'|trans }}</th>
+        <th style="min-width: 100px">{{ 'order.items_total'|trans }}</th>
+        <th style="min-width: 100px">{{ 'order.adjustments_total'|trans }}</th>
+        <th style="min-width: 100px">{{ 'order.total'|trans }}</th>
         <th style="min-width: 160px">{{ 'generic.created_at'|trans }}</th>
         <th style="min-width: 140px">{{ 'generic.action'|trans }}</th>
       </tr>
@@ -25,7 +23,7 @@
         <td><code>{{ entity.number }}</code></td>
         <td>
           {% for item in entity.items %}
-            {{ _macro.order_item_box(item, loop.index0, true) }}
+            {% include 'order/_items_entry.twig' with { item: item, index: loop.index0, quantity: true } only %}
           {% endfor %}
         </td>
         <td>{{ entity.itemsTotal|money }}</td>

@@ -1,0 +1,18 @@
+<table class="table table-sm table-borderless m-0">
+  <tr>
+    <th class="pt-0">{{ 'order_item.variant'|trans }}</th>
+    <th style="min-width: 60px" class="pt-0 text-end">{{ 'order_item.unit_price'|trans }}</th>
+    <th style="min-width: 60px" class="pt-0 text-end">{{ 'order_item.quantity'|trans }}</th>
+    <th style="min-width: 60px" class="pt-0 text-end">{{ 'order_item.subtotal'|trans }}</th>
+  </tr>
+  {% for item in items %}
+  <tr>
+    <td>
+      {% include 'order/_items_entry.twig' with { item: item, index: loop.index0 } only %}
+    </td>
+    <td class="text-end">{{ item.unitPrice|money }}</td>
+    <td class="text-end">{{ item.quantity }}</td>
+    <td class="text-end">{{ item.subtotal|money }}</td>
+  </tr>
+  {% endfor %}
+</table>
