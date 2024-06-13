@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% form_theme form with '@SiganushkaProduct/Form/fields.html.twig' %}
+{% form_theme form with ['@SiganushkaProduct/Form/fields.html.twig', '@SiganushkaOrder/Form/fields.html.twig'] %}
 
 {% block body %}
   {{ form(form) }}

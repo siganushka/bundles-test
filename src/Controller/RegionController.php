@@ -29,9 +29,9 @@ class RegionController extends AbstractController
      */
     public function RegionType(Request $request, EntityManagerInterface $entityManager): Response
     {
-        $parent = $this->regionRepository->find('61');
+        // $parent = $this->regionRepository->find('61');
 
-        $address = $entityManager->find(UserAddress::class, 1);
+        // $address = $entityManager->find(UserAddress::class, 1);
         // $address = new UserAddress;
 
         $builder = $this->createFormBuilder()
