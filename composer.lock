@@ -1976,7 +1976,7 @@
             "dist": {
                 "type": "path",
                 "url": "../order-bundle",
-                "reference": "48074f645ef43dca9b319f8501c5d0cd72438990"
+                "reference": "8cdc62bb382dd79b38d44c0271dc287b1ffe0f81"
             },
             "require": {
                 "doctrine/doctrine-bundle": "^2.7",
@@ -2031,7 +2031,7 @@
             "dist": {
                 "type": "path",
                 "url": "../product-bundle",
-                "reference": "7601bfdeb392501782d748436e1761c19526cc36"
+                "reference": "876e4bf047e93651639855446292fe9b13557a6e"
             },
             "require": {
                 "bentools/cartesian-product": "^1.4",
