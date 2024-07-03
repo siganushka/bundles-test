@@ -1,23 +1,5 @@
-siganushka_region:
-    resource: "@SiganushkaRegionBundle/Resources/config/routes.php"
-    prefix: /api
-
-siganushka_media:
-    resource: "@SiganushkaMediaBundle/Resources/config/routes.php"
-    prefix: /api
-
-siganushka_product:
-    resource: "@SiganushkaProductBundle/Resources/config/routes.php"
-    prefix: /api
-
-siganushka_order:
-    resource: "@SiganushkaOrderBundle/Resources/config/routes.php"
-    prefix: /api
-
-siganushka_banner:
-    resource: "@SiganushkaBannerBundle/Resources/config/routes.php"
-    prefix: /api
-
-siganushka_admin:
-    resource: "@SiganushkaAdminBundle/Resources/config/routes.php"
-    prefix: /api
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute

@@ -21,6 +21,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
+#[Route('/media')]
 class MediaController extends AbstractController
 {
     private MediaRepository $mediaRepository;
@@ -30,9 +31,7 @@ class MediaController extends AbstractController
         $this->mediaRepository = $mediaRepository;
     }
 
-    /**
-     * @Route("/media")
-     */
+    #[Route]
     public function index(Request $request, PaginatorInterface $paginator): Response
     {
         $queryBuilder = $this->mediaRepository->createQueryBuilder('m');
@@ -47,9 +46,7 @@ class MediaController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/media/{hash}/delete")
-     */
+    #[Route('/{hash}/delete')]
     public function delete(EntityManagerInterface $entityManager, string $hash): Response
     {
         $entity = $this->mediaRepository->findOneByHash($hash);
@@ -71,9 +68,7 @@ class MediaController extends AbstractController
         }
     }
 
-    /**
-     * @Route("/media/MediaUploadType")
-     */
+    #[Route('/MediaUploadType')]
     public function MediaUploadType(Request $request): Response
     {
         $form = $this->createForm(MediaUploadType::class)
@@ -86,13 +81,11 @@ class MediaController extends AbstractController
         }
 
         return $this->render('media/form.html.twig', [
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 
-    /**
-     * @Route("/media/MediaType")
-     */
+    #[Route('/MediaType')]
     public function MediaType(Request $request): Response
     {
         $media = $this->mediaRepository->findAll();
@@ -139,13 +132,11 @@ class MediaController extends AbstractController
         }
 
         return $this->render('media/form.html.twig', [
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 
-    /**
-     * @Route("/media/MediaChannelType")
-     */
+    #[Route('/MediaChannelType')]
     public function MediaChannelType(Request $request): Response
     {
         $builder = $this->createFormBuilder()
@@ -164,13 +155,11 @@ class MediaController extends AbstractController
         }
 
         return $this->render('media/form.html.twig', [
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 
-    /**
-     * @Route("/media/MediaFileType")
-     */
+    #[Route('/MediaFileType')]
     public function MediaFileType(Request $request): Response
     {
         $builder = $this->createFormBuilder()
@@ -190,7 +179,7 @@ class MediaController extends AbstractController
         }
 
         return $this->render('media/form.html.twig', [
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 }

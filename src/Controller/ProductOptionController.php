@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+#[Route('/product-options')]
 class ProductOptionController extends AbstractController
 {
     private ProductOptionRepository $productOptionRepository;
@@ -23,9 +24,7 @@ class ProductOptionController extends AbstractController
         $this->productOptionRepository = $productOptionRepository;
     }
 
-    /**
-     * @Route("/product-options/{id<\d+>}/edit")
-     */
+    #[Route('/{id<\d+>}/edit')]
     public function edit(Request $request, EntityManagerInterface $entityManager, int $id): Response
     {
         $entity = $this->productOptionRepository->find($id);
@@ -51,7 +50,7 @@ class ProductOptionController extends AbstractController
         }
 
         return $this->render('product-option/form.html.twig', [
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 }

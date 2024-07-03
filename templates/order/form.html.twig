@@ -1,6 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% form_theme form with ['@SiganushkaProduct/Form/fields.html.twig', '@SiganushkaOrder/Form/fields.html.twig'] %}
+{% form_theme form with ['@SiganushkaProduct/Form/fields.html.twig'] %}
+
+{% block stylesheets %}
+  <style>
+  .ts-dropdown-content { max-height: 500px !important; }
+  </style>
+{% endblock %}
+
 
 {% block body %}
   {{ form(form) }}

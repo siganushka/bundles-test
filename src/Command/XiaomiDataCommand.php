@@ -15,6 +15,7 @@ use Siganushka\ProductBundle\Entity\ProductVariant;
 use Siganushka\ProductBundle\Media\ProductImg;
 use Siganushka\ProductBundle\Media\ProductVariantImg;
 use Siganushka\ProductBundle\Model\ProductVariantChoice;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -23,22 +24,19 @@ use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
+#[AsCommand(
+    name: 'app:xiaomi:data',
+    description: 'Add xiaomi data.',
+)]
 class XiaomiDataCommand extends Command
 {
-    protected static $defaultName = 'app:xiaomi:data';
-    protected static $defaultDescription = 'Add xiaomi data.';
+    private readonly HttpClientInterface $httpClient;
 
-    private EntityManagerInterface $entityManager;
-    private EventDispatcherInterface $eventDispatcher;
-    private ChannelRegistry $channelRegistry;
-    private HttpClientInterface $httpClient;
-
-    public function __construct(EntityManagerInterface $entityManager, EventDispatcherInterface $eventDispatcher, ChannelRegistry $channelRegistry)
-    {
-        $this->entityManager = $entityManager;
-        $this->eventDispatcher = $eventDispatcher;
-        $this->channelRegistry = $channelRegistry;
-
+    public function __construct(
+        private readonly EntityManagerInterface $entityManager,
+        private readonly EventDispatcherInterface $eventDispatcher,
+        private readonly ChannelRegistry $channelRegistry,
+    ) {
         $this->httpClient = HttpClient::create([
             'base_uri' => 'https://api2.order.mi.com',
             'headers' => [
@@ -52,7 +50,7 @@ class XiaomiDataCommand extends Command
     protected function configure(): void
     {
         $this
-            ->addOption('keyword', null, InputOption::VALUE_REQUIRED, 'Option description')
+            ->addOption('keyword', null, InputOption::VALUE_REQUIRED, 'Search keyword.')
         ;
     }
 

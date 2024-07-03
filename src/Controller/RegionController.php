@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Entity\UserAddress;
 use Doctrine\ORM\EntityManagerInterface;
 use Siganushka\RegionBundle\Form\Type\RegionType;
 use Siganushka\RegionBundle\Repository\RegionRepository;
@@ -24,15 +23,10 @@ class RegionController extends AbstractController
         $this->regionRepository = $regionRepository;
     }
 
-    /**
-     * @Route("/RegionType")
-     */
+    #[Route('/RegionType')]
     public function RegionType(Request $request, EntityManagerInterface $entityManager): Response
     {
         // $parent = $this->regionRepository->find('61');
-
-        // $address = $entityManager->find(UserAddress::class, 1);
-        // $address = new UserAddress;
 
         $builder = $this->createFormBuilder()
             ->add('province', RegionType::class, [
@@ -72,7 +66,7 @@ class RegionController extends AbstractController
         }
 
         return $this->render('region/form.html.twig', [
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 }

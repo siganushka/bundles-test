@@ -19,6 +19,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+#[Route('/products')]
 class ProductController extends AbstractController
 {
     private ProductRepository $productRepository;
@@ -28,9 +29,7 @@ class ProductController extends AbstractController
         $this->productRepository = $productRepository;
     }
 
-    /**
-     * @Route("/products")
-     */
+    #[Route]
     public function index(Request $request, PaginatorInterface $paginator): Response
     {
         $queryBuilder = $this->productRepository->createQueryBuilder('p');
@@ -45,9 +44,7 @@ class ProductController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/products/new")
-     */
+    #[Route('/new')]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $entity = $this->productRepository->createNew();
@@ -66,13 +63,11 @@ class ProductController extends AbstractController
         }
 
         return $this->render('product/form.html.twig', [
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 
-    /**
-     * @Route("/products/{id<\d+>}/edit")
-     */
+    #[Route('/{id<\d+>}/edit')]
     public function edit(Request $request, EntityManagerInterface $entityManager, int $id): Response
     {
         $entity = $this->productRepository->find($id);
@@ -98,13 +93,11 @@ class ProductController extends AbstractController
         }
 
         return $this->render('product/form.html.twig', [
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 
-    /**
-     * @Route("/products/{id<\d+>}/delete")
-     */
+    #[Route('/{id<\d+>}/delete')]
     public function delete(EntityManagerInterface $entityManager, int $id): Response
     {
         $entity = $this->productRepository->find($id);
@@ -126,9 +119,7 @@ class ProductController extends AbstractController
         }
     }
 
-    /**
-     * @Route("/products/{id<\d+>}/variants")
-     */
+    #[Route('/{id<\d+>}/variants')]
     public function variants(Request $request, EntityManagerInterface $entityManager, int $id): Response
     {
         $product = $this->productRepository->find($id);
@@ -151,13 +142,11 @@ class ProductController extends AbstractController
         }
 
         return $this->render('product/form.html.twig', [
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 
-    /**
-     * @Route("/products/ProductType")
-     */
+    #[Route('/ProductType')]
     public function ProductType(Request $request): Response
     {
         $form = $this->createForm(ProductType::class)
@@ -170,13 +159,11 @@ class ProductController extends AbstractController
         }
 
         return $this->render('product/form.html.twig', [
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 
-    /**
-     * @Route("/products/ProductOptionType")
-     */
+    #[Route('/ProductOptionType')]
     public function ProductOptionType(Request $request): Response
     {
         $form = $this->createForm(ProductOptionType::class)
@@ -189,13 +176,11 @@ class ProductController extends AbstractController
         }
 
         return $this->render('product/form.html.twig', [
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 
-    /**
-     * @Route("/products/ProductOptionValueType")
-     */
+    #[Route('/ProductOptionValueType')]
     public function ProductOptionValueType(Request $request): Response
     {
         $form = $this->createForm(ProductOptionValueType::class)
@@ -208,13 +193,11 @@ class ProductController extends AbstractController
         }
 
         return $this->render('product/form.html.twig', [
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 
-    /**
-     * @Route("/products/ProductVariantCollectionType")
-     */
+    #[Route('/ProductVariantCollectionType')]
     public function ProductVariantCollectionType(Request $request): Response
     {
         $entity = $this->productRepository->createNew();
@@ -229,13 +212,11 @@ class ProductController extends AbstractController
         }
 
         return $this->render('product/form.html.twig', [
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 
-    /**
-     * @Route("/products/ProductVariantType")
-     */
+    #[Route('/ProductVariantType')]
     public function ProductVariantType(Request $request): Response
     {
         $form = $this->createForm(ProductVariantType::class)
@@ -248,7 +229,7 @@ class ProductController extends AbstractController
         }
 
         return $this->render('product/form.html.twig', [
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 }

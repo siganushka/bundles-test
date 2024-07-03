@@ -13,8 +13,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 
+#[Route('/banners')]
 class BannerController extends AbstractController
 {
     protected BannerRepository $bannerRepository;
@@ -24,9 +25,7 @@ class BannerController extends AbstractController
         $this->bannerRepository = $bannerRepository;
     }
 
-    /**
-     * @Route("/banners")
-     */
+    #[Route]
     public function index(Request $request, PaginatorInterface $paginator): Response
     {
         $queryBuilder = $this->bannerRepository->createQueryBuilder('b');
@@ -41,9 +40,7 @@ class BannerController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/banners/new")
-     */
+    #[Route('/new')]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $entity = $this->bannerRepository->createNew();
@@ -63,13 +60,11 @@ class BannerController extends AbstractController
         }
 
         return $this->render('banner/form.html.twig', [
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 
-    /**
-     * @Route("/banners/{id<\d+>}/edit")
-     */
+    #[Route('/{id<\d+>}/edit')]
     public function edit(Request $request, EntityManagerInterface $entityManager, int $id): Response
     {
         $entity = $this->bannerRepository->find($id);
@@ -89,13 +84,11 @@ class BannerController extends AbstractController
         }
 
         return $this->render('banner/form.html.twig', [
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 
-    /**
-     * @Route("/banners/{id<\d+>}/delete")
-     */
+    #[Route('/{id<\d+>}/delete')]
     public function delete(EntityManagerInterface $entityManager, int $id): Response
     {
         $entity = $this->bannerRepository->find($id);
@@ -115,9 +108,7 @@ class BannerController extends AbstractController
         return $this->redirectToRoute('app_banner_index');
     }
 
-    /**
-     * @Route("/banners/BannerType")
-     */
+    #[Route('/BannerType')]
     public function BannerType(Request $request): Response
     {
         $form = $this->createForm(BannerType::class)
@@ -130,7 +121,7 @@ class BannerController extends AbstractController
         }
 
         return $this->render('banner/form.html.twig', [
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 }

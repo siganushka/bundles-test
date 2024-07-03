@@ -19,6 +19,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
+#[Route('/orders')]
 class OrderController extends AbstractController
 {
     private OrderRepository $orderRepository;
@@ -28,9 +29,7 @@ class OrderController extends AbstractController
         $this->orderRepository = $orderRepository;
     }
 
-    /**
-     * @Route("/orders")
-     */
+    #[Route]
     public function index(Request $request, PaginatorInterface $paginator): Response
     {
         $queryBuilder = $this->orderRepository->createQueryBuilder('m');
@@ -45,9 +44,7 @@ class OrderController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/orders/new")
-     */
+    #[Route('/new')]
     public function new(Request $request, EventDispatcherInterface $eventDispatcher, EntityManagerInterface $entityManager): Response
     {
         $entity = $this->orderRepository->createNew();
@@ -81,13 +78,11 @@ class OrderController extends AbstractController
         }
 
         return $this->render('order/form.html.twig', [
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 
-    /**
-     * @Route("/orders/{number<\d{16}>}/edit")
-     */
+    #[Route('/{number<\d{16}>}/edit')]
     public function edit(Request $request, EntityManagerInterface $entityManager, string $number): Response
     {
         $entity = $this->orderRepository->findOneByNumber($number);
@@ -108,13 +103,11 @@ class OrderController extends AbstractController
         }
 
         return $this->render('order/form.html.twig', [
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 
-    /**
-     * @Route("/orders/{number<\d{16}>}/show")
-     */
+    #[Route('/{number<\d{16}>}/show')]
     public function show(Request $request, string $number): Response
     {
         $entity = $this->orderRepository->findOneByNumber($number);
@@ -127,9 +120,7 @@ class OrderController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/orders/{number<\d{16}>}/delete")
-     */
+    #[Route('/{number<\d{16}>}/delete')]
     public function delete(EntityManagerInterface $entityManager, string $number): Response
     {
         $entity = $this->orderRepository->findOneByNumber($number);
@@ -145,9 +136,7 @@ class OrderController extends AbstractController
         return $this->redirectToRoute('app_order_index');
     }
 
-    /**
-     * @Route("/orders/OrderType")
-     */
+    #[Route('/OrderType')]
     public function OrderType(Request $request): Response
     {
         $form = $this->createForm(OrderType::class)
@@ -160,13 +149,11 @@ class OrderController extends AbstractController
         }
 
         return $this->render('order/form.html.twig', [
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 
-    /**
-     * @Route("/orders/OrderItemType")
-     */
+    #[Route('/OrderItemType')]
     public function OrderItemType(Request $request): Response
     {
         $form = $this->createForm(OrderItemType::class)
@@ -179,7 +166,7 @@ class OrderController extends AbstractController
         }
 
         return $this->render('order/form.html.twig', [
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 }

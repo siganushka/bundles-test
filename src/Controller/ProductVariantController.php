@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+#[Route('/product-variants')]
 class ProductVariantController extends AbstractController
 {
     private ProductVariantRepository $productVariantRepository;
@@ -23,9 +24,7 @@ class ProductVariantController extends AbstractController
         $this->productVariantRepository = $productVariantRepository;
     }
 
-    /**
-     * @Route("/product-variants")
-     */
+    #[Route]
     public function index(Request $request, PaginatorInterface $paginator): Response
     {
         $queryBuilder = $this->productVariantRepository->createQueryBuilder('v');
@@ -40,9 +39,7 @@ class ProductVariantController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/product-variants/{id<\d+>}/edit")
-     */
+    #[Route('/{id<\d+>}/edit')]
     public function edit(Request $request, EntityManagerInterface $entityManager, int $id): Response
     {
         $entity = $this->productVariantRepository->find($id);
@@ -61,7 +58,7 @@ class ProductVariantController extends AbstractController
         }
 
         return $this->render('product-variant/form.html.twig', [
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 }
