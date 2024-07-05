@@ -27,3 +27,9 @@
 /.php-cs-fixer.php
 /.php-cs-fixer.cache
 ###< friendsofphp/php-cs-fixer ###
+
+###> app ###
+/public/uploads/
+/.php-cs-fixer.php
+/.php-cs-fixer.cache
+###< app ###
