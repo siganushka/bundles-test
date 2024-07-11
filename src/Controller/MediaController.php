@@ -24,11 +24,8 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 #[Route('/media')]
 class MediaController extends AbstractController
 {
-    private MediaRepository $mediaRepository;
-
-    public function __construct(MediaRepository $mediaRepository)
+    public function __construct(protected readonly MediaRepository $mediaRepository)
     {
-        $this->mediaRepository = $mediaRepository;
     }
 
     #[Route]

@@ -18,11 +18,8 @@ use Symfony\Component\Routing\Attribute\Route;
 #[Route('/banners')]
 class BannerController extends AbstractController
 {
-    protected BannerRepository $bannerRepository;
-
-    public function __construct(BannerRepository $bannerRepository)
+    public function __construct(protected readonly BannerRepository $bannerRepository)
     {
-        $this->bannerRepository = $bannerRepository;
     }
 
     #[Route]

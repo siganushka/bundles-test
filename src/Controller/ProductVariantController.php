@@ -17,11 +17,8 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/product-variants')]
 class ProductVariantController extends AbstractController
 {
-    private ProductVariantRepository $productVariantRepository;
-
-    public function __construct(ProductVariantRepository $productVariantRepository)
+    public function __construct(protected readonly ProductVariantRepository $productVariantRepository)
     {
-        $this->productVariantRepository = $productVariantRepository;
     }
 
     #[Route]

@@ -22,11 +22,8 @@ use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 #[Route('/orders')]
 class OrderController extends AbstractController
 {
-    private OrderRepository $orderRepository;
-
-    public function __construct(OrderRepository $orderRepository)
+    public function __construct(protected readonly OrderRepository $orderRepository)
     {
-        $this->orderRepository = $orderRepository;
     }
 
     #[Route]

@@ -22,11 +22,8 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/products')]
 class ProductController extends AbstractController
 {
-    private ProductRepository $productRepository;
-
-    public function __construct(ProductRepository $productRepository)
+    public function __construct(protected readonly ProductRepository $productRepository)
     {
-        $this->productRepository = $productRepository;
     }
 
     #[Route]

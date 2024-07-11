@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use Doctrine\ORM\EntityManagerInterface;
 use Siganushka\RegionBundle\Form\Type\RegionType;
 use Siganushka\RegionBundle\Repository\RegionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,15 +15,12 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 
 class RegionController extends AbstractController
 {
-    protected RegionRepository $regionRepository;
-
-    public function __construct(RegionRepository $regionRepository)
+    public function __construct(protected readonly RegionRepository $regionRepository)
     {
-        $this->regionRepository = $regionRepository;
     }
 
     #[Route('/RegionType')]
-    public function RegionType(Request $request, EntityManagerInterface $entityManager): Response
+    public function RegionType(Request $request): Response
     {
         // $parent = $this->regionRepository->find('61');
 

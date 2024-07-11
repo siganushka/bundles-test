@@ -17,11 +17,8 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/product-options')]
 class ProductOptionController extends AbstractController
 {
-    private ProductOptionRepository $productOptionRepository;
-
-    public function __construct(ProductOptionRepository $productOptionRepository)
+    public function __construct(protected readonly ProductOptionRepository $productOptionRepository)
     {
-        $this->productOptionRepository = $productOptionRepository;
     }
 
     #[Route('/{id<\d+>}/edit')]
