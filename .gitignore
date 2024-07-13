@@ -4,19 +4,10 @@
 /.env.*.local
 /config/secrets/prod/prod.decrypt.private.php
 /public/bundles/
+/public/uploads/
 /var/
 /vendor/
 ###< symfony/framework-bundle ###
-
-###> phpunit/phpunit ###
-/phpunit.xml
-.phpunit.result.cache
-###< phpunit/phpunit ###
-
-###> symfony/phpunit-bridge ###
-.phpunit.result.cache
-/phpunit.xml
-###< symfony/phpunit-bridge ###
 
 ###> symfony/asset-mapper ###
 /public/assets/
@@ -28,8 +19,7 @@
 /.php-cs-fixer.cache
 ###< friendsofphp/php-cs-fixer ###
 
-###> app ###
-/public/uploads/
-/.php-cs-fixer.php
-/.php-cs-fixer.cache
-###< app ###
+###> symfony/phpunit-bridge ###
+.phpunit.result.cache
+/phpunit.xml
+###< symfony/phpunit-bridge ###

@@ -24,8 +24,3 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
-    Siganushka\MediaBundle\Storage\AliyunOssStorage:
-        $accessKeyId: '%env(string:ALIYUN_ACCESS_KEY_ID)%'
-        $accessKeySecret: '%env(string:ALIYUN_ACCESS_KEY_SECRET)%'
-        $endpoint: '%env(string:ALIYUN_OSS_ENDPOINT)%'
-        $bucket: '%env(string:ALIYUN_OSS_BUCKET)%'
