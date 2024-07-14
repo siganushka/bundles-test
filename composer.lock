@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d75ab5e4f87048b29dd46c355a1bc35c",
+    "content-hash": "2bacb69091c5a07a332de570efa11cb7",
     "packages": [
         {
             "name": "bentools/cartesian-product",
@@ -1624,7 +1624,7 @@
             "dist": {
                 "type": "path",
                 "url": "../banner-bundle",
-                "reference": "9946b2fd86deedade5a62d3a1b87f3dee8895ce4"
+                "reference": "fe1946ee3ea65e419f08e00d8c6be928ff608428"
             },
             "require": {
                 "doctrine/doctrine-bundle": "^2.8",
@@ -1727,7 +1727,7 @@
             "dist": {
                 "type": "path",
                 "url": "../generic-bundle",
-                "reference": "bbc9f9df4d9af7408cdd4a006a69cb94d7268e79"
+                "reference": "3cab607343527e296d9396efd7f78264aa646353"
             },
             "require": {
                 "php": ">=8.1",
@@ -1787,7 +1787,7 @@
             "dist": {
                 "type": "path",
                 "url": "../media-bundle",
-                "reference": "ffcb83b20820c5c623e8a4d93f876c6b2e679476"
+                "reference": "2a2a0841084c7b1fe49886bc344a575e70f93ff6"
             },
             "require": {
                 "doctrine/doctrine-bundle": "^2.8",
@@ -1843,7 +1843,7 @@
             "dist": {
                 "type": "path",
                 "url": "../order-bundle",
-                "reference": "d0d9aadf6a34d5982e3c78ecead3d203e16eeef2"
+                "reference": "fa859ab983526c0b8b9c0348457e95a1952516b7"
             },
             "require": {
                 "doctrine/doctrine-bundle": "^2.8",
@@ -1899,7 +1899,7 @@
             "dist": {
                 "type": "path",
                 "url": "../product-bundle",
-                "reference": "7e0c4438155934181fc1d9a1247b36098f8210b8"
+                "reference": "b1625e70e9abf5252af79fb61c5887d09a66cd3e"
             },
             "require": {
                 "bentools/cartesian-product": "^1.4",
@@ -1958,7 +1958,7 @@
             "dist": {
                 "type": "path",
                 "url": "../region-bundle",
-                "reference": "951d6ff0b0e609f65b9ac0497fb8aae0536e464b"
+                "reference": "21023ed3c0f774dd3148cf9b15a0beb44af4d79b"
             },
             "require": {
                 "doctrine/doctrine-bundle": "^2.8",
@@ -7435,6 +7435,61 @@
                 }
             ],
             "time": "2024-06-16T14:17:03+00:00"
+        },
+        {
+            "name": "friendsoftwig/twigcs",
+            "version": "6.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/friendsoftwig/twigcs.git",
+                "reference": "954e1af488d649cf329f35deaedf2b8fe2cf4b56"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/friendsoftwig/twigcs/zipball/954e1af488d649cf329f35deaedf2b8fe2cf4b56",
+                "reference": "954e1af488d649cf329f35deaedf2b8fe2cf4b56",
+                "shasum": ""
+            },
+            "require": {
+                "ext-ctype": "*",
+                "ext-hash": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "ext-simplexml": "*",
+                "php": "~8.0.0 || ~8.1.0 || ~8.2.0 || ~8.3.0",
+                "symfony/console": "^4.4 || ^5.3 || ^6.0 || ^7.0",
+                "symfony/filesystem": "^4.4 || ^5.3 || ^6.0 || ^7.0",
+                "symfony/finder": "^4.4 || ^5.3 || ^6.0 || ^7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.6.15",
+                "symfony/phpunit-bridge": "^7.0.1"
+            },
+            "bin": [
+                "bin/twigcs"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "FriendsOfTwig\\Twigcs\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tristan Maindron",
+                    "email": "tmaindron@gmail.com"
+                }
+            ],
+            "description": "Checkstyle automation for Twig",
+            "support": {
+                "issues": "https://github.com/friendsoftwig/twigcs/issues",
+                "source": "https://github.com/friendsoftwig/twigcs/tree/6.4.0"
+            },
+            "time": "2023-12-05T07:36:35+00:00"
         },
         {
             "name": "netresearch/jsonmapper",

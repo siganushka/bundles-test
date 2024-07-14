@@ -39,6 +39,7 @@
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.6",
         "friendsofphp/php-cs-fixer": "^3.59",
+        "friendsoftwig/twigcs": "^6.4",
         "symfony/debug-bundle": "7.1.*",
         "symfony/maker-bundle": "^1.60",
         "symfony/phpunit-bridge": "^7.1",

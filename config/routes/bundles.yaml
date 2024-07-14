@@ -1,19 +1,19 @@
 siganushka_region:
-    resource: "@SiganushkaRegionBundle/Resources/config/routes.php"
+    resource: "@SiganushkaRegionBundle/config/routes.php"
     prefix: /api
 
 siganushka_media:
-    resource: "@SiganushkaMediaBundle/Resources/config/routes.php"
+    resource: "@SiganushkaMediaBundle/config/routes.php"
     prefix: /api
 
 siganushka_product:
-    resource: "@SiganushkaProductBundle/Resources/config/routes.php"
+    resource: "@SiganushkaProductBundle/config/routes.php"
     prefix: /api
 
 siganushka_order:
-    resource: "@SiganushkaOrderBundle/Resources/config/routes.php"
+    resource: "@SiganushkaOrderBundle/config/routes.php"
     prefix: /api
 
 siganushka_banner:
-    resource: "@SiganushkaBannerBundle/Resources/config/routes.php"
+    resource: "@SiganushkaBannerBundle/config/routes.php"
     prefix: /api
