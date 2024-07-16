@@ -25,7 +25,7 @@
           <span class="badge rounded-pill text-bg-{{ entity.image ? 'success' : 'secondary' }}">{{ entity.image ? 'generic.yes'|trans : 'generic.no'|trans }}</span>
         </td>
         <td>
-          <a href="{{ path('app_media_delete', { hash: entity.hash }) }}" onclick="return confirm('{{ 'generic.delete_confirmation'|trans }}')">{{ 'generic.delete'|trans }}</a>
+          <a href="{{ path('app_media_delete', {hash: entity.hash}) }}" onclick="return confirm('{{ 'generic.delete_confirmation'|trans }}')">{{ 'generic.delete'|trans }}</a>
         </td>
       </tr>
       {% else %}

@@ -34,7 +34,7 @@
   <tr>
     <th class="text-end">{{ 'order.items'|trans }}</th>
     <td>
-      {% include 'order/_items.twig' with { items: entity.items } only %}
+      {% include 'order/_items.twig' with {items: entity.items} only %}
     </td>
   </tr>
   {% if entity.adjustments|length %}

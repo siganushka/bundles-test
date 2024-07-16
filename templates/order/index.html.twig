@@ -23,7 +23,7 @@
         <td><code>{{ entity.number }}</code></td>
         <td>
           {% for item in entity.items %}
-            {% include 'order/_items_entry.twig' with { item: item, index: loop.index0, quantity: true } only %}
+            {% include 'order/_items_entry.twig' with {item: item, index: loop.index0, quantity: true} only %}
           {% endfor %}
         </td>
         <td>{{ entity.itemsTotal|money }}</td>
@@ -31,9 +31,9 @@
         <td>{{ entity.total|money }}</td>
         <td>{{ entity.createdAt|date('Y-m-d H:i') }}</td>
         <td>
-          <a href="{{ path('app_order_show', { number: entity.number }) }}">{{ 'generic.detail'|trans }}</a>
-          <a href="{{ path('app_order_edit', { number: entity.number }) }}">{{ 'generic.edit'|trans }}</a>
-          <a href="{{ path('app_order_delete', { number: entity.number }) }}" onclick="return confirm('{{ 'generic.delete_confirmation'|trans }}')">{{ 'generic.delete'|trans }}</a>
+          <a href="{{ path('app_order_show', {number: entity.number}) }}">{{ 'generic.detail'|trans }}</a>
+          <a href="{{ path('app_order_edit', {number: entity.number}) }}">{{ 'generic.edit'|trans }}</a>
+          <a href="{{ path('app_order_delete', {number: entity.number}) }}" onclick="return confirm('{{ 'generic.delete_confirmation'|trans }}')">{{ 'generic.delete'|trans }}</a>
         </td>
       </tr>
       {% else %}

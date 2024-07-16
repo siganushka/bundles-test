@@ -21,8 +21,8 @@
         <td>{{ entity.title }}</td>
         <td><span class="badge rounded-pill text-bg-{{ entity.enabled ? 'success' : 'secondary' }}">{{ entity.enabled ? 'generic.yes'|trans : 'generic.no'|trans }}</span></td>
         <td>
-          <a href="{{ path('app_banner_edit', { id: entity.id }) }}">{{ 'generic.edit'|trans }}</a>
-          <a href="{{ path('app_banner_delete', { id: entity.id }) }}" onclick="return confirm('{{ 'generic.delete_confirmation'|trans }}')">{{ 'generic.delete'|trans }}</a>
+          <a href="{{ path('app_banner_edit', {id: entity.id}) }}">{{ 'generic.edit'|trans }}</a>
+          <a href="{{ path('app_banner_delete', {id: entity.id}) }}" onclick="return confirm('{{ 'generic.delete_confirmation'|trans }}')">{{ 'generic.delete'|trans }}</a>
         </td>
       </tr>
       {% else %}
