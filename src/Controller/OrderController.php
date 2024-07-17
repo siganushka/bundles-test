@@ -17,6 +17,8 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Workflow\Exception\LogicException;
+use Symfony\Component\Workflow\WorkflowInterface;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
 #[Route('/orders')]
@@ -51,9 +53,6 @@ class OrderController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $event = new OrderBeforeCreateEvent($entity);
-            $eventDispatcher->dispatch($event);
-
             $adjustment1 = new OrderAdjustment();
             $adjustment1->setAmount(100);
 
@@ -62,6 +61,9 @@ class OrderController extends AbstractController
 
             $entity->addAdjustment($adjustment1);
             $entity->addAdjustment($adjustment2);
+
+            $event = new OrderBeforeCreateEvent($entity);
+            $eventDispatcher->dispatch($event);
 
             $entityManager->persist($entity);
             $entityManager->flush();
@@ -102,6 +104,28 @@ class OrderController extends AbstractController
         return $this->render('order/form.html.twig', [
             'form' => $form,
         ]);
+    }
+
+    #[Route('/{number<\d{16}>}/workflow/{transition}')]
+    public function workflow(EntityManagerInterface $entityManager, WorkflowInterface $orderState, string $number, string $transition): Response
+    {
+        $entity = $this->orderRepository->findOneByNumber($number);
+        if (!$entity) {
+            throw $this->createNotFoundException(sprintf('Resource #%s not found.', $number));
+        }
+
+        try {
+            $orderState->apply($entity, $transition);
+        } catch (LogicException $e) {
+            $this->addFlash('danger', $e->getMessage());
+
+            return $this->redirectToRoute('app_order_index');
+        }
+
+        $entityManager->flush();
+        $this->addFlash('success', sprintf('Resource #%s has been updated!', $number));
+
+        return $this->redirectToRoute('app_order_index');
     }
 
     #[Route('/{number<\d{16}>}/show')]

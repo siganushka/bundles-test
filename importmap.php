@@ -26,6 +26,9 @@ return [
         'version' => '5.3.3',
         'type' => 'css',
     ],
+    'bootstrap/dist/js/bootstrap.bundle.min.js' => [
+        'version' => '5.3.3',
+    ],
     'tom-select' => [
         'version' => '2.3.1',
     ],

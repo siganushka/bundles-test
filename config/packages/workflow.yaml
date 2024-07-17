@@ -1,0 +1,29 @@
+framework:
+    workflows:
+        order_state:
+            type: 'state_machine'
+            audit_trail:
+                enabled: true
+            marking_store:
+                type: method
+                property: stateAsString
+            supports: Siganushka\OrderBundle\Entity\Order
+            transitions:
+                pay:
+                    from: created
+                    to: accepted
+                delivery:
+                    from: accepted
+                    to: shipped
+                receive:
+                    from: shipped
+                    to: finished
+                refund:
+                    from: accepted
+                    to: refunded
+                cancel:
+                    from: created
+                    to: cancelled
+                reset:
+                    from: [accepted, shipped, finished, refunded, cancelled]
+                    to: created
