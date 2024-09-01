@@ -66,7 +66,7 @@ class BannerController extends AbstractController
     {
         $entity = $this->bannerRepository->find($id);
         if (!$entity) {
-            throw $this->createNotFoundException(sprintf('Resource #%d not found.', $id));
+            throw $this->createNotFoundException(\sprintf('Resource #%d not found.', $id));
         }
 
         $form = $this->createForm(BannerType::class, $entity);
@@ -90,14 +90,14 @@ class BannerController extends AbstractController
     {
         $entity = $this->bannerRepository->find($id);
         if (!$entity) {
-            throw $this->createNotFoundException(sprintf('Resource #%d not found.', $id));
+            throw $this->createNotFoundException(\sprintf('Resource #%d not found.', $id));
         }
 
         try {
             $entityManager->remove($entity);
             $entityManager->flush();
 
-            $this->addFlash('success', sprintf('Resource #%s has been deleted!', $id));
+            $this->addFlash('success', \sprintf('Resource #%s has been deleted!', $id));
         } catch (ForeignKeyConstraintViolationException $th) {
             $this->addFlash('danger', 'The associated data can be deleted if it is not empty!');
         }

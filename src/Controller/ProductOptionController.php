@@ -26,7 +26,7 @@ class ProductOptionController extends AbstractController
     {
         $entity = $this->productOptionRepository->find($id);
         if (!$entity) {
-            throw $this->createNotFoundException(sprintf('Resource #%d not found.', $id));
+            throw $this->createNotFoundException(\sprintf('Resource #%d not found.', $id));
         }
 
         $form = $this->createForm(ProductOptionType::class, $entity);

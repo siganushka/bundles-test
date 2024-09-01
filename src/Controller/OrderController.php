@@ -71,7 +71,7 @@ class OrderController extends AbstractController
             $event = new OrderCreatedEvent($entity);
             $eventDispatcher->dispatch($event);
 
-            $this->addFlash('success', sprintf('Resource #%s has been created!', $entity->getNumber()));
+            $this->addFlash('success', \sprintf('Resource #%s has been created!', $entity->getNumber()));
 
             return $this->redirectToRoute('app_order_index');
         }
@@ -86,7 +86,7 @@ class OrderController extends AbstractController
     {
         $entity = $this->orderRepository->findOneByNumber($number);
         if (!$entity) {
-            throw $this->createNotFoundException(sprintf('Resource #%s not found.', $number));
+            throw $this->createNotFoundException(\sprintf('Resource #%s not found.', $number));
         }
 
         $form = $this->createForm(OrderType::class, $entity);
@@ -96,7 +96,7 @@ class OrderController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            $this->addFlash('success', sprintf('Resource #%s has been updated!', $number));
+            $this->addFlash('success', \sprintf('Resource #%s has been updated!', $number));
 
             return $this->redirectToRoute('app_order_index');
         }
@@ -111,7 +111,7 @@ class OrderController extends AbstractController
     {
         $entity = $this->orderRepository->findOneByNumber($number);
         if (!$entity) {
-            throw $this->createNotFoundException(sprintf('Resource #%s not found.', $number));
+            throw $this->createNotFoundException(\sprintf('Resource #%s not found.', $number));
         }
 
         try {
@@ -123,7 +123,7 @@ class OrderController extends AbstractController
         }
 
         $entityManager->flush();
-        $this->addFlash('success', sprintf('Resource #%s has been updated!', $number));
+        $this->addFlash('success', \sprintf('Resource #%s has been updated!', $number));
 
         return $this->redirectToRoute('app_order_index');
     }
@@ -133,7 +133,7 @@ class OrderController extends AbstractController
     {
         $entity = $this->orderRepository->findOneByNumber($number);
         if (!$entity) {
-            throw $this->createNotFoundException(sprintf('Resource #%s not found.', $number));
+            throw $this->createNotFoundException(\sprintf('Resource #%s not found.', $number));
         }
 
         return $this->render('order/show.html.twig', [
@@ -146,13 +146,13 @@ class OrderController extends AbstractController
     {
         $entity = $this->orderRepository->findOneByNumber($number);
         if (!$entity) {
-            throw $this->createNotFoundException(sprintf('Resource #%s not found.', $number));
+            throw $this->createNotFoundException(\sprintf('Resource #%s not found.', $number));
         }
 
         $entityManager->remove($entity);
         $entityManager->flush();
 
-        $this->addFlash('success', sprintf('Resource #%s has been deleted!', $number));
+        $this->addFlash('success', \sprintf('Resource #%s has been deleted!', $number));
 
         return $this->redirectToRoute('app_order_index');
     }

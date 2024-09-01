@@ -69,7 +69,7 @@ class ProductController extends AbstractController
     {
         $entity = $this->productRepository->find($id);
         if (!$entity) {
-            throw $this->createNotFoundException(sprintf('Resource #%d not found.', $id));
+            throw $this->createNotFoundException(\sprintf('Resource #%d not found.', $id));
         }
 
         $form = $this->createForm(ProductType::class, $entity);
@@ -99,14 +99,14 @@ class ProductController extends AbstractController
     {
         $entity = $this->productRepository->find($id);
         if (!$entity) {
-            throw $this->createNotFoundException(sprintf('Resource #%d not found.', $id));
+            throw $this->createNotFoundException(\sprintf('Resource #%d not found.', $id));
         }
 
         try {
             $entityManager->remove($entity);
             $entityManager->flush();
 
-            $this->addFlash('success', sprintf('Resource #%s has been deleted!', $id));
+            $this->addFlash('success', \sprintf('Resource #%s has been deleted!', $id));
 
             return $this->redirectToRoute('app_product_index');
         } catch (ForeignKeyConstraintViolationException $th) {
@@ -121,7 +121,7 @@ class ProductController extends AbstractController
     {
         $product = $this->productRepository->find($id);
         if (!$product) {
-            throw $this->createNotFoundException(sprintf('Resource #%d not found.', $id));
+            throw $this->createNotFoundException(\sprintf('Resource #%d not found.', $id));
         }
 
         $form = $this->createForm(ProductVariantCollectionType::class, $product);

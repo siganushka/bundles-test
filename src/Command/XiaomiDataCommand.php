@@ -74,28 +74,28 @@ class XiaomiDataCommand extends Command
         // $total = $data['total'] ?? 0;
         $list = $data['pc_list'] ?? [];
 
-        $output->writeln(sprintf('<info>获取商品数据成功，共计 %d 条记录。</info>', \count($list)));
+        $output->writeln(\sprintf('<info>获取商品数据成功，共计 %d 条记录。</info>', \count($list)));
 
         $successfully = 0;
         foreach ($list as $value) {
-            $current = sprintf('#%d [%s]', $successfully, $value['product_id']);
+            $current = \sprintf('#%d [%s]', $successfully, $value['product_id']);
             // if ($value['product_id'] != 11674) {
             //     $output->writeln(sprintf('<info>%s: 已跳过</info>', $current));
             //     ++ $successfully;
             //     continue;
             // }
 
-            $output->writeln(sprintf('<info>%s: 获取详情</info>', $current));
+            $output->writeln(\sprintf('<info>%s: 获取详情</info>', $current));
             $product = $this->handleRequest('/product/view', [
                 'product_id' => $value['product_id'],
             ]);
 
-            $output->writeln(sprintf('<info>%s: 下载主图</info>', $current));
+            $output->writeln(\sprintf('<info>%s: 下载主图</info>', $current));
             $productImg = $this->handleUploadMedia(ProductImg::class, $product['goods_list'][0]['goods_info']['img_url']);
 
             $entity = new Product();
             $entity->setImg($productImg);
-            $entity->setName(sprintf('%s (#%s)', $product['product_info']['name'], $value['product_id']));
+            $entity->setName(\sprintf('%s (#%s)', $product['product_info']['name'], $value['product_id']));
 
             // ProductOption
             $buyOption = $product['buy_option'] ?? [];
@@ -106,7 +106,7 @@ class XiaomiDataCommand extends Command
 
                 $option = new ProductOption($v1['name']);
                 foreach ($v1['list'] as $v2) {
-                    $option->addValue(new ProductOptionValue(sprintf('prop_value_id_%d', $v2['prop_value_id']), $v2['name']));
+                    $option->addValue(new ProductOptionValue(\sprintf('prop_value_id_%d', $v2['prop_value_id']), $v2['name']));
                 }
 
                 $entity->addOption($option);
@@ -121,11 +121,13 @@ class XiaomiDataCommand extends Command
                             continue;
                         }
 
-                        $propCfgIds[] = sprintf('prop_value_id_%d', $v2['prop_value_id']);
+                        $propCfgIds[] = \sprintf('prop_value_id_%d', $v2['prop_value_id']);
                     }
 
                     $key = ProductVariantChoice::generateValue($propCfgIds);
-                    $variantsMapping[$key] = $v1['goods_info'];
+                    if (\is_string($key)) {
+                        $variantsMapping[$key] = $v1['goods_info'];
+                    }
                 }
             } else {
                 $variantsMapping[0] = $product['goods_list'][0]['goods_info'];
@@ -137,7 +139,7 @@ class XiaomiDataCommand extends Command
                     continue;
                 }
 
-                $output->writeln(sprintf('<info>%s: 下载第 %d 张商品图</info>', $current, $index));
+                $output->writeln(\sprintf('<info>%s: 下载第 %d 张商品图</info>', $current, $index));
                 $variantImg = $this->handleUploadMedia(ProductVariantImg::class, $variantsMapping[$key]['img_url']);
 
                 $variant = new ProductVariant($entity, $choice);
@@ -149,7 +151,7 @@ class XiaomiDataCommand extends Command
 
             $this->entityManager->persist($entity);
 
-            $output->writeln(sprintf('<info>%s: 完成</info>', $current));
+            $output->writeln(\sprintf('<info>%s: 完成</info>', $current));
             ++$successfully;
         }
 

@@ -48,14 +48,14 @@ class MediaController extends AbstractController
     {
         $entity = $this->mediaRepository->findOneByHash($hash);
         if (!$entity) {
-            throw $this->createNotFoundException(sprintf('Resource #%d not found.', $hash));
+            throw $this->createNotFoundException(\sprintf('Resource #%d not found.', $hash));
         }
 
         try {
             $entityManager->remove($entity);
             $entityManager->flush();
 
-            $this->addFlash('success', sprintf('Resource #%s has been deleted!', $hash));
+            $this->addFlash('success', \sprintf('Resource #%s has been deleted!', $hash));
 
             return $this->redirectToRoute('app_media_index');
         } catch (ForeignKeyConstraintViolationException $th) {
