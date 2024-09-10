@@ -16,6 +16,7 @@ use Siganushka\MediaBundle\Repository\MediaRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormError;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -122,7 +123,9 @@ class MediaController extends AbstractController
         $form = $builder->getForm();
         $form->handleRequest($request);
 
-        $form['media2']->addError(new FormError('This value should not be blank.'));
+        if ($form['media2'] instanceof FormInterface) {
+            $form['media2']->addError(new FormError('This value should not be blank.'));
+        }
 
         if ($form->isSubmitted() && $form->isValid()) {
             dd(__METHOD__, $form->getData());

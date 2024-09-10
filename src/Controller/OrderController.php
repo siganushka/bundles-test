@@ -71,7 +71,7 @@ class OrderController extends AbstractController
             $event = new OrderCreatedEvent($entity);
             $eventDispatcher->dispatch($event);
 
-            $this->addFlash('success', \sprintf('Resource #%s has been created!', $entity->getNumber()));
+            $this->addFlash('success', \sprintf('Resource #%s has been created!', $entity->getNumber() ?? ''));
 
             return $this->redirectToRoute('app_order_index');
         }
