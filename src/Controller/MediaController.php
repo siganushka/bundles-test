@@ -5,14 +5,15 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Media\TestPdf;
-use Doctrine\DBAL\Exception\ForeignKeyConstraintViolationException;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
+use Siganushka\MediaBundle\Entity\Media;
 use Siganushka\MediaBundle\Form\MediaUploadType;
 use Siganushka\MediaBundle\Form\Type\MediaChannelType;
 use Siganushka\MediaBundle\Form\Type\MediaFileType;
 use Siganushka\MediaBundle\Form\Type\MediaType;
 use Siganushka\MediaBundle\Repository\MediaRepository;
+use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormError;
@@ -22,14 +23,13 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
-#[Route('/media')]
 class MediaController extends AbstractController
 {
     public function __construct(protected readonly MediaRepository $mediaRepository)
     {
     }
 
-    #[Route]
+    #[Route('/media')]
     public function index(Request $request, PaginatorInterface $paginator): Response
     {
         $queryBuilder = $this->mediaRepository->createQueryBuilder('m');
@@ -44,29 +44,18 @@ class MediaController extends AbstractController
         ]);
     }
 
-    #[Route('/{hash}/delete')]
-    public function delete(EntityManagerInterface $entityManager, string $hash): Response
+    #[Route('/media/{hash}/delete')]
+    public function delete(EntityManagerInterface $entityManager, #[MapEntity(mapping: ['hash' => 'hash'])] Media $entity): Response
     {
-        $entity = $this->mediaRepository->findOneByHash($hash);
-        if (!$entity) {
-            throw $this->createNotFoundException(\sprintf('Resource #%d not found.', $hash));
-        }
+        $entityManager->remove($entity);
+        $entityManager->flush();
 
-        try {
-            $entityManager->remove($entity);
-            $entityManager->flush();
+        $this->addFlash('success', 'The resource has been deleted successfully!');
 
-            $this->addFlash('success', \sprintf('Resource #%s has been deleted!', $hash));
-
-            return $this->redirectToRoute('app_media_index');
-        } catch (ForeignKeyConstraintViolationException $th) {
-            $this->addFlash('danger', 'The associated data can be deleted if it is not empty!');
-
-            return $this->redirectToRoute('app_media_index');
-        }
+        return $this->redirectToRoute('app_media_index');
     }
 
-    #[Route('/MediaUploadType')]
+    #[Route('/media/MediaUploadType')]
     public function MediaUploadType(Request $request): Response
     {
         $form = $this->createForm(MediaUploadType::class)
@@ -83,7 +72,7 @@ class MediaController extends AbstractController
         ]);
     }
 
-    #[Route('/MediaType')]
+    #[Route('/media/MediaType')]
     public function MediaType(Request $request): Response
     {
         $media = $this->mediaRepository->findAll();
@@ -136,7 +125,7 @@ class MediaController extends AbstractController
         ]);
     }
 
-    #[Route('/MediaChannelType')]
+    #[Route('/media/MediaChannelType')]
     public function MediaChannelType(Request $request): Response
     {
         $builder = $this->createFormBuilder()
@@ -159,7 +148,7 @@ class MediaController extends AbstractController
         ]);
     }
 
-    #[Route('/MediaFileType')]
+    #[Route('/media/MediaFileType')]
     public function MediaFileType(Request $request): Response
     {
         $builder = $this->createFormBuilder()

@@ -95,7 +95,7 @@ class XiaomiDataCommand extends Command
 
             $entity = new Product();
             $entity->setImg($productImg);
-            $entity->setName(\sprintf('%s (#%s)', $product['product_info']['name'], $value['product_id']));
+            $entity->setName(\sprintf('%s (#%s)', trim($product['product_info']['name']), $value['product_id']));
 
             // ProductOption
             $buyOption = $product['buy_option'] ?? [];

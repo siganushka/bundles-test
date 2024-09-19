@@ -36,7 +36,7 @@
         <td>{{ entity.createdAt|date('Y-m-d H:i') }}</td>
         <td>
           <div class="d-inline-block">
-            <a class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">流转</a>
+            <a class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">流转</a>
             <ul class="dropdown-menu">
               {% for transition in workflow_transitions(entity) %}
                 {% if transition.name == 'reset' and workflow_transitions(entity)|length > 1 %}

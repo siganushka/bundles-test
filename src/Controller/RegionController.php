@@ -19,7 +19,7 @@ class RegionController extends AbstractController
     {
     }
 
-    #[Route('/RegionType')]
+    #[Route('/regions/RegionType')]
     public function RegionType(Request $request): Response
     {
         // $parent = $this->regionRepository->find('61');

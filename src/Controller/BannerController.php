@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use Doctrine\DBAL\Exception\ForeignKeyConstraintViolationException;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
+use Siganushka\BannerBundle\Entity\Banner;
 use Siganushka\BannerBundle\Form\BannerType;
 use Siganushka\BannerBundle\Repository\BannerRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -15,14 +15,13 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('/banners')]
 class BannerController extends AbstractController
 {
     public function __construct(protected readonly BannerRepository $bannerRepository)
     {
     }
 
-    #[Route]
+    #[Route('/banners')]
     public function index(Request $request, PaginatorInterface $paginator): Response
     {
         $queryBuilder = $this->bannerRepository->createQueryBuilder('b');
@@ -37,7 +36,7 @@ class BannerController extends AbstractController
         ]);
     }
 
-    #[Route('/new')]
+    #[Route('/banners/new')]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $entity = $this->bannerRepository->createNew();
@@ -61,14 +60,9 @@ class BannerController extends AbstractController
         ]);
     }
 
-    #[Route('/{id<\d+>}/edit')]
-    public function edit(Request $request, EntityManagerInterface $entityManager, int $id): Response
+    #[Route('/banners/{id<\d+>}/edit')]
+    public function edit(Request $request, EntityManagerInterface $entityManager, Banner $entity): Response
     {
-        $entity = $this->bannerRepository->find($id);
-        if (!$entity) {
-            throw $this->createNotFoundException(\sprintf('Resource #%d not found.', $id));
-        }
-
         $form = $this->createForm(BannerType::class, $entity);
         $form->add('save', SubmitType::class, ['label' => 'generic.save']);
         $form->handleRequest($request);
@@ -85,27 +79,18 @@ class BannerController extends AbstractController
         ]);
     }
 
-    #[Route('/{id<\d+>}/delete')]
-    public function delete(EntityManagerInterface $entityManager, int $id): Response
+    #[Route('/banners/{id<\d+>}/delete')]
+    public function delete(EntityManagerInterface $entityManager, Banner $entity): Response
     {
-        $entity = $this->bannerRepository->find($id);
-        if (!$entity) {
-            throw $this->createNotFoundException(\sprintf('Resource #%d not found.', $id));
-        }
+        $entityManager->remove($entity);
+        $entityManager->flush();
 
-        try {
-            $entityManager->remove($entity);
-            $entityManager->flush();
-
-            $this->addFlash('success', \sprintf('Resource #%s has been deleted!', $id));
-        } catch (ForeignKeyConstraintViolationException $th) {
-            $this->addFlash('danger', 'The associated data can be deleted if it is not empty!');
-        }
+        $this->addFlash('success', 'The resource has been deleted successfully!');
 
         return $this->redirectToRoute('app_banner_index');
     }
 
-    #[Route('/BannerType')]
+    #[Route('/banners/BannerType')]
     public function BannerType(Request $request): Response
     {
         $form = $this->createForm(BannerType::class)
