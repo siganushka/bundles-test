@@ -1,0 +1,3 @@
+siganushka_order:
+    # order_class: App\Entity\Order
+    # order_number_generator: Siganushka\OrderBundle\Generator\SnowflakeNumberGenerator

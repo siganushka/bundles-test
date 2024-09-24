@@ -1,0 +1,8 @@
+siganushka_media:
+    channels:
+        foo:
+            constraint: Symfony\Component\Validator\Constraints\File
+            constraint_options: { mimeTypes: ['image/png', 'image/jpeg'], maxSize: '2k' }
+        bar:
+            constraint: Symfony\Component\Validator\Constraints\Image
+            constraint_options: { minWidth: 300, allowSquare: true }

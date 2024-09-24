@@ -7,10 +7,9 @@ namespace App\Controller;
 use App\Media\TestPdf;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
+use Siganushka\MediaBundle\ChannelRegistry;
 use Siganushka\MediaBundle\Entity\Media;
 use Siganushka\MediaBundle\Form\MediaUploadType;
-use Siganushka\MediaBundle\Form\Type\MediaChannelType;
-use Siganushka\MediaBundle\Form\Type\MediaFileType;
 use Siganushka\MediaBundle\Form\Type\MediaType;
 use Siganushka\MediaBundle\Repository\MediaRepository;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
@@ -30,8 +29,9 @@ class MediaController extends AbstractController
     }
 
     #[Route('/media')]
-    public function index(Request $request, PaginatorInterface $paginator): Response
+    public function index(Request $request, PaginatorInterface $paginator, ChannelRegistry $registry): Response
     {
+        // dd(__METHOD__, $registry);
         $queryBuilder = $this->mediaRepository->createQueryBuilder('m');
 
         $page = $request->query->getInt('page', 1);
@@ -115,53 +115,6 @@ class MediaController extends AbstractController
         if ($form['media2'] instanceof FormInterface) {
             $form['media2']->addError(new FormError('This value should not be blank.'));
         }
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            dd(__METHOD__, $form->getData());
-        }
-
-        return $this->render('media/form.html.twig', [
-            'form' => $form,
-        ]);
-    }
-
-    #[Route('/media/MediaChannelType')]
-    public function MediaChannelType(Request $request): Response
-    {
-        $builder = $this->createFormBuilder()
-            ->add('channel', MediaChannelType::class, [
-                'label' => 'media.channel',
-                'constraints' => new NotBlank(),
-            ])
-            ->add('Submit', SubmitType::class, ['label' => 'generic.submit'])
-        ;
-
-        $form = $builder->getForm();
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            dd(__METHOD__, $form->getData());
-        }
-
-        return $this->render('media/form.html.twig', [
-            'form' => $form,
-        ]);
-    }
-
-    #[Route('/media/MediaFileType')]
-    public function MediaFileType(Request $request): Response
-    {
-        $builder = $this->createFormBuilder()
-            ->add('file', MediaFileType::class, [
-                'label' => 'media.file',
-                // 'channel' => TestPdf::class,
-                'constraints' => new NotBlank(),
-            ])
-            ->add('Submit', SubmitType::class, ['label' => 'generic.submit'])
-        ;
-
-        $form = $builder->getForm();
-        $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             dd(__METHOD__, $form->getData());

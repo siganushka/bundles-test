@@ -82,7 +82,7 @@ class OrderController extends AbstractController
         ]);
     }
 
-    #[Route('/orders/{number<\d{16}>}/edit')]
+    #[Route('/orders/{number}/edit')]
     public function edit(Request $request, EntityManagerInterface $entityManager, #[MapEntity(mapping: ['number' => 'number'])] Order $entity): Response
     {
         $form = $this->createForm(OrderType::class, $entity);
@@ -101,7 +101,7 @@ class OrderController extends AbstractController
         ]);
     }
 
-    #[Route('/orders/{number<\d{16}>}/workflow/{transition}')]
+    #[Route('/orders/{number}/workflow/{transition}')]
     public function workflow(EntityManagerInterface $entityManager, WorkflowInterface $orderState, #[MapEntity(mapping: ['number' => 'number'])] Order $entity, string $transition): Response
     {
         try {
@@ -118,7 +118,7 @@ class OrderController extends AbstractController
         return $this->redirectToRoute('app_order_index');
     }
 
-    #[Route('/orders/{number<\d{16}>}/show')]
+    #[Route('/orders/{number}/show')]
     public function show(#[MapEntity(mapping: ['number' => 'number'])] Order $entity): Response
     {
         return $this->render('order/show.html.twig', [
@@ -126,7 +126,7 @@ class OrderController extends AbstractController
         ]);
     }
 
-    #[Route('/orders/{number<\d{16}>}/delete')]
+    #[Route('/orders/{number}/delete')]
     public function delete(EntityManagerInterface $entityManager, #[MapEntity(mapping: ['number' => 'number'])] Order $entity): Response
     {
         $entityManager->remove($entity);
