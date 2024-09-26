@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Media\TestImg;
 use App\Media\TestPdf;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
-use Siganushka\MediaBundle\ChannelRegistry;
 use Siganushka\MediaBundle\Entity\Media;
 use Siganushka\MediaBundle\Form\MediaUploadType;
 use Siganushka\MediaBundle\Form\Type\MediaType;
@@ -29,9 +29,8 @@ class MediaController extends AbstractController
     }
 
     #[Route('/media')]
-    public function index(Request $request, PaginatorInterface $paginator, ChannelRegistry $registry): Response
+    public function index(Request $request, PaginatorInterface $paginator): Response
     {
-        // dd(__METHOD__, $registry);
         $queryBuilder = $this->mediaRepository->createQueryBuilder('m');
 
         $page = $request->query->getInt('page', 1);
@@ -97,6 +96,7 @@ class MediaController extends AbstractController
             ->add('media4', MediaType::class, [
                 'label' => '自定义尺寸',
                 'style' => 'width: 100%; height: 240px',
+                'channel' => TestImg::class,
             ])
             ->add('media5', MediaType::class, [
                 'label' => '自定义文件类型',

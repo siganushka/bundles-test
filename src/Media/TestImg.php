@@ -6,15 +6,14 @@ namespace App\Media;
 
 use Siganushka\MediaBundle\AbstractChannel;
 use Symfony\Component\Validator\Constraints\Image;
-use Symfony\Component\Validator\Mapping\GenericMetadata;
 
 class TestImg extends AbstractChannel
 {
-    protected function loadConstraints(GenericMetadata $metadata): void
+    public function getConstraint(): Image
     {
         $constraint = new Image();
         $constraint->mimeTypes = ['image/png'];
 
-        $metadata->addConstraint($constraint);
+        return $constraint;
     }
 }

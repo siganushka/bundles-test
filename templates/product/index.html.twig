@@ -24,9 +24,10 @@
             <img src="{{ entity.img.url }}" width="50px" class="bg-white" />
             <div class="mx-3">
               <p class="m-0 text-break">{{ entity.name }}</p>
-              <small class="text-secondary">
+              <small class="text-body-tertiary">
                 {% for option in entity.options %}
-                  <a href="{{ path('app_productoption_edit', {id: option.id}) }}" class="link-secondary">{{ option.name }}</a>
+                  <a href="{{ path('app_productoption_edit', {id: option.id}) }}" class="text-reset">{{ option.name }}</a>
+                  {%- if loop.last == false -%}, {% endif %}
                 {% endfor %}
               </small>
             </div>
@@ -37,11 +38,9 @@
           {% if _prices|length %}
             {% set min = min(_prices) %}
             {% set max = max(_prices) %}
-            <span>
-              {{- min|money -}}
-            </span>
+            {{ min|money }}
             {%- if min != max -%}
-              <span>-{{ max|money }}</span>
+              -{{ max|money }}
             {% endif %}
           {% else %}
             -
@@ -50,11 +49,10 @@
         <td>
           {% set _variants = entity.variants|length %}
           {% set _choices = entity.choices|length ?: 1 %}
-          {% if _variants < _choices %}
-            <small class="badge text-bg-danger">{{ _variants }}/{{ _choices }}</small>
-          {% else %}
-            <small class="badge text-bg-success">{{ _variants }}/{{ _choices }}</small>
-          {% endif %}
+
+          <span class="badge rounded-pill text-bg-{{ _variants < _choices ? 'danger' : 'primary' }}">
+            {{ _variants }}/{{ _choices }}
+          </span>
         </td>
         <td>
           <a href="{{ path('app_product_variants', {id: entity.id}) }}">{{ 'product.variants'|trans }}</a>

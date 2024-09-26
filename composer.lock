@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "392c711db238528322c0475d84cc7a5b",
+    "content-hash": "b35c54813a51aa997abb4e106e484e67",
     "packages": [
         {
             "name": "bentools/cartesian-product",
@@ -1686,64 +1686,6 @@
             "time": "2024-09-11T13:17:53+00:00"
         },
         {
-            "name": "siganushka/banner-bundle",
-            "version": "dev-main",
-            "dist": {
-                "type": "path",
-                "url": "../banner-bundle",
-                "reference": "ffa35374868596ba25ceaf8de223d6fe0db189d2"
-            },
-            "require": {
-                "doctrine/doctrine-bundle": "^2.8",
-                "knplabs/knp-components": "^4.1",
-                "php": ">=8.1",
-                "siganushka/doctrine-contracts": "dev-main",
-                "siganushka/generic-bundle": "dev-main",
-                "siganushka/media-bundle": "dev-main",
-                "siganushka/registry-contracts": "dev-main",
-                "symfony/form": "^6.4|^7.0",
-                "symfony/framework-bundle": "^6.4|^7.0",
-                "symfony/serializer": "^6.4|^7.0",
-                "symfony/validator": "^6.4|^7.0"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-4": {
-                    "Siganushka\\BannerBundle\\": "src/"
-                }
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "Siganushka\\BannerBundle\\Tests\\": "tests/"
-                }
-            },
-            "scripts": {
-                "tools:run": [
-                    "tools/vendor/bin/php-cs-fixer fix",
-                    "tools/vendor/bin/simple-phpunit --debug",
-                    "tools/vendor/bin/psalm --show-info=true --no-cache"
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "siganushka",
-                    "email": "siganushka@gmail.com"
-                }
-            ],
-            "description": "Banner Bundle.",
-            "homepage": "https://github.com/siganushka/banner-bundle",
-            "keywords": [
-                "banner-bundle"
-            ],
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
-        },
-        {
             "name": "siganushka/doctrine-contracts",
             "version": "dev-main",
             "dist": {
@@ -1862,7 +1804,7 @@
             "dist": {
                 "type": "path",
                 "url": "../media-bundle",
-                "reference": "a42795985d7f62363b419c27efffe0afa21516bd"
+                "reference": "b8a55c9d22417f6aa8ec208be4adbf8233c973b6"
             },
             "require": {
                 "doctrine/doctrine-bundle": "^2.8",
@@ -1870,7 +1812,6 @@
                 "php": ">=8.1",
                 "siganushka/doctrine-contracts": "dev-main",
                 "siganushka/generic-bundle": "dev-main",
-                "siganushka/registry-contracts": "dev-main",
                 "symfony/form": "^6.4|^7.0",
                 "symfony/framework-bundle": "^6.4|^7.0",
                 "symfony/serializer": "^6.4|^7.0",
@@ -1922,7 +1863,7 @@
             "dist": {
                 "type": "path",
                 "url": "../order-bundle",
-                "reference": "4d31c8649522db2f0a86ee80b66a897c7d480971"
+                "reference": "c005c38b3169f26e3a633c8e9902c1f0a5859013"
             },
             "require": {
                 "doctrine/doctrine-bundle": "^2.8",
@@ -1932,7 +1873,6 @@
                 "siganushka/generic-bundle": "dev-main",
                 "siganushka/media-bundle": "dev-main",
                 "siganushka/product-bundle": "dev-main",
-                "siganushka/registry-contracts": "dev-main",
                 "symfony/form": "^6.4|^7.0",
                 "symfony/framework-bundle": "^6.4|^7.0",
                 "symfony/validator": "^6.4|^7.0"
@@ -1983,7 +1923,7 @@
             "dist": {
                 "type": "path",
                 "url": "../product-bundle",
-                "reference": "51e670af10af9fe3041ccae1c3c9c105e100eb54"
+                "reference": "32c2ba75ac515f8961cf21c145f337f1850bb605"
             },
             "require": {
                 "bentools/cartesian-product": "^1.4",
@@ -1993,15 +1933,13 @@
                 "siganushka/doctrine-contracts": "dev-main",
                 "siganushka/generic-bundle": "dev-main",
                 "siganushka/media-bundle": "dev-main",
-                "siganushka/registry-contracts": "dev-main",
                 "symfony/form": "^6.4|^7.0",
                 "symfony/framework-bundle": "^6.4|^7.0",
                 "symfony/ux-autocomplete": "^2.10",
-                "symfony/validator": "^6.4|^7.0",
-                "twig/twig": "^2.13|^3.0.4"
+                "symfony/validator": "^6.4|^7.0"
             },
             "require-dev": {
-                "doctrine/doctrine-fixtures-bundle": "^3.5"
+                "twig/twig": "^2.13|^3.0.4"
             },
             "type": "symfony-bundle",
             "autoload": {
@@ -2094,51 +2032,6 @@
                 "symlink": true,
                 "relative": true
             }
-        },
-        {
-            "name": "siganushka/registry-contracts",
-            "version": "dev-main",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/siganushka/registry-contracts.git",
-                "reference": "7ea4e090ad8f2156b983d3373f558dcc81e47060"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/siganushka/registry-contracts/zipball/7ea4e090ad8f2156b983d3373f558dcc81e47060",
-                "reference": "7ea4e090ad8f2156b983d3373f558dcc81e47060",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.4"
-            },
-            "require-dev": {
-                "symfony/phpunit-bridge": "^6.0",
-                "vimeo/psalm": "^5.0"
-            },
-            "default-branch": true,
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Siganushka\\Contracts\\Registry\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "siganushka",
-                    "email": "siganushka@gmail.com"
-                }
-            ],
-            "description": "A set of abstractions for registry pattern.",
-            "support": {
-                "issues": "https://github.com/siganushka/registry-contracts/issues",
-                "source": "https://github.com/siganushka/registry-contracts/tree/main"
-            },
-            "time": "2024-05-07T09:08:07+00:00"
         },
         {
             "name": "symfony/asset",
@@ -5287,16 +5180,16 @@
         },
         {
             "name": "symfony/stimulus-bundle",
-            "version": "v2.19.0",
+            "version": "v2.20.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/stimulus-bundle.git",
-                "reference": "5e2e1aff3e7cff2875e2f901437543fda9ca9910"
+                "reference": "ae69e3a764694b9f45d8a009dd2b8c22444c5e0c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/stimulus-bundle/zipball/5e2e1aff3e7cff2875e2f901437543fda9ca9910",
-                "reference": "5e2e1aff3e7cff2875e2f901437543fda9ca9910",
+                "url": "https://api.github.com/repos/symfony/stimulus-bundle/zipball/ae69e3a764694b9f45d8a009dd2b8c22444c5e0c",
+                "reference": "ae69e3a764694b9f45d8a009dd2b8c22444c5e0c",
                 "shasum": ""
             },
             "require": {
@@ -5336,7 +5229,7 @@
                 "symfony-ux"
             ],
             "support": {
-                "source": "https://github.com/symfony/stimulus-bundle/tree/v2.19.0"
+                "source": "https://github.com/symfony/stimulus-bundle/tree/v2.20.0"
             },
             "funding": [
                 {
@@ -5352,7 +5245,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-07-30T19:26:23+00:00"
+            "time": "2024-09-24T09:27:42+00:00"
         },
         {
             "name": "symfony/stopwatch",
@@ -5952,16 +5845,16 @@
         },
         {
             "name": "symfony/ux-autocomplete",
-            "version": "v2.19.2",
+            "version": "v2.20.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/ux-autocomplete.git",
-                "reference": "ef15862c55e15a2225587e8b226df21561d36c7c"
+                "reference": "0bb3e7e3299fc8437f957eb5162303317043a7a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/ux-autocomplete/zipball/ef15862c55e15a2225587e8b226df21561d36c7c",
-                "reference": "ef15862c55e15a2225587e8b226df21561d36c7c",
+                "url": "https://api.github.com/repos/symfony/ux-autocomplete/zipball/0bb3e7e3299fc8437f957eb5162303317043a7a8",
+                "reference": "0bb3e7e3299fc8437f957eb5162303317043a7a8",
                 "shasum": ""
             },
             "require": {
@@ -6024,7 +5917,7 @@
                 "symfony-ux"
             ],
             "support": {
-                "source": "https://github.com/symfony/ux-autocomplete/tree/v2.19.2"
+                "source": "https://github.com/symfony/ux-autocomplete/tree/v2.20.0"
             },
             "funding": [
                 {
@@ -6040,20 +5933,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-08-13T14:54:57+00:00"
+            "time": "2024-09-06T17:27:37+00:00"
         },
         {
             "name": "symfony/ux-turbo",
-            "version": "v2.19.3",
+            "version": "v2.20.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/ux-turbo.git",
-                "reference": "4a38f267193017958d487171c0a86e64f36164a3"
+                "reference": "5eaa803dea9f954aa124963f2c872b414d97cc97"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/ux-turbo/zipball/4a38f267193017958d487171c0a86e64f36164a3",
-                "reference": "4a38f267193017958d487171c0a86e64f36164a3",
+                "url": "https://api.github.com/repos/symfony/ux-turbo/zipball/5eaa803dea9f954aa124963f2c872b414d97cc97",
+                "reference": "5eaa803dea9f954aa124963f2c872b414d97cc97",
                 "shasum": ""
             },
             "require": {
@@ -6121,7 +6014,7 @@
                 "turbo-stream"
             ],
             "support": {
-                "source": "https://github.com/symfony/ux-turbo/tree/v2.19.3"
+                "source": "https://github.com/symfony/ux-turbo/tree/v2.20.0"
             },
             "funding": [
                 {
@@ -6137,7 +6030,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-08-14T04:55:38+00:00"
+            "time": "2024-09-10T12:38:04+00:00"
         },
         {
             "name": "symfony/validator",
@@ -7175,14 +7068,12 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "siganushka/banner-bundle": 20,
         "siganushka/doctrine-contracts": 20,
         "siganushka/generic-bundle": 20,
         "siganushka/media-bundle": 20,
         "siganushka/order-bundle": 20,
         "siganushka/product-bundle": 20,
-        "siganushka/region-bundle": 20,
-        "siganushka/registry-contracts": 20
+        "siganushka/region-bundle": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

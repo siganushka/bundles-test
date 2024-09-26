@@ -5,16 +5,15 @@ declare(strict_types=1);
 namespace App\Media;
 
 use Siganushka\MediaBundle\AbstractChannel;
-use Symfony\Component\Validator\Constraints\File;
-use Symfony\Component\Validator\Mapping\GenericMetadata;
+use Symfony\Component\Validator\Constraints\File as AssertFile;
 
 class TestPdf extends AbstractChannel
 {
-    protected function loadConstraints(GenericMetadata $metadata): void
+    public function getConstraint(): AssertFile
     {
-        $constraint = new File();
+        $constraint = new AssertFile();
         $constraint->mimeTypes = ['application/pdf', 'application/x-pdf'];
 
-        $metadata->addConstraint($constraint);
+        return $constraint;
     }
 }

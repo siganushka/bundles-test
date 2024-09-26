@@ -15,7 +15,6 @@ return [
     Siganushka\ProductBundle\SiganushkaProductBundle::class => ['all' => true],
     Siganushka\OrderBundle\SiganushkaOrderBundle::class => ['all' => true],
     Siganushka\RegionBundle\SiganushkaRegionBundle::class => ['all' => true],
-    Siganushka\BannerBundle\SiganushkaBannerBundle::class => ['all' => true],
     Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle::class => ['dev' => true, 'test' => true],
     Symfony\UX\StimulusBundle\StimulusBundle::class => ['all' => true],
     Symfony\UX\Turbo\TurboBundle::class => ['all' => true],

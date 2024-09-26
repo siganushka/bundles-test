@@ -21,7 +21,7 @@
       </tr>
       {% for entity in pagination %}
       <tr>
-        <td><code>{{ entity.number }}</code></td>
+        <td><code class="user-select-all">{{ entity.number }}</code></td>
         <td>
           {% for item in entity.items %}
             {% include 'order/_items_entry.twig' with {item: item, index: loop.index0, quantity: true} only %}

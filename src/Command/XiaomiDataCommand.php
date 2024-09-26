@@ -13,7 +13,6 @@ use Siganushka\ProductBundle\Entity\ProductOption;
 use Siganushka\ProductBundle\Entity\ProductOptionValue;
 use Siganushka\ProductBundle\Entity\ProductVariant;
 use Siganushka\ProductBundle\Media\ProductImg;
-use Siganushka\ProductBundle\Media\ProductVariantImg;
 use Siganushka\ProductBundle\Model\ProductVariantChoice;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
@@ -140,7 +139,7 @@ class XiaomiDataCommand extends Command
                 }
 
                 $output->writeln(\sprintf('<info>%s: 下载第 %d 张商品图</info>', $current, $index));
-                $variantImg = $this->handleUploadMedia(ProductVariantImg::class, $variantsMapping[$key]['img_url']);
+                $variantImg = $this->handleUploadMedia(ProductImg::class, $variantsMapping[$key]['img_url']);
 
                 $variant = new ProductVariant($entity, $choice);
                 $variant->setPrice((int) ($variantsMapping[$key]['price'] * 100));
@@ -181,13 +180,13 @@ class XiaomiDataCommand extends Command
         return $parsedResponse['data'] ?? [];
     }
 
-    private function handleUploadMedia(string $channelClass, string $imgUrl): ?Media
+    private function handleUploadMedia(string $alias, string $imgUrl): ?Media
     {
         if (str_starts_with($imgUrl, '//')) {
             $imgUrl = 'https:'.$imgUrl;
         }
 
-        $channel = $this->channelRegistry->getByClass($channelClass);
+        $channel = $this->channelRegistry->get($alias);
         $event = MediaSaveEvent::createFromUrl($channel, $imgUrl);
 
         $this->eventDispatcher->dispatch($event);
