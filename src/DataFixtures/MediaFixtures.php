@@ -10,6 +10,7 @@ use Siganushka\MediaBundle\ChannelRegistry;
 use Siganushka\MediaBundle\Event\MediaSaveEvent;
 use Siganushka\ProductBundle\Media\ProductImg;
 use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Finder\Finder;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
 class MediaFixtures extends Fixture
@@ -22,22 +23,20 @@ class MediaFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
-        $channelFiles = [
-            ProductImg::class => glob(__DIR__.'/product/*.*'),
+        $finder = new Finder();
+        $filesystem = new Filesystem();
+
+        $channels = [
+            ProductImg::class => $finder->in(__DIR__.'/product'),
         ];
 
         $index = 0;
-        foreach ($channelFiles as $alias => $files) {
-            if (false === $files) {
-                continue;
-            }
-
+        foreach ($channels as $alias => $dir) {
             $channel = $this->channelRegistry->get($alias);
-            foreach ($files as $file) {
-                $target = \sprintf('%s/%s', sys_get_temp_dir(), pathinfo($file, \PATHINFO_BASENAME));
+            foreach ($dir->sortByName()->files() as $file) {
+                $target = \sprintf('%s/%s', sys_get_temp_dir(), $file->getBasename());
 
-                $fs = new Filesystem();
-                $fs->copy($file, $target);
+                $filesystem->copy($file->getPathname(), $target, true);
 
                 $event = MediaSaveEvent::createFromPath($channel, $target);
                 $this->eventDispatcher->dispatch($event);
