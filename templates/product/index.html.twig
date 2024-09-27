@@ -20,14 +20,13 @@
       <tr>
         <td>{{ entity.id }}</td>
         <td>
-          <div class="d-flex">
-            <img src="{{ entity.img.url }}" width="50px" class="bg-white" />
+          <div class="d-flex align-items-center">
+            <img src="{{ entity.img.url }}" width="50px" class="img-thumbnail" />
             <div class="mx-3">
               <p class="m-0 text-break">{{ entity.name }}</p>
               <small class="text-body-tertiary">
                 {% for option in entity.options %}
                   <a href="{{ path('app_productoption_edit', {id: option.id}) }}" class="text-reset">{{ option.name }}</a>
-                  {%- if loop.last == false -%}, {% endif %}
                 {% endfor %}
               </small>
             </div>
