@@ -28,20 +28,20 @@ class RegionController extends AbstractController
             ->add('province', RegionType::class, [
                 'label' => 'region.province',
                 'placeholder' => 'generic.choice',
-                'constraints' => new NotBlank(),
                 'cascader_target' => 'city',
+                'constraints' => new NotBlank(),
             ])
             ->add('city', RegionType::class, [
                 'label' => 'region.city',
                 'placeholder' => 'generic.choice',
-                'constraints' => new NotBlank(),
                 'cascader_target' => 'district',
+                'constraints' => new NotBlank(),
             ])
             ->add('district', RegionType::class, [
                 'label' => 'region.district',
                 'placeholder' => 'generic.choice',
-                'constraints' => new NotBlank(),
                 'cascader_target' => 'street',
+                'constraints' => new NotBlank(),
             ])
             ->add('street', RegionType::class, [
                 'label' => 'region.street',
