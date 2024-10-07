@@ -1101,16 +1101,16 @@
         },
         {
             "name": "doctrine/sql-formatter",
-            "version": "1.4.1",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/sql-formatter.git",
-                "reference": "7f83911cc5eba870de7ebb11283972483f7e2891"
+                "reference": "16ca9e39877369d664f06dacde468548298bdc40"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/sql-formatter/zipball/7f83911cc5eba870de7ebb11283972483f7e2891",
-                "reference": "7f83911cc5eba870de7ebb11283972483f7e2891",
+                "url": "https://api.github.com/repos/doctrine/sql-formatter/zipball/16ca9e39877369d664f06dacde468548298bdc40",
+                "reference": "16ca9e39877369d664f06dacde468548298bdc40",
                 "shasum": ""
             },
             "require": {
@@ -1118,6 +1118,7 @@
             },
             "require-dev": {
                 "doctrine/coding-standard": "^12",
+                "ergebnis/phpunit-slow-test-detector": "^2.14",
                 "phpstan/phpstan": "^1.10",
                 "phpunit/phpunit": "^10.5",
                 "vimeo/psalm": "^5.24"
@@ -1150,9 +1151,9 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/sql-formatter/issues",
-                "source": "https://github.com/doctrine/sql-formatter/tree/1.4.1"
+                "source": "https://github.com/doctrine/sql-formatter/tree/1.5.0"
             },
-            "time": "2024-08-05T20:32:22+00:00"
+            "time": "2024-09-11T07:29:40+00:00"
         },
         {
             "name": "godruoyi/php-snowflake",
@@ -1740,7 +1741,7 @@
             "dist": {
                 "type": "path",
                 "url": "../generic-bundle",
-                "reference": "e2a706df15048350c80f3ad9a53e90cdced1de4c"
+                "reference": "3d97eee5f9ad13130e3dc5de33d0df2ecaacaa75"
             },
             "require": {
                 "php": ">=8.1",
@@ -1804,7 +1805,7 @@
             "dist": {
                 "type": "path",
                 "url": "../media-bundle",
-                "reference": "c51058a6c3c35f1a01b17398f66770ec93de08de"
+                "reference": "c04c2132b0c3c507c4a9ca751b56bbdf0ba83270"
             },
             "require": {
                 "doctrine/doctrine-bundle": "^2.8",
@@ -1863,7 +1864,7 @@
             "dist": {
                 "type": "path",
                 "url": "../order-bundle",
-                "reference": "1514a8127762c6bb482420e2face137bf556cbe7"
+                "reference": "1e6390e33f873ee0681c96cdbfa483d313df31d2"
             },
             "require": {
                 "doctrine/doctrine-bundle": "^2.8",
@@ -1923,7 +1924,7 @@
             "dist": {
                 "type": "path",
                 "url": "../product-bundle",
-                "reference": "9531835fa964966eb74a47ace943a9477ba43e34"
+                "reference": "7e847aed822913c6d464cd2b15d0bdadc3e479bf"
             },
             "require": {
                 "bentools/cartesian-product": "^1.4",
@@ -1984,7 +1985,7 @@
             "dist": {
                 "type": "path",
                 "url": "../region-bundle",
-                "reference": "9ef787b885e0f6327775e8f069ee67f10d97ae57"
+                "reference": "a1cefed178971abc8ae835bb00e603686fcd8e0c"
             },
             "require": {
                 "doctrine/doctrine-bundle": "^2.8",
@@ -6700,16 +6701,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v5.2.0",
+            "version": "v5.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "23c79fbbfb725fb92af9bcf41065c8e9a0d49ddb"
+                "reference": "3abf7425cd284141dc5d8d14a9ee444de3345d1a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/23c79fbbfb725fb92af9bcf41065c8e9a0d49ddb",
-                "reference": "23c79fbbfb725fb92af9bcf41065c8e9a0d49ddb",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/3abf7425cd284141dc5d8d14a9ee444de3345d1a",
+                "reference": "3abf7425cd284141dc5d8d14a9ee444de3345d1a",
                 "shasum": ""
             },
             "require": {
@@ -6752,9 +6753,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nikic/PHP-Parser/issues",
-                "source": "https://github.com/nikic/PHP-Parser/tree/v5.2.0"
+                "source": "https://github.com/nikic/PHP-Parser/tree/v5.3.0"
             },
-            "time": "2024-09-15T16:40:33+00:00"
+            "time": "2024-09-29T13:56:26+00:00"
         },
         {
             "name": "symfony/debug-bundle",
