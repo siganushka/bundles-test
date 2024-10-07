@@ -24,6 +24,10 @@ doctrine:
                 alias: App
         controller_resolver:
             auto_mapping: false
+        # second_level_cache:
+        #     region_cache_driver:
+        #         type: pool
+        #         pool: cache.app
 
 when@test:
     doctrine:
