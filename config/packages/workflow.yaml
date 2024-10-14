@@ -14,9 +14,9 @@ framework:
                     to: accepted
                 delivery:
                     from: accepted
-                    to: shipped
+                    to: delivered
                 receive:
-                    from: shipped
+                    from: delivered
                     to: finished
                 refund:
                     from: accepted
@@ -25,5 +25,5 @@ framework:
                     from: placed
                     to: cancelled
                 reset:
-                    from: [accepted, shipped, finished, refunded, cancelled]
+                    from: [accepted, delivered, finished, refunded, cancelled]
                     to: placed
