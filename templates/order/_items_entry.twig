@@ -1,10 +1,10 @@
 <div class="d-flex align-items-center py-1">
-  <img src="{{ item.variant.img.url ?? item.variant.product.img.url }}" width="50px" class="img-thumbnail" />
+  <img src="{{ item.subject.img.url ?? item.subject.product.img.url }}" width="50px" class="img-thumbnail" />
   <div class="ms-2 lh-sm">
-    <p class="mb-1">{{ item.variant.product.name }}</p>
+    <p class="mb-1">{{ item.subject.product.name }}</p>
 
-    {% if item.variant.choiceLabel %}
-      <small class="text-secondary">{{ item.variant.choiceLabel }}</small>
+    {% if item.subject.choiceLabel %}
+      <small class="text-secondary">{{ item.subject.choiceLabel }}</small>
     {% endif %}
 
     <small class="text-danger">&times;{{ item.quantity }}</small>

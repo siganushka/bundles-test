@@ -23,10 +23,7 @@ use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
-#[AsCommand(
-    name: 'app:xiaomi:data',
-    description: 'Add xiaomi data.',
-)]
+#[AsCommand(name: 'app:xiaomi:data', description: 'Add xiaomi data.')]
 class XiaomiDataCommand extends Command
 {
     private readonly HttpClientInterface $httpClient;
