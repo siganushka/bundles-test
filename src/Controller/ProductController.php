@@ -29,7 +29,9 @@ class ProductController extends AbstractController
     #[Route('/products')]
     public function index(Request $request, PaginatorInterface $paginator): Response
     {
-        $queryBuilder = $this->productRepository->createQueryBuilder('p');
+        $queryBuilder = $this->productRepository->createQueryBuilder('p')
+            // ->where('p.variants IS NOT EMPTY')
+        ;
 
         $page = $request->query->getInt('page', 1);
         $size = $request->query->getInt('size', 10);

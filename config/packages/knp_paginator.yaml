@@ -1,3 +1,6 @@
 knp_paginator:
+    # https://github.com/KnpLabs/KnpPaginatorBundle?tab=readme-ov-file#configuration-example
+    default_options:
+        distinct: false
     template:
         pagination: '@KnpPaginator/Pagination/bootstrap_v5_pagination.html.twig'
