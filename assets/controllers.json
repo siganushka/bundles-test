@@ -1,5 +1,20 @@
 {
     "controllers": {
+        "@siganushka/media-bundle": {
+            "media": {
+                "enabled": true,
+                "fetch": "eager",
+                "autoimport": {
+                    "@siganushka/media-bundle/dist/bootstrap5.css": true
+                }
+            }
+        },
+        "@siganushka/region-bundle": {
+            "region": {
+                "enabled": true,
+                "fetch": "eager"
+            }
+        },
         "@symfony/ux-autocomplete": {
             "autocomplete": {
                 "enabled": true,
