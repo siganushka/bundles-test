@@ -11,19 +11,19 @@ framework:
             transitions:
                 pay:
                     from: placed
-                    to: accepted
-                delivery:
-                    from: accepted
-                    to: delivered
+                    to: confirmed
+                ship:
+                    from: confirmed
+                    to: shipped
                 receive:
-                    from: delivered
+                    from: shipped
                     to: finished
                 refund:
-                    from: accepted
+                    from: [confirmed, finished]
                     to: refunded
                 cancel:
                     from: placed
                     to: cancelled
                 reset:
-                    from: [accepted, delivered, finished, refunded, cancelled]
+                    from: [confirmed, shipped, finished, refunded, cancelled]
                     to: placed
