@@ -3,16 +3,22 @@
         "@siganushka/media-bundle": {
             "media": {
                 "enabled": true,
-                "fetch": "eager",
+                "fetch": "lazy",
                 "autoimport": {
                     "@siganushka/media-bundle/dist/bootstrap5.css": true
                 }
             }
         },
+        "@siganushka/product-bundle": {
+            "product": {
+                "enabled": true,
+                "fetch": "lazy"
+            }
+        },
         "@siganushka/region-bundle": {
             "region": {
                 "enabled": true,
-                "fetch": "eager"
+                "fetch": "lazy"
             }
         },
         "@symfony/ux-autocomplete": {
@@ -24,16 +30,6 @@
                     "tom-select/dist/css/tom-select.bootstrap4.css": false,
                     "tom-select/dist/css/tom-select.bootstrap5.css": true
                 }
-            }
-        },
-        "@symfony/ux-turbo": {
-            "turbo-core": {
-                "enabled": true,
-                "fetch": "eager"
-            },
-            "mercure-turbo-stream": {
-                "enabled": false,
-                "fetch": "eager"
             }
         }
     },
