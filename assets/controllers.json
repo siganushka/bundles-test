@@ -1,5 +1,11 @@
 {
     "controllers": {
+        "@siganushka/generic-bundle": {
+            "collection": {
+                "enabled": true,
+                "fetch": "lazy"
+            }
+        },
         "@siganushka/media-bundle": {
             "media": {
                 "enabled": true,
