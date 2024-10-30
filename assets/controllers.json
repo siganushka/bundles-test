@@ -15,12 +15,6 @@
                 }
             }
         },
-        "@siganushka/product-bundle": {
-            "product": {
-                "enabled": true,
-                "fetch": "lazy"
-            }
-        },
         "@siganushka/region-bundle": {
             "region": {
                 "enabled": true,

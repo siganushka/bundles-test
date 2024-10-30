@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Siganushka\ProductBundle\Entity\ProductOptionValue;
 use Siganushka\ProductBundle\Form\ProductOptionValueType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
@@ -21,10 +22,10 @@ class IndexController extends AbstractController
     {
         $data = [
             'tags' => ['', '', 'baz'],
-            'subform' => [
-                ['foo' => 'a', 'bar' => false],
-                ['foo' => 'b', 'bar' => true],
-            ]
+            'values' => [
+                new ProductOptionValue('foo', null, 'aaa'),
+                new ProductOptionValue('bar', 'Bar', 'bbb'),
+            ],
         ];
 
         $builder = $this->createFormBuilder($data, ['required' => false])
@@ -43,7 +44,7 @@ class IndexController extends AbstractController
                 ],
                 'allow_add' => true,
                 'allow_delete' => true,
-                # 'disabled' => true,
+                // 'disabled' => true,
             ])
             ->add('values', CollectionType::class, [
                 'entry_type' => ProductOptionValueType::class,
