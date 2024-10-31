@@ -3,13 +3,13 @@
         "@siganushka/generic-bundle": {
             "collection": {
                 "enabled": true,
-                "fetch": "lazy"
+                "fetch": "eager"
             }
         },
         "@siganushka/media-bundle": {
             "media": {
                 "enabled": true,
-                "fetch": "lazy",
+                "fetch": "eager",
                 "autoimport": {
                     "@siganushka/media-bundle/dist/bootstrap5.css": true
                 }
@@ -18,7 +18,7 @@
         "@siganushka/region-bundle": {
             "region": {
                 "enabled": true,
-                "fetch": "lazy"
+                "fetch": "eager"
             }
         },
         "@symfony/ux-autocomplete": {
