@@ -1,2 +1,2 @@
 siganushka_product:
-    default_currency: '%env(resolve:APP_CURRENCY)%'
+    money_currency: '%env(resolve:APP_CURRENCY)%'
