@@ -107,7 +107,7 @@ class ProductController extends AbstractController
             $entityManager->flush();
             $this->addFlash('success', 'Your changes were saved!');
 
-            return $this->redirectToRoute('app_product_index');
+            return $this->redirectToRoute('app_product_variants', ['id' => $entity->getId()]);
         }
 
         return $this->render('product/form.html.twig', [
