@@ -171,6 +171,7 @@ class XiaomiDataCommand extends Command
             $content = mb_substr($content, 0, -2);
         }
 
+        /** @var array */
         $parsedResponse = json_decode($content, true);
         // dd(__METHOD__, $data);
 

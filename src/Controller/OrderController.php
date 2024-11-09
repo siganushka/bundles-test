@@ -7,7 +7,6 @@ namespace App\Controller;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Siganushka\OrderBundle\Entity\Order;
-use Siganushka\OrderBundle\Entity\OrderAdjustment;
 use Siganushka\OrderBundle\Event\OrderBeforeCreateEvent;
 use Siganushka\OrderBundle\Event\OrderCreatedEvent;
 use Siganushka\OrderBundle\Form\OrderItemType;
@@ -54,15 +53,6 @@ class OrderController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $adjustment1 = new OrderAdjustment();
-            $adjustment1->setAmount(100);
-
-            $adjustment2 = new OrderAdjustment();
-            $adjustment2->setAmount(-200);
-
-            $entity->addAdjustment($adjustment1);
-            $entity->addAdjustment($adjustment2);
-
             $event = new OrderBeforeCreateEvent($entity);
             $eventDispatcher->dispatch($event);
 
