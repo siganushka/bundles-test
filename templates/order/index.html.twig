@@ -39,14 +39,12 @@
             <a class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">流转</a>
             <ul class="dropdown-menu">
               {% for transition in workflow_transitions(entity) %}
-                {% if transition.name == 'reset' and workflow_transitions(entity)|length > 1 %}
+                {% if transition.name == 'reset' %}
                   <div class="dropdown-divider"></div>
                 {% endif %}
-                {% if workflow_can(entity, transition.name) %}
-                  <li><a href="{{ path('app_order_workflow', {number: entity.number, transition: transition.name}) }}" class="dropdown-item">{{ transition.name }}</a></li>
-                {% else %}
-                  <a href="#">{{ transition.name }}</a>
-                {% endif %}
+                <li><a href="{{ path('app_order_workflow', {number: entity.number, transition: transition.name}) }}" class="dropdown-item">{{ transition.name }}</a></li>
+              {% else %}
+                <li><span class="dropdown-item disabled">No actions available.</span></li>
               {% endfor %}
             </ul>
           </div>

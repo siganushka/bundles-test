@@ -1,1 +1,4 @@
-siganushka_order: ~
+siganushka_order:
+    # order_number_generator: Siganushka\OrderBundle\Generator\SnowflakeNumberGenerator
+    # order_number_generator: Siganushka\OrderBundle\Generator\UniqidNumberGenerator
+    # order_number_generator: App\Generator\TimestampNumberGenerator

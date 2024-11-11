@@ -25,5 +25,5 @@ framework:
                     from: placed
                     to: cancelled
                 reset:
-                    from: [confirmed, shipped, finished, refunded, cancelled]
+                    from: [confirmed, shipped, finished]
                     to: placed
