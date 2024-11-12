@@ -1,4 +1,5 @@
 siganushka_order:
-    # order_number_generator: Siganushka\OrderBundle\Generator\SnowflakeNumberGenerator
+    order_number_generator: Siganushka\OrderBundle\Generator\SnowflakeNumberGenerator
     # order_number_generator: Siganushka\OrderBundle\Generator\UniqidNumberGenerator
-    # order_number_generator: App\Generator\TimestampNumberGenerator
+    # order_number_generator: Siganushka\OrderBundle\Generator\TimestampNumberGenerator
+    # order_inventory_modifier: Siganushka\OrderBundle\Modifier\PessimisticLockingInventoryModifier

@@ -17,6 +17,7 @@
         "siganushka/order-bundle": "dev-main",
         "siganushka/product-bundle": "dev-main",
         "siganushka/region-bundle": "dev-main",
+        "siganushka/request-token-bundle": "dev-main",
         "symfony/asset": "7.1.*",
         "symfony/asset-mapper": "7.1.*",
         "symfony/console": "7.1.*",
@@ -29,10 +30,11 @@
         "symfony/monolog-bundle": "^3.10",
         "symfony/runtime": "7.1.*",
         "symfony/serializer": "7.1.*",
-        "symfony/stimulus-bundle": "^2.18",
+        "symfony/stimulus-bundle": "^2.21",
         "symfony/stopwatch": "^7.1",
         "symfony/translation": "7.1.*",
         "symfony/twig-bundle": "7.1.*",
+        "symfony/uid": "7.1.*",
         "symfony/ux-autocomplete": "^2.18",
         "symfony/validator": "7.1.*",
         "symfony/workflow": "7.1.*",
@@ -101,6 +103,13 @@
         }
     },
     "repositories": [
+        {
+            "type": "path",
+            "url": "../request-token-bundle",
+            "options": {
+                "symlink": true
+            }
+        },
         {
             "type": "path",
             "url": "../doctrine-contracts",
