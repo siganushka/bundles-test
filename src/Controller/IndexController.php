@@ -44,7 +44,6 @@ class IndexController extends AbstractController
                 ],
                 'allow_add' => true,
                 'allow_delete' => true,
-                // 'disabled' => true,
             ])
             ->add('values', CollectionType::class, [
                 'entry_type' => ProductOptionValueType::class,
