@@ -27,6 +27,10 @@
     <th class="text-end">{{ 'order.total'|trans }}</th>
     <td>{{ entity.total|money }}</td>
   </tr>
+ <tr>
+    <th class="text-end">{{ 'order.state'|trans }}</th>
+    <td><span class="badge text-bg-{{ entity.state.theme }}">{{ entity.state|trans }}</span></td>
+  </tr>
   <tr>
     <th class="text-end">{{ 'generic.created_at'|trans }}</th>
     <td>{{ entity.createdAt|date('Y-m-d H:i:s') }}</td>

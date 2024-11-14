@@ -96,14 +96,14 @@ class OrderController extends AbstractController
     {
         try {
             $orderState->apply($entity, $transition);
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Your changes were saved!');
         } catch (LogicException $e) {
             $this->addFlash('danger', $e->getMessage());
 
             return $this->redirectToRoute('app_order_index');
         }
-
-        $entityManager->flush();
-        $this->addFlash('success', 'Your changes were saved!');
 
         return $this->redirectToRoute('app_order_index');
     }

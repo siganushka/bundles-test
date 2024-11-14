@@ -8,7 +8,7 @@ use Siganushka\OrderBundle\Entity\OrderAdjustment;
 use Siganushka\OrderBundle\Event\OrderBeforeCreateEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-class OrderAdjustmentListener implements EventSubscriberInterface
+class OrderAddAdjustmentListener implements EventSubscriberInterface
 {
     public function onOrderBeforeCreate(OrderBeforeCreateEvent $event): void
     {
