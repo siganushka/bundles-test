@@ -11,6 +11,7 @@ use Siganushka\OrderBundle\Event\OrderBeforeCreateEvent;
 use Siganushka\OrderBundle\Event\OrderCreatedEvent;
 use Siganushka\OrderBundle\Form\OrderItemType;
 use Siganushka\OrderBundle\Form\OrderType;
+use Siganushka\OrderBundle\Inventory\OrderInventoryModifierinterface;
 use Siganushka\OrderBundle\Repository\OrderRepository;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -92,18 +93,30 @@ class OrderController extends AbstractController
     }
 
     #[Route('/orders/{number}/workflow/{transition}')]
-    public function workflow(EntityManagerInterface $entityManager, WorkflowInterface $orderState, #[MapEntity(mapping: ['number' => 'number'])] Order $entity, string $transition): Response
+    public function workflow(
+        EntityManagerInterface $entityManager,
+        WorkflowInterface $orderState,
+        OrderInventoryModifierinterface $inventoryModifier,
+        #[MapEntity(mapping: ['number' => 'number'])] Order $entity,
+        string $transition): Response
     {
         try {
             $orderState->apply($entity, $transition);
-            $entityManager->flush();
-
-            $this->addFlash('success', 'Your changes were saved!');
         } catch (LogicException $e) {
             $this->addFlash('danger', $e->getMessage());
 
             return $this->redirectToRoute('app_order_index');
         }
+
+        $entityManager->beginTransaction();
+        if (\in_array($transition, ['refund', 'cancel'], true)) {
+            $inventoryModifier->modifiy(OrderInventoryModifierinterface::INCREASE, $entity);
+        }
+
+        $entityManager->flush();
+        $entityManager->commit();
+
+        $this->addFlash('success', 'Your changes were saved!');
 
         return $this->redirectToRoute('app_order_index');
     }

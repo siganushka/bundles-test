@@ -8,10 +8,14 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Siganushka\ProductBundle\Entity\Product;
-use Siganushka\ProductBundle\Entity\ProductVariant;
+use Siganushka\ProductBundle\Repository\ProductVariantRepository;
 
 class ProductVariantFixtures extends Fixture implements DependentFixtureInterface
 {
+    public function __construct(private readonly ProductVariantRepository $productVariantRepository)
+    {
+    }
+
     public function load(ObjectManager $manager): void
     {
         /** @var array<int, Product> */
@@ -32,7 +36,7 @@ class ProductVariantFixtures extends Fixture implements DependentFixtureInterfac
         $prices = [100, 200, 300, 400, 500];
         foreach ($products as $index => $product) {
             foreach ($product->getChoices(true) as $index2 => $choice) {
-                $variant = new ProductVariant($product, $choice);
+                $variant = $this->productVariantRepository->createNew($product, $choice);
                 $variant->setPrice($prices[array_rand($prices)]);
                 $variant->setInventory(10000);
                 $manager->persist($variant);

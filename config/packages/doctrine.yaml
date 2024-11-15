@@ -28,6 +28,8 @@ doctrine:
         #     region_cache_driver:
         #         type: pool
         #         pool: cache.app
+        resolve_target_entities:
+            Siganushka\OrderBundle\Model\OrderItemSubjectInterface: App\Entity\ProductVariant
 
 when@test:
     doctrine:

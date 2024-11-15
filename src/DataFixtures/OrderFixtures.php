@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\DataFixtures;
 
+use App\Entity\ProductVariant;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
@@ -11,7 +12,6 @@ use Siganushka\OrderBundle\Entity\Order;
 use Siganushka\OrderBundle\Entity\OrderItem;
 use Siganushka\OrderBundle\Event\OrderBeforeCreateEvent;
 use Siganushka\OrderBundle\Event\OrderCreatedEvent;
-use Siganushka\ProductBundle\Entity\ProductVariant;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
 class OrderFixtures extends Fixture implements DependentFixtureInterface

@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Command;
 
+use App\Entity\ProductVariant;
 use Doctrine\ORM\EntityManagerInterface;
 use Siganushka\OrderBundle\Entity\Order;
 use Siganushka\OrderBundle\Entity\OrderItem;
 use Siganushka\OrderBundle\Event\OrderBeforeCreateEvent;
 use Siganushka\OrderBundle\Event\OrderCreatedEvent;
-use Siganushka\ProductBundle\Entity\ProductVariant;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -34,7 +34,8 @@ class OrderCreatePerformanceTestCommand extends Command
     protected function configure(): void
     {
         $this
-            ->addArgument('count', InputArgument::OPTIONAL, 'Argument description', '100')
+            ->addArgument('count', InputArgument::OPTIONAL, 'Generate count', '100')
+            ->addArgument('subjectId', InputArgument::OPTIONAL, 'Generated subject id', '1')
         ;
     }
 
@@ -42,12 +43,17 @@ class OrderCreatePerformanceTestCommand extends Command
     {
         $io = new SymfonyStyle($input, $output);
         $count = $input->getArgument('count');
+        $subjectId = $input->getArgument('subjectId');
 
         if (!is_numeric($count)) {
             throw new \InvalidArgumentException('The argument count must be numeric.');
         }
 
-        $subject = $this->entityManager->find(ProductVariant::class, 109);
+        if (!is_numeric($subjectId)) {
+            throw new \InvalidArgumentException('The argument subjectId must be numeric.');
+        }
+
+        $subject = $this->entityManager->find(ProductVariant::class, $subjectId);
 
         $preTime = microtime(true);
         for ($i = 0; $i < $count; ++$i) {
@@ -67,7 +73,7 @@ class OrderCreatePerformanceTestCommand extends Command
         $postTime = microtime(true);
         $execTime = $postTime - $preTime;
 
-        $io->success(\sprintf('共计生成 %d 条记录，共耗时 %f'.\PHP_EOL, $count, $execTime));
+        $io->success(\sprintf('共计生成 %d 条记录，耗时 %f'.\PHP_EOL, $count, $execTime));
 
         return Command::SUCCESS;
     }

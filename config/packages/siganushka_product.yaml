@@ -1,2 +1,3 @@
 siganushka_product:
     money_currency: '%env(resolve:APP_CURRENCY)%'
+    product_variant_class: App\Entity\ProductVariant
