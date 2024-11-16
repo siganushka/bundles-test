@@ -1,1 +1,2 @@
-siganushka_media: ~
+siganushka_media:
+    media_class: App\Entity\Media

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use Siganushka\ProductBundle\Entity\ProductOptionValue;
 use Siganushka\ProductBundle\Form\ProductOptionValueType;
+use Siganushka\ProductBundle\Repository\ProductOptionValueRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -18,13 +18,13 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 class IndexController extends AbstractController
 {
     #[Route('/')]
-    public function index(Request $request): Response
+    public function index(Request $request, ProductOptionValueRepository $repository): Response
     {
         $data = [
             'tags' => ['', '', 'baz'],
             'values' => [
-                new ProductOptionValue('foo', null, 'aaa'),
-                new ProductOptionValue('bar', 'Bar', 'bbb'),
+                $repository->createNew('foo', null, 'aaa'),
+                $repository->createNew('bar', 'Bar', 'bbb'),
             ],
         ];
 

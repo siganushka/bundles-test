@@ -20,17 +20,17 @@ class ProductVariantFixtures extends Fixture implements DependentFixtureInterfac
     {
         /** @var array<int, Product> */
         $products = [
-            $this->getReference('product-0', Product::class),
-            $this->getReference('product-1', Product::class),
-            $this->getReference('product-2', Product::class),
-            $this->getReference('product-3', Product::class),
-            $this->getReference('product-4', Product::class),
-            $this->getReference('product-5', Product::class),
-            $this->getReference('product-6', Product::class),
-            $this->getReference('product-7', Product::class),
-            $this->getReference('product-8', Product::class),
-            $this->getReference('product-9', Product::class),
-            $this->getReference('product-10', Product::class),
+            $this->getReference('product-0'),
+            $this->getReference('product-1'),
+            $this->getReference('product-2'),
+            $this->getReference('product-3'),
+            $this->getReference('product-4'),
+            $this->getReference('product-5'),
+            $this->getReference('product-6'),
+            $this->getReference('product-7'),
+            $this->getReference('product-8'),
+            $this->getReference('product-9'),
+            $this->getReference('product-10'),
         ];
 
         $prices = [100, 200, 300, 400, 500];

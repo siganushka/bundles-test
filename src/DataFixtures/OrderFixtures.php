@@ -4,40 +4,42 @@ declare(strict_types=1);
 
 namespace App\DataFixtures;
 
-use App\Entity\ProductVariant;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
-use Siganushka\OrderBundle\Entity\Order;
-use Siganushka\OrderBundle\Entity\OrderItem;
 use Siganushka\OrderBundle\Event\OrderBeforeCreateEvent;
 use Siganushka\OrderBundle\Event\OrderCreatedEvent;
+use Siganushka\OrderBundle\Repository\OrderItemRepository;
+use Siganushka\OrderBundle\Repository\OrderRepository;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
 class OrderFixtures extends Fixture implements DependentFixtureInterface
 {
-    public function __construct(private readonly EventDispatcherInterface $eventDispatcher)
+    public function __construct(
+        private readonly EventDispatcherInterface $eventDispatcher,
+        private readonly OrderRepository $orderRepository,
+        private readonly OrderItemRepository $orderItemRepository)
     {
     }
 
     public function load(ObjectManager $manager): void
     {
-        $subject0 = $this->getReference('product-0-variant-0', ProductVariant::class);
-        $subject1 = $this->getReference('product-0-variant-1', ProductVariant::class);
-        $subject2 = $this->getReference('product-0-variant-2', ProductVariant::class);
-        $subject3 = $this->getReference('product-8-variant-0', ProductVariant::class);
-        $subject4 = $this->getReference('product-10-variant-0', ProductVariant::class);
+        $subject0 = $this->getReference('product-0-variant-0');
+        $subject1 = $this->getReference('product-0-variant-1');
+        $subject2 = $this->getReference('product-0-variant-2');
+        $subject3 = $this->getReference('product-8-variant-0');
+        $subject4 = $this->getReference('product-10-variant-0');
 
-        $order0 = new Order();
-        $order0->addItem(new OrderItem($subject0, 2));
-        $order0->addItem(new OrderItem($subject1, 2));
-        $order0->addItem(new OrderItem($subject2, 2));
+        $order0 = $this->orderRepository->createNew();
+        $order0->addItem($this->orderItemRepository->createNew($subject0, 2));
+        $order0->addItem($this->orderItemRepository->createNew($subject1, 2));
+        $order0->addItem($this->orderItemRepository->createNew($subject2, 2));
 
-        $order1 = new Order();
-        $order1->addItem(new OrderItem($subject3, 2));
+        $order1 = $this->orderRepository->createNew();
+        $order1->addItem($this->orderItemRepository->createNew($subject3, 2));
 
-        $order2 = new Order();
-        $order2->addItem(new OrderItem($subject4, 2));
+        $order2 = $this->orderRepository->createNew();
+        $order2->addItem($this->orderItemRepository->createNew($subject4, 2));
 
         $this->eventDispatcher->dispatch(new OrderBeforeCreateEvent($order0));
         $this->eventDispatcher->dispatch(new OrderBeforeCreateEvent($order1));

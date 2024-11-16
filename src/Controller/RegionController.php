@@ -15,14 +15,14 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 
 class RegionController extends AbstractController
 {
-    public function __construct(protected readonly RegionRepository $regionRepository)
+    public function __construct(protected readonly RegionRepository $repository)
     {
     }
 
     #[Route('/regions/RegionType')]
     public function RegionType(Request $request): Response
     {
-        // $parent = $this->regionRepository->find('61');
+        // $parent = $this->repository->find('61');
 
         $builder = $this->createFormBuilder()
             ->add('province', RegionType::class, [

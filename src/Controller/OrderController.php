@@ -6,14 +6,12 @@ namespace App\Controller;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
-use Siganushka\OrderBundle\Entity\Order;
 use Siganushka\OrderBundle\Event\OrderBeforeCreateEvent;
 use Siganushka\OrderBundle\Event\OrderCreatedEvent;
 use Siganushka\OrderBundle\Form\OrderItemType;
 use Siganushka\OrderBundle\Form\OrderType;
 use Siganushka\OrderBundle\Inventory\OrderInventoryModifierinterface;
 use Siganushka\OrderBundle\Repository\OrderRepository;
-use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,14 +23,14 @@ use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
 class OrderController extends AbstractController
 {
-    public function __construct(protected readonly OrderRepository $orderRepository)
+    public function __construct(protected readonly OrderRepository $repository)
     {
     }
 
     #[Route('/orders')]
     public function index(Request $request, PaginatorInterface $paginator): Response
     {
-        $queryBuilder = $this->orderRepository->createQueryBuilder('m');
+        $queryBuilder = $this->repository->createQueryBuilder('m');
 
         $page = $request->query->getInt('page', 1);
         $size = $request->query->getInt('size', 10);
@@ -47,7 +45,7 @@ class OrderController extends AbstractController
     #[Route('/orders/new')]
     public function new(Request $request, EventDispatcherInterface $eventDispatcher, EntityManagerInterface $entityManager): Response
     {
-        $entity = $this->orderRepository->createNew();
+        $entity = $this->repository->createNew();
 
         $form = $this->createForm(OrderType::class, $entity);
         $form->add('Submit', SubmitType::class, ['label' => 'generic.submit']);
@@ -74,8 +72,13 @@ class OrderController extends AbstractController
     }
 
     #[Route('/orders/{number}/edit')]
-    public function edit(Request $request, EntityManagerInterface $entityManager, #[MapEntity(mapping: ['number' => 'number'])] Order $entity): Response
+    public function edit(Request $request, EntityManagerInterface $entityManager, string $number): Response
     {
+        $entity = $this->repository->findOneByNumber($number);
+        if (!$entity) {
+            throw $this->createNotFoundException(\sprintf('Resource #%d not found.', $number));
+        }
+
         $form = $this->createForm(OrderType::class, $entity);
         $form->add('Submit', SubmitType::class, ['label' => 'generic.save']);
         $form->handleRequest($request);
@@ -97,9 +100,14 @@ class OrderController extends AbstractController
         EntityManagerInterface $entityManager,
         WorkflowInterface $orderState,
         OrderInventoryModifierinterface $inventoryModifier,
-        #[MapEntity(mapping: ['number' => 'number'])] Order $entity,
+        string $number,
         string $transition): Response
     {
+        $entity = $this->repository->findOneByNumber($number);
+        if (!$entity) {
+            throw $this->createNotFoundException(\sprintf('Resource #%d not found.', $number));
+        }
+
         try {
             $orderState->apply($entity, $transition);
         } catch (LogicException $e) {
@@ -122,16 +130,26 @@ class OrderController extends AbstractController
     }
 
     #[Route('/orders/{number}/show')]
-    public function show(#[MapEntity(mapping: ['number' => 'number'])] Order $entity): Response
+    public function show(string $number): Response
     {
+        $entity = $this->repository->findOneByNumber($number);
+        if (!$entity) {
+            throw $this->createNotFoundException(\sprintf('Resource #%d not found.', $number));
+        }
+
         return $this->render('order/show.html.twig', [
             'entity' => $entity,
         ]);
     }
 
     #[Route('/orders/{number}/delete')]
-    public function delete(EntityManagerInterface $entityManager, #[MapEntity(mapping: ['number' => 'number'])] Order $entity): Response
+    public function delete(EntityManagerInterface $entityManager, string $number): Response
     {
+        $entity = $this->repository->findOneByNumber($number);
+        if (!$entity) {
+            throw $this->createNotFoundException(\sprintf('Resource #%d not found.', $number));
+        }
+
         $entityManager->remove($entity);
         $entityManager->flush();
 

@@ -6,8 +6,6 @@ namespace App\Controller;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
-use Siganushka\ProductBundle\Entity\Product;
-use Siganushka\ProductBundle\Entity\ProductVariant;
 use Siganushka\ProductBundle\Form\ProductOptionType;
 use Siganushka\ProductBundle\Form\ProductOptionValueType;
 use Siganushka\ProductBundle\Form\ProductType;
@@ -22,14 +20,14 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ProductController extends AbstractController
 {
-    public function __construct(protected readonly ProductRepository $productRepository)
+    public function __construct(protected readonly ProductRepository $repository)
     {
     }
 
     #[Route('/products')]
     public function index(Request $request, PaginatorInterface $paginator): Response
     {
-        $queryBuilder = $this->productRepository->createQueryBuilder('p')
+        $queryBuilder = $this->repository->createQueryBuilder('p')
             // ->where('p.variants IS NOT EMPTY')
         ;
 
@@ -46,7 +44,7 @@ class ProductController extends AbstractController
     #[Route('/products/new')]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
-        $entity = $this->productRepository->createNew();
+        $entity = $this->repository->createNew();
 
         $form = $this->createForm(ProductType::class, $entity);
         $form->add('submit', SubmitType::class, ['label' => 'generic.submit']);
@@ -67,8 +65,13 @@ class ProductController extends AbstractController
     }
 
     #[Route('/products/{id<\d+>}/edit')]
-    public function edit(Request $request, EntityManagerInterface $entityManager, Product $entity): Response
+    public function edit(Request $request, EntityManagerInterface $entityManager, int $id): Response
     {
+        $entity = $this->repository->find($id);
+        if (!$entity) {
+            throw $this->createNotFoundException(\sprintf('Resource #%d not found.', $id));
+        }
+
         $form = $this->createForm(ProductType::class, $entity);
         $form->add('save', SubmitType::class, ['label' => 'generic.save']);
         $form->handleRequest($request);
@@ -86,8 +89,13 @@ class ProductController extends AbstractController
     }
 
     #[Route('/products/{id<\d+>}/delete')]
-    public function delete(EntityManagerInterface $entityManager, Product $entity): Response
+    public function delete(EntityManagerInterface $entityManager, int $id): Response
     {
+        $entity = $this->repository->find($id);
+        if (!$entity) {
+            throw $this->createNotFoundException(\sprintf('Resource #%d not found.', $id));
+        }
+
         $entityManager->remove($entity);
         $entityManager->flush();
 
@@ -97,8 +105,13 @@ class ProductController extends AbstractController
     }
 
     #[Route('/products/{id<\d+>}/variants')]
-    public function variants(Request $request, EntityManagerInterface $entityManager, Product $entity): Response
+    public function variants(Request $request, EntityManagerInterface $entityManager, int $id): Response
     {
+        $entity = $this->repository->find($id);
+        if (!$entity) {
+            throw $this->createNotFoundException(\sprintf('Resource #%d not found.', $id));
+        }
+
         $form = $this->createForm(ProductVariantCollectionType::class, $entity);
         $form->add('submit', SubmitType::class, ['label' => 'generic.save']);
         $form->handleRequest($request);
@@ -169,7 +182,7 @@ class ProductController extends AbstractController
     #[Route('/products/ProductVariantCollectionType')]
     public function ProductVariantCollectionType(Request $request): Response
     {
-        $entity = $this->productRepository->createNew();
+        $entity = $this->repository->createNew();
 
         $form = $this->createForm(ProductVariantCollectionType::class, $entity)
             ->add('Submit', SubmitType::class, ['label' => 'generic.submit'])
@@ -186,10 +199,8 @@ class ProductController extends AbstractController
     }
 
     #[Route('/products/ProductVariantType')]
-    public function ProductVariantType(Request $request, EntityManagerInterface $entityManager): Response
+    public function ProductVariantType(Request $request): Response
     {
-        // $entity = $entityManager->find(ProductVariant::class, 1);
-
         $form = $this->createForm(ProductVariantType::class)
             ->add('Submit', SubmitType::class, ['label' => 'generic.submit'])
         ;

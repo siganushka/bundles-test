@@ -1,3 +1,6 @@
 siganushka_product:
     money_currency: '%env(resolve:APP_CURRENCY)%'
+    product_class: App\Entity\Product
+    product_option_class: App\Entity\ProductOption
+    product_option_value_class: App\Entity\ProductOptionValue
     product_variant_class: App\Entity\ProductVariant

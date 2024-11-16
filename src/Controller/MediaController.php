@@ -8,11 +8,9 @@ use App\Media\TestImg;
 use App\Media\TestPdf;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
-use Siganushka\MediaBundle\Entity\Media;
 use Siganushka\MediaBundle\Form\MediaUploadType;
 use Siganushka\MediaBundle\Form\Type\MediaType;
 use Siganushka\MediaBundle\Repository\MediaRepository;
-use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormError;
@@ -24,14 +22,14 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 
 class MediaController extends AbstractController
 {
-    public function __construct(protected readonly MediaRepository $mediaRepository)
+    public function __construct(protected readonly MediaRepository $repository)
     {
     }
 
     #[Route('/media')]
     public function index(Request $request, PaginatorInterface $paginator): Response
     {
-        $queryBuilder = $this->mediaRepository->createQueryBuilder('m');
+        $queryBuilder = $this->repository->createQueryBuilder('m');
 
         $page = $request->query->getInt('page', 1);
         $size = $request->query->getInt('size', 10);
@@ -44,8 +42,13 @@ class MediaController extends AbstractController
     }
 
     #[Route('/media/{hash}/delete')]
-    public function delete(EntityManagerInterface $entityManager, #[MapEntity(mapping: ['hash' => 'hash'])] Media $entity): Response
+    public function delete(EntityManagerInterface $entityManager, string $hash): Response
     {
+        $entity = $this->repository->findOneByHash($hash);
+        if (!$entity) {
+            throw $this->createNotFoundException(\sprintf('Resource #%d not found.', $hash));
+        }
+
         $entityManager->remove($entity);
         $entityManager->flush();
 
@@ -74,7 +77,7 @@ class MediaController extends AbstractController
     #[Route('/media/MediaType')]
     public function MediaType(Request $request): Response
     {
-        $media = $this->mediaRepository->findAll();
+        $media = $this->repository->findAll();
         $data = [
             'media1' => $media[0] ?? null,
         ];

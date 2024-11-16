@@ -1,3 +1,2 @@
 siganushka_request_token:
     enabled: true
-    token_generator: Siganushka\RequestTokenBundle\Generator\UuidTokenGenerator
