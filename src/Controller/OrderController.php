@@ -98,7 +98,7 @@ class OrderController extends AbstractController
     #[Route('/orders/{number}/workflow/{transition}')]
     public function workflow(
         EntityManagerInterface $entityManager,
-        WorkflowInterface $orderState,
+        WorkflowInterface $orderStateFlow,
         OrderInventoryModifierinterface $inventoryModifier,
         string $number,
         string $transition): Response
@@ -109,7 +109,7 @@ class OrderController extends AbstractController
         }
 
         try {
-            $orderState->apply($entity, $transition);
+            $orderStateFlow->apply($entity, $transition);
         } catch (LogicException $e) {
             $this->addFlash('danger', $e->getMessage());
 

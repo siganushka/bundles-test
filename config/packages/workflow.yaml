@@ -1,6 +1,6 @@
 framework:
     workflows:
-        order_state:
+        order_state_flow:
             type: 'state_machine'
             audit_trail:
                 enabled: true
