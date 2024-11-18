@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use Siganushka\ProductBundle\Form\ProductOptionValueType;
-use Siganushka\ProductBundle\Repository\ProductOptionValueRepository;
+use App\Form\TestType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -18,17 +17,17 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 class IndexController extends AbstractController
 {
     #[Route('/')]
-    public function index(Request $request, ProductOptionValueRepository $repository): Response
+    public function index(Request $request): Response
     {
         $data = [
             'tags' => ['', '', 'baz'],
-            'values' => [
-                $repository->createNew('foo', null, 'aaa'),
-                $repository->createNew('bar', 'Bar', 'bbb'),
+            'tests' => [
+                ['foo' => 'aaa'],
+                ['foo' => 'bbb', 'bar' => 16],
             ],
         ];
 
-        $builder = $this->createFormBuilder($data, ['required' => false])
+        $builder = $this->createFormBuilder($data)
             ->add('tags', CollectionType::class, [
                 'entry_type' => TextType::class,
                 'entry_options' => [
@@ -45,11 +44,9 @@ class IndexController extends AbstractController
                 'allow_add' => true,
                 'allow_delete' => true,
             ])
-            ->add('values', CollectionType::class, [
-                'entry_type' => ProductOptionValueType::class,
+            ->add('tests', CollectionType::class, [
+                'entry_type' => TestType::class,
                 'entry_options' => [
-                    'label' => false,
-                    'constraints' => new NotBlank(),
                     'row_attr' => ['class' => 'bbb'],
                 ],
                 'add_button_options' => [

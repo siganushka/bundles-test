@@ -13,6 +13,16 @@ class ProductVariant extends BaseProductVariant implements OrderItemSubjectInter
 {
     public function getName(): ?string
     {
-        return $this->product?->getName();
+        $label = $this->getChoiceLabel();
+        if (!$this->product) {
+            return $label;
+        }
+
+        $productName = $this->product->getName();
+        if (\is_string($productName) && \is_string($label)) {
+            return \sprintf('%s【%s】', $productName, $label);
+        }
+
+        return $productName;
     }
 }
