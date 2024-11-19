@@ -6,11 +6,8 @@ namespace App\Controller;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
-use Siganushka\OrderBundle\Event\OrderBeforeCreateEvent;
-use Siganushka\OrderBundle\Event\OrderCreatedEvent;
 use Siganushka\OrderBundle\Form\OrderItemType;
 use Siganushka\OrderBundle\Form\OrderType;
-use Siganushka\OrderBundle\Inventory\OrderInventoryModifierinterface;
 use Siganushka\OrderBundle\Repository\OrderRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -19,7 +16,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Workflow\Exception\LogicException;
 use Symfony\Component\Workflow\WorkflowInterface;
-use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
 class OrderController extends AbstractController
 {
@@ -43,7 +39,7 @@ class OrderController extends AbstractController
     }
 
     #[Route('/orders/new')]
-    public function new(Request $request, EventDispatcherInterface $eventDispatcher, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $entity = $this->repository->createNew();
 
@@ -52,14 +48,8 @@ class OrderController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $event = new OrderBeforeCreateEvent($entity);
-            $eventDispatcher->dispatch($event);
-
             $entityManager->persist($entity);
             $entityManager->flush();
-
-            $event = new OrderCreatedEvent($entity);
-            $eventDispatcher->dispatch($event);
 
             $this->addFlash('success', 'Your changes were saved!');
 
@@ -96,29 +86,23 @@ class OrderController extends AbstractController
     }
 
     #[Route('/orders/{number}/workflow/{transition}')]
-    public function workflow(
-        EntityManagerInterface $entityManager,
-        WorkflowInterface $orderStateFlow,
-        OrderInventoryModifierinterface $inventoryModifier,
-        string $number,
-        string $transition): Response
+    public function workflow(EntityManagerInterface $entityManager, WorkflowInterface $orderStateFlow, string $number, string $transition): Response
     {
         $entity = $this->repository->findOneByNumber($number);
         if (!$entity) {
             throw $this->createNotFoundException(\sprintf('Resource #%d not found.', $number));
         }
 
+        $entityManager->beginTransaction();
+
         try {
             $orderStateFlow->apply($entity, $transition);
         } catch (LogicException $e) {
+            $entityManager->rollback();
+
             $this->addFlash('danger', $e->getMessage());
 
             return $this->redirectToRoute('app_order_index');
-        }
-
-        $entityManager->beginTransaction();
-        if (\in_array($transition, ['refund', 'cancel'], true)) {
-            $inventoryModifier->modifiy(OrderInventoryModifierinterface::INCREASE, $entity);
         }
 
         $entityManager->flush();

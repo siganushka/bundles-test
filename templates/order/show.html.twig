@@ -31,6 +31,12 @@
     <th class="text-end">{{ 'order.state'|trans }}</th>
     <td><span class="badge text-bg-{{ entity.state.theme }}">{{ entity.state|trans }}</span></td>
   </tr>
+  {% if entity.updatedAt %}
+  <tr>
+    <th class="text-end">{{ 'generic.updated_at'|trans }}</th>
+    <td>{{ entity.updatedAt|date('Y-m-d H:i:s') }}</td>
+  </tr>
+  {% endif %}
   <tr>
     <th class="text-end">{{ 'generic.created_at'|trans }}</th>
     <td>{{ entity.createdAt|date('Y-m-d H:i:s') }}</td>

@@ -2,6 +2,6 @@ siganushka_order:
     order_class: App\Entity\Order
     order_item_class: App\Entity\OrderItem
     order_adjustment_class: App\Entity\OrderAdjustment
-    # order_number_generator: Siganushka\OrderBundle\Generator\SnowflakeNumberGenerator
-    # order_number_generator: Siganushka\OrderBundle\Generator\UniqidNumberGenerator
+    order_number_generator: Siganushka\OrderBundle\Generator\SnowflakeNumberGenerator
+    order_expire_in: 60
  
