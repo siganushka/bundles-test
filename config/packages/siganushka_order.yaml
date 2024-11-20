@@ -3,5 +3,6 @@ siganushka_order:
     order_item_class: App\Entity\OrderItem
     order_adjustment_class: App\Entity\OrderAdjustment
     order_number_generator: Siganushka\OrderBundle\Generator\SnowflakeNumberGenerator
+    # order_inventory_modifier: Siganushka\OrderBundle\Inventory\PessimisticLockInventoryModifier
     order_expire_in: 60
  

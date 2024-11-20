@@ -6,6 +6,8 @@ namespace App\Controller;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
+use Siganushka\OrderBundle\Event\OrderBeforeCreateEvent;
+use Siganushka\OrderBundle\Event\OrderCreatedEvent;
 use Siganushka\OrderBundle\Form\OrderItemType;
 use Siganushka\OrderBundle\Form\OrderType;
 use Siganushka\OrderBundle\Repository\OrderRepository;
@@ -16,6 +18,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Workflow\Exception\LogicException;
 use Symfony\Component\Workflow\WorkflowInterface;
+use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
 class OrderController extends AbstractController
 {
@@ -39,7 +42,7 @@ class OrderController extends AbstractController
     }
 
     #[Route('/orders/new')]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, EventDispatcherInterface $eventDispatcher): Response
     {
         $entity = $this->repository->createNew();
 
@@ -48,8 +51,12 @@ class OrderController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $eventDispatcher->dispatch(new OrderBeforeCreateEvent($entity));
+
             $entityManager->persist($entity);
             $entityManager->flush();
+
+            $eventDispatcher->dispatch(new OrderCreatedEvent($entity));
 
             $this->addFlash('success', 'Your changes were saved!');
 

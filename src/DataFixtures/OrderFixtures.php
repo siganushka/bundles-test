@@ -7,12 +7,16 @@ namespace App\DataFixtures;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
+use Siganushka\OrderBundle\Event\OrderBeforeCreateEvent;
+use Siganushka\OrderBundle\Event\OrderCreatedEvent;
 use Siganushka\OrderBundle\Repository\OrderItemRepository;
 use Siganushka\OrderBundle\Repository\OrderRepository;
+use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
 class OrderFixtures extends Fixture implements DependentFixtureInterface
 {
     public function __construct(
+        private readonly EventDispatcherInterface $eventDispatcher,
         private readonly OrderRepository $orderRepository,
         private readonly OrderItemRepository $orderItemRepository)
     {
@@ -37,10 +41,18 @@ class OrderFixtures extends Fixture implements DependentFixtureInterface
         $order2 = $this->orderRepository->createNew();
         $order2->addItem($this->orderItemRepository->createNew($subject4, 2));
 
+        $this->eventDispatcher->dispatch(new OrderBeforeCreateEvent($order0));
+        $this->eventDispatcher->dispatch(new OrderBeforeCreateEvent($order1));
+        $this->eventDispatcher->dispatch(new OrderBeforeCreateEvent($order2));
+
         $manager->persist($order0);
         $manager->persist($order1);
         $manager->persist($order2);
         $manager->flush();
+
+        $this->eventDispatcher->dispatch(new OrderCreatedEvent($order0));
+        $this->eventDispatcher->dispatch(new OrderCreatedEvent($order1));
+        $this->eventDispatcher->dispatch(new OrderCreatedEvent($order2));
 
         $this->addReference('order-0', $order0);
         $this->addReference('order-1', $order1);

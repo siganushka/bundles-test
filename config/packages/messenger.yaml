@@ -9,12 +9,11 @@ framework:
             # failed: 'doctrine://default?queue_name=failed'
             # sync: 'sync://'
             async: '%env(MESSENGER_TRANSPORT_DSN)%'
-            failed: '%env(MESSENGER_TRANSPORT_DSN)%'
 
         routing:
             # Route your messages to the transports
             # 'App\Message\YourMessage': async
-            'Siganushka\OrderBundle\Message\OrderCancelledMessage': async
+            'Siganushka\OrderBundle\Message\OrderCancelMessage': async
 
 # when@test:
 #    framework:
