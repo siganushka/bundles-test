@@ -239,7 +239,7 @@
         }
     },
     "symfony/ux-autocomplete": {
-        "version": "2.18",
+        "version": "2.21",
         "recipe": {
             "repo": "github.com/symfony/recipes",
             "branch": "main",

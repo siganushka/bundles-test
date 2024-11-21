@@ -7,8 +7,9 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Siganushka\OrderBundle\Model\OrderItemSubjectInterface;
 use Siganushka\ProductBundle\Entity\ProductVariant as BaseProductVariant;
+use Siganushka\ProductBundle\Repository\ProductVariantRepository;
 
-#[ORM\Entity]
+#[ORM\Entity(repositoryClass: ProductVariantRepository::class)]
 class ProductVariant extends BaseProductVariant implements OrderItemSubjectInterface
 {
     public function getName(): ?string

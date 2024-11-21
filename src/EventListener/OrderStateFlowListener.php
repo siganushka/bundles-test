@@ -6,7 +6,6 @@ namespace App\EventListener;
 
 use Siganushka\OrderBundle\Entity\Order;
 use Siganushka\OrderBundle\Enum\OrderState;
-use Siganushka\OrderBundle\Enum\OrderStateTransition;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Workflow\Event\GuardEvent;
 use Symfony\Component\Workflow\Event\TransitionEvent;
@@ -17,7 +16,7 @@ class OrderStateFlowListener implements EventSubscriberInterface
     {
         /** @var Order */
         $subject = $event->getSubject();
-        if ($subject->isFree() && OrderState::Confirmed === $subject->getState()) {
+        if ($subject->isFree() && OrderState::Processing === $subject->getState()) {
             $event->setBlocked(true);
         }
     }
@@ -28,15 +27,15 @@ class OrderStateFlowListener implements EventSubscriberInterface
         $subject = $event->getSubject();
         if ($subject->isFree()) {
             $marking = $event->getMarking();
-            $marking->mark(OrderState::Confirmed->value);
+            $marking->mark(OrderState::Processing->value);
         }
     }
 
     public static function getSubscribedEvents(): array
     {
         return [
-            GuardEvent::getName('order_state_flow', OrderStateTransition::Reset->value) => 'onGuard',
-            TransitionEvent::getName('order_state_flow', OrderStateTransition::Reset->value) => 'onTransition',
+            GuardEvent::getName('order_state_flow', 'reset') => 'onGuard',
+            TransitionEvent::getName('order_state_flow', 'reset') => 'onTransition',
         ];
     }
 }

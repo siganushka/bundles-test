@@ -10,7 +10,6 @@ return [
     Siganushka\GenericBundle\SiganushkaGenericBundle::class => ['all' => true],
     Knp\Bundle\PaginatorBundle\KnpPaginatorBundle::class => ['all' => true],
     Siganushka\MediaBundle\SiganushkaMediaBundle::class => ['all' => true],
-    Symfony\UX\Autocomplete\AutocompleteBundle::class => ['all' => true],
     Siganushka\ProductBundle\SiganushkaProductBundle::class => ['all' => true],
     Siganushka\OrderBundle\SiganushkaOrderBundle::class => ['all' => true],
     Siganushka\RegionBundle\SiganushkaRegionBundle::class => ['all' => true],
@@ -18,4 +17,5 @@ return [
     Siganushka\RequestTokenBundle\SiganushkaRequestTokenBundle::class => ['all' => true],
     Symfony\UX\StimulusBundle\StimulusBundle::class => ['all' => true],
     Symfony\Bundle\MonologBundle\MonologBundle::class => ['all' => true],
+    Symfony\UX\Autocomplete\AutocompleteBundle::class => ['all' => true],
 ];
