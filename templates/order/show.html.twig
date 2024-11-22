@@ -51,14 +51,7 @@
   <tr>
     <th class="text-end">{{ 'order.adjustments'|trans }}</th>
     <td class="text-end">
-      {% for adjustment in entity.adjustments %}
-        {% if adjustment.amount > 0 %}
-          <span class="text-danger">运费 +{{ adjustment.amount|money }}</span>
-        {% else %}
-          <span class="text-success">优惠 {{ adjustment.amount|money }}</span>
-        {% endif %}
-        <br />
-      {% endfor %}
+      {% include 'order/_adjustments.twig' with {adjustments: entity.adjustments} only %}
     </td>
   </tr>
   {% endif %}

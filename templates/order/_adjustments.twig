@@ -1,0 +1,12 @@
+<table class="w-100">
+  {% for adjustment in adjustments %}
+    <tr>
+      <td class="w-100 text-body-tertiary text-break px-2">{{ adjustment|trans }}</td>
+      {% if adjustment.amount > 0 %}
+        <td class="text-danger">+{{ adjustment.amount|money }}</td>
+      {% else %}
+        <td class="text-success">{{ adjustment.amount|money }}</td>
+      {% endif %}
+    </tr>
+  {% endfor %}
+</table>

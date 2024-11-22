@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Entity\Foo;
 use App\Entity\Order;
 use App\Entity\OrderItem;
 use App\Entity\ProductVariant;
 use App\Form\TestType;
+use App\Repository\FooRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Siganushka\OrderBundle\Generator\OrderNumberGeneratorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -22,21 +24,39 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 class IndexController extends AbstractController
 {
     #[Route('/')]
-    public function index(Request $request, EntityManagerInterface $entityManager, OrderNumberGeneratorInterface $numberGenerator): Response
+    public function index(
+        EntityManagerInterface $entityManager,
+        OrderNumberGeneratorInterface $numberGenerator,
+        FooRepository $fooRepository): Response
     {
         // $subject = $entityManager->find(ProductVariant::class, 109);
 
-        // // $entityManager->beginTransaction();
+        // $entityManager->beginTransaction();
 
-        // $order = new Order;
-        // $order->setNumber($numberGenerator->generate($order));
-        // $order->addItem(new OrderItem($subject, 2));
+        // $entity = new Order;
+        // $entity->setNumber($numberGenerator->generate($entity));
+        // $entity->addItem(new OrderItem($subject, 2));
 
-        // $entityManager->persist($order);
+        // $entityManager->persist($entity);
         // $entityManager->flush();
 
-        // // $entityManager->commit();
+        // $entityManager->commit();
 
+        // $foo = $fooRepository->findAll();
+        // dd($foo);
+
+        // $entity = new Foo();
+        // $entity->setName(uniqid());
+
+        // $entityManager->persist($entity);
+        // $entityManager->flush();
+
+        return $this->render('index/index.html.twig');
+    }
+
+    #[Route('/collection')]
+    public function collection(Request $request): Response
+    {
         $data = [
             'tags' => ['', '', 'baz'],
             'tests' => [
