@@ -52,7 +52,7 @@
       <table>
         {% for adjustment in entity.adjustments %}
           <tr>
-            <td class="text-end text-break w-100 px-2">{{ adjustment|trans }}</td>
+            <td class="text-end text-break w-100 px-2">{{ adjustment.label|trans }}</td>
             {% if adjustment.amount > 0 %}
               <td class="text-end text-danger">+{{ adjustment.amount|money }}</td>
             {% else %}

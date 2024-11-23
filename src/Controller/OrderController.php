@@ -93,7 +93,7 @@ class OrderController extends AbstractController
     }
 
     #[Route('/orders/{number}/workflow/{transition}')]
-    public function workflow(EntityManagerInterface $entityManager, WorkflowInterface $orderStateFlow, string $number, string $transition): Response
+    public function workflow(Request $request, EntityManagerInterface $entityManager, WorkflowInterface $orderStateFlow, string $number, string $transition): Response
     {
         $entity = $this->repository->findOneByNumber($number);
         if (!$entity) {
@@ -109,7 +109,7 @@ class OrderController extends AbstractController
 
             $this->addFlash('danger', $e->getMessage());
 
-            return $this->redirectToRoute('app_order_index');
+            return $this->tryRedirectToRoute($request, 'app_order_index');
         }
 
         $entityManager->flush();
@@ -117,7 +117,7 @@ class OrderController extends AbstractController
 
         $this->addFlash('success', 'Your changes were saved!');
 
-        return $this->redirectToRoute('app_order_index');
+        return $this->tryRedirectToRoute($request, 'app_order_index');
     }
 
     #[Route('/orders/{number}/show')]
@@ -134,7 +134,7 @@ class OrderController extends AbstractController
     }
 
     #[Route('/orders/{number}/delete')]
-    public function delete(EntityManagerInterface $entityManager, string $number): Response
+    public function delete(Request $request, EntityManagerInterface $entityManager, string $number): Response
     {
         $entity = $this->repository->findOneByNumber($number);
         if (!$entity) {
@@ -146,7 +146,7 @@ class OrderController extends AbstractController
 
         $this->addFlash('success', 'The resource has been deleted successfully!');
 
-        return $this->redirectToRoute('app_order_index');
+        return $this->tryRedirectToRoute($request, 'app_order_index');
     }
 
     #[Route('/orders/OrderType')]
@@ -181,5 +181,14 @@ class OrderController extends AbstractController
         return $this->render('order/form.html.twig', [
             'form' => $form,
         ]);
+    }
+
+    public function tryRedirectToRoute(Request $request, string $route, array $parameters = [], int $status = 302): Response
+    {
+        if ($referer = $request->headers->get('referer')) {
+            return $this->redirect($referer);
+        }
+
+        return $this->redirectToRoute($route, $parameters, $status);
     }
 }

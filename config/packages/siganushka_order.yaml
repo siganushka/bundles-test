@@ -4,4 +4,4 @@ siganushka_order:
     # order_adjustment_class: App\Entity\OrderAdjustment
     order_number_generator: Siganushka\OrderBundle\Generator\SnowflakeNumberGenerator
     order_item_subject_type: Siganushka\ProductBundle\Form\Field\ProductVariantAutocompleteField
-    order_expire_in: 60
+    order_cancelled_expires: 60
