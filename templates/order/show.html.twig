@@ -47,26 +47,28 @@
       {% include 'order/_items.twig' with {items: entity.items} only %}
     </td>
   </tr>
-  {% if entity.adjustments|length %}
   <tr>
-    <th class="text-end">{{ 'order.adjustments'|trans }}</th>
-    <td class="text-end">
-      {% include 'order/_adjustments.twig' with {adjustments: entity.adjustments} only %}
-    </td>
-  </tr>
-  {% endif %}
-  <tr>
-    <td colspan="65535">
-      <div class="float-end ps-2">
-        <strong class="text-danger d-inline-block">{{ entity.itemsTotal|money }}</strong>
-        <br />
-        <strong class="text-danger d-inline-block">{{ entity.total|money }}</strong>
-      </div>
-      <div class="float-end text-end">
-        {{ 'order.items_total'|trans }}
-        <br />
-        {{ 'order.total'|trans }}
-      </div>
+    <td class="text-end" colspan="2">
+      <table>
+        {% for adjustment in entity.adjustments %}
+          <tr>
+            <td class="text-end text-break w-100 px-2">{{ adjustment|trans }}</td>
+            {% if adjustment.amount > 0 %}
+              <td class="text-end text-danger">+{{ adjustment.amount|money }}</td>
+            {% else %}
+              <td class="text-end text-success">{{ adjustment.amount|money }}</td>
+            {% endif %}
+          </tr>
+        {% endfor %}
+        <tr>
+          <td class="text-end text-break w-100 px-2">{{ 'order.items_total'|trans }}</td>
+          <td class="text-end">{{ entity.itemsTotal|money }}</td>
+        </tr>
+        <tr>
+          <td class="text-end text-break w-100 px-2">{{ 'order.total'|trans }}</td>
+          <td class="text-end">{{ entity.total|money }}</td>
+        </tr>
+      </table>
     </td>
   </tr>
 </table>
