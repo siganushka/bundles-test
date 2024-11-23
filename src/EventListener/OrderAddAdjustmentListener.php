@@ -15,18 +15,25 @@ class OrderAddAdjustmentListener
 {
     public function __invoke(OrderBeforeCreateEvent $event): void
     {
-        $adjustment1 = new ShippingFee();
-        $adjustment1->setAmount(random_int(1, 9) * 100);
+        $adjustments = [
+            (new ShippingFee())->setAmount(600),
+            (new RandomDiscount())->setAmount(-300),
+            (new CouponDiscount())->setAmount(-500),
+        ];
 
-        $adjustment2 = new RandomDiscount();
-        $adjustment2->setAmount(-random_int(1, 3) * 100);
+        $num = random_int(0, 3);
+        if (0 === $num) {
+            return;
+        }
 
-        $adjustment3 = new CouponDiscount();
-        $adjustment3->setAmount(-random_int(1, 9) * 100);
+        $indexs = array_rand($adjustments, $num);
+        if (!\is_array($indexs)) {
+            $indexs = [$indexs];
+        }
 
         $entity = $event->getOrder();
-        $entity->addAdjustment($adjustment1);
-        $entity->addAdjustment($adjustment2);
-        $entity->addAdjustment($adjustment3);
+        foreach ($indexs as $index) {
+            $entity->addAdjustment($adjustments[$index]);
+        }
     }
 }
