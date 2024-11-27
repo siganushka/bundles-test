@@ -18,10 +18,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
-#[AsCommand(
-    name: 'app:order:create-performance-test',
-    description: 'Add a short description for your command',
-)]
+#[AsCommand('app:order:create-performance-test', 'Add a short description for your command')]
 class OrderCreatePerformanceTestCommand extends Command
 {
     public function __construct(
