@@ -1,2 +1,9 @@
 siganushka_media:
     media_class: App\Entity\Media
+    channels:
+        test_img:
+            constraint: image
+            constraint_options: { mimeTypes: ['image/png'] }
+        test_pdf:
+            constraint: file
+            constraint_options: { mimeTypes: ['application/pdf', 'application/x-pdf'] }

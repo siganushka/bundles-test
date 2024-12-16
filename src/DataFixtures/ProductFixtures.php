@@ -86,11 +86,11 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
         $option9->addValue($this->productOptionValueRepository->createNew(null, '3XL', '建议180-200斤'));
 
         $option10 = $this->productOptionRepository->createNew('辣度');
-        $option10->addValue($this->productOptionValueRepository->createNew(null, '不辣', null, $this->getReference('media-8')));
-        $option10->addValue($this->productOptionValueRepository->createNew(null, '微辣', null, $this->getReference('media-9')));
-        $option10->addValue($this->productOptionValueRepository->createNew(null, '中辣', null, $this->getReference('media-10')));
-        $option10->addValue($this->productOptionValueRepository->createNew(null, '特辣', null, $this->getReference('media-11')));
-        $option10->addValue($this->productOptionValueRepository->createNew(null, '变态辣', null, $this->getReference('media-12')));
+        $option10->addValue($this->productOptionValueRepository->createNew(null, '不辣', null, $this->getReference('media-8', Media::class)));
+        $option10->addValue($this->productOptionValueRepository->createNew(null, '微辣', null, $this->getReference('media-9', Media::class)));
+        $option10->addValue($this->productOptionValueRepository->createNew(null, '中辣', null, $this->getReference('media-10', Media::class)));
+        $option10->addValue($this->productOptionValueRepository->createNew(null, '特辣', null, $this->getReference('media-11', Media::class)));
+        $option10->addValue($this->productOptionValueRepository->createNew(null, '变态辣', null, $this->getReference('media-12', Media::class)));
 
         $product0 = $this->productRepository->createNew();
         $product0->setName('苹果 iPhone 15');

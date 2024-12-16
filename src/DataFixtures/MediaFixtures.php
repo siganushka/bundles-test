@@ -8,7 +8,6 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Siganushka\MediaBundle\ChannelRegistry;
 use Siganushka\MediaBundle\Event\MediaSaveEvent;
-use Siganushka\ProductBundle\Media\ProductImg;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
@@ -27,7 +26,7 @@ class MediaFixtures extends Fixture
         $filesystem = new Filesystem();
 
         $channels = [
-            ProductImg::class => $finder->in(__DIR__.'/product'),
+            'product_img' => $finder->in(__DIR__.'/product'),
         ];
 
         $index = 0;

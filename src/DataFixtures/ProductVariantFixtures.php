@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\DataFixtures;
 
+use App\Entity\Product;
+use App\Repository\ProductVariantRepository;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
-use Siganushka\ProductBundle\Entity\Product;
-use Siganushka\ProductBundle\Repository\ProductVariantRepository;
 
 class ProductVariantFixtures extends Fixture implements DependentFixtureInterface
 {
@@ -18,19 +18,18 @@ class ProductVariantFixtures extends Fixture implements DependentFixtureInterfac
 
     public function load(ObjectManager $manager): void
     {
-        /** @var array<int, Product> */
         $products = [
-            $this->getReference('product-0'),
-            $this->getReference('product-1'),
-            $this->getReference('product-2'),
-            $this->getReference('product-3'),
-            $this->getReference('product-4'),
-            $this->getReference('product-5'),
-            $this->getReference('product-6'),
-            $this->getReference('product-7'),
-            $this->getReference('product-8'),
-            $this->getReference('product-9'),
-            $this->getReference('product-10'),
+            $this->getReference('product-0', Product::class),
+            $this->getReference('product-1', Product::class),
+            $this->getReference('product-2', Product::class),
+            $this->getReference('product-3', Product::class),
+            $this->getReference('product-4', Product::class),
+            $this->getReference('product-5', Product::class),
+            $this->getReference('product-6', Product::class),
+            $this->getReference('product-7', Product::class),
+            $this->getReference('product-8', Product::class),
+            $this->getReference('product-9', Product::class),
+            $this->getReference('product-10', Product::class),
         ];
 
         $prices = [100, 200, 300, 400, 500];

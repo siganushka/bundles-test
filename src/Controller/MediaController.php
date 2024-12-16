@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Media\TestImg;
-use App\Media\TestPdf;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Siganushka\MediaBundle\Form\MediaUploadType;
@@ -99,11 +97,11 @@ class MediaController extends AbstractController
             ->add('media4', MediaType::class, [
                 'label' => '自定义尺寸',
                 'style' => 'width: 100%; height: 240px',
-                'channel' => TestImg::class,
+                'channel' => 'test_img',
             ])
             ->add('media5', MediaType::class, [
                 'label' => '自定义文件类型',
-                'channel' => TestPdf::class,
+                'channel' => 'test_pdf',
             ])
             ->add('media6', MediaType::class, [
                 'label' => '自定义表单验证',

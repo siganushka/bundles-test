@@ -4,12 +4,10 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Entity\Foo;
 use App\Entity\Order;
 use App\Entity\OrderItem;
 use App\Entity\ProductVariant;
 use App\Form\TestType;
-use App\Repository\FooRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Siganushka\OrderBundle\Generator\OrderNumberGeneratorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -26,8 +24,7 @@ class IndexController extends AbstractController
     #[Route('/')]
     public function index(
         EntityManagerInterface $entityManager,
-        OrderNumberGeneratorInterface $numberGenerator,
-        FooRepository $fooRepository): Response
+        OrderNumberGeneratorInterface $numberGenerator): Response
     {
         // $subject = $entityManager->find(ProductVariant::class, 109);
 
@@ -41,15 +38,6 @@ class IndexController extends AbstractController
         // $entityManager->flush();
 
         // $entityManager->commit();
-
-        // $foo = $fooRepository->findAll();
-        // dd($foo);
-
-        // $entity = new Foo();
-        // $entity->setName(uniqid());
-
-        // $entityManager->persist($entity);
-        // $entityManager->flush();
 
         return $this->render('index/index.html.twig');
     }

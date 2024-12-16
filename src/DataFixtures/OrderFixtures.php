@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\DataFixtures;
 
+use App\Entity\ProductVariant;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
@@ -24,11 +25,11 @@ class OrderFixtures extends Fixture implements DependentFixtureInterface
 
     public function load(ObjectManager $manager): void
     {
-        $subject0 = $this->getReference('product-0-variant-0');
-        $subject1 = $this->getReference('product-0-variant-1');
-        $subject2 = $this->getReference('product-0-variant-2');
-        $subject3 = $this->getReference('product-8-variant-0');
-        $subject4 = $this->getReference('product-10-variant-0');
+        $subject0 = $this->getReference('product-0-variant-0', ProductVariant::class);
+        $subject1 = $this->getReference('product-0-variant-1', ProductVariant::class);
+        $subject2 = $this->getReference('product-0-variant-2', ProductVariant::class);
+        $subject3 = $this->getReference('product-8-variant-0', ProductVariant::class);
+        $subject4 = $this->getReference('product-10-variant-0', ProductVariant::class);
 
         $order0 = $this->orderRepository->createNew();
         $order0->addItem($this->orderItemRepository->createNew($subject0, 2));

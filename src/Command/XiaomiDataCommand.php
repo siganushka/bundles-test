@@ -12,7 +12,6 @@ use Siganushka\ProductBundle\Entity\Product;
 use Siganushka\ProductBundle\Entity\ProductOption;
 use Siganushka\ProductBundle\Entity\ProductOptionValue;
 use Siganushka\ProductBundle\Entity\ProductVariant;
-use Siganushka\ProductBundle\Media\ProductImg;
 use Siganushka\ProductBundle\Model\ProductVariantChoice;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
@@ -87,7 +86,7 @@ class XiaomiDataCommand extends Command
             ]);
 
             $output->writeln(\sprintf('<info>%s: 下载主图</info>', $current));
-            $productImg = $this->handleUploadMedia(ProductImg::class, $product['goods_list'][0]['goods_info']['img_url']);
+            $productImg = $this->handleUploadMedia('product_img', $product['goods_list'][0]['goods_info']['img_url']);
 
             $entity = new Product();
             $entity->setImg($productImg);
@@ -136,7 +135,7 @@ class XiaomiDataCommand extends Command
                 }
 
                 $output->writeln(\sprintf('<info>%s: 下载第 %d 张商品图</info>', $current, $index));
-                $variantImg = $this->handleUploadMedia(ProductImg::class, $variantsMapping[$key]['img_url']);
+                $variantImg = $this->handleUploadMedia('product_img', $variantsMapping[$key]['img_url']);
 
                 $variant = new ProductVariant($entity, $choice);
                 $variant->setPrice((int) ($variantsMapping[$key]['price'] * 100));
