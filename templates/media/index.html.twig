@@ -19,7 +19,7 @@
         <td><a href="{{ entity.url }}" target="_blank" class="d-inline-block text-truncate" style="max-width: 200px" title="{{ entity.name }}">{{ entity.name }}</a></td>
         <td>{{ entity.extension }}</td>
         <td>{{ entity.mimeType }}</td>
-        <td>{{ entity.sizeStr }}</td>
+        <td>{{ entity.size }}</td>
         <td>{{ entity.width and entity.height ? entity.width ~ '*' ~ entity.height : '-' }}</td>
         <td>
           <span class="badge rounded-pill text-bg-{{ entity.image ? 'success' : 'secondary' }}">{{ entity.image ? 'generic.yes'|trans : 'generic.no'|trans }}</span>
