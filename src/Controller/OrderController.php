@@ -29,7 +29,7 @@ class OrderController extends AbstractController
     #[Route('/orders')]
     public function index(Request $request, PaginatorInterface $paginator): Response
     {
-        $queryBuilder = $this->repository->createQueryBuilder('m');
+        $queryBuilder = $this->repository->createQueryBuilderWithOrdered('m');
 
         $page = $request->query->getInt('page', 1);
         $size = $request->query->getInt('size', 10);

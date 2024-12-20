@@ -26,7 +26,7 @@ class MediaFixtures extends Fixture
         $filesystem = new Filesystem();
 
         $channels = [
-            'product_img' => $finder->in(__DIR__.'/product'),
+            'product' => $finder->in(__DIR__.'/product'),
         ];
 
         $index = 0;
@@ -37,7 +37,7 @@ class MediaFixtures extends Fixture
 
                 $filesystem->copy($file->getPathname(), $target, true);
 
-                $event = MediaSaveEvent::createFromPath($channel, $target);
+                $event = new MediaSaveEvent($channel, new \SplFileInfo($target));
                 $this->eventDispatcher->dispatch($event);
 
                 $media = $event->getMedia();
