@@ -12,8 +12,8 @@
       <tr class="table-light">
         <th style="min-width: 60px">ID</th>
         <th style="min-width: 260px">{{ 'product.name'|trans }}</th>
-        <th style="min-width: 260px">{{ 'product_variant.price'|trans }}</th>
-        <th style="min-width: 80px">{{ 'product.variants'|trans }}</th>
+        <th style="min-width: 160px">{{ 'product_variant.price'|trans }}</th>
+        <th style="min-width: 160px">{{ 'generic.created_at'|trans }}</th>
         <th style="min-width: 140px">{{ 'generic.action'|trans }}</th>
       </tr>
       {% for entity in pagination %}
@@ -45,16 +45,13 @@
             -
           {% endif %}
         </td>
+        <td>{{ entity.createdAt|date }}</td>
         <td>
           {% set _variants = entity.variants|length %}
           {% set _choices = entity.choices|length ?: 1 %}
-
-          <span class="badge rounded-pill text-bg-{{ _variants < _choices ? 'danger' : 'primary' }}">
-            {{ _variants }}/{{ _choices }}
-          </span>
-        </td>
-        <td>
-          <a href="{{ path('app_product_variants', {id: entity.id}) }}">{{ 'product.variants'|trans }}</a>
+          <a href="{{ path('app_product_variants', {id: entity.id}) }}">
+            {{ 'product.variants'|trans }} <i>({{ _variants }}/{{ _choices }})</i>
+          </a>
           <a href="{{ path('app_product_edit', {id: entity.id}) }}">{{ 'generic.edit'|trans }}</a>
           <a href="{{ path('app_product_delete', {id: entity.id}) }}" onclick="return confirm('{{ 'generic.delete_confirmation'|trans }}')">{{ 'generic.delete'|trans }}</a>
         </td>

@@ -9,7 +9,7 @@ framework:
             # failed: 'doctrine://default?queue_name=failed'
             # sync: 'sync://'
             async: '%env(MESSENGER_TRANSPORT_DSN)%'
-            failed: 'doctrine://default?table_name=app_message&queue_name=failed'
+            failed: 'doctrine://default?queue_name=failed'
 
         routing:
             # Route your messages to the transports

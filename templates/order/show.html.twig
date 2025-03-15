@@ -34,12 +34,12 @@
   {% if entity.updatedAt %}
   <tr>
     <th class="text-end">{{ 'generic.updated_at'|trans }}</th>
-    <td>{{ entity.updatedAt|date('Y-m-d H:i:s') }}</td>
+    <td>{{ entity.updatedAt|date }}</td>
   </tr>
   {% endif %}
   <tr>
     <th class="text-end">{{ 'generic.created_at'|trans }}</th>
-    <td>{{ entity.createdAt|date('Y-m-d H:i:s') }}</td>
+    <td>{{ entity.createdAt|date }}</td>
   </tr>
   <tr>
     <th class="text-end">{{ 'order.items'|trans }}</th>
