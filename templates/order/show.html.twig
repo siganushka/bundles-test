@@ -11,21 +11,21 @@
   </tr>
   <tr>
     <th class="text-end">{{ 'order.items_total'|trans }}</th>
-    <td>{{ entity.itemsTotal|money }}</td>
+    <td>{{ entity.itemsTotal|currency }}</td>
   </tr>
   <tr>
     <th class="text-end">{{ 'order.adjustments_total'|trans }}</th>
     <td>
       {% if entity.adjustmentsTotal > 0 %}
-        <span class="text-danger">+{{ entity.adjustmentsTotal|money }}</span>
+        <span class="text-danger">+{{ entity.adjustmentsTotal|currency }}</span>
       {% else %}
-        <span class="text-success">{{ entity.adjustmentsTotal|money }}</span>
+        <span class="text-success">{{ entity.adjustmentsTotal|currency }}</span>
       {% endif %}
     </td>
   </tr>
   <tr>
     <th class="text-end">{{ 'order.total'|trans }}</th>
-    <td>{{ entity.total|money }}</td>
+    <td>{{ entity.total|currency }}</td>
   </tr>
  <tr>
     <th class="text-end">{{ 'order.state'|trans }}</th>
@@ -34,12 +34,12 @@
   {% if entity.updatedAt %}
   <tr>
     <th class="text-end">{{ 'generic.updated_at'|trans }}</th>
-    <td>{{ entity.updatedAt|date }}</td>
+    <td>{{ entity.updatedAt|datetime }}</td>
   </tr>
   {% endif %}
   <tr>
     <th class="text-end">{{ 'generic.created_at'|trans }}</th>
-    <td>{{ entity.createdAt|date }}</td>
+    <td>{{ entity.createdAt|datetime }}</td>
   </tr>
   <tr>
     <th class="text-end">{{ 'order.items'|trans }}</th>
@@ -54,19 +54,19 @@
           <tr>
             <td class="text-end text-break w-100 px-2">{{ adjustment.label|trans }}</td>
             {% if adjustment.amount > 0 %}
-              <td class="text-end text-danger">+{{ adjustment.amount|money }}</td>
+              <td class="text-end text-danger">+{{ adjustment.amount|currency }}</td>
             {% else %}
-              <td class="text-end text-success">{{ adjustment.amount|money }}</td>
+              <td class="text-end text-success">{{ adjustment.amount|currency }}</td>
             {% endif %}
           </tr>
         {% endfor %}
         <tr>
           <td class="text-end text-break w-100 px-2">{{ 'order.items_total'|trans }}</td>
-          <td class="text-end">{{ entity.itemsTotal|money }}</td>
+          <td class="text-end">{{ entity.itemsTotal|currency }}</td>
         </tr>
         <tr>
           <td class="text-end text-break w-100 px-2">{{ 'order.total'|trans }}</td>
-          <td class="text-end">{{ entity.total|money }}</td>
+          <td class="text-end">{{ entity.total|currency }}</td>
         </tr>
       </table>
     </td>

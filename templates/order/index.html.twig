@@ -27,13 +27,13 @@
             {% include 'order/_items_entry.twig' with {item: item, index: loop.index0, quantity: true} only %}
           {% endfor %}
         </td>
-        <td>{{ entity.itemsTotal|money }}</td>
-        <td>{{ entity.adjustmentsTotal|money }}</td>
-        <td>{{ entity.total|money }}</td>
+        <td>{{ entity.itemsTotal|currency }}</td>
+        <td>{{ entity.adjustmentsTotal|currency }}</td>
+        <td>{{ entity.total|currency }}</td>
         <td>
           <span class="badge text-bg-{{ entity.state.theme }}">{{ entity.state|trans }}</span>
         </td>
-        <td>{{ entity.createdAt|date }}</td>
+        <td>{{ entity.createdAt|datetime }}</td>
         <td>
           <div class="d-inline-block">
             <a class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">流转</a>

@@ -23,7 +23,7 @@
             {% endif %}
           </span>
         </td>
-        <td>{{ entity.price|money }}</td>
+        <td>{{ entity.price|currency }}</td>
         <td>{{ entity.inventory|default('-') }}</td>
         <td>
           <a href="{{ path('app_productvariant_edit', {id: entity.id}) }}">{{ 'generic.edit'|trans }}</a>

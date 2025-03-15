@@ -37,15 +37,15 @@
           {% if _prices|length %}
             {% set min = min(_prices) %}
             {% set max = max(_prices) %}
-            {{ min|money }}
+            {{ min|currency }}
             {%- if min != max -%}
-              -{{ max|money }}
+              -{{ max|currency }}
             {% endif %}
           {% else %}
             -
           {% endif %}
         </td>
-        <td>{{ entity.createdAt|date }}</td>
+        <td>{{ entity.createdAt|datetime }}</td>
         <td>
           {% set _variants = entity.variants|length %}
           {% set _choices = entity.choices|length ?: 1 %}
