@@ -8,7 +8,9 @@
   {% for item in items %}
   <tr>
     <td>
-      {% include 'order/_items_entry.twig' with {item: item, index: loop.index0} only %}
+      <div class="py-1">
+        {% include 'order/_items_entry.twig' with {item} only %}
+      </div>
     </td>
     <td class="text-end">{{ item.price|currency }}</td>
     <td class="text-end">{{ item.quantity }}</td>

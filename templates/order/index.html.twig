@@ -23,9 +23,11 @@
       <tr>
         <td><code class="user-select-all">{{ entity.number }}</code></td>
         <td>
-          {% for item in entity.items %}
-            {% include 'order/_items_entry.twig' with {item: item, index: loop.index0, quantity: true} only %}
-          {% endfor %}
+          <div class="d-flex flex-column row-gap-2">
+            {% for item in entity.items %}
+              {% include 'order/_items_entry.twig' with {item} only %}
+            {% endfor %}
+          </div>
         </td>
         <td>{{ entity.itemsTotal|currency }}</td>
         <td>{{ entity.adjustmentsTotal|currency }}</td>
