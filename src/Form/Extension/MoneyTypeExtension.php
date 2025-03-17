@@ -15,15 +15,13 @@ class MoneyTypeExtension extends AbstractTypeExtension
 {
     public function __construct(
         #[Autowire(env: 'APP_CURRENCY')]
-        private readonly string $currencyCode)
+        private readonly string $currencyCode = 'zh_CN')
     {
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $scale  = function (Options $options) {
-            return Currencies::getFractionDigits($options['currency']);
-        };
+        $scale = fn (Options $options) => Currencies::getFractionDigits($options['currency']);
 
         $divisor = function (Options $options) {
             return match ($options['scale']) {
