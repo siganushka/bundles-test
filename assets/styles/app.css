@@ -1,0 +1,3 @@
+.ts-control > input::placeholder {
+  color: #212529;
+}
