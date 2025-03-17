@@ -12,8 +12,13 @@ use Doctrine\ORM\EntityManagerInterface;
 use Siganushka\OrderBundle\Generator\OrderNumberGeneratorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\CountryType;
+use Symfony\Component\Form\Extension\Core\Type\CurrencyType;
+use Symfony\Component\Form\Extension\Core\Type\LanguageType;
+use Symfony\Component\Form\Extension\Core\Type\LocaleType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TimezoneType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -84,6 +89,30 @@ class IndexController extends AbstractController
                 'allow_add' => true,
                 'allow_delete' => true,
             ])
+            ->add('submit', SubmitType::class)
+        ;
+
+        $form = $builder->getForm();
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            dd(__METHOD__, $form->getData());
+        }
+
+        return $this->render('index/index.html.twig', [
+            'form' => $form,
+        ]);
+    }
+
+    #[Route('/intl')]
+    public function intl(Request $request): Response
+    {
+        $builder = $this->createFormBuilder()
+            ->add('country', CountryType::class)
+            ->add('currency', CurrencyType::class)
+            ->add('language', LanguageType::class)
+            ->add('locale', LocaleType::class)
+            ->add('timezone', TimezoneType::class)
             ->add('submit', SubmitType::class)
         ;
 
