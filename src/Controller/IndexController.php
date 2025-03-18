@@ -51,14 +51,17 @@ class IndexController extends AbstractController
     public function collection(Request $request): Response
     {
         $data = [
-            'tags' => ['', '', 'baz'],
+            'text' => 'CollectionType Demo',
+            'tags' => ['foo', 'bar', 'baz'],
             'tests' => [
-                ['foo' => 'aaa'],
-                ['foo' => 'bbb', 'bar' => 16],
+                ['foo' => 'aaa', 'bar' => 16],
+                ['foo' => 'bbb', 'bar' => 32],
+                ['foo' => 'ccc', 'bar' => 64],
             ],
         ];
 
         $builder = $this->createFormBuilder($data)
+            ->add('text', TextType::class)
             ->add('tags', CollectionType::class, [
                 'entry_type' => TextType::class,
                 'entry_options' => [

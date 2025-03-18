@@ -20,9 +20,12 @@ class TestType extends AbstractType
                 'constraints' => new NotBlank(),
                 'row_attr' => ['class' => 'foo_class'],
             ])
-            ->add('bar', NumberType::class, [
+            ->add('bar', TextType::class, [
                 'constraints' => new NotBlank(),
                 'row_attr' => ['class' => 'bar_class'],
+            ])
+            ->add('baz', NumberType::class, [
+                'row_attr' => ['class' => 'baz_class'],
             ])
         ;
     }

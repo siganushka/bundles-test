@@ -1,3 +1,11 @@
+[data-siganushka-generic-collection-target=entry] > td:first-child {
+  padding-left: 0;
+}
+
+[data-siganushka-generic-collection-target=entry] > td:last-child {
+  padding-right: 0;
+}
+
 .ts-control > input::placeholder {
   color: #212529;
 }

@@ -1787,7 +1787,7 @@
             "dist": {
                 "type": "path",
                 "url": "../generic-bundle",
-                "reference": "97b8c1752d8b881b50c10fae5688e7efa5ea8331"
+                "reference": "c25f17fa42d175f669232a6438345401c51ab143"
             },
             "require": {
                 "php": ">=8.1",
