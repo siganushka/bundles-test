@@ -1787,7 +1787,7 @@
             "dist": {
                 "type": "path",
                 "url": "../generic-bundle",
-                "reference": "c25f17fa42d175f669232a6438345401c51ab143"
+                "reference": "02277c3a73fdbb0668783727c2d8350ed45837a4"
             },
             "require": {
                 "php": ">=8.1",
@@ -1913,7 +1913,7 @@
             "dist": {
                 "type": "path",
                 "url": "../order-bundle",
-                "reference": "e1151eaeeb4891cfe4d71367f3449ff82fc7e406"
+                "reference": "8ca4d2bdf6a25b6f79353b9b0297f5324fd6f67b"
             },
             "require": {
                 "knplabs/knp-components": "^4.4|^5.0",
@@ -2034,7 +2034,7 @@
             "dist": {
                 "type": "path",
                 "url": "../region-bundle",
-                "reference": "c89aeec8b46252574fc1256a0c50dc1758aa42dd"
+                "reference": "e32821478332dfd1dec53e4d5c0cd798a97d00c7"
             },
             "require": {
                 "php": ">=8.1",
