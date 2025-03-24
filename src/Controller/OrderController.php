@@ -47,7 +47,7 @@ class OrderController extends AbstractController
         $entity = $this->repository->createNew();
 
         $form = $this->createForm(OrderType::class, $entity);
-        $form->add('Submit', SubmitType::class, ['label' => 'generic.submit']);
+        $form->add('Submit', SubmitType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -77,7 +77,7 @@ class OrderController extends AbstractController
         }
 
         $form = $this->createForm(OrderType::class, $entity);
-        $form->add('Submit', SubmitType::class, ['label' => 'generic.save']);
+        $form->add('Submit', SubmitType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -153,7 +153,7 @@ class OrderController extends AbstractController
     public function OrderType(Request $request): Response
     {
         $form = $this->createForm(OrderType::class)
-            ->add('Submit', SubmitType::class, ['label' => 'generic.submit'])
+            ->add('Submit', SubmitType::class)
         ;
 
         $form->handleRequest($request);
@@ -170,7 +170,7 @@ class OrderController extends AbstractController
     public function OrderItemType(Request $request): Response
     {
         $form = $this->createForm(OrderItemType::class)
-            ->add('Submit', SubmitType::class, ['label' => 'generic.submit'])
+            ->add('Submit', SubmitType::class)
         ;
 
         $form->handleRequest($request);

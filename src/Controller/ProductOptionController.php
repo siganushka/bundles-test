@@ -28,7 +28,7 @@ class ProductOptionController extends AbstractController
         }
 
         $form = $this->createForm(ProductOptionType::class, $entity);
-        $form->add('submit', SubmitType::class, ['label' => 'generic.save']);
+        $form->add('submit', SubmitType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
