@@ -71,10 +71,8 @@ class OrderController extends AbstractController
     #[Route('/orders/{number}/edit')]
     public function edit(Request $request, EntityManagerInterface $entityManager, string $number): Response
     {
-        $entity = $this->repository->findOneByNumber($number);
-        if (!$entity) {
-            throw $this->createNotFoundException(\sprintf('Resource #%d not found.', $number));
-        }
+        $entity = $this->repository->findOneByNumber($number)
+            ?? throw $this->createNotFoundException();
 
         $form = $this->createForm(OrderType::class, $entity);
         $form->add('Submit', SubmitType::class);
@@ -95,10 +93,8 @@ class OrderController extends AbstractController
     #[Route('/orders/{number}/workflow/{transition}')]
     public function workflow(Request $request, EntityManagerInterface $entityManager, WorkflowInterface $orderStateFlow, string $number, string $transition): Response
     {
-        $entity = $this->repository->findOneByNumber($number);
-        if (!$entity) {
-            throw $this->createNotFoundException(\sprintf('Resource #%d not found.', $number));
-        }
+        $entity = $this->repository->findOneByNumber($number)
+            ?? throw $this->createNotFoundException();
 
         $entityManager->beginTransaction();
 
@@ -123,10 +119,8 @@ class OrderController extends AbstractController
     #[Route('/orders/{number}/show')]
     public function show(string $number): Response
     {
-        $entity = $this->repository->findOneByNumber($number);
-        if (!$entity) {
-            throw $this->createNotFoundException(\sprintf('Resource #%d not found.', $number));
-        }
+        $entity = $this->repository->findOneByNumber($number)
+            ?? throw $this->createNotFoundException();
 
         return $this->render('order/show.html.twig', [
             'entity' => $entity,
@@ -136,10 +130,8 @@ class OrderController extends AbstractController
     #[Route('/orders/{number}/delete')]
     public function delete(Request $request, EntityManagerInterface $entityManager, string $number): Response
     {
-        $entity = $this->repository->findOneByNumber($number);
-        if (!$entity) {
-            throw $this->createNotFoundException(\sprintf('Resource #%d not found.', $number));
-        }
+        $entity = $this->repository->findOneByNumber($number)
+            ?? throw $this->createNotFoundException();
 
         $entityManager->remove($entity);
         $entityManager->flush();

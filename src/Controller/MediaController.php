@@ -42,10 +42,8 @@ class MediaController extends AbstractController
     #[Route('/media/{hash}/delete')]
     public function delete(EntityManagerInterface $entityManager, string $hash): Response
     {
-        $entity = $this->repository->findOneByHash($hash);
-        if (!$entity) {
-            throw $this->createNotFoundException(\sprintf('Resource #%d not found.', $hash));
-        }
+        $entity = $this->repository->findOneByHash($hash)
+            ?? throw $this->createNotFoundException();
 
         $entityManager->remove($entity);
         $entityManager->flush();

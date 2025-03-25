@@ -1290,16 +1290,16 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "3.8.1",
+            "version": "3.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "aef6ee73a77a66e404dd6540934a9ef1b3c855b4"
+                "reference": "10d85740180ecba7896c87e06a166e0c95a0e3b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/aef6ee73a77a66e404dd6540934a9ef1b3c855b4",
-                "reference": "aef6ee73a77a66e404dd6540934a9ef1b3c855b4",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/10d85740180ecba7896c87e06a166e0c95a0e3b6",
+                "reference": "10d85740180ecba7896c87e06a166e0c95a0e3b6",
                 "shasum": ""
             },
             "require": {
@@ -1377,7 +1377,7 @@
             ],
             "support": {
                 "issues": "https://github.com/Seldaek/monolog/issues",
-                "source": "https://github.com/Seldaek/monolog/tree/3.8.1"
+                "source": "https://github.com/Seldaek/monolog/tree/3.9.0"
             },
             "funding": [
                 {
@@ -1389,7 +1389,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-12-05T17:15:07+00:00"
+            "time": "2025-03-24T10:02:05+00:00"
         },
         {
             "name": "psr/cache",
@@ -1761,7 +1761,7 @@
             "dist": {
                 "type": "path",
                 "url": "../media-bundle",
-                "reference": "a8e9d5773c962d271cee999dd7aca866b0d9de08"
+                "reference": "7a074c645af74483cc0857b0f7443d07b3670c75"
             },
             "require": {
                 "ext-fileinfo": "*",
@@ -1822,7 +1822,7 @@
             "dist": {
                 "type": "path",
                 "url": "../order-bundle",
-                "reference": "8ca4d2bdf6a25b6f79353b9b0297f5324fd6f67b"
+                "reference": "6a9e44fdc6870f3f05007c858b30098e83443379"
             },
             "require": {
                 "knplabs/knp-components": "^4.4|^5.0",
@@ -1883,7 +1883,7 @@
             "dist": {
                 "type": "path",
                 "url": "../product-bundle",
-                "reference": "fdaa1382f1aa7bb2e239bb238ce35989bedb19cc"
+                "reference": "dccf483ea776e954eb60e7cafd6f92356fa62805"
             },
             "require": {
                 "bentools/cartesian-product": "^1.4",
@@ -1943,7 +1943,7 @@
             "dist": {
                 "type": "path",
                 "url": "../region-bundle",
-                "reference": "e32821478332dfd1dec53e4d5c0cd798a97d00c7"
+                "reference": "2f8ab3fd9ef433d30887e280f39162d48978790c"
             },
             "require": {
                 "php": ">=8.1",

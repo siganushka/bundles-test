@@ -67,10 +67,8 @@ class ProductController extends AbstractController
     #[Route('/products/{id<\d+>}/edit')]
     public function edit(Request $request, EntityManagerInterface $entityManager, int $id): Response
     {
-        $entity = $this->repository->find($id);
-        if (!$entity) {
-            throw $this->createNotFoundException(\sprintf('Resource #%d not found.', $id));
-        }
+        $entity = $this->repository->find($id)
+            ?? throw $this->createNotFoundException();
 
         $form = $this->createForm(ProductType::class, $entity);
         $form->add('save', SubmitType::class);
@@ -91,10 +89,8 @@ class ProductController extends AbstractController
     #[Route('/products/{id<\d+>}/delete')]
     public function delete(EntityManagerInterface $entityManager, int $id): Response
     {
-        $entity = $this->repository->find($id);
-        if (!$entity) {
-            throw $this->createNotFoundException(\sprintf('Resource #%d not found.', $id));
-        }
+        $entity = $this->repository->find($id)
+            ?? throw $this->createNotFoundException();
 
         $entityManager->remove($entity);
         $entityManager->flush();
@@ -107,10 +103,8 @@ class ProductController extends AbstractController
     #[Route('/products/{id<\d+>}/variants')]
     public function variants(Request $request, EntityManagerInterface $entityManager, int $id): Response
     {
-        $entity = $this->repository->find($id);
-        if (!$entity) {
-            throw $this->createNotFoundException(\sprintf('Resource #%d not found.', $id));
-        }
+        $entity = $this->repository->find($id)
+            ?? throw $this->createNotFoundException();
 
         $form = $this->createForm(ProductVariantCollectionType::class, $entity);
         $form->add('submit', SubmitType::class);

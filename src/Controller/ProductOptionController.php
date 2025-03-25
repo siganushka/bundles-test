@@ -22,10 +22,8 @@ class ProductOptionController extends AbstractController
     #[Route('/product-options/{id<\d+>}/edit')]
     public function edit(Request $request, EntityManagerInterface $entityManager, int $id): Response
     {
-        $entity = $this->repository->find($id);
-        if (!$entity) {
-            throw $this->createNotFoundException(\sprintf('Resource #%d not found.', $id));
-        }
+        $entity = $this->repository->find($id)
+            ?? throw $this->createNotFoundException();
 
         $form = $this->createForm(ProductOptionType::class, $entity);
         $form->add('submit', SubmitType::class);
