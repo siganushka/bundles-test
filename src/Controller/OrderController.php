@@ -47,7 +47,7 @@ class OrderController extends AbstractController
         $entity = $this->repository->createNew();
 
         $form = $this->createForm(OrderType::class, $entity);
-        $form->add('Submit', SubmitType::class);
+        $form->add('submit', SubmitType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -75,7 +75,7 @@ class OrderController extends AbstractController
             ?? throw $this->createNotFoundException();
 
         $form = $this->createForm(OrderType::class, $entity);
-        $form->add('Submit', SubmitType::class);
+        $form->add('submit', SubmitType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -145,7 +145,7 @@ class OrderController extends AbstractController
     public function OrderType(Request $request): Response
     {
         $form = $this->createForm(OrderType::class)
-            ->add('Submit', SubmitType::class)
+            ->add('submit', SubmitType::class)
         ;
 
         $form->handleRequest($request);
@@ -162,7 +162,7 @@ class OrderController extends AbstractController
     public function OrderItemType(Request $request): Response
     {
         $form = $this->createForm(OrderItemType::class)
-            ->add('Submit', SubmitType::class)
+            ->add('submit', SubmitType::class)
         ;
 
         $form->handleRequest($request);

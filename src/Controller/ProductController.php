@@ -126,7 +126,7 @@ class ProductController extends AbstractController
     public function ProductType(Request $request): Response
     {
         $form = $this->createForm(ProductType::class)
-            ->add('Submit', SubmitType::class)
+            ->add('submit', SubmitType::class)
         ;
 
         $form->handleRequest($request);
@@ -143,7 +143,7 @@ class ProductController extends AbstractController
     public function ProductOptionType(Request $request): Response
     {
         $form = $this->createForm(ProductOptionType::class)
-            ->add('Submit', SubmitType::class)
+            ->add('submit', SubmitType::class)
         ;
 
         $form->handleRequest($request);
@@ -160,7 +160,7 @@ class ProductController extends AbstractController
     public function ProductOptionValueType(Request $request): Response
     {
         $form = $this->createForm(ProductOptionValueType::class)
-            ->add('Submit', SubmitType::class)
+            ->add('submit', SubmitType::class)
         ;
 
         $form->handleRequest($request);
@@ -179,7 +179,7 @@ class ProductController extends AbstractController
         $entity = $this->repository->createNew();
 
         $form = $this->createForm(ProductVariantCollectionType::class, $entity)
-            ->add('Submit', SubmitType::class)
+            ->add('submit', SubmitType::class)
         ;
 
         $form->handleRequest($request);
@@ -196,7 +196,7 @@ class ProductController extends AbstractController
     public function ProductVariantType(Request $request): Response
     {
         $form = $this->createForm(ProductVariantType::class)
-            ->add('Submit', SubmitType::class)
+            ->add('submit', SubmitType::class)
         ;
 
         $form->handleRequest($request);

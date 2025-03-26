@@ -2,8 +2,8 @@ twig:
     file_name_pattern: '*.twig'
     form_themes:
         - bootstrap_5_horizontal_layout.html.twig
-        - '@SiganushkaGeneric/bootstrap_5_layout.html.twig'
-        - '@SiganushkaMedia/bootstrap_5_layout.html.twig'
+        - '@SiganushkaGeneric/form_theme_bs5.html.twig'
+        - '@SiganushkaMedia/form_theme_bs5.html.twig'
 
 when@test:
     twig:

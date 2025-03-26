@@ -3,12 +3,3 @@
 {% block body %}
   {{ form(form) }}
 {% endblock %}
-
-{% block stylesheets %}
-{{ parent() }}
-<style>
-.ts-wrapper.multi .ts-control { padding-bottom: 3px !important; }
-.ts-wrapper.multi .ts-control > div { font-size: 83%;  }
-.ts-wrapper.multi .ts-control > input { margin-bottom: 3px !important; }
-</style>
-{% endblock %}
