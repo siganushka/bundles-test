@@ -46,8 +46,9 @@ class ProductController extends AbstractController
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $entity = $this->repository->createNew();
+        $simple = $request->query->has('simple');
 
-        $form = $this->createForm(ProductType::class, $entity);
+        $form = $this->createForm(ProductType::class, $entity, compact('simple'));
         $form->add('submit', SubmitType::class);
         $form->handleRequest($request);
 
