@@ -35,6 +35,8 @@ class MoneyTypeExtension extends AbstractTypeExtension
             'scale' => $scale,
             'divisor' => $divisor,
             'currency' => $this->currencyCode,
+            // @see https://symfony.com/doc/current/reference/forms/types/money.html#input
+            'input' => 'integer',
         ]);
     }
 

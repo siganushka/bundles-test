@@ -1,5 +1,11 @@
 {% extends 'base.html.twig' %}
 
+{% form_theme form _self %}
+
+{%- block _product_simple_variant_row -%}
+  {{- block('form_rows') -}}
+{%- endblock -%}
+
 {% block body %}
   {{ form(form) }}
 {% endblock %}
