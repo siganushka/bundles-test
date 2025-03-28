@@ -8,7 +8,6 @@ use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Siganushka\ProductBundle\Form\ProductOptionType;
 use Siganushka\ProductBundle\Form\ProductOptionValueType;
-use Siganushka\ProductBundle\Form\ProductSimpleType;
 use Siganushka\ProductBundle\Form\ProductType;
 use Siganushka\ProductBundle\Form\ProductVariantCollectionType;
 use Siganushka\ProductBundle\Form\ProductVariantType;
@@ -72,11 +71,7 @@ class ProductController extends AbstractController
         $entity = $this->repository->find($id)
             ?? throw $this->createNotFoundException();
 
-        $type = $entity->getOptions()->isEmpty()
-            ? ProductSimpleType::class
-            : ProductType::class;
-
-        $form = $this->createForm($type, $entity);
+        $form = $this->createForm(ProductType::class, $entity);
         $form->add('save', SubmitType::class);
         $form->handleRequest($request);
 
@@ -132,25 +127,6 @@ class ProductController extends AbstractController
     public function ProductType(Request $request): Response
     {
         $form = $this->createForm(ProductType::class)
-            ->add('submit', SubmitType::class)
-        ;
-
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            dd(__METHOD__, $form->getData());
-        }
-
-        return $this->render('product/form.html.twig', [
-            'form' => $form,
-        ]);
-    }
-
-    #[Route('/products/ProductSimpleType')]
-    public function ProductSimpleType(Request $request, ProductRepository $productRepository): Response
-    {
-        // $product = $productRepository->find(11);
-
-        $form = $this->createForm(ProductSimpleType::class)
             ->add('submit', SubmitType::class)
         ;
 
