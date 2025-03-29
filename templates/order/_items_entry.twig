@@ -4,9 +4,9 @@
     <p class="mb-1">{{ item.subject.product.name }}</p>
 
     {% if item.subject.choiceLabel %}
-      <small class="text-secondary">{{ item.subject.choiceLabel }}</small>
+      <small class="text-secondary">{{ item.subject.choiceLabel }},</small>
     {% endif %}
 
-    <small class="text-danger">&times;{{ item.quantity }}</small>
+    <small class="text-secondary">数量: &times;{{ item.quantity }}</small>
   </div>
 </div>
