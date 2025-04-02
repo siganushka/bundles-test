@@ -10,9 +10,9 @@
     <td class="py-1">
       {% include 'order/_items_entry.twig' with {item} only %}
     </td>
-    <td class="text-end">{{ item.price|currency }}</td>
+    <td class="text-end">{{ item.price|intl_currency }}</td>
     <td class="text-end">{{ item.quantity }}</td>
-    <td class="text-end">{{ item.subtotal|currency }}</td>
+    <td class="text-end">{{ item.subtotal|intl_currency }}</td>
   </tr>
   {% endfor %}
 </table>

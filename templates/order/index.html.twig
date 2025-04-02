@@ -29,13 +29,13 @@
             {% endfor %}
           </div>
         </td>
-        <td>{{ entity.itemsTotal|currency }}</td>
-        <td>{{ entity.adjustmentsTotal|currency }}</td>
-        <td>{{ entity.total|currency }}</td>
+        <td>{{ entity.itemsTotal|intl_currency }}</td>
+        <td>{{ entity.adjustmentsTotal|intl_currency }}</td>
+        <td>{{ entity.total|intl_currency }}</td>
         <td>
           <span class="badge text-bg-{{ entity.state.theme }}">{{ entity.state|trans }}</span>
         </td>
-        <td>{{ entity.createdAt|datetime }}</td>
+        <td>{{ entity.createdAt|intl_date }}</td>
         <td>
           <div class="d-inline-block">
             <a class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">流转</a>

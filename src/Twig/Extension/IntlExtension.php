@@ -13,8 +13,8 @@ class IntlExtension extends AbstractExtension
     public function getFilters(): array
     {
         return [
-            new TwigFilter('datetime', [IntlExtensionRuntime::class, 'formatDatetime'], ['needs_environment' => true]),
-            new TwigFilter('currency', [IntlExtensionRuntime::class, 'formatCurrency']),
+            new TwigFilter('intl_date', [IntlExtensionRuntime::class, 'formatDate'], ['needs_environment' => true]),
+            new TwigFilter('intl_currency', [IntlExtensionRuntime::class, 'formatCurrency']),
         ];
     }
 }

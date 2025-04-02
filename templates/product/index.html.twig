@@ -41,15 +41,15 @@
           {% if _prices|length %}
             {% set min = min(_prices) %}
             {% set max = max(_prices) %}
-            {{ min|currency }}
+            {{ min|intl_currency }}
             {%- if min != max -%}
-              -{{ max|currency }}
+              -{{ max|intl_currency }}
             {% endif %}
           {% else %}
             -
           {% endif %}
         </td>
-        <td>{{ entity.createdAt|datetime }}</td>
+        <td>{{ entity.createdAt|intl_date }}</td>
         <td>
           <div class="hstack gap-2 lh-1">
             <a href="{{ path('app_product_variants', {id: entity.id}) }}">

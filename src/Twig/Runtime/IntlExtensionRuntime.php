@@ -22,6 +22,11 @@ class IntlExtensionRuntime implements RuntimeExtensionInterface
     {
     }
 
+    public function formatDate(Environment $env, \DateTimeInterface|string|null $date): string
+    {
+        return $this->extension->formatDateTime($env, $date, timeFormat: 'short');
+    }
+
     public function formatCurrency(?int $amount): string
     {
         // null to 0
@@ -41,10 +46,5 @@ class IntlExtensionRuntime implements RuntimeExtensionInterface
         }
 
         return $this->extension->formatCurrency($amount, $this->currencyCode);
-    }
-
-    public function formatDatetime(Environment $env, \DateTimeInterface|string|null $date): string
-    {
-        return $this->extension->formatDateTime($env, $date, timeFormat: 'short');
     }
 }

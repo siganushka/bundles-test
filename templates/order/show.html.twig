@@ -11,21 +11,21 @@
   </tr>
   <tr>
     <th class="text-end">{{ 'order.items_total'|trans }}</th>
-    <td>{{ entity.itemsTotal|currency }}</td>
+    <td>{{ entity.itemsTotal|intl_currency }}</td>
   </tr>
   <tr>
     <th class="text-end">{{ 'order.adjustments_total'|trans }}</th>
     <td>
       {% if entity.adjustmentsTotal > 0 %}
-        <span class="text-danger">+{{ entity.adjustmentsTotal|currency }}</span>
+        <span class="text-danger">+{{ entity.adjustmentsTotal|intl_currency }}</span>
       {% else %}
-        <span class="text-success">{{ entity.adjustmentsTotal|currency }}</span>
+        <span class="text-success">{{ entity.adjustmentsTotal|intl_currency }}</span>
       {% endif %}
     </td>
   </tr>
   <tr>
     <th class="text-end">{{ 'order.total'|trans }}</th>
-    <td>{{ entity.total|currency }}</td>
+    <td>{{ entity.total|intl_currency }}</td>
   </tr>
  <tr>
     <th class="text-end">{{ 'order.state'|trans }}</th>
@@ -34,12 +34,12 @@
   {% if entity.updatedAt %}
   <tr>
     <th class="text-end">{{ 'generic.updated_at'|trans }}</th>
-    <td>{{ entity.updatedAt|datetime }}</td>
+    <td>{{ entity.updatedAt|intl_date }}</td>
   </tr>
   {% endif %}
   <tr>
     <th class="text-end">{{ 'generic.created_at'|trans }}</th>
-    <td>{{ entity.createdAt|datetime }}</td>
+    <td>{{ entity.createdAt|intl_date }}</td>
   </tr>
   <tr>
     <th class="text-end">{{ 'order.items'|trans }}</th>
@@ -54,19 +54,19 @@
           <tr>
             <td class="text-end text-break w-100 px-2">{{ adjustment.label|trans }}</td>
             {% if adjustment.amount > 0 %}
-              <td class="text-end text-danger text-nowrap">+{{ adjustment.amount|currency }}</td>
+              <td class="text-end text-danger text-nowrap">+{{ adjustment.amount|intl_currency }}</td>
             {% else %}
-              <td class="text-end text-success text-nowrap">{{ adjustment.amount|currency }}</td>
+              <td class="text-end text-success text-nowrap">{{ adjustment.amount|intl_currency }}</td>
             {% endif %}
           </tr>
         {% endfor %}
         <tr>
           <td class="text-end text-break w-100 px-2">{{ 'order.items_total'|trans }}</td>
-          <td class="text-end text-nowrap">{{ entity.itemsTotal|currency }}</td>
+          <td class="text-end text-nowrap">{{ entity.itemsTotal|intl_currency }}</td>
         </tr>
         <tr>
           <td class="text-end text-break w-100 px-2">{{ 'order.total'|trans }}</td>
-          <td class="text-end text-nowrap">{{ entity.total|currency }}</td>
+          <td class="text-end text-nowrap">{{ entity.total|intl_currency }}</td>
         </tr>
       </table>
     </td>

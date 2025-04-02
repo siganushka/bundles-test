@@ -1883,7 +1883,7 @@
             "dist": {
                 "type": "path",
                 "url": "../product-bundle",
-                "reference": "b005d99bc0c3aae312a8f7a93207e930854604da"
+                "reference": "f2bb08165787577cc3c44ba66b0a8933f1fecde2"
             },
             "require": {
                 "bentools/cartesian-product": "^1.4",
@@ -1894,10 +1894,10 @@
                 "siganushka/media-bundle": "dev-main",
                 "symfony/form": "^6.4|^7.0",
                 "symfony/framework-bundle": "^6.4|^7.0",
+                "symfony/ux-autocomplete": "^2.10",
                 "symfony/validator": "^6.4|^7.0"
             },
             "require-dev": {
-                "symfony/ux-autocomplete": "^2.10",
                 "twig/twig": "^2.13|^3.0.4"
             },
             "type": "symfony-bundle",
