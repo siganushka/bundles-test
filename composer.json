@@ -18,6 +18,7 @@
         "siganushka/product-bundle": "dev-main",
         "siganushka/region-bundle": "dev-main",
         "siganushka/request-token-bundle": "v1.0",
+        "siganushka/user-bundle": "dev-main",
         "symfony/asset": "7.2.*",
         "symfony/asset-mapper": "7.2.*",
         "symfony/console": "7.2.*",
@@ -32,6 +33,7 @@
         "symfony/monolog-bundle": "^3.10",
         "symfony/redis-messenger": "7.2.*",
         "symfony/runtime": "7.2.*",
+        "symfony/security-bundle": "7.2.*",
         "symfony/serializer": "7.2.*",
         "symfony/stimulus-bundle": "^2.21",
         "symfony/stopwatch": "^7.1",
@@ -146,6 +148,13 @@
         {
             "type": "path",
             "url": "../order-bundle",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url": "../user-bundle",
             "options": {
                 "symlink": true
             }

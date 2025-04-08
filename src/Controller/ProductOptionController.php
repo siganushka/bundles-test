@@ -26,7 +26,7 @@ class ProductOptionController extends AbstractController
             ?? throw $this->createNotFoundException();
 
         $form = $this->createForm(ProductOptionType::class, $entity);
-        $form->add('submit', SubmitType::class);
+        $form->add('submit', SubmitType::class, ['label' => 'generic.submit']);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

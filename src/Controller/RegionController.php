@@ -48,7 +48,7 @@ class RegionController extends AbstractController
                 'placeholder' => 'generic.choice',
                 'constraints' => new NotBlank(),
             ])
-            ->add('submit', SubmitType::class)
+            ->add('submit', SubmitType::class, ['label' => 'generic.submit'])
         ;
 
         $form = $builder->getForm();

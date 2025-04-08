@@ -57,7 +57,7 @@ class MediaController extends AbstractController
     public function MediaUploadType(Request $request): Response
     {
         $form = $this->createForm(MediaUploadType::class)
-            ->add('submit', SubmitType::class)
+            ->add('submit', SubmitType::class, ['label' => 'generic.submit'])
         ;
 
         $form->handleRequest($request);
@@ -110,7 +110,7 @@ class MediaController extends AbstractController
                 'channel' => 'test_pdf',
                 'constraints' => new NotBlank(),
             ])
-            ->add('submit', SubmitType::class)
+            ->add('submit', SubmitType::class, ['label' => 'generic.submit'])
         ;
 
         $form = $builder->getForm();
