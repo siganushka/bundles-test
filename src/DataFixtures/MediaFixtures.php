@@ -26,7 +26,7 @@ class MediaFixtures extends Fixture
         $filesystem = new Filesystem();
 
         $channels = [
-            'product' => $finder->in(__DIR__.'/product'),
+            'product_img' => $finder->in(__DIR__.'/product'),
         ];
 
         $index = 0;

@@ -29,7 +29,8 @@ class OrderFixtures extends Fixture implements DependentFixtureInterface
         $subject1 = $this->getReference('product-0-variant-1', ProductVariant::class);
         $subject2 = $this->getReference('product-0-variant-2', ProductVariant::class);
         $subject3 = $this->getReference('product-8-variant-0', ProductVariant::class);
-        $subject4 = $this->getReference('product-10-variant-0', ProductVariant::class);
+        $subject4 = $this->getReference('product-8-variant-1', ProductVariant::class);
+        $subject5 = $this->getReference('product-10-variant-0', ProductVariant::class);
 
         $order0 = $this->orderRepository->createNew();
         $order0->addItem($this->orderItemRepository->createNew($subject0, 2));
@@ -38,9 +39,10 @@ class OrderFixtures extends Fixture implements DependentFixtureInterface
 
         $order1 = $this->orderRepository->createNew();
         $order1->addItem($this->orderItemRepository->createNew($subject3, 2));
+        $order1->addItem($this->orderItemRepository->createNew($subject4, 2));
 
         $order2 = $this->orderRepository->createNew();
-        $order2->addItem($this->orderItemRepository->createNew($subject4, 2));
+        $order2->addItem($this->orderItemRepository->createNew($subject5, 2));
 
         $this->eventDispatcher->dispatch(new OrderBeforeCreateEvent($order0));
         $this->eventDispatcher->dispatch(new OrderBeforeCreateEvent($order1));

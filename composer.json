@@ -19,6 +19,7 @@
         "siganushka/region-bundle": "dev-main",
         "siganushka/request-token-bundle": "v1.0",
         "siganushka/user-bundle": "dev-main",
+        "spatie/image-optimizer": "^1.8",
         "symfony/asset": "7.2.*",
         "symfony/asset-mapper": "7.2.*",
         "symfony/console": "7.2.*",
