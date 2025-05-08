@@ -11,13 +11,13 @@
         "doctrine/orm": "^3.2",
         "godruoyi/php-snowflake": "^3.1",
         "knplabs/knp-paginator-bundle": "^6.4",
-        "siganushka/doctrine-contracts": "dev-main",
-        "siganushka/generic-bundle": "dev-main",
+        "siganushka/doctrine-contracts": "^1.0",
+        "siganushka/generic-bundle": "^1.0",
         "siganushka/media-bundle": "dev-main",
         "siganushka/order-bundle": "dev-main",
         "siganushka/product-bundle": "dev-main",
         "siganushka/region-bundle": "dev-main",
-        "siganushka/request-token-bundle": "v1.0",
+        "siganushka/request-token-bundle": "^1.0",
         "siganushka/user-bundle": "dev-main",
         "spatie/image-optimizer": "^1.8",
         "symfony/asset": "7.2.*",
@@ -111,27 +111,6 @@
         }
     },
     "repositories": [
-        {
-            "type": "path",
-            "url": "../doctrine-contracts",
-            "options": {
-                "symlink": true
-            }
-        },
-        {
-            "type": "path",
-            "url": "../generic-bundle",
-            "options": {
-                "symlink": true
-            }
-        },
-        {
-            "type": "path",
-            "url": "../region-bundle",
-            "options": {
-                "symlink": true
-            }
-        },
         {
             "type": "path",
             "url": "../media-bundle",
