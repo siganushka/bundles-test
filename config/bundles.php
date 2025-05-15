@@ -14,7 +14,6 @@ return [
     Siganushka\OrderBundle\SiganushkaOrderBundle::class => ['all' => true],
     Siganushka\RegionBundle\SiganushkaRegionBundle::class => ['all' => true],
     Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle::class => ['dev' => true, 'test' => true],
-    Siganushka\RequestTokenBundle\SiganushkaRequestTokenBundle::class => ['all' => true],
     Symfony\UX\StimulusBundle\StimulusBundle::class => ['all' => true],
     Symfony\Bundle\MonologBundle\MonologBundle::class => ['all' => true],
     Symfony\UX\Autocomplete\AutocompleteBundle::class => ['all' => true],

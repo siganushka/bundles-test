@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3fb04de8e36aa3fa720582ee614d23ee",
+    "content-hash": "0ecc93227c951925a1628dd3ee596f4d",
     "packages": [
         {
             "name": "bentools/cartesian-product",
@@ -1987,55 +1987,6 @@
             "time": "2025-05-08T05:46:19+00:00"
         },
         {
-            "name": "siganushka/request-token-bundle",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/siganushka/request-token-bundle.git",
-                "reference": "6327227f22922f09a674808155e3e40e11a931e9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/siganushka/request-token-bundle/zipball/6327227f22922f09a674808155e3e40e11a931e9",
-                "reference": "6327227f22922f09a674808155e3e40e11a931e9",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.1",
-                "symfony/framework-bundle": "^6.4|^7.0"
-            },
-            "require-dev": {
-                "monolog/monolog": "^2.4|^3.0",
-                "symfony/uid": "^6.4|^7.0"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-4": {
-                    "Siganushka\\RequestTokenBundle\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "siganushka",
-                    "email": "siganushka@gmail.com"
-                }
-            ],
-            "description": "Add X-Request-Id for request/response headers.",
-            "homepage": "https://github.com/siganushka/request-token-bundle",
-            "keywords": [
-                "request-token-bundle"
-            ],
-            "support": {
-                "issues": "https://github.com/siganushka/request-token-bundle/issues",
-                "source": "https://github.com/siganushka/request-token-bundle/tree/1.0.0"
-            },
-            "time": "2024-12-20T02:07:20+00:00"
-        },
-        {
             "name": "siganushka/user-bundle",
             "version": "dev-main",
             "dist": {
@@ -3475,16 +3426,16 @@
         },
         {
             "name": "symfony/flex",
-            "version": "v2.5.0",
+            "version": "v2.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/flex.git",
-                "reference": "8ce1acd9842abe0e9b4c4a0bd3f259859516c018"
+                "reference": "62d5c38c7af6280d8605b725364680838b475641"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/flex/zipball/8ce1acd9842abe0e9b4c4a0bd3f259859516c018",
-                "reference": "8ce1acd9842abe0e9b4c4a0bd3f259859516c018",
+                "url": "https://api.github.com/repos/symfony/flex/zipball/62d5c38c7af6280d8605b725364680838b475641",
+                "reference": "62d5c38c7af6280d8605b725364680838b475641",
                 "shasum": ""
             },
             "require": {
@@ -3523,7 +3474,7 @@
             "description": "Composer plugin for Symfony",
             "support": {
                 "issues": "https://github.com/symfony/flex/issues",
-                "source": "https://github.com/symfony/flex/tree/v2.5.0"
+                "source": "https://github.com/symfony/flex/tree/v2.5.1"
             },
             "funding": [
                 {
@@ -3539,7 +3490,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-03-03T07:50:46+00:00"
+            "time": "2025-05-10T14:05:03+00:00"
         },
         {
             "name": "symfony/form",
