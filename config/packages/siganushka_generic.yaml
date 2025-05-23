@@ -1,5 +1,3 @@
 siganushka_generic:
     doctrine:
         table_prefix: app_
-    form:
-        html5_validation: false
