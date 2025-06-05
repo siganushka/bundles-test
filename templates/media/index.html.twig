@@ -13,7 +13,7 @@
         <th style="min-width: 100px">{{ 'media.pixel'|trans }}</th>
         <th style="min-width: 80px">{{ 'media.image'|trans }}</th>
         <th style="min-width: 200px">{{ 'generic.created_at'|trans }}</th>
-        <th style="min-width: 80px">{{ 'generic.action'|trans }}</th>
+        <th>{{ 'generic.action'|trans }}</th>
       </tr>
       {% for entity in pagination %}
       <tr>
@@ -26,7 +26,7 @@
           <span class="badge rounded-pill text-bg-{{ entity.image ? 'success' : 'secondary' }}">{{ entity.image ? 'generic.yes'|trans : 'generic.no'|trans }}</span>
         </td>
         <td>{{ entity.createdAt|intl_date }}</td>
-        <td>
+        <td class="text-nowrap">
           <a href="{{ path('app_media_delete', {hash: entity.hash}) }}" onclick="return confirm('{{ 'generic.delete_confirmation'|trans }}')">{{ 'generic.delete'|trans }}</a>
         </td>
       </tr>

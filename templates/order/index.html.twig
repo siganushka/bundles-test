@@ -17,7 +17,7 @@
         <th style="min-width: 100px">{{ 'order.total'|trans }}</th>
         <th style="min-width: 100px">{{ 'order.state'|trans }}</th>
         <th style="min-width: 200px">{{ 'generic.created_at'|trans }}</th>
-        <th style="min-width: 200px">{{ 'generic.action'|trans }}</th>
+        <th>{{ 'generic.action'|trans }}</th>
       </tr>
       {% for entity in pagination %}
       <tr>
@@ -36,7 +36,7 @@
           <span class="badge text-bg-{{ entity.state.theme }}">{{ entity.state|trans }}</span>
         </td>
         <td>{{ entity.createdAt|intl_date }}</td>
-        <td>
+        <td class="text-nowrap">
           <div class="d-inline-block">
             <a class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">流转</a>
             <ul class="dropdown-menu">

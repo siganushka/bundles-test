@@ -1,9 +1,13 @@
 /** collection */
-[data-siganushka-generic-collection-target=entry] > td:first-child {
+[data-controller=siganushka-generic-collection] td {
+  --bs-table-bg: transparent;
+}
+
+[data-controller=siganushka-generic-collection] td:first-child {
   padding-left: 0;
 }
 
-[data-siganushka-generic-collection-target=entry] > td:last-child {
+[data-controller=siganushka-generic-collection] td:last-child {
   padding-right: 0;
 }
 

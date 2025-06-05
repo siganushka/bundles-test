@@ -15,7 +15,7 @@
         <th style="min-width: 160px">{{ 'Identifier'|trans([], 'SiganushkaUserBundle') }}</th>
         <th style="min-width: 200px">{{ 'generic.enabled'|trans }}</th>
         <th style="min-width: 200px">{{ 'generic.created_at'|trans }}</th>
-        <th style="min-width: 200px">{{ 'generic.action'|trans }}</th>
+        <th>{{ 'generic.action'|trans }}</th>
       </tr>
       {% for entity in pagination %}
       <tr>
@@ -28,7 +28,7 @@
         </td>
       </tr>
       {% else %}
-      <tr>
+      <tr class="text-nowrap">
         <td colspan="999" class="text-center text-body-secondary">{{ 'generic.no_result'|trans }}</td>
       </tr>
       {% endfor %}
