@@ -4,12 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Entity\Order;
-use App\Entity\OrderItem;
-use App\Entity\ProductVariant;
 use App\Form\TestType;
-use Doctrine\ORM\EntityManagerInterface;
-use Siganushka\OrderBundle\Generator\OrderNumberGeneratorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
@@ -27,23 +22,8 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 class IndexController extends AbstractController
 {
     #[Route('/')]
-    public function index(
-        EntityManagerInterface $entityManager,
-        OrderNumberGeneratorInterface $numberGenerator): Response
+    public function index(): Response
     {
-        // $subject = $entityManager->find(ProductVariant::class, 109);
-
-        // $entityManager->beginTransaction();
-
-        // $entity = new Order;
-        // $entity->setNumber($numberGenerator->generate($entity));
-        // $entity->addItem(new OrderItem($subject, 2));
-
-        // $entityManager->persist($entity);
-        // $entityManager->flush();
-
-        // $entityManager->commit();
-
         return $this->render('index/index.html.twig');
     }
 

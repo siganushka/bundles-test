@@ -14,5 +14,9 @@
     <td class="text-end">{{ item.quantity }}</td>
     <td class="text-end">{{ item.subtotal|intl_currency }}</td>
   </tr>
+  {% else %}
+  <tr>
+    <td colspan="999" class="text-center text-body-secondary">{{ 'generic.no_result'|trans }}</td>
+  </tr>
   {% endfor %}
 </table>

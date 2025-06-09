@@ -6,9 +6,9 @@
 
   <hr />
 
+  {% if form is defined %}
   <div class="bg-body-secondary p-3">
-    {% if form is defined %}
-      {{ form(form) }}
-    {% endif %}
+    {{ form(form) }}
   </div>
+  {% endif %}
 {% endblock %}
