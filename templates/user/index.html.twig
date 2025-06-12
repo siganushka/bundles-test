@@ -1,7 +1,5 @@
 {% extends 'base.html.twig' %}
 
-{% import '@SiganushkaGeneric/macros.html.twig' as ui %}
-
 {% block body %}
   <h3 class="mb-3">UserBundle</h3>
 
@@ -20,7 +18,13 @@
       {% for entity in pagination %}
       <tr>
         <td><code class="user-select-all">{{ entity.identifier }}</code></td>
-        <td>{{ ui.enabled(entity.enabled) }}</td>
+        <td>
+          {% if entity.enabled %}
+            <span class="badge bg-success">{{ 'generic.yes'|trans }}</span>
+          {% else %}
+            <span class="badge bg-danger">{{ 'generic.no'|trans }}</span>
+          {% endif %}
+        </td>
         <td>{{ entity.createdAt|intl_date }}</td>
         <td>
           <a href="{{ path('app_user_edit', {id: entity.id}) }}">{{ 'generic.edit'|trans }}</a>

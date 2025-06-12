@@ -8,72 +8,56 @@
       {{ 'generic.add'|trans }}
     </button>
     <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="{{ path('app_product_new', {simple: true}) }}">无选项商品</a></li>
+      <li><a class="dropdown-item" href="{{ path('app_product_new', {simple: true}) }}">简单的商品</a></li>
       <li><a class="dropdown-item" href="{{ path('app_product_new') }}">多选项商品</a></li>
     </ul>
   </div>
 
-  <div class="overflow-x-auto my-3">
-    <table class="table table-striped table-hover align-middle m-0">
-      <tr class="table-light">
-        <th style="min-width: 320px">{{ 'product.name'|trans }}</th>
-        <th style="min-width: 160px">{{ 'product_variant.price'|trans }}</th>
-        <th style="min-width: 200px">{{ 'generic.created_at'|trans }}</th>
-        <th>{{ 'generic.action'|trans }}</th>
-      </tr>
-      {% for entity in pagination %}
-      <tr>
-        <td>
-          <div class="d-flex align-items-center">
-            <img src="{{ entity.img.url }}" width="50px" class="img-thumbnail" />
-            <div class="mx-3">
-              <p class="m-0 text-break">{{ entity.name }}</p>
-              <small class="text-body-tertiary">
-                {% for option in entity.options %}
-                  <a href="{{ path('app_productoption_edit', {id: option.id}) }}" class="text-reset">{{ option.name }}</a>
-                {% endfor %}
-              </small>
-            </div>
-          </div>
-        </td>
-        <td>
-          {% set _prices = entity.variants|map(p => p.price) %}
-          {% if _prices|length %}
-            {% set min = min(_prices) %}
-            {% set max = max(_prices) %}
-            {{ min|intl_currency }}
-            {%- if min != max -%}
-              -{{ max|intl_currency }}
-            {% endif %}
-          {% else %}
-            -
-          {% endif %}
-        </td>
-        <td>{{ entity.createdAt|intl_date }}</td>
-        <td class="text-nowrap">
-          <div class="hstack gap-2 lh-1">
-            <a href="{{ path('app_product_variants', {id: entity.id}) }}">
-              {{ 'product.variants'|trans }}
-              <small>({{ entity.variants|length }}/{{ entity.choices|length ?: 1 }})</small>
-            </a>
-            <div class="vr"></div>
-            <a href="{{ path('app_product_edit', {id: entity.id}) }}">{{ 'generic.edit'|trans }}</a>
-            <div class="vr"></div>
-            <a href="{{ path('app_product_delete', {id: entity.id}) }}" onclick="return confirm('{{ 'generic.delete_confirmation'|trans }}')">{{ 'generic.delete'|trans }}</a>
-          </div>
-        </td>
-      </tr>
-      {% else %}
-      <tr>
-        <td colspan="999" class="text-center text-body-secondary">{{ 'generic.no_results'|trans }}</td>
-      </tr>
-      {% endfor %}
-    </table>
-  </div>
+  {% embed 'table.html.twig' %}
+    {% block thead %}
+      <th style="min-width: 320px">{{ 'product.name'|trans }}</th>
+      <th style="min-width: 160px">{{ 'product_variant.price'|trans }}</th>
+      <th style="min-width: 220px">{{ 'generic.created_at'|trans }}</th>
+      <th>{{ 'generic.action'|trans }}</th>
+    {% endblock %}
 
-  {% if pagination.totalItemCount %}
-  <div class="pagination justify-content-center">
-    {{ knp_pagination_render(pagination) }}
-  </div>
-  {% endif %}
+    {% block tbody %}
+      <td>
+        <div class="d-flex align-items-center">
+          <img src="{{ entity.img.url }}" width="50px" class="img-thumbnail" />
+          <div class="mx-3">
+            <p class="m-0 text-break">{{ entity.name }}</p>
+            <small class="text-body-tertiary">
+              {% for option in entity.options %}
+                <a href="{{ path('app_productoption_edit', {id: option.id}) }}" class="text-reset">{{ option.name }}</a>
+              {% endfor %}
+            </small>
+          </div>
+        </div>
+      </td>
+      <td>
+        {%- set _prices = entity.variants|map(p => p.price) %}
+        {%- if _prices|length %}
+          {%- set min = min(_prices) -%}
+          {%- set max = max(_prices) -%}
+          {{ min|intl_currency }}{% if min is not same as(max) %}-{{ max|intl_currency }}{% endif %}
+        {%- else %}
+          -
+        {% endif -%}
+      </td>
+      <td>{{ entity.createdAt|intl_date }}</td>
+      <td class="text-nowrap">
+        <div class="hstack gap-2 lh-1">
+          <a href="{{ path('app_product_variants', {id: entity.id}) }}">
+            {{ 'product.variants'|trans }}
+            <small>({{ entity.variants|length }}/{{ entity.choices|length ?: 1 }})</small>
+          </a>
+          <div class="vr"></div>
+          <a href="{{ path('app_product_edit', {id: entity.id}) }}">{{ 'generic.edit'|trans }}</a>
+          <div class="vr"></div>
+          <a href="{{ path('app_product_delete', {id: entity.id}) }}" onclick="return confirm('{{ 'generic.delete_confirmation'|trans }}')">{{ 'generic.delete'|trans }}</a>
+        </div>
+      </td>
+    {% endblock %}
+  {% endembed %}
 {% endblock %}

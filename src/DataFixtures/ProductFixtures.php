@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace App\DataFixtures;
 
 use App\Entity\Media;
+use App\Repository\ProductRepository;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Siganushka\ProductBundle\Repository\ProductOptionRepository;
 use Siganushka\ProductBundle\Repository\ProductOptionValueRepository;
-use Siganushka\ProductBundle\Repository\ProductRepository;
 
 class ProductFixtures extends Fixture implements DependentFixtureInterface
 {
@@ -86,11 +86,11 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
         $option9->addValue($this->productOptionValueRepository->createNew(null, '3XL', '建议180-200斤'));
 
         $option10 = $this->productOptionRepository->createNew('辣度');
-        $option10->addValue($this->productOptionValueRepository->createNew(null, '不辣', null, $this->getReference('media-8', Media::class)));
-        $option10->addValue($this->productOptionValueRepository->createNew(null, '微辣', null, $this->getReference('media-9', Media::class)));
-        $option10->addValue($this->productOptionValueRepository->createNew(null, '中辣', null, $this->getReference('media-10', Media::class)));
-        $option10->addValue($this->productOptionValueRepository->createNew(null, '特辣', null, $this->getReference('media-11', Media::class)));
-        $option10->addValue($this->productOptionValueRepository->createNew(null, '变态辣', null, $this->getReference('media-12', Media::class)));
+        $option10->addValue($this->productOptionValueRepository->createNew(null, '不辣', null, $this->getReference('media-10', Media::class)));
+        $option10->addValue($this->productOptionValueRepository->createNew(null, '微辣', null, $this->getReference('media-11', Media::class)));
+        $option10->addValue($this->productOptionValueRepository->createNew(null, '中辣', null, $this->getReference('media-12', Media::class)));
+        $option10->addValue($this->productOptionValueRepository->createNew(null, '特辣', null, $this->getReference('media-13', Media::class)));
+        $option10->addValue($this->productOptionValueRepository->createNew(null, '变态辣', null, $this->getReference('media-14', Media::class)));
 
         $product0 = $this->productRepository->createNew();
         $product0->setName('苹果 iPhone 15');
@@ -153,6 +153,16 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
         $product10->setName('迪卡侬保冷野餐包');
         $product10->setImg($this->getReference('media-7', Media::class));
 
+        $product11 = $this->productRepository->createNew();
+        $product11->setName('Apple Music 包年套餐礼品卡');
+        $product11->setImg($this->getReference('media-8', Media::class));
+        $product11->setVirtual(true);
+
+        $product12 = $this->productRepository->createNew();
+        $product12->setName('Windows 11 专业版序列号');
+        $product12->setImg($this->getReference('media-9', Media::class));
+        $product12->setVirtual(true);
+
         $manager->persist($product0);
         $manager->persist($product1);
         $manager->persist($product2);
@@ -164,6 +174,8 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
         $manager->persist($product8);
         $manager->persist($product9);
         $manager->persist($product10);
+        $manager->persist($product11);
+        $manager->persist($product12);
         $manager->flush();
 
         $this->addReference('product-0', $product0);
@@ -177,6 +189,8 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
         $this->addReference('product-8', $product8);
         $this->addReference('product-9', $product9);
         $this->addReference('product-10', $product10);
+        $this->addReference('product-11', $product11);
+        $this->addReference('product-12', $product12);
     }
 
     public function getDependencies(): array

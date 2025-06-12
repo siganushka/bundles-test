@@ -30,6 +30,8 @@ class ProductVariantFixtures extends Fixture implements DependentFixtureInterfac
             $this->getReference('product-8', Product::class),
             $this->getReference('product-9', Product::class),
             $this->getReference('product-10', Product::class),
+            $this->getReference('product-11', Product::class),
+            $this->getReference('product-12', Product::class),
         ];
 
         $prices = [100, 200, 300, 400, 500];
