@@ -4,29 +4,29 @@
   <h3>MediaBundle</h3>
 
   {% embed 'table.html.twig' %}
-    {% block thead %}
-      <th style="min-width: 240px">{{ 'media.name'|trans }}</th>
-      <th style="min-width: 60px">{{ 'media.extension'|trans }}</th>
-      <th style="min-width: 160px">{{ 'media.mime_type'|trans }}</th>
-      <th style="min-width: 80px">{{ 'media.size'|trans }}</th>
-      <th style="min-width: 100px">{{ 'media.pixel'|trans }}</th>
-      <th style="min-width: 80px">{{ 'media.image'|trans }}</th>
-      <th style="min-width: 200px">{{ 'generic.created_at'|trans }}</th>
-      <th>{{ 'generic.action'|trans }}</th>
+    {% block th %}
+      <th class="text-nowrap">{{ 'media.name'|trans }}</th>
+      <th class="text-nowrap">{{ 'media.extension'|trans }}</th>
+      <th class="text-nowrap">{{ 'media.mime_type'|trans }}</th>
+      <th class="text-nowrap">{{ 'media.size'|trans }}</th>
+      <th class="text-nowrap">{{ 'media.pixel'|trans }}</th>
+      <th class="text-nowrap">{{ 'media.image'|trans }}</th>
+      <th class="text-nowrap">{{ 'generic.created_at'|trans }}</th>
+      <th class="text-nowrap">{{ 'generic.action'|trans }}</th>
     {% endblock %}
 
-    {% block tbody %}
-      <td><a href="{{ entity.url }}" target="_blank" class="d-inline-block text-truncate" style="max-width: 200px" title="{{ entity.name }}">{{ entity.name }}</a></td>
-      <td>{{ entity.extension }}</td>
-      <td>{{ entity.mime }}</td>
-      <td>{{ entity.size }}</td>
-      <td>{{ entity.width and entity.height ? entity.width ~ '*' ~ entity.height : '-' }}</td>
-      <td>
-        <span class="badge rounded-pill text-bg-{{ entity.image ? 'success' : 'secondary' }}">{{ entity.image ? 'generic.yes'|trans : 'generic.no'|trans }}</span>
-      </td>
-      <td>{{ entity.createdAt|intl_date }}</td>
+    {% block td %}
+      <td class="text-nowrap"><a href="{{ _item.url }}" target="_blank" class="d-inline-block text-truncate" style="max-width: 200px" title="{{ _item.name }}">{{ _item.name }}</a></td>
+      <td class="text-nowrap">{{ _item.extension }}</td>
+      <td class="text-nowrap">{{ _item.mime }}</td>
+      <td class="text-nowrap">{{ _item.size }}</td>
+      <td class="text-nowrap">{{ _item.width and _item.height ? _item.width ~ '*' ~ _item.height : '-' }}</td>
       <td class="text-nowrap">
-        <a href="{{ path('app_media_delete', {hash: entity.hash}) }}" onclick="return confirm('{{ 'generic.delete_confirmation'|trans }}')">{{ 'generic.delete'|trans }}</a>
+        <span class="badge rounded-pill text-bg-{{ _item.image ? 'success' : 'secondary' }}">{{ _item.image ? 'generic.yes'|trans : 'generic.no'|trans }}</span>
+      </td>
+      <td class="text-nowrap">{{ _item.createdAt|intl_date }}</td>
+      <td class="text-nowrap">
+        <a href="{{ path('app_media_delete', {hash: _item.hash}) }}" onclick="return confirm('{{ 'generic.delete_confirmation'|trans }}')">{{ 'generic.delete'|trans }}</a>
       </td>
     {% endblock %}
   {% endembed %}

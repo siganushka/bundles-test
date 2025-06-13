@@ -8,26 +8,26 @@
   </p>
 
   {% embed 'table.html.twig' %}
-    {% block thead %}
-      <th style="min-width: 160px">{{ 'Identifier'|trans([], 'SiganushkaUserBundle') }}</th>
-      <th style="min-width: 200px">{{ 'generic.enable'|trans }}</th>
-      <th style="min-width: 200px">{{ 'generic.created_at'|trans }}</th>
-      <th>{{ 'generic.action'|trans }}</th>
+    {% block th %}
+      <th class="text-nowrap">{{ 'Identifier'|trans([], 'SiganushkaUserBundle') }}</th>
+      <th class="text-nowrap">{{ 'generic.enable'|trans }}</th>
+      <th class="text-nowrap">{{ 'generic.created_at'|trans }}</th>
+      <th class="text-nowrap">{{ 'generic.action'|trans }}</th>
     {% endblock %}
 
-    {% block tbody %}
-      <td><code class="user-select-all">{{ entity.identifier }}</code></td>
-      <td>
-        {% if entity.enabled %}
+    {% block td %}
+      <td class="text-nowrap"><code class="user-select-all">{{ _item.identifier }}</code></td>
+      <td class="text-nowrap">
+        {% if _item.enabled %}
           <span class="badge bg-success">{{ 'generic.yes'|trans }}</span>
         {% else %}
           <span class="badge bg-danger">{{ 'generic.no'|trans }}</span>
         {% endif %}
       </td>
-      <td>{{ entity.createdAt|intl_date }}</td>
-      <td>
-        <a href="{{ path('app_user_edit', {id: entity.id}) }}">{{ 'generic.edit'|trans }}</a>
-        <a href="{{ path('app_user_delete', {id: entity.id}) }}" onclick="return confirm('{{ 'generic.delete_confirmation'|trans }}')">{{ 'generic.delete'|trans }}</a>
+      <td class="text-nowrap">{{ _item.createdAt|intl_date }}</td>
+      <td class="text-nowrap">
+        <a href="{{ path('app_user_edit', {id: _item.id}) }}">{{ 'generic.edit'|trans }}</a>
+        <a href="{{ path('app_user_delete', {id: _item.id}) }}" onclick="return confirm('{{ 'generic.delete_confirmation'|trans }}')">{{ 'generic.delete'|trans }}</a>
       </td>
     {% endblock %}
   {% endembed %}

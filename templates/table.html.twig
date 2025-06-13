@@ -1,39 +1,46 @@
-<div class="overflow-x-auto my-3">
+{% if pagination is defined %}
+  {% set items = pagination.items %}
+{% endif %}
+
+<div class="overflow-x-auto bg-body my-3">
   <table class="table table-striped table-hover align-middle m-0">
     <thead>
+      {%~ block thead %}
       <tr>
-        {% block thead %}
-          <th>{{ 'generic.total_results'|trans({'%total_item_count%': pagination.totalItemCount}) }}</th>
-        {% endblock %}
+        {%~ block th %}
+          <th>{{ 'generic.total_results'|trans({'%total_item_count%': items|length}) }}</th>
+        {%~ endblock %}
       </tr>
+      {%~ endblock %}
     </thead>
     <tbody>
-      {% for entity in pagination %}
-      <tr>
-        {# twigcs use-var entity #}
-        {% block tbody %}
-          <td>#{{ _key }}</td>
-        {% endblock %}
-      </tr>
-      {% else %}
-      <tr>
-        <td colspan="999" class="text-center text-body-secondary">
-          {% include 'empty.html.twig' %}
-        </td>
-      </tr>
-      {% endfor %}
+      {%~ block tbody %}
+        {%~ for _item in items %}
+        <tr>
+          {%~ block td %}
+            <td>#{{ _key }}{# twigcs use-var _item #}</td>
+          {%~ endblock %}
+        </tr>
+        {%~ else %}
+        <tr>
+          <td colspan="999" class="text-center text-body-secondary">
+            {% include 'empty.html.twig' %}
+          </td>
+        </tr>
+        {%~ endfor %}
+      {%~ endblock %}
     </tbody>
   </table>
 </div>
 
-{% block pagination %}
-  <div class="d-flex justify-content-center gap-2">
+<div class="d-flex justify-content-center gap-2">
+  {% if pagination is defined %}
     {{ knp_pagination_render(pagination) }}
+  {% endif %}
 
-    <div class="pagination">
-      <span class="page-link text-body-secondary rounded">
-        {{ 'generic.total_results'|trans({'%total_item_count%': pagination.totalItemCount}) }}
-      </span>
-    </div>
+  <div class="pagination d-none d-md-block">
+    <span class="page-link text-body-secondary rounded">
+      {{- 'generic.total_results'|trans({'%total_item_count%': items|length}) -}}
+    </span>
   </div>
-{% endblock %}
+</div>
