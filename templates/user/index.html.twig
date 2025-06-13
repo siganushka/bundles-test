@@ -7,41 +7,28 @@
     <a href="{{ path('app_user_new') }}" class="btn btn-primary">{{ 'generic.add'|trans }}</a>
   </p>
 
-  <div class="overflow-x-auto my-3">
-    <table class="table table-striped table-hover align-middle m-0">
-      <tr class="table-light">
-        <th style="min-width: 160px">{{ 'Identifier'|trans([], 'SiganushkaUserBundle') }}</th>
-        <th style="min-width: 200px">{{ 'generic.enable'|trans }}</th>
-        <th style="min-width: 200px">{{ 'generic.created_at'|trans }}</th>
-        <th>{{ 'generic.action'|trans }}</th>
-      </tr>
-      {% for entity in pagination %}
-      <tr>
-        <td><code class="user-select-all">{{ entity.identifier }}</code></td>
-        <td>
-          {% if entity.enabled %}
-            <span class="badge bg-success">{{ 'generic.yes'|trans }}</span>
-          {% else %}
-            <span class="badge bg-danger">{{ 'generic.no'|trans }}</span>
-          {% endif %}
-        </td>
-        <td>{{ entity.createdAt|intl_date }}</td>
-        <td>
-          <a href="{{ path('app_user_edit', {id: entity.id}) }}">{{ 'generic.edit'|trans }}</a>
-          <a href="{{ path('app_user_delete', {id: entity.id}) }}" onclick="return confirm('{{ 'generic.delete_confirmation'|trans }}')">{{ 'generic.delete'|trans }}</a>
-        </td>
-      </tr>
-      {% else %}
-      <tr class="text-nowrap">
-        <td colspan="999" class="text-center text-body-secondary">{{ 'generic.no_results'|trans }}</td>
-      </tr>
-      {% endfor %}
-    </table>
-  </div>
+  {% embed 'table.html.twig' %}
+    {% block thead %}
+      <th style="min-width: 160px">{{ 'Identifier'|trans([], 'SiganushkaUserBundle') }}</th>
+      <th style="min-width: 200px">{{ 'generic.enable'|trans }}</th>
+      <th style="min-width: 200px">{{ 'generic.created_at'|trans }}</th>
+      <th>{{ 'generic.action'|trans }}</th>
+    {% endblock %}
 
-  {% if pagination.totalItemCount %}
-  <div class="pagination justify-content-center">
-    {{ knp_pagination_render(pagination) }}
-  </div>
-  {% endif %}
+    {% block tbody %}
+      <td><code class="user-select-all">{{ entity.identifier }}</code></td>
+      <td>
+        {% if entity.enabled %}
+          <span class="badge bg-success">{{ 'generic.yes'|trans }}</span>
+        {% else %}
+          <span class="badge bg-danger">{{ 'generic.no'|trans }}</span>
+        {% endif %}
+      </td>
+      <td>{{ entity.createdAt|intl_date }}</td>
+      <td>
+        <a href="{{ path('app_user_edit', {id: entity.id}) }}">{{ 'generic.edit'|trans }}</a>
+        <a href="{{ path('app_user_delete', {id: entity.id}) }}" onclick="return confirm('{{ 'generic.delete_confirmation'|trans }}')">{{ 'generic.delete'|trans }}</a>
+      </td>
+    {% endblock %}
+  {% endembed %}
 {% endblock %}

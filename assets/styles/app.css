@@ -19,3 +19,8 @@ select + .ts-wrapper .ts-control > input::placeholder {
 .ts-wrapper.multi .ts-control { padding-bottom: 3px !important; }
 .ts-wrapper.multi .ts-control > div { font-size: 83%;  }
 .ts-wrapper.multi .ts-control > input { margin-bottom: 3px !important; }
+
+/** bootstrap */
+.fs-sm { font-size: .75rem; }
+.btn { white-space: nowrap !important; }
+.pagination { margin-bottom: 0 !important; }

@@ -7,65 +7,52 @@
     <a href="{{ path('app_order_new') }}" class="btn btn-primary">{{ 'generic.add'|trans }}</a>
   </p>
 
-  <div class="overflow-x-auto my-3">
-    <table class="table table-striped table-hover align-middle m-0">
-      <tr class="table-light">
-        <th style="min-width: 160px">{{ 'order.number'|trans }}</th>
-        <th style="min-width: 400px">{{ 'order.items'|trans }}</th>
-        <th style="min-width: 100px">{{ 'order.items_total'|trans }}</th>
-        <th style="min-width: 100px">{{ 'order.adjustments_total'|trans }}</th>
-        <th style="min-width: 100px">{{ 'order.total'|trans }}</th>
-        <th style="min-width: 100px">{{ 'order.state'|trans }}</th>
-        <th style="min-width: 200px">{{ 'generic.created_at'|trans }}</th>
-        <th>{{ 'generic.action'|trans }}</th>
-      </tr>
-      {% for entity in pagination %}
-      <tr>
-        <td><code class="user-select-all">{{ entity.number }}</code></td>
-        <td>
-          <div class="d-flex flex-column row-gap-2">
-            {% for item in entity.items %}
-              {% include 'order/_items_entry.twig' with {item} only %}
-            {% endfor %}
-          </div>
-        </td>
-        <td>{{ entity.itemsTotal|intl_currency }}</td>
-        <td>{{ entity.adjustmentsTotal|intl_currency }}</td>
-        <td>{{ entity.total|intl_currency }}</td>
-        <td>
-          <span class="badge text-bg-{{ entity.state.theme }}">{{ entity.state|trans }}</span>
-        </td>
-        <td>{{ entity.createdAt|intl_date }}</td>
-        <td class="text-nowrap">
-          <div class="d-inline-block">
-            <a class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">流转</a>
-            <ul class="dropdown-menu">
-              {% for transition in workflow_transitions(entity) %}
-                {% if transition.name == 'reset' %}
-                  <div class="dropdown-divider"></div>
-                {% endif %}
-                <li><a href="{{ path('app_order_workflow', {number: entity.number, transition: transition.name}) }}" class="dropdown-item">{{ transition.name }}</a></li>
-              {% else %}
-                <li><span class="dropdown-item disabled">No actions available.</span></li>
-              {% endfor %}
-            </ul>
-          </div>
-          <a href="{{ path('app_order_show', {number: entity.number}) }}">{{ 'generic.detail'|trans }}</a>
-          <a href="{{ path('app_order_edit', {number: entity.number}) }}">{{ 'generic.edit'|trans }}</a>
-          <a href="{{ path('app_order_delete', {number: entity.number}) }}" onclick="return confirm('{{ 'generic.delete_confirmation'|trans }}')">{{ 'generic.delete'|trans }}</a>
-        </td>
-      </tr>
-      {% else %}
-      <tr>
-        <td colspan="999" class="text-center text-body-secondary">{{ 'generic.no_results'|trans }}</td>
-      </tr>
-      {% endfor %}
-    </table>
-  </div>
+  {% embed 'table.html.twig' %}
+    {% block thead %}
+      <th style="min-width: 160px">{{ 'order.number'|trans }}</th>
+      <th style="min-width: 400px">{{ 'order.items'|trans }}</th>
+      <th style="min-width: 100px">{{ 'order.items_total'|trans }}</th>
+      <th style="min-width: 100px">{{ 'order.adjustments_total'|trans }}</th>
+      <th style="min-width: 100px">{{ 'order.total'|trans }}</th>
+      <th style="min-width: 100px">{{ 'order.state'|trans }}</th>
+      <th style="min-width: 200px">{{ 'generic.created_at'|trans }}</th>
+      <th>{{ 'generic.action'|trans }}</th>
+    {% endblock %}
 
-  {% if pagination.totalItemCount %}
-  <div class="pagination justify-content-center">
-    {{ knp_pagination_render(pagination) }}
-  </div>
-  {% endif %}
+    {% block tbody %}
+      <td><code class="user-select-all">{{ entity.number }}</code></td>
+      <td>
+        <div class="d-flex flex-column row-gap-2">
+          {% for item in entity.items %}
+            {% include 'order/_items_entry.twig' with {item} only %}
+          {% endfor %}
+        </div>
+      </td>
+      <td>{{ entity.itemsTotal|intl_currency }}</td>
+      <td>{{ entity.adjustmentsTotal|intl_currency }}</td>
+      <td>{{ entity.total|intl_currency }}</td>
+      <td>
+        <span class="badge text-bg-{{ entity.state.theme }}">{{ entity.state|trans }}</span>
+      </td>
+      <td>{{ entity.createdAt|intl_date }}</td>
+      <td class="text-nowrap">
+        <div class="d-inline-block">
+          <a class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">流转</a>
+          <ul class="dropdown-menu">
+            {% for transition in workflow_transitions(entity) %}
+              {% if transition.name == 'reset' %}
+                <div class="dropdown-divider"></div>
+              {% endif %}
+              <li><a href="{{ path('app_order_workflow', {number: entity.number, transition: transition.name}) }}" class="dropdown-item">{{ transition.name }}</a></li>
+            {% else %}
+              <li><span class="dropdown-item disabled">No actions available.</span></li>
+            {% endfor %}
+          </ul>
+        </div>
+        <a href="{{ path('app_order_show', {number: entity.number}) }}">{{ 'generic.detail'|trans }}</a>
+        <a href="{{ path('app_order_edit', {number: entity.number}) }}">{{ 'generic.edit'|trans }}</a>
+        <a href="{{ path('app_order_delete', {number: entity.number}) }}" onclick="return confirm('{{ 'generic.delete_confirmation'|trans }}')">{{ 'generic.delete'|trans }}</a>
+      </td>
+    {% endblock %}
+  {% endembed %}
 {% endblock %}

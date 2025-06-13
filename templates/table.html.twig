@@ -1,29 +1,39 @@
 <div class="overflow-x-auto my-3">
   <table class="table table-striped table-hover align-middle m-0">
-    <tr>
-      {% block thead %}
-        <td>{{ 'generic.total_results'|trans({'%total_item_count%': pagination.totalItemCount}) }}</td>
-      {% endblock %}
-    </tr>
-    {% for entity in pagination %}
-    <tr>
-      {# twigcs use-var entity #}
-      {% block tbody %}
-        <td>#{{ _key }}</td>
-      {% endblock %}
-    </tr>
-    {% else %}
-    <tr>
-      <td colspan="999" class="text-center text-body-secondary">
-        {% include 'empty.html.twig' %}
-      </td>
-    </tr>
-    {% endfor %}
+    <thead>
+      <tr>
+        {% block thead %}
+          <th>{{ 'generic.total_results'|trans({'%total_item_count%': pagination.totalItemCount}) }}</th>
+        {% endblock %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for entity in pagination %}
+      <tr>
+        {# twigcs use-var entity #}
+        {% block tbody %}
+          <td>#{{ _key }}</td>
+        {% endblock %}
+      </tr>
+      {% else %}
+      <tr>
+        <td colspan="999" class="text-center text-body-secondary">
+          {% include 'empty.html.twig' %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
   </table>
 </div>
 
-{% if pagination.totalItemCount %}
-<div class="pagination justify-content-center">
-  {{ knp_pagination_render(pagination) }}
-</div>
-{% endif %}
+{% block pagination %}
+  <div class="d-flex justify-content-center gap-2">
+    {{ knp_pagination_render(pagination) }}
+
+    <div class="pagination">
+      <span class="page-link text-body-secondary rounded">
+        {{ 'generic.total_results'|trans({'%total_item_count%': pagination.totalItemCount}) }}
+      </span>
+    </div>
+  </div>
+{% endblock %}
