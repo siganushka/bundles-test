@@ -64,9 +64,13 @@ class IndexController extends AbstractController
                     'row_attr' => ['class' => 'bbb'],
                 ],
                 'add_button_options' => [
+                    'label' => '<i class="bi bi-plus-lg"></i>',
+                    'label_html' => true,
                     'row_attr' => ['class' => 'ccc'],
                 ],
                 'delete_button_options' => [
+                    'label' => '<i class="bi bi-trash"></i>',
+                    'label_html' => true,
                     'row_attr' => ['class' => 'ddd'],
                 ],
                 'allow_add' => true,

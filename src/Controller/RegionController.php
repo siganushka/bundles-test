@@ -27,25 +27,21 @@ class RegionController extends AbstractController
         $builder = $this->createFormBuilder()
             ->add('province', RegionType::class, [
                 'label' => 'region.province',
-                'placeholder' => 'generic.choice',
                 'cascader_target' => 'city',
                 'constraints' => new NotBlank(),
             ])
             ->add('city', RegionType::class, [
                 'label' => 'region.city',
-                'placeholder' => 'generic.choice',
                 'cascader_target' => 'district',
                 'constraints' => new NotBlank(),
             ])
             ->add('district', RegionType::class, [
                 'label' => 'region.district',
-                'placeholder' => 'generic.choice',
                 'cascader_target' => 'street',
                 'constraints' => new NotBlank(),
             ])
             ->add('street', RegionType::class, [
                 'label' => 'region.street',
-                'placeholder' => 'generic.choice',
                 'constraints' => new NotBlank(),
             ])
             ->add('submit', SubmitType::class, ['label' => 'generic.submit'])

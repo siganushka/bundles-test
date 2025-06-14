@@ -1,5 +1,9 @@
 {% if pagination is defined %}
-  {% set items = pagination.items %}
+  {% set _items = pagination.items %}
+  {% set _items_count = pagination.totalItemCount %}
+{% else %}
+  {% set _items = items|default([]) %}
+  {% set _items_count = _items|length %}
 {% endif %}
 
 <div class="overflow-x-auto bg-body my-3">
@@ -8,14 +12,14 @@
       {%~ block thead %}
       <tr>
         {%~ block th %}
-          <th>{{ 'generic.total_results'|trans({'%total_item_count%': items|length}) }}</th>
+          <th>{{ 'generic.total_results'|trans({'%total_item_count%': _items_count}) }}</th>
         {%~ endblock %}
       </tr>
       {%~ endblock %}
     </thead>
     <tbody>
       {%~ block tbody %}
-        {%~ for _item in items %}
+        {%~ for _item in _items %}
         <tr>
           {%~ block td %}
             <td>#{{ _key }}{# twigcs use-var _item #}</td>
@@ -40,7 +44,7 @@
 
   <div class="pagination d-none d-md-block">
     <span class="page-link text-body-secondary rounded">
-      {{- 'generic.total_results'|trans({'%total_item_count%': items|length}) -}}
+      {{- 'generic.total_results'|trans({'%total_item_count%': _items_count}) -}}
     </span>
   </div>
 </div>

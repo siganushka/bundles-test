@@ -24,3 +24,4 @@ select + .ts-wrapper .ts-control > input::placeholder {
 .fs-sm { font-size: .75rem; }
 .btn { white-space: nowrap !important; }
 .pagination { margin-bottom: 0 !important; }
+.img-thumbnail { max-width: none !important; }

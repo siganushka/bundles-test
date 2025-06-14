@@ -27,23 +27,19 @@
           <img src="{{ _item.img.url }}" width="50px" class="img-thumbnail" />
           <div class="mx-3">
             <p class="m-0 text-break">{{ _item.name }}</p>
-            <small class="text-body-tertiary">
-              {% for option in _item.options %}
-                <a href="{{ path('app_productoption_edit', {id: option.id}) }}" class="text-reset">{{ option.name }}</a>
-              {% endfor %}
-            </small>
+            {% if _item.options|length %}
+              <small class="text-body-tertiary">
+                {% for option in _item.options %}
+                  <a href="{{ path('app_productoption_edit', {id: option.id}) }}" class="text-reset">{{ option.name }}</a>
+                {% endfor %}
+              </small>
+            {% endif %}
           </div>
         </div>
       </td>
       <td class="text-nowrap">
         {%- set _prices = _item.variants|map(p => p.price) %}
-        {%- if _prices|length %}
-          {%- set min = min(_prices) -%}
-          {%- set max = max(_prices) -%}
-          {{ min|intl_currency }}{% if min is not same as(max) %}-{{ max|intl_currency }}{% endif %}
-        {%- else %}
-          -
-        {% endif -%}
+        {{- _prices ? min(_prices)|intl_currency : '-' -}}
       </td>
       <td class="text-nowrap">{{ _item.createdAt|intl_date }}</td>
       <td class="text-nowrap">
