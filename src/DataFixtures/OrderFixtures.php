@@ -8,7 +8,6 @@ use App\Entity\ProductVariant;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
-use Siganushka\OrderBundle\Event\OrderBeforeCreateEvent;
 use Siganushka\OrderBundle\Event\OrderCreatedEvent;
 use Siganushka\OrderBundle\Repository\OrderItemRepository;
 use Siganushka\OrderBundle\Repository\OrderRepository;
@@ -43,10 +42,6 @@ class OrderFixtures extends Fixture implements DependentFixtureInterface
 
         $order2 = $this->orderRepository->createNew();
         $order2->addItem($this->orderItemRepository->createNew($subject5, 2));
-
-        $this->eventDispatcher->dispatch(new OrderBeforeCreateEvent($order0));
-        $this->eventDispatcher->dispatch(new OrderBeforeCreateEvent($order1));
-        $this->eventDispatcher->dispatch(new OrderBeforeCreateEvent($order2));
 
         $manager->persist($order0);
         $manager->persist($order1);

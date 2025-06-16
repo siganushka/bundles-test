@@ -5,15 +5,16 @@ declare(strict_types=1);
 namespace App\EventListener;
 
 use App\Entity\CouponDiscount;
+use App\Entity\Order;
 use App\Entity\RandomDiscount;
 use App\Entity\ShippingFee;
-use Siganushka\OrderBundle\Event\OrderBeforeCreateEvent;
-use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
+use Doctrine\Bundle\DoctrineBundle\Attribute\AsEntityListener;
+use Doctrine\ORM\Events;
 
-#[AsEventListener(event: OrderBeforeCreateEvent::class)]
+#[AsEntityListener(Events::prePersist, entity: Order::class)]
 class OrderAddAdjustmentListener
 {
-    public function __invoke(OrderBeforeCreateEvent $event): void
+    public function __invoke(Order $entity): void
     {
         $adjustments = [
             (new ShippingFee())->setAmount(600),
@@ -31,7 +32,6 @@ class OrderAddAdjustmentListener
             $indexs = [$indexs];
         }
 
-        $entity = $event->getOrder();
         foreach ($indexs as $index) {
             $entity->addAdjustment($adjustments[$index]);
         }

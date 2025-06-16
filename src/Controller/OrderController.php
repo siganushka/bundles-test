@@ -6,7 +6,6 @@ namespace App\Controller;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
-use Siganushka\OrderBundle\Event\OrderBeforeCreateEvent;
 use Siganushka\OrderBundle\Event\OrderCreatedEvent;
 use Siganushka\OrderBundle\Form\OrderItemType;
 use Siganushka\OrderBundle\Form\OrderType;
@@ -51,8 +50,6 @@ class OrderController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $eventDispatcher->dispatch(new OrderBeforeCreateEvent($entity));
-
             $entityManager->persist($entity);
             $entityManager->flush();
 
