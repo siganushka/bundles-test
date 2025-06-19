@@ -6,7 +6,7 @@ namespace App\Controller;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
-use Siganushka\OrderBundle\Event\OrderCreatedEvent;
+use Siganushka\OrderBundle\Enum\OrderState;
 use Siganushka\OrderBundle\Form\OrderItemType;
 use Siganushka\OrderBundle\Form\OrderType;
 use Siganushka\OrderBundle\Repository\OrderRepository;
@@ -14,10 +14,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Attribute\MapQueryParameter;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Workflow\Exception\LogicException;
 use Symfony\Component\Workflow\WorkflowInterface;
-use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
 class OrderController extends AbstractController
 {
@@ -26,22 +26,39 @@ class OrderController extends AbstractController
     }
 
     #[Route('/orders')]
-    public function index(Request $request, PaginatorInterface $paginator): Response
+    public function index(Request $request, PaginatorInterface $paginator, #[MapQueryParameter('state')] ?OrderState $state = null): Response
     {
-        $queryBuilder = $this->repository->createQueryBuilderWithOrdered('m');
+        $queryBuilder = $this->repository->createQueryBuilderWithOrdered('o');
+        $queryBuilderForCount = clone $queryBuilder;
+
+        if ($state) {
+            $queryBuilder->andWhere('o.state = :state')->setParameter('state', $state);
+        }
+
+        $queryBuilderForCount->resetDQLPart('orderBy')
+            ->select('o.state, COUNT(o) as count')
+            ->groupBy('o.state')
+        ;
+
+        $countQuery = $queryBuilderForCount->getQuery();
+        /** @var array<int, array{state: OrderState, count: int}> */
+        $countResult = $countQuery->getArrayResult();
+
+        $countForState = [];
+        foreach ($countResult as $item) {
+            $countForState[$item['state']->value] = $item['count'];
+        }
 
         $page = $request->query->getInt('page', 1);
         $size = $request->query->getInt('size', 10);
 
         $pagination = $paginator->paginate($queryBuilder, $page, $size);
 
-        return $this->render('order/index.html.twig', [
-            'pagination' => $pagination,
-        ]);
+        return $this->render('order/index.html.twig', compact('pagination', 'state', 'countForState'));
     }
 
     #[Route('/orders/new')]
-    public function new(Request $request, EntityManagerInterface $entityManager, EventDispatcherInterface $eventDispatcher): Response
+    public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $entity = $this->repository->createNew();
 
@@ -50,10 +67,10 @@ class OrderController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->beginTransaction();
             $entityManager->persist($entity);
             $entityManager->flush();
-
-            $eventDispatcher->dispatch(new OrderCreatedEvent($entity));
+            $entityManager->commit();
 
             $this->addFlash('success', 'Your changes were saved!');
 

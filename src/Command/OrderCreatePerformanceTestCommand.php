@@ -6,7 +6,6 @@ namespace App\Command;
 
 use App\Entity\ProductVariant;
 use Doctrine\ORM\EntityManagerInterface;
-use Siganushka\OrderBundle\Event\OrderCreatedEvent;
 use Siganushka\OrderBundle\Repository\OrderItemRepository;
 use Siganushka\OrderBundle\Repository\OrderRepository;
 use Symfony\Component\Console\Attribute\AsCommand;
@@ -15,13 +14,11 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
 #[AsCommand('app:order:create-performance-test', 'Add a short description for your command')]
 class OrderCreatePerformanceTestCommand extends Command
 {
     public function __construct(
-        private readonly EventDispatcherInterface $eventDispatcher,
         private readonly EntityManagerInterface $entityManager,
         private readonly OrderRepository $orderRepository,
         private readonly OrderItemRepository $orderItemRepository)
@@ -52,7 +49,6 @@ class OrderCreatePerformanceTestCommand extends Command
         }
 
         $subject = $this->entityManager->find(ProductVariant::class, $subjectId);
-        $events = [];
 
         $preTime = microtime(true);
         for ($i = 0; $i < $count; ++$i) {
@@ -60,12 +56,9 @@ class OrderCreatePerformanceTestCommand extends Command
             $order->addItem($this->orderItemRepository->createNew($subject, 1));
 
             $this->entityManager->persist($order);
-            $events[] = new OrderCreatedEvent($order);
         }
 
         $this->entityManager->flush();
-
-        array_walk($events, fn (OrderCreatedEvent $event) => $this->eventDispatcher->dispatch($event));
 
         $postTime = microtime(true);
         $execTime = $postTime - $preTime;

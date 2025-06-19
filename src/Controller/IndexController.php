@@ -5,9 +5,12 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Entity\Order;
+use App\Entity\OrderItem;
+use App\Entity\ProductVariant;
 use App\Form\TestType;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
+use Siganushka\OrderBundle\Enum\OrderState;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
@@ -119,34 +122,38 @@ class IndexController extends AbstractController
     }
 
     #[Route('/test')]
-    public function test(EntityManagerInterface $em, LoggerInterface $logger): Response
+    public function test(EntityManagerInterface $entityManager, LoggerInterface $logger): Response
     {
+        $subject = $entityManager->getRepository(ProductVariant::class)->find(109);
+
         // $logger->debug('CREATE_BEFORE');
 
         // $entity = new Order();
+        // $entity->addItem(new OrderItem($subject, 1));
 
-        // $em->persist($entity);
-        // $em->flush();
+        // $entityManager->persist($entity);
+        // $entityManager->flush();
 
         // $logger->debug('CREATE_AFTER');
 
         // $logger->debug('UPDATE_BEFORE');
 
-        // $entity = $em->getRepository(Order::class)->findBy([], ['id' => 'DESC'])[0];
+        // $entity = $entityManager->getRepository(Order::class)->findBy([], ['id' => 'DESC'])[0];
         // $entity->setNote(uniqid());
+        // $entity->setStateAsString(OrderState::Cancelled->value);
 
-        // $em->flush();
+        // $entityManager->flush();
 
         // $logger->debug('UPDATE_AFTER');
 
-        $logger->debug('DELETE_BEFORE');
+        // $logger->debug('DELETE_BEFORE');
 
-        $entity = $em->getRepository(Order::class)->findBy([], ['id' => 'DESC'])[0];
+        // $entity = $entityManager->getRepository(Order::class)->findBy([], ['id' => 'DESC'])[0];
 
-        $em->remove($entity);
-        $em->flush();
+        // $entityManager->remove($entity);
+        // $entityManager->flush();
 
-        $logger->debug('DELETE_AFTER');
+        // $logger->debug('DELETE_AFTER');
 
         return $this->render('index/index.html.twig');
     }

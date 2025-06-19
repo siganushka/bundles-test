@@ -1823,7 +1823,7 @@
             "dist": {
                 "type": "path",
                 "url": "../order-bundle",
-                "reference": "6a6dce4deb9481d101d1c4c419a27f4d27c360d8"
+                "reference": "e47a4b434bb4bcd33e20f673fb1e0131843753f4"
             },
             "require": {
                 "knplabs/knp-components": "^4.4|^5.0",

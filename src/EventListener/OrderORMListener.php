@@ -14,15 +14,15 @@ use Doctrine\ORM\Event\PreUpdateEventArgs;
 use Doctrine\ORM\Events;
 use Psr\Log\LoggerInterface;
 
-#[AsDoctrineListener(Events::prePersist)]
-#[AsDoctrineListener(Events::postPersist)]
-#[AsDoctrineListener(Events::preUpdate)]
-#[AsDoctrineListener(Events::postUpdate)]
-#[AsDoctrineListener(Events::preRemove)]
-#[AsDoctrineListener(Events::postRemove)]
-#[AsDoctrineListener(Events::preFlush)]
-#[AsDoctrineListener(Events::onFlush)]
-#[AsDoctrineListener(Events::postFlush)]
+// #[AsDoctrineListener(Events::prePersist)]
+// #[AsDoctrineListener(Events::postPersist)]
+// #[AsDoctrineListener(Events::preUpdate)]
+// #[AsDoctrineListener(Events::postUpdate)]
+// #[AsDoctrineListener(Events::preRemove)]
+// #[AsDoctrineListener(Events::postRemove)]
+// #[AsDoctrineListener(Events::preFlush)]
+// #[AsDoctrineListener(Events::onFlush)]
+// #[AsDoctrineListener(Events::postFlush)]
 class OrderORMListener
 {
     public function __construct(private readonly LoggerInterface $logger)
