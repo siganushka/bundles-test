@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Entity\Order;
 use App\Form\TestType;
+use Doctrine\ORM\EntityManagerInterface;
+use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
@@ -113,5 +116,38 @@ class IndexController extends AbstractController
         return $this->render('index/index.html.twig', [
             'form' => $form,
         ]);
+    }
+
+    #[Route('/test')]
+    public function test(EntityManagerInterface $em, LoggerInterface $logger): Response
+    {
+        // $logger->debug('CREATE_BEFORE');
+
+        // $entity = new Order();
+
+        // $em->persist($entity);
+        // $em->flush();
+
+        // $logger->debug('CREATE_AFTER');
+
+        // $logger->debug('UPDATE_BEFORE');
+
+        // $entity = $em->getRepository(Order::class)->findBy([], ['id' => 'DESC'])[0];
+        // $entity->setNote(uniqid());
+
+        // $em->flush();
+
+        // $logger->debug('UPDATE_AFTER');
+
+        $logger->debug('DELETE_BEFORE');
+
+        $entity = $em->getRepository(Order::class)->findBy([], ['id' => 'DESC'])[0];
+
+        $em->remove($entity);
+        $em->flush();
+
+        $logger->debug('DELETE_AFTER');
+
+        return $this->render('index/index.html.twig');
     }
 }
