@@ -1,32 +1,9 @@
-/** collection */
-[data-controller=siganushka-generic-collection] td {
-  --bs-table-bg: transparent;
-}
+/** siganushka/generic-bundle */
+[data-controller=siganushka-generic-collection] td { --bs-table-bg: transparent; }
+[data-controller=siganushka-generic-collection] td:first-child { padding-left: 0; }
+[data-controller=siganushka-generic-collection] td:last-child { padding-right: 0; }
 
-[data-controller=siganushka-generic-collection] td:first-child {
-  padding-left: 0;
-}
-
-[data-controller=siganushka-generic-collection] td:last-child {
-  padding-right: 0;
-}
-
-/** tom-select */
-select + .ts-wrapper .ts-control > input::placeholder {
-  color: #212529;
-}
-
-.ts-wrapper.multi .ts-control { padding-bottom: 3px !important; }
-.ts-wrapper.multi .ts-control > div { font-size: 83%;  }
-.ts-wrapper.multi .ts-control > input { margin-bottom: 3px !important; }
-
-/** bootstrap */
-.fs-sm { font-size: .75rem; }
-.btn { white-space: nowrap !important; }
-.pagination { margin-bottom: 0 !important; }
-.img-thumbnail { max-width: none !important; }
-
-/** KnpPaginatorBundle sortable */
+/** knplabs/knp-paginator-bundle */
 .table .sortable,
 .table .asc,
 .table .desc { color: var(--bs-table-color); text-decoration: none; }
@@ -38,3 +15,14 @@ select + .ts-wrapper .ts-control > input::placeholder {
 .table .sortable::after { color: var(--bs-tertiary-color); content: " \F571"; }
 .table .asc::after { content: " \F574"; }
 .table .desc::after { content: " \F575"; }
+
+/** tom-select */
+.ts-wrapper .ts-control > input::placeholder { color: var(--bs-body-color); }
+
+/** bootstrap */
+.btn { white-space: nowrap !important; }
+.pagination { margin-bottom: 0 !important; }
+.img-thumbnail { max-width: none !important; }
+
+/** app */
+.fs-sm { font-size: .75rem; }
