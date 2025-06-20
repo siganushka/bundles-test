@@ -29,24 +29,10 @@ class OrderController extends AbstractController
     public function index(Request $request, PaginatorInterface $paginator, #[MapQueryParameter('state')] ?OrderState $state = null): Response
     {
         $queryBuilder = $this->repository->createQueryBuilderWithOrdered('o');
-        $queryBuilderForCount = clone $queryBuilder;
+        $countForState = $this->repository->countByStateMapping();
 
         if ($state) {
             $queryBuilder->andWhere('o.state = :state')->setParameter('state', $state);
-        }
-
-        $queryBuilderForCount->resetDQLPart('orderBy')
-            ->select('o.state, COUNT(o) as count')
-            ->groupBy('o.state')
-        ;
-
-        $countQuery = $queryBuilderForCount->getQuery();
-        /** @var array<int, array{state: OrderState, count: int}> */
-        $countResult = $countQuery->getArrayResult();
-
-        $countForState = [];
-        foreach ($countResult as $item) {
-            $countForState[$item['state']->value] = $item['count'];
         }
 
         $page = $request->query->getInt('page', 1);
