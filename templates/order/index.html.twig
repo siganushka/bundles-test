@@ -1,8 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block count %}
-  <small class="text-body-secondary">({{ _count|default(0) }})</small>
-{% endblock %}
+{% macro nav_link(item, count, active) %}
+  {%- set _item -%}
+    {{- item|trans -}}<small class="text-body-secondary ms-1">({{ count }})</small>
+  {%- endset -%}
+
+  {%- if active -%}
+    <span class="nav-link active" aria-current="page">{{ _item }}</span>
+  {%- else -%}
+    <a class="nav-link" aria-current="page" href="{{ path(app.current_route, {state: item.value ?? null}) }}">{{ _item }}</a>
+  {%- endif -%}
+{% endmacro %}
 
 {% block body %}
   <h3 class="mb-3">OrderBundle</h3>
@@ -13,35 +21,24 @@
 
   <ul class="nav nav-tabs">
     <li class="nav-item">
-      {% set _count = countForState|reduce((carry, item) => carry + item) %}
-      {% if state is null %}
-        <span class="nav-link active" aria-current="page">{{ 'generic.choice_all'|trans }}{{ block('count') }}</span>
-      {% else %}
-        <a class="nav-link" aria-current="page" href="{{ path(app.current_route) }}">{{ 'generic.choice_all'|trans }}{{ block('count') }}</a>
-      {% endif %}
+      {{ _self.nav_link('generic.choice_all', countForState|reduce((carry, item) => carry + item), state == null) }}
     </li>
-
     {% for case in enum_cases('Siganushka\\OrderBundle\\Enum\\OrderState') %}
-      {% set _count = countForState[case.value] ?? 0 %}
       <li class="nav-item">
-        {% if case == state %}
-          <span class="nav-link active" aria-current="page">{{ case|trans }}{{ block('count') }}</span>
-        {% else %}
-          <a class="nav-link" aria-current="page" href="{{ path(app.current_route, {state: case.value}) }}">{{ case|trans }}{{ block('count') }}</a>
-        {% endif %}
+        {{ _self.nav_link(case, countForState[case.value] ?? 0, state == case) }}
       </li>
     {% endfor %}
   </ul>
 
   {% embed 'table.html.twig' %}
     {% block th %}
-      <th class="text-nowrap">{{ 'order.number'|trans }}</th>
+      <th class="text-nowrap">{{ knp_pagination_sortable(pagination, 'order.number'|trans, 'o.number') }}</th>
       <th class="text-nowrap">{{ 'order.items'|trans }}</th>
-      <th class="text-nowrap">{{ 'order.items_total'|trans }}</th>
-      <th class="text-nowrap">{{ 'order.adjustments_total'|trans }}</th>
-      <th class="text-nowrap">{{ 'order.total'|trans }}</th>
+      <th class="text-nowrap">{{ knp_pagination_sortable(pagination, 'order.items_total'|trans, 'o.itemsTotal') }}</th>
+      <th class="text-nowrap">{{ knp_pagination_sortable(pagination, 'order.adjustments_total'|trans, 'o.adjustmentsTotal') }}</th>
+      <th class="text-nowrap">{{ knp_pagination_sortable(pagination, 'order.total'|trans, 'o.total') }}</th>
       <th class="text-nowrap">{{ 'order.state'|trans }}</th>
-      <th class="text-nowrap">{{ 'generic.created_at'|trans }}</th>
+      <th class="text-nowrap">{{ knp_pagination_sortable(pagination, 'generic.created_at'|trans, 'o.createdAt') }}</th>
       <th class="text-nowrap">{{ 'generic.action'|trans }}</th>
     {% endblock %}
 

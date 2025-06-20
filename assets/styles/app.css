@@ -25,3 +25,16 @@ select + .ts-wrapper .ts-control > input::placeholder {
 .btn { white-space: nowrap !important; }
 .pagination { margin-bottom: 0 !important; }
 .img-thumbnail { max-width: none !important; }
+
+/** KnpPaginatorBundle sortable */
+.table .sortable,
+.table .asc,
+.table .desc { color: var(--bs-table-color); text-decoration: none; }
+
+.table .sortable::after,
+.table .asc::after,
+.table .desc::after { font-family: bootstrap-icons; vertical-align: middle; }
+
+.table .sortable::after { color: var(--bs-tertiary-color); content: " \F571"; }
+.table .asc::after { content: " \F574"; }
+.table .desc::after { content: " \F575"; }
