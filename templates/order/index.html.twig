@@ -44,7 +44,7 @@
 
     {% block td %}
       <td class="text-nowrap"><code class="user-select-all">{{ _item.number }}</code></td>
-      <td class="text-nowrap">
+      <td style="min-width: 360px;max-width: 360px">
         <div class="d-flex flex-column row-gap-2">
           {% for item in _item.items %}
             {% include 'order/_items_entry.twig' with {item} only %}
