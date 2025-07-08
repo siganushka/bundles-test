@@ -69,28 +69,28 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
         $option7->addValue($this->productOptionValueRepository->createNew(null, '钛羽黄'));
 
         $option8 = $this->productOptionRepository->createNew('尺码');
-        $option8->addValue($this->productOptionValueRepository->createNew(null, '25', '内长约 17cm'));
-        $option8->addValue($this->productOptionValueRepository->createNew(null, '26', '内长约 17.5cm'));
-        $option8->addValue($this->productOptionValueRepository->createNew(null, '27', '内长约 18cm'));
-        $option8->addValue($this->productOptionValueRepository->createNew(null, '28', '内长约 18.5cm'));
-        $option8->addValue($this->productOptionValueRepository->createNew(null, '29', '内长约 19cm'));
-        $option8->addValue($this->productOptionValueRepository->createNew(null, '30', '内长约 19.5cm'));
-        $option8->addValue($this->productOptionValueRepository->createNew(null, '31', '内长约 20cm'));
-        $option8->addValue($this->productOptionValueRepository->createNew(null, '32', '内长约 20.05cm'));
+        $option8->addValue($this->productOptionValueRepository->createNew(null, '25'));
+        $option8->addValue($this->productOptionValueRepository->createNew(null, '26'));
+        $option8->addValue($this->productOptionValueRepository->createNew(null, '27'));
+        $option8->addValue($this->productOptionValueRepository->createNew(null, '28'));
+        $option8->addValue($this->productOptionValueRepository->createNew(null, '29'));
+        $option8->addValue($this->productOptionValueRepository->createNew(null, '30'));
+        $option8->addValue($this->productOptionValueRepository->createNew(null, '31'));
+        $option8->addValue($this->productOptionValueRepository->createNew(null, '32'));
 
         $option9 = $this->productOptionRepository->createNew('尺码');
-        $option9->addValue($this->productOptionValueRepository->createNew(null, 'M', '建议90-120斤'));
-        $option9->addValue($this->productOptionValueRepository->createNew(null, 'L', '建议120-140斤'));
-        $option9->addValue($this->productOptionValueRepository->createNew(null, 'XL', '建议140-160斤'));
-        $option9->addValue($this->productOptionValueRepository->createNew(null, '2XL', '建议160-180'));
-        $option9->addValue($this->productOptionValueRepository->createNew(null, '3XL', '建议180-200斤'));
+        $option9->addValue($this->productOptionValueRepository->createNew(null, 'M'));
+        $option9->addValue($this->productOptionValueRepository->createNew(null, 'L'));
+        $option9->addValue($this->productOptionValueRepository->createNew(null, 'XL'));
+        $option9->addValue($this->productOptionValueRepository->createNew(null, '2XL'));
+        $option9->addValue($this->productOptionValueRepository->createNew(null, '3XL'));
 
         $option10 = $this->productOptionRepository->createNew('辣度');
-        $option10->addValue($this->productOptionValueRepository->createNew(null, '不辣', null, $this->getReference('media-10', Media::class)));
-        $option10->addValue($this->productOptionValueRepository->createNew(null, '微辣', null, $this->getReference('media-11', Media::class)));
-        $option10->addValue($this->productOptionValueRepository->createNew(null, '中辣', null, $this->getReference('media-12', Media::class)));
-        $option10->addValue($this->productOptionValueRepository->createNew(null, '特辣', null, $this->getReference('media-13', Media::class)));
-        $option10->addValue($this->productOptionValueRepository->createNew(null, '变态辣', null, $this->getReference('media-14', Media::class)));
+        $option10->addValue($this->productOptionValueRepository->createNew(null, '不辣', $this->getReference('media-10', Media::class)));
+        $option10->addValue($this->productOptionValueRepository->createNew(null, '微辣', $this->getReference('media-11', Media::class)));
+        $option10->addValue($this->productOptionValueRepository->createNew(null, '中辣', $this->getReference('media-12', Media::class)));
+        $option10->addValue($this->productOptionValueRepository->createNew(null, '特辣', $this->getReference('media-13', Media::class)));
+        $option10->addValue($this->productOptionValueRepository->createNew(null, '变态辣', $this->getReference('media-14', Media::class)));
 
         $product0 = $this->productRepository->createNew();
         $product0->setName('苹果 iPhone 15');
