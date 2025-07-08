@@ -28,4 +28,5 @@ select + .ts-wrapper .ts-control > input::placeholder { color: var(--bs-body-col
 .img-thumbnail { max-width: none !important; }
 
 /** app */
+textarea.form-control { min-height: 86px !important; max-height: 320px !important; field-sizing: content; }
 .fs-sm { font-size: .75rem; }
