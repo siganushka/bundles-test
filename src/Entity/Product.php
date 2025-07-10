@@ -6,11 +6,15 @@ namespace App\Entity;
 
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Siganushka\Contracts\Doctrine\DeletableInterface;
+use Siganushka\Contracts\Doctrine\DeletableTrait;
 use Siganushka\ProductBundle\Entity\Product as BaseProduct;
 
 #[ORM\Entity]
-class Product extends BaseProduct
+class Product extends BaseProduct implements DeletableInterface
 {
+    use DeletableTrait;
+
     #[ORM\Column('`virtual`', type: Types::BOOLEAN)]
     protected bool $virtual = false;
 

@@ -2,7 +2,7 @@
 
 {% macro nav_link(item, count, active) %}
   {%- set _item -%}
-    {{- item|trans -}}<small class="text-body-secondary ms-1">({{ count }})</small>
+    {{- item|trans -}}<small class="text-body-secondary ms-1">({{ count ?? 0 }})</small>
   {%- endset -%}
 
   {%- if active -%}

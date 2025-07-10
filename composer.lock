@@ -4,31 +4,29 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4391064b3656e39c6ec47bcc8eb9cc6d",
+    "content-hash": "a30d1042a3531d3c27623e2bba83ffe8",
     "packages": [
         {
             "name": "bentools/cartesian-product",
-            "version": "1.4.1",
+            "version": "1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bpolaszek/cartesian-product.git",
-                "reference": "ae6b437c3fc8243c6a5ab67fe270e032f4ce2f7b"
+                "reference": "e1f7c2660450b0746afc1dc012ba39dae4133cfc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bpolaszek/cartesian-product/zipball/ae6b437c3fc8243c6a5ab67fe270e032f4ce2f7b",
-                "reference": "ae6b437c3fc8243c6a5ab67fe270e032f4ce2f7b",
+                "url": "https://api.github.com/repos/bpolaszek/cartesian-product/zipball/e1f7c2660450b0746afc1dc012ba39dae4133cfc",
+                "reference": "e1f7c2660450b0746afc1dc012ba39dae4133cfc",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.4"
             },
             "require-dev": {
-                "dms/phpunit-arraysubset-asserts": "^0.3.1",
-                "php-coveralls/php-coveralls": "@stable",
-                "phpunit/phpunit": "^8.0|^9.0",
-                "squizlabs/php_codesniffer": "@stable",
-                "symfony/var-dumper": "^3.2|^4.0"
+                "friendsofphp/php-cs-fixer": "^3.82",
+                "phpunit/phpunit": "^9.0",
+                "symfony/var-dumper": "^6.0|^7.0"
             },
             "type": "library",
             "autoload": {
@@ -46,9 +44,9 @@
             "description": "A simple, low-memory footprint function to generate all combinations from a multi-dimensionnal array.",
             "support": {
                 "issues": "https://github.com/bpolaszek/cartesian-product/issues",
-                "source": "https://github.com/bpolaszek/cartesian-product/tree/1.4.1"
+                "source": "https://github.com/bpolaszek/cartesian-product/tree/1.5"
             },
-            "time": "2022-01-19T13:31:38+00:00"
+            "time": "2025-07-08T12:55:38+00:00"
         },
         {
             "name": "composer/semver",
@@ -1647,29 +1645,33 @@
         {
             "name": "siganushka/doctrine-contracts",
             "version": "dev-main",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/siganushka/doctrine-contracts.git",
-                "reference": "5a13e2f2e18f7a9f305a41e3eb238be6708e319c"
-            },
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/siganushka/doctrine-contracts/zipball/5a13e2f2e18f7a9f305a41e3eb238be6708e319c",
-                "reference": "5a13e2f2e18f7a9f305a41e3eb238be6708e319c",
-                "shasum": ""
+                "type": "path",
+                "url": "../doctrine-contracts",
+                "reference": "d39834a6fe6df5158a312f1299617872c1e43030"
             },
             "require": {
                 "doctrine/orm": "^2.11|^3.0",
                 "php": ">=8.1"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
                     "Siganushka\\Contracts\\Doctrine\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "Siganushka\\Contracts\\Doctrine\\Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "tools:run": [
+                    "tools/vendor/bin/php-cs-fixer fix",
+                    "tools/vendor/bin/simple-phpunit --debug",
+                    "tools/vendor/bin/phpstan"
+                ]
+            },
             "license": [
                 "MIT"
             ],
@@ -1684,11 +1686,10 @@
             "keywords": [
                 "doctrine"
             ],
-            "support": {
-                "issues": "https://github.com/siganushka/doctrine-contracts/issues",
-                "source": "https://github.com/siganushka/doctrine-contracts/tree/1.0.0"
-            },
-            "time": "2025-03-15T03:26:29+00:00"
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
         },
         {
             "name": "siganushka/generic-bundle",
@@ -1696,7 +1697,7 @@
             "dist": {
                 "type": "path",
                 "url": "../generic-bundle",
-                "reference": "12a630aaa279d754d45e8a5b314a7be3632ef028"
+                "reference": "79dabf05b7abb84817b1bb77d6a16ca07d9d3a12"
             },
             "require": {
                 "php": ">=8.1",
@@ -1823,7 +1824,7 @@
             "dist": {
                 "type": "path",
                 "url": "../order-bundle",
-                "reference": "cfa68543844ea63ec8362e6f7d17a34a5c8b0554"
+                "reference": "f59b1769e2fedf1814ecf01d298b4545f1349e20"
             },
             "require": {
                 "knplabs/knp-components": "^4.4|^5.0",

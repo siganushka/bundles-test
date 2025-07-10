@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\EventListener;
 
+use App\Entity\Order;
 use Doctrine\Bundle\DoctrineBundle\Attribute\AsDoctrineListener;
 use Doctrine\ORM\Event\PostPersistEventArgs;
 use Doctrine\ORM\Event\PostRemoveEventArgs;
@@ -13,20 +14,24 @@ use Doctrine\ORM\Event\PreRemoveEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
 use Doctrine\ORM\Events;
 use Psr\Log\LoggerInterface;
+use Siganushka\OrderBundle\Enum\OrderStateTransition;
+use Symfony\Component\Workflow\WorkflowInterface;
 
 // #[AsDoctrineListener(Events::prePersist)]
 // #[AsDoctrineListener(Events::postPersist)]
 // #[AsDoctrineListener(Events::preUpdate)]
 // #[AsDoctrineListener(Events::postUpdate)]
-// #[AsDoctrineListener(Events::preRemove)]
+#[AsDoctrineListener(Events::preRemove)]
 // #[AsDoctrineListener(Events::postRemove)]
 // #[AsDoctrineListener(Events::preFlush)]
 // #[AsDoctrineListener(Events::onFlush)]
 // #[AsDoctrineListener(Events::postFlush)]
 class OrderORMListener
 {
-    public function __construct(private readonly LoggerInterface $logger)
-    {
+    public function __construct(
+        private readonly LoggerInterface $logger,
+        private readonly WorkflowInterface $orderStateFlow,
+    ) {
     }
 
     public function prePersist(PrePersistEventArgs $event): void
@@ -52,6 +57,15 @@ class OrderORMListener
     public function preRemove(PreRemoveEventArgs $event): void
     {
         $this->logger->debug(__METHOD__.' -> '.$event->getObject()::class);
+
+        $object = $event->getObject();
+        if ($object instanceof Order) {
+            try {
+                $this->orderStateFlow->apply($object, OrderStateTransition::Cancel->value);
+            } catch (\Throwable) {
+                // Nothing todo...
+            }
+        }
     }
 
     public function postRemove(PostRemoveEventArgs $event): void

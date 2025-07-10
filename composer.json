@@ -112,6 +112,13 @@
     "repositories": [
         {
             "type": "path",
+            "url": "../doctrine-contracts",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
             "url": "../generic-bundle",
             "options": {
                 "symlink": true
