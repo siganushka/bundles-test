@@ -30,3 +30,4 @@ select + .ts-wrapper .ts-control > input::placeholder { color: var(--bs-body-col
 /** app */
 textarea.form-control { min-height: 86px !important; max-height: 320px !important; field-sizing: content; }
 .fs-sm { font-size: .75rem; }
+.w-0 { width: 0%; }
