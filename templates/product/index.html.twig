@@ -30,7 +30,10 @@
             {% if _item.options|length %}
               <small class="text-body-tertiary">
                 {% for option in _item.options %}
-                  <a href="{{ path('app_productoption_edit', {id: option.id}) }}" class="text-reset">{{ option.name }}</a>
+                  <a href="{{ path('app_productoption_edit', {id: option.id}) }}" class="text-reset">
+                    {{ option.name }}
+                    ({{ option.values|length }})
+                  </a>
                 {% endfor %}
               </small>
             {% endif %}
@@ -38,19 +41,17 @@
         </div>
       </td>
       <td class="text-nowrap">
-        {%- set _prices = _item.variants|map(p => p.price) %}
+        {%- set _variants = _item.variants|filter(v => v.enabled) -%}
+        {%- set _prices = _variants|map(v => v.price) %}
         {{- _prices ? min(_prices)|intl_currency : '-' -}}
       </td>
       <td class="text-nowrap">{{ _item.createdAt|intl_date }}</td>
       <td class="text-nowrap">
-        <div class="hstack gap-2 lh-1">
           <a href="{{ path('app_product_variants', {id: _item.id}) }}">
             {{ 'product.variants'|trans }}
-            <small>({{ _item.variants|length }}/{{ _item.choices|length ?: 1 }})</small>
+            <small>({{ _variants|length }}/{{ _item.choices|length ?: 1 }})</small>
           </a>
-          <div class="vr"></div>
           <a href="{{ path('app_product_edit', {id: _item.id}) }}">{{ 'generic.edit'|trans }}</a>
-          <div class="vr"></div>
           <a href="{{ path('app_product_delete', {id: _item.id}) }}" onclick="return confirm('{{ 'generic.delete_confirmation'|trans }}')">{{ 'generic.delete'|trans }}</a>
         </div>
       </td>

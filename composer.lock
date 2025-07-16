@@ -217,21 +217,21 @@
         },
         {
             "name": "doctrine/dbal",
-            "version": "4.2.4",
+            "version": "4.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "b37d160498ea91a2382a2ebe825c4ea6254fc0ec"
+                "reference": "5fe09532be619202d59c70956c6fb20e97933ee3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/b37d160498ea91a2382a2ebe825c4ea6254fc0ec",
-                "reference": "b37d160498ea91a2382a2ebe825c4ea6254fc0ec",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/5fe09532be619202d59c70956c6fb20e97933ee3",
+                "reference": "5fe09532be619202d59c70956c6fb20e97933ee3",
                 "shasum": ""
             },
             "require": {
-                "doctrine/deprecations": "^0.5.3|^1",
-                "php": "^8.1",
+                "doctrine/deprecations": "^1.1.5",
+                "php": "^8.2",
                 "psr/cache": "^1|^2|^3",
                 "psr/log": "^1|^2|^3"
             },
@@ -242,7 +242,7 @@
                 "phpstan/phpstan": "2.1.17",
                 "phpstan/phpstan-phpunit": "2.0.6",
                 "phpstan/phpstan-strict-rules": "^2",
-                "phpunit/phpunit": "10.5.46",
+                "phpunit/phpunit": "11.5.23",
                 "slevomat/coding-standard": "8.16.2",
                 "squizlabs/php_codesniffer": "3.13.1",
                 "symfony/cache": "^6.3.8|^7.0",
@@ -303,7 +303,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/dbal/issues",
-                "source": "https://github.com/doctrine/dbal/tree/4.2.4"
+                "source": "https://github.com/doctrine/dbal/tree/4.3.0"
             },
             "funding": [
                 {
@@ -319,7 +319,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-06-15T23:15:01+00:00"
+            "time": "2025-06-16T19:31:04+00:00"
         },
         {
             "name": "doctrine/deprecations",
@@ -1697,7 +1697,7 @@
             "dist": {
                 "type": "path",
                 "url": "../generic-bundle",
-                "reference": "79dabf05b7abb84817b1bb77d6a16ca07d9d3a12"
+                "reference": "29db00195fe956c6447980cfd31b1adf4b9d13bb"
             },
             "require": {
                 "php": ">=8.1",
@@ -1762,7 +1762,7 @@
             "dist": {
                 "type": "path",
                 "url": "../media-bundle",
-                "reference": "aa250698f785a0cb9e05d2bdf7e12b82a44649be"
+                "reference": "2413c4c42013b2b4c5eb7c8f036b7b947dea0730"
             },
             "require": {
                 "ext-fileinfo": "*",
@@ -1824,7 +1824,7 @@
             "dist": {
                 "type": "path",
                 "url": "../order-bundle",
-                "reference": "f59b1769e2fedf1814ecf01d298b4545f1349e20"
+                "reference": "8967a5bbfb85bb80d6482141a92a4dd226052e01"
             },
             "require": {
                 "knplabs/knp-components": "^4.4|^5.0",
@@ -1885,7 +1885,7 @@
             "dist": {
                 "type": "path",
                 "url": "../product-bundle",
-                "reference": "6850fc0f1952dce00e1cf13c830f70c9b055cbef"
+                "reference": "37b4a48dfb4a93c2096c3b5670b58faca300118d"
             },
             "require": {
                 "bentools/cartesian-product": "^1.4",
@@ -1945,12 +1945,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/siganushka/region-bundle.git",
-                "reference": "2d49d1551de824d1c78fbecdbb43361c4001b085"
+                "reference": "f1c876579c6cbad7854fd389cf3225ecbe811ddb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/siganushka/region-bundle/zipball/2d49d1551de824d1c78fbecdbb43361c4001b085",
-                "reference": "2d49d1551de824d1c78fbecdbb43361c4001b085",
+                "url": "https://api.github.com/repos/siganushka/region-bundle/zipball/f1c876579c6cbad7854fd389cf3225ecbe811ddb",
+                "reference": "f1c876579c6cbad7854fd389cf3225ecbe811ddb",
                 "shasum": ""
             },
             "require": {
@@ -1991,7 +1991,7 @@
                 "issues": "https://github.com/siganushka/region-bundle/issues",
                 "source": "https://github.com/siganushka/region-bundle/tree/main"
             },
-            "time": "2025-05-16T03:34:56+00:00"
+            "time": "2025-07-12T07:02:05+00:00"
         },
         {
             "name": "siganushka/user-bundle",
@@ -1999,7 +1999,7 @@
             "dist": {
                 "type": "path",
                 "url": "../user-bundle",
-                "reference": "9e553506d50a7b4f9ce6a252fbfc3d31dbc3471f"
+                "reference": "c1eab8a5be0df84805fc74cdb15e6c87128ff9de"
             },
             "require": {
                 "knplabs/knp-components": "^4.4|^5.0",
