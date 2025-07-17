@@ -30,7 +30,7 @@
             {% if _item.options|length %}
               <small class="text-body-tertiary">
                 {% for option in _item.options %}
-                  <a href="{{ path('app_productoption_edit', {id: option.id}) }}" class="text-reset">
+                  <a href="{{ path('app_productoption_edit', {id: option.id}) }}" class="text-reset text-decoration-none">
                     {{ option.name }}
                     ({{ option.values|length }})
                   </a>

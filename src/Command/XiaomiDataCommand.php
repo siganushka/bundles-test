@@ -83,7 +83,7 @@ class XiaomiDataCommand extends Command
             ]);
 
             $output->writeln(\sprintf('<info>%s: 下载主图</info>', $message));
-            $media = $this->handleUploadMedia('product', $product['goods_list'][0]['goods_info']['img_url']);
+            $media = $this->handleUploadMedia('product_img', $product['goods_list'][0]['goods_info']['img_url']);
 
             $entity = new Product();
             $entity->setImg($media);
@@ -95,7 +95,9 @@ class XiaomiDataCommand extends Command
                     continue;
                 }
 
-                $option = new ProductOption($v1['name']);
+                $option = new ProductOption();
+                $option->setName($v1['name']);
+
                 foreach ($v1['list'] as $v2) {
                     $option->addValue(new ProductOptionValue(\sprintf('prop_value_id_%d', $v2['prop_value_id']), $v2['name']));
                 }
@@ -131,11 +133,11 @@ class XiaomiDataCommand extends Command
                 }
 
                 $output->writeln(\sprintf('<info>%s: 下载第 %d 张商品图</info>', $message, $index + 1));
-                $variantImg = $this->handleUploadMedia('product', $variants[$key]['img_url']);
+                $variantImg = $this->handleUploadMedia('product_img', $variants[$key]['img_url']);
 
                 $variant = new ProductVariant($choice);
                 $variant->setImg($variantImg);
-                $variant->setPrice($variants[$key]['price'] * 100);
+                $variant->setPrice((int) ($variants[$key]['price'] * 100));
                 $variant->setInventory($variants[$key]['sku'] ?? null);
 
                 $entity->addVariant($variant);
