@@ -59,12 +59,14 @@ class OrderORMListener
         $this->logger->debug(__METHOD__.' -> '.$event->getObject()::class);
 
         $object = $event->getObject();
-        if ($object instanceof Order) {
-            try {
-                $this->orderStateFlow->apply($object, OrderStateTransition::Cancel->value);
-            } catch (\Throwable) {
-                // Nothing todo...
-            }
+        if (!$object instanceof Order) {
+            return;
+        }
+
+        try {
+            $this->orderStateFlow->apply($object, OrderStateTransition::Cancel->value);
+        } catch (\Throwable) {
+            // Nothing todo...
         }
     }
 

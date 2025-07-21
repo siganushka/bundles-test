@@ -1885,7 +1885,7 @@
             "dist": {
                 "type": "path",
                 "url": "../product-bundle",
-                "reference": "01ee7ad191d321f5c00eaa1c2152295aaab51ac0"
+                "reference": "11cf73b8b41b7a647686fafa8748296f4437e931"
             },
             "require": {
                 "bentools/cartesian-product": "^1.4",
