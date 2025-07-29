@@ -10,7 +10,6 @@
       <th class="text-nowrap">{{ 'media.mime_type'|trans }}</th>
       <th class="text-nowrap">{{ 'media.size'|trans }}</th>
       <th class="text-nowrap">{{ 'media.pixel'|trans }}</th>
-      <th class="text-nowrap">{{ 'media.image'|trans }}</th>
       <th class="text-nowrap">{{ 'generic.created_at'|trans }}</th>
       <th class="text-nowrap">{{ 'generic.action'|trans }}</th>
     {% endblock %}
@@ -21,9 +20,6 @@
       <td class="text-nowrap">{{ _item.mime }}</td>
       <td class="text-nowrap">{{ _item.size }}</td>
       <td class="text-nowrap">{{ _item.width and _item.height ? _item.width ~ '*' ~ _item.height : '-' }}</td>
-      <td class="text-nowrap">
-        <span class="badge rounded-pill text-bg-{{ _item.image ? 'success' : 'secondary' }}">{{ _item.image ? 'generic.yes'|trans : 'generic.no'|trans }}</span>
-      </td>
       <td class="text-nowrap">{{ _item.createdAt|intl_date }}</td>
       <td class="text-nowrap">
         <a href="{{ path('app_media_delete', {hash: _item.hash}) }}" onclick="return confirm('{{ 'generic.delete_confirmation'|trans }}')">{{ 'generic.delete'|trans }}</a>

@@ -217,16 +217,16 @@
         },
         {
             "name": "doctrine/dbal",
-            "version": "4.3.0",
+            "version": "4.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "5fe09532be619202d59c70956c6fb20e97933ee3"
+                "reference": "ac336c95ea9e13433d56ca81c308b39db0e1a2a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/5fe09532be619202d59c70956c6fb20e97933ee3",
-                "reference": "5fe09532be619202d59c70956c6fb20e97933ee3",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/ac336c95ea9e13433d56ca81c308b39db0e1a2a7",
+                "reference": "ac336c95ea9e13433d56ca81c308b39db0e1a2a7",
                 "shasum": ""
             },
             "require": {
@@ -303,7 +303,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/dbal/issues",
-                "source": "https://github.com/doctrine/dbal/tree/4.3.0"
+                "source": "https://github.com/doctrine/dbal/tree/4.3.1"
             },
             "funding": [
                 {
@@ -319,7 +319,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-06-16T19:31:04+00:00"
+            "time": "2025-07-22T10:09:51+00:00"
         },
         {
             "name": "doctrine/deprecations",
@@ -1217,16 +1217,16 @@
         },
         {
             "name": "knplabs/knp-paginator-bundle",
-            "version": "v6.8.1",
+            "version": "v6.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/KnpPaginatorBundle.git",
-                "reference": "038c50cf7d5da5e55533f6e803aeae73eb8b8d45"
+                "reference": "9bf5212f01ca316ef8fe42208e00685e8b6ffa69"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/KnpPaginatorBundle/zipball/038c50cf7d5da5e55533f6e803aeae73eb8b8d45",
-                "reference": "038c50cf7d5da5e55533f6e803aeae73eb8b8d45",
+                "url": "https://api.github.com/repos/KnpLabs/KnpPaginatorBundle/zipball/9bf5212f01ca316ef8fe42208e00685e8b6ffa69",
+                "reference": "9bf5212f01ca316ef8fe42208e00685e8b6ffa69",
                 "shasum": ""
             },
             "require": {
@@ -1237,15 +1237,18 @@
                 "symfony/event-dispatcher": "^6.4 || ^7.0",
                 "symfony/http-foundation": "^6.4 || ^7.0",
                 "symfony/http-kernel": "^6.4 || ^7.0",
-                "symfony/routing": "^6.4 || ^7.0",
-                "symfony/translation": "^6.4 || ^7.0",
-                "twig/twig": "^3.0"
+                "symfony/routing": "^6.4 || ^7.0"
             },
             "require-dev": {
                 "phpstan/phpstan": "^1.12",
                 "phpunit/phpunit": "^10.5 || ^11.5 || ^12.0",
-                "symfony/expression-language": "^6.4 || ^7.0",
-                "symfony/templating": "^6.4 || ^7.0"
+                "symfony/templating": "^6.4 || ^7.0",
+                "symfony/translation": "^6.4 || ^7.0",
+                "twig/twig": "^3.0"
+            },
+            "suggest": {
+                "symfony/translation": "To use the templates",
+                "twig/twig": "To use the templates"
             },
             "type": "symfony-bundle",
             "extra": {
@@ -1285,9 +1288,9 @@
             ],
             "support": {
                 "issues": "https://github.com/KnpLabs/KnpPaginatorBundle/issues",
-                "source": "https://github.com/KnpLabs/KnpPaginatorBundle/tree/v6.8.1"
+                "source": "https://github.com/KnpLabs/KnpPaginatorBundle/tree/v6.9.1"
             },
-            "time": "2025-05-20T07:07:41+00:00"
+            "time": "2025-07-25T07:53:13+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -1697,7 +1700,7 @@
             "dist": {
                 "type": "path",
                 "url": "../generic-bundle",
-                "reference": "29db00195fe956c6447980cfd31b1adf4b9d13bb"
+                "reference": "de9cc3741ddb983b0b94b4262e2fdcf0a3b5fe6b"
             },
             "require": {
                 "php": ">=8.1",
@@ -1762,7 +1765,7 @@
             "dist": {
                 "type": "path",
                 "url": "../media-bundle",
-                "reference": "2413c4c42013b2b4c5eb7c8f036b7b947dea0730"
+                "reference": "e86b6d61949e803232e4e8fcc4a4deb8de07626e"
             },
             "require": {
                 "ext-fileinfo": "*",
@@ -1885,7 +1888,7 @@
             "dist": {
                 "type": "path",
                 "url": "../product-bundle",
-                "reference": "11cf73b8b41b7a647686fafa8748296f4437e931"
+                "reference": "2ab56f2f8db5a9441b9b8e81d81cbd4e74613240"
             },
             "require": {
                 "bentools/cartesian-product": "^1.4",
@@ -1896,11 +1899,10 @@
                 "siganushka/media-bundle": "dev-main",
                 "symfony/form": "^6.4|^7.0",
                 "symfony/framework-bundle": "^6.4|^7.0",
-                "symfony/ux-autocomplete": "^2.10",
                 "symfony/validator": "^6.4|^7.0"
             },
             "require-dev": {
-                "twig/twig": "^2.13|^3.0.4"
+                "symfony/ux-autocomplete": "^2.10"
             },
             "type": "symfony-bundle",
             "autoload": {
@@ -1945,12 +1947,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/siganushka/region-bundle.git",
-                "reference": "f1c876579c6cbad7854fd389cf3225ecbe811ddb"
+                "reference": "77037b01084acd1aedd8aa75442ffe298763c78d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/siganushka/region-bundle/zipball/f1c876579c6cbad7854fd389cf3225ecbe811ddb",
-                "reference": "f1c876579c6cbad7854fd389cf3225ecbe811ddb",
+                "url": "https://api.github.com/repos/siganushka/region-bundle/zipball/77037b01084acd1aedd8aa75442ffe298763c78d",
+                "reference": "77037b01084acd1aedd8aa75442ffe298763c78d",
                 "shasum": ""
             },
             "require": {
@@ -1991,7 +1993,7 @@
                 "issues": "https://github.com/siganushka/region-bundle/issues",
                 "source": "https://github.com/siganushka/region-bundle/tree/main"
             },
-            "time": "2025-07-12T07:02:05+00:00"
+            "time": "2025-07-23T02:54:09+00:00"
         },
         {
             "name": "siganushka/user-bundle",
@@ -1999,7 +2001,7 @@
             "dist": {
                 "type": "path",
                 "url": "../user-bundle",
-                "reference": "c1eab8a5be0df84805fc74cdb15e6c87128ff9de"
+                "reference": "3a802f2d9aaaf02aba0058b9c93262c3605a7a4e"
             },
             "require": {
                 "knplabs/knp-components": "^4.4|^5.0",
@@ -6299,16 +6301,16 @@
         },
         {
             "name": "symfony/stimulus-bundle",
-            "version": "v2.27.0",
+            "version": "v2.28.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/stimulus-bundle.git",
-                "reference": "defaeb91bd366f9f43dbe54dbdfd9bc3c4138814"
+                "reference": "960868a682271e133a631ffb70c7e2ceb5031be6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/stimulus-bundle/zipball/defaeb91bd366f9f43dbe54dbdfd9bc3c4138814",
-                "reference": "defaeb91bd366f9f43dbe54dbdfd9bc3c4138814",
+                "url": "https://api.github.com/repos/symfony/stimulus-bundle/zipball/960868a682271e133a631ffb70c7e2ceb5031be6",
+                "reference": "960868a682271e133a631ffb70c7e2ceb5031be6",
                 "shasum": ""
             },
             "require": {
@@ -6348,7 +6350,7 @@
                 "symfony-ux"
             ],
             "support": {
-                "source": "https://github.com/symfony/stimulus-bundle/tree/v2.27.0"
+                "source": "https://github.com/symfony/stimulus-bundle/tree/v2.28.1"
             },
             "funding": [
                 {
@@ -6364,7 +6366,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-06-22T19:07:55+00:00"
+            "time": "2025-07-28T19:36:26+00:00"
         },
         {
             "name": "symfony/stopwatch",
@@ -7039,16 +7041,16 @@
         },
         {
             "name": "symfony/ux-autocomplete",
-            "version": "v2.27.0",
+            "version": "v2.28.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/ux-autocomplete.git",
-                "reference": "ab0be7ef7d59ea6925fd6fabccbd4d04cb5f5e06"
+                "reference": "b659934eecbd0324cdf0d4a969b3bf5ff458a6eb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/ux-autocomplete/zipball/ab0be7ef7d59ea6925fd6fabccbd4d04cb5f5e06",
-                "reference": "ab0be7ef7d59ea6925fd6fabccbd4d04cb5f5e06",
+                "url": "https://api.github.com/repos/symfony/ux-autocomplete/zipball/b659934eecbd0324cdf0d4a969b3bf5ff458a6eb",
+                "reference": "b659934eecbd0324cdf0d4a969b3bf5ff458a6eb",
                 "shasum": ""
             },
             "require": {
@@ -7079,7 +7081,7 @@
                 "symfony/uid": "^6.3|^7.0",
                 "twig/twig": "^2.14.7|^3.0.4",
                 "zenstruck/browser": "^1.1",
-                "zenstruck/foundry": "1.37.*"
+                "zenstruck/foundry": "^2.0"
             },
             "type": "symfony-bundle",
             "extra": {
@@ -7109,7 +7111,7 @@
                 "symfony-ux"
             ],
             "support": {
-                "source": "https://github.com/symfony/ux-autocomplete/tree/v2.27.0"
+                "source": "https://github.com/symfony/ux-autocomplete/tree/v2.28.1"
             },
             "funding": [
                 {
@@ -7125,7 +7127,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-06-21T10:08:18+00:00"
+            "time": "2025-07-28T19:36:26+00:00"
         },
         {
             "name": "symfony/validator",
@@ -7938,16 +7940,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v5.5.0",
+            "version": "v5.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "ae59794362fe85e051a58ad36b289443f57be7a9"
+                "reference": "221b0d0fdf1369c71047ad1d18bb5880017bbc56"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/ae59794362fe85e051a58ad36b289443f57be7a9",
-                "reference": "ae59794362fe85e051a58ad36b289443f57be7a9",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/221b0d0fdf1369c71047ad1d18bb5880017bbc56",
+                "reference": "221b0d0fdf1369c71047ad1d18bb5880017bbc56",
                 "shasum": ""
             },
             "require": {
@@ -7990,9 +7992,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nikic/PHP-Parser/issues",
-                "source": "https://github.com/nikic/PHP-Parser/tree/v5.5.0"
+                "source": "https://github.com/nikic/PHP-Parser/tree/v5.6.0"
             },
-            "time": "2025-05-31T08:24:38+00:00"
+            "time": "2025-07-27T20:03:57+00:00"
         },
         {
             "name": "symfony/debug-bundle",

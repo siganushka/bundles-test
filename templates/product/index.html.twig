@@ -8,8 +8,8 @@
       {{ 'generic.add'|trans }}
     </button>
     <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="{{ path('app_product_new', {simple: true}) }}">简单的商品</a></li>
-      <li><a class="dropdown-item" href="{{ path('app_product_new') }}">多选项商品</a></li>
+      <li><a class="dropdown-item" href="{{ path('app_product_new') }}">简单的商品</a></li>
+      <li><a class="dropdown-item" href="{{ path('app_product_new', {combinable: true}) }}">多选项商品</a></li>
     </ul>
   </div>
 

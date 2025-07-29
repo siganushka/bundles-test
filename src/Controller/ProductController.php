@@ -45,9 +45,9 @@ class ProductController extends AbstractController
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $entity = $this->repository->createNew();
-        $simple = $request->query->has('simple');
+        $combinable = $request->query->has('combinable');
 
-        $form = $this->createForm(ProductType::class, $entity, compact('simple'));
+        $form = $this->createForm(ProductType::class, $entity, compact('combinable'));
         $form->add('submit', SubmitType::class, ['label' => 'generic.submit']);
         $form->handleRequest($request);
 
