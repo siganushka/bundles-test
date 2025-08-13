@@ -5,17 +5,12 @@ declare(strict_types=1);
 namespace App\DataFixtures;
 
 use App\Entity\Product;
-use App\Repository\ProductVariantRepository;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
 class ProductVariantFixtures extends Fixture implements DependentFixtureInterface
 {
-    public function __construct(private readonly ProductVariantRepository $productVariantRepository)
-    {
-    }
-
     public function load(ObjectManager $manager): void
     {
         $products = [
@@ -34,11 +29,10 @@ class ProductVariantFixtures extends Fixture implements DependentFixtureInterfac
 
         $prices = [100, 200, 300, 400, 500];
         foreach ($products as $index => $product) {
-            foreach ($product->getChoices(true) as $index2 => $choice) {
-                $variant = $this->productVariantRepository->createNew($choice);
+            foreach ($product->getVariants() as $index2 => $variant) {
                 $variant->setPrice($prices[array_rand($prices)]);
                 $variant->setInventory(10000);
-                $product->addVariant($variant);
+                $variant->setEnabled(true);
 
                 $this->addReference(\sprintf('product-%d-variant-%d', $index, $index2), $variant);
             }

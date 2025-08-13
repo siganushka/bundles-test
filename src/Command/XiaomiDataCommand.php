@@ -126,7 +126,7 @@ class XiaomiDataCommand extends Command
                 $variants[0] = $product['goods_list'][0]['goods_info'];
             }
 
-            foreach ($entity->getChoices(true) as $index => $choice) {
+            foreach ($entity->generateChoices() as $index => $choice) {
                 $key = $choice->value ?? 0;
                 if (!isset($variants[$key])) {
                     continue;
