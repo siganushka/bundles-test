@@ -117,7 +117,7 @@ class XiaomiDataCommand extends Command
                         $values[] = new ProductOptionValue(\sprintf('prop_value_id_%d', $v2['prop_value_id']));
                     }
 
-                    $choice = new ProductVariantChoice($values);
+                    $choice = new ProductVariantChoice(...$values);
                     if ($choice->value) {
                         $variants[$choice->value] = $v1['goods_info'];
                     }
