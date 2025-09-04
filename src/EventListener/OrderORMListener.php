@@ -17,15 +17,15 @@ use Psr\Log\LoggerInterface;
 use Siganushka\OrderBundle\Enum\OrderStateFlow;
 use Symfony\Component\Workflow\WorkflowInterface;
 
-// #[AsDoctrineListener(Events::prePersist)]
-// #[AsDoctrineListener(Events::postPersist)]
-// #[AsDoctrineListener(Events::preUpdate)]
-// #[AsDoctrineListener(Events::postUpdate)]
+#[AsDoctrineListener(Events::prePersist)]
+#[AsDoctrineListener(Events::postPersist)]
+#[AsDoctrineListener(Events::preUpdate)]
+#[AsDoctrineListener(Events::postUpdate)]
 #[AsDoctrineListener(Events::preRemove)]
-// #[AsDoctrineListener(Events::postRemove)]
-// #[AsDoctrineListener(Events::preFlush)]
-// #[AsDoctrineListener(Events::onFlush)]
-// #[AsDoctrineListener(Events::postFlush)]
+#[AsDoctrineListener(Events::postRemove)]
+#[AsDoctrineListener(Events::preFlush)]
+#[AsDoctrineListener(Events::onFlush)]
+#[AsDoctrineListener(Events::postFlush)]
 class OrderORMListener
 {
     public function __construct(
@@ -59,14 +59,8 @@ class OrderORMListener
         $this->logger->debug(__METHOD__.' -> '.$event->getObject()::class);
 
         $object = $event->getObject();
-        if (!$object instanceof Order) {
-            return;
-        }
-
-        try {
+        if ($object instanceof Order) {
             $this->orderStateFlow->apply($object, OrderStateFlow::Cancel->value);
-        } catch (\Throwable) {
-            // Nothing todo...
         }
     }
 
