@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a30d1042a3531d3c27623e2bba83ffe8",
+    "content-hash": "786dd544eabf5dcfcb7806610a30ccf6",
     "packages": [
         {
             "name": "bentools/cartesian-product",
@@ -1695,7 +1695,7 @@
             "dist": {
                 "type": "path",
                 "url": "../generic-bundle",
-                "reference": "e2961a68f5c80a9612d43665b5c29ffce790c4c4"
+                "reference": "f21301f66b720022e5327c47e57318b317a6a3c8"
             },
             "require": {
                 "php": ">=8.1",
@@ -1940,16 +1940,10 @@
         {
             "name": "siganushka/region-bundle",
             "version": "dev-main",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/siganushka/region-bundle.git",
-                "reference": "cc8c198c4f1bc3bd8279e081f312b05fece3da56"
-            },
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/siganushka/region-bundle/zipball/cc8c198c4f1bc3bd8279e081f312b05fece3da56",
-                "reference": "cc8c198c4f1bc3bd8279e081f312b05fece3da56",
-                "shasum": ""
+                "type": "path",
+                "url": "../region-bundle",
+                "reference": "cc8c198c4f1bc3bd8279e081f312b05fece3da56"
             },
             "require": {
                 "php": ">=8.1",
@@ -1962,14 +1956,24 @@
             "require-dev": {
                 "symfony/serializer": "^6.4|^7.0"
             },
-            "default-branch": true,
             "type": "symfony-bundle",
             "autoload": {
                 "psr-4": {
                     "Siganushka\\RegionBundle\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "Siganushka\\RegionBundle\\Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "tools:run": [
+                    "tools/vendor/bin/php-cs-fixer fix",
+                    "tools/vendor/bin/simple-phpunit --debug",
+                    "tools/vendor/bin/phpstan"
+                ]
+            },
             "license": [
                 "MIT"
             ],
@@ -1985,11 +1989,10 @@
                 "region-bundle",
                 "symfony-ux"
             ],
-            "support": {
-                "issues": "https://github.com/siganushka/region-bundle/issues",
-                "source": "https://github.com/siganushka/region-bundle/tree/main"
-            },
-            "time": "2025-09-03T09:26:55+00:00"
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
         },
         {
             "name": "siganushka/user-bundle",

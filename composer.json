@@ -126,6 +126,13 @@
         },
         {
             "type": "path",
+            "url": "../region-bundle",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
             "url": "../media-bundle",
             "options": {
                 "symlink": true
