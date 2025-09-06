@@ -9,3 +9,7 @@ siganushka_media:
         test_pdf:
             constraint: file
             constraint_options: { mimeTypes: ['application/pdf', 'application/x-pdf'] }
+        test_all:
+            constraint: file
+            constraint_options: { mimeTypes: ['application/octet-stream'] }
+            reserve_client_name: true
