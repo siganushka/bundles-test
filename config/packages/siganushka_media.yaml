@@ -3,7 +3,7 @@ siganushka_media:
     channels:
         test_img:
             constraint: image
-            constraint_options: { mimeTypes: ['image/png'] }
+            constraint_options: { mimeTypes: ['image/*'] }
             resize: 1000
             optimize: 70
         test_pdf:
@@ -11,5 +11,4 @@ siganushka_media:
             constraint_options: { mimeTypes: ['application/pdf', 'application/x-pdf'] }
         test_all:
             constraint: file
-            constraint_options: { mimeTypes: ['application/octet-stream'] }
             reserve_client_name: true
