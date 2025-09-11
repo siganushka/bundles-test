@@ -81,33 +81,33 @@ class MediaController extends AbstractController
         $builder = $this->createFormBuilder($data)
             ->add('media0', MediaType::class, [
                 'label' => '默认状态',
-                'channel' => 'test_img',
+                'rule' => 'test_img',
             ])
             ->add('media1', MediaType::class, [
                 'label' => '有值状态',
-                'channel' => 'test_img',
+                'rule' => 'test_img',
             ])
             ->add('media2', MediaType::class, [
                 'label' => '错误状态',
-                'channel' => 'test_img',
+                'rule' => 'test_img',
             ])
             ->add('media3', MediaType::class, [
                 'label' => '禁用状态',
-                'channel' => 'test_img',
+                'rule' => 'test_img',
                 'disabled' => true,
             ])
             ->add('media4', MediaType::class, [
                 'label' => '自定义尺寸',
-                'channel' => 'test_img',
+                'rule' => 'test_img',
                 'style' => 'width: 100%; height: 240px',
             ])
             ->add('media5', MediaType::class, [
                 'label' => '自定义文件类型',
-                'channel' => 'test_pdf',
+                'rule' => 'test_pdf',
             ])
             ->add('media6', MediaType::class, [
                 'label' => '自定义表单验证',
-                'channel' => 'test_pdf',
+                'rule' => 'test_pdf',
                 'constraints' => new NotBlank(),
             ])
             ->add('submit', SubmitType::class, ['label' => 'generic.submit'])

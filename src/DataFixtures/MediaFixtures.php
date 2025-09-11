@@ -21,17 +21,17 @@ class MediaFixtures extends Fixture
         $finder = new Finder();
         $filesystem = new Filesystem();
 
-        $channels = [
+        $rules = [
             'product_img' => $finder->in(__DIR__.'/product'),
         ];
 
         $index = 0;
-        foreach ($channels as $channelAlias => $dir) {
+        foreach ($rules as $ruleAlias => $dir) {
             foreach ($dir->sortByName()->files() as $file) {
                 $target = \sprintf('%s/%s', sys_get_temp_dir(), $file->getBasename());
                 $filesystem->copy($file->getPathname(), $target, true);
 
-                $media = $this->mediaManager->save($channelAlias, $target);
+                $media = $this->mediaManager->save($ruleAlias, $target);
                 $manager->persist($media);
 
                 $this->addReference(\sprintf('media-%d', $index), $media);

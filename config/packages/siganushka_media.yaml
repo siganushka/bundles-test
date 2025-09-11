@@ -1,7 +1,7 @@
 siganushka_media:
     # storage: Siganushka\MediaBundle\Storage\AliyunOssStorage
     media_class: App\Entity\Media
-    channels:
+    rules:
         test_img:
             constraint: image
             constraint_options: { mimeTypes: ['image/*'] }
