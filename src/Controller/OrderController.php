@@ -6,7 +6,7 @@ namespace App\Controller;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
-use Siganushka\OrderBundle\Enum\OrderState;
+use Siganushka\OrderBundle\Dto\OrderFilterDto;
 use Siganushka\OrderBundle\Form\OrderItemType;
 use Siganushka\OrderBundle\Form\OrderType;
 use Siganushka\OrderBundle\Repository\OrderRepository;
@@ -14,7 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Attribute\MapQueryParameter;
+use Symfony\Component\HttpKernel\Attribute\MapQueryString;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Workflow\Exception\LogicException;
 use Symfony\Component\Workflow\WorkflowInterface;
@@ -26,21 +26,26 @@ class OrderController extends AbstractController
     }
 
     #[Route('/orders')]
-    public function index(Request $request, PaginatorInterface $paginator, #[MapQueryParameter('state')] ?OrderState $state = null): Response
+    public function index(PaginatorInterface $paginator, #[MapQueryString] OrderFilterDto $dto): Response
     {
         $queryBuilder = $this->repository->createQueryBuilderWithOrdered('o');
         $countForState = $this->repository->countByStateMapping();
 
-        if ($state) {
-            $queryBuilder->andWhere('o.state = :state')->setParameter('state', $state);
+        if ($dto->state) {
+            $queryBuilder->andWhere('o.state = :state')->setParameter('state', $dto->state);
         }
 
-        $page = $request->query->getInt('page', 1);
-        $size = $request->query->getInt('size', 10);
+        if ($dto->startAt) {
+            $queryBuilder->andWhere('o.createdAt > :startAt')->setParameter('startAt', $dto->startAt);
+        }
 
-        $pagination = $paginator->paginate($queryBuilder, $page, $size);
+        if ($dto->endAt) {
+            $queryBuilder->andWhere('o.createdAt <= :endAt')->setParameter('endAt', $dto->endAt);
+        }
 
-        return $this->render('order/index.html.twig', compact('pagination', 'state', 'countForState'));
+        $pagination = $paginator->paginate($queryBuilder, $dto->page, $dto->size);
+
+        return $this->render('order/index.html.twig', compact('pagination', 'dto', 'countForState'));
     }
 
     #[Route('/orders/new')]

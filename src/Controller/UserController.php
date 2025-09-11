@@ -6,6 +6,7 @@ namespace App\Controller;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
+use Siganushka\GenericBundle\Dto\PaginationDto;
 use Siganushka\UserBundle\Form\ChangePasswordType;
 use Siganushka\UserBundle\Form\ResetPasswordType;
 use Siganushka\UserBundle\Form\UserType;
@@ -14,6 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Attribute\MapQueryString;
 use Symfony\Component\Routing\Attribute\Route;
 
 class UserController extends AbstractController
@@ -23,14 +25,10 @@ class UserController extends AbstractController
     }
 
     #[Route('/users')]
-    public function index(Request $request, PaginatorInterface $paginator): Response
+    public function index(PaginatorInterface $paginator, #[MapQueryString] PaginationDto $dto): Response
     {
         $queryBuilder = $this->repository->createQueryBuilderWithOrdered('u');
-
-        $page = $request->query->getInt('page', 1);
-        $size = $request->query->getInt('size', 10);
-
-        $pagination = $paginator->paginate($queryBuilder, $page, $size);
+        $pagination = $paginator->paginate($queryBuilder, $dto->page, $dto->size);
 
         return $this->render('user/index.html.twig', [
             'pagination' => $pagination,

@@ -2311,7 +2311,7 @@
             "dist": {
                 "type": "path",
                 "url": "../generic-bundle",
-                "reference": "995c7ff1f765c01da11eabae36822e10eeca97df"
+                "reference": "c161e255af2a944a5058655f3588b4c284bfd59e"
             },
             "require": {
                 "php": ">=8.1",
@@ -2377,7 +2377,7 @@
             "dist": {
                 "type": "path",
                 "url": "../media-bundle",
-                "reference": "e2797248649feb5aa34f7f800f38bff59b3e4fb5"
+                "reference": "f0b46449ed8b148f587d5bcc0d6427a34a1c517d"
             },
             "require": {
                 "ext-fileinfo": "*",
@@ -2439,7 +2439,7 @@
             "dist": {
                 "type": "path",
                 "url": "../order-bundle",
-                "reference": "1d506c5a86c39c77064bac60d9313d4ab3c32b45"
+                "reference": "b09a1bbd395d9ec37bfb9ba13be14047729f0dec"
             },
             "require": {
                 "knplabs/knp-components": "^4.4|^5.0",
