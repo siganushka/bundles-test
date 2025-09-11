@@ -14,8 +14,11 @@ class OrderStateFlowListener implements EventSubscriberInterface
 {
     public function onGuard(GuardEvent $event): void
     {
-        /** @var Order */
         $subject = $event->getSubject();
+        if (!$subject instanceof Order) {
+            return;
+        }
+
         if ($subject->isFree() && OrderState::Processing === $subject->getState()) {
             $event->setBlocked(true);
         }
@@ -23,8 +26,11 @@ class OrderStateFlowListener implements EventSubscriberInterface
 
     public function onTransition(TransitionEvent $event): void
     {
-        /** @var Order */
         $subject = $event->getSubject();
+        if (!$subject instanceof Order) {
+            return;
+        }
+
         if ($subject->isFree()) {
             $marking = $event->getMarking();
             $marking->mark(OrderState::Processing->value);

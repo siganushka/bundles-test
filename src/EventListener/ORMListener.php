@@ -26,7 +26,8 @@ use Symfony\Component\Workflow\WorkflowInterface;
 #[AsDoctrineListener(Events::preFlush)]
 #[AsDoctrineListener(Events::onFlush)]
 #[AsDoctrineListener(Events::postFlush)]
-class OrderORMListener
+#[AsDoctrineListener(Events::onClear)]
+class ORMListener
 {
     public function __construct(
         private readonly LoggerInterface $logger,
@@ -80,6 +81,11 @@ class OrderORMListener
     }
 
     public function postFlush(): void
+    {
+        $this->logger->debug(__METHOD__);
+    }
+
+    public function onClear(): void
     {
         $this->logger->debug(__METHOD__);
     }

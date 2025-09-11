@@ -7,6 +7,7 @@
         "php": ">=8.2",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "aliyuncs/oss-sdk-php": "^2.7",
         "doctrine/doctrine-bundle": "^2.12",
         "doctrine/orm": "^3.2",
         "godruoyi/php-snowflake": "^3.1",

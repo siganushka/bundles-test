@@ -1,4 +1,5 @@
 siganushka_media:
+    # storage: Siganushka\MediaBundle\Storage\AliyunOssStorage
     media_class: App\Entity\Media
     channels:
         test_img:

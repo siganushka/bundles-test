@@ -9,9 +9,8 @@ use App\Entity\ProductOption;
 use App\Entity\ProductOptionValue;
 use App\Entity\ProductVariant;
 use Doctrine\ORM\EntityManagerInterface;
-use Siganushka\MediaBundle\ChannelRegistry;
 use Siganushka\MediaBundle\Entity\Media;
-use Siganushka\MediaBundle\Event\MediaSaveEvent;
+use Siganushka\MediaBundle\MediaManagerInterface;
 use Siganushka\MediaBundle\Utils\FileUtils;
 use Siganushka\ProductBundle\Model\ProductVariantChoice;
 use Symfony\Component\Console\Attribute\AsCommand;
@@ -20,7 +19,6 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\HttpClient\HttpClient;
-use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 #[AsCommand('app:xiaomi:data', 'Add xiaomi data.')]
@@ -30,8 +28,7 @@ class XiaomiDataCommand extends Command
 
     public function __construct(
         private readonly EntityManagerInterface $entityManager,
-        private readonly EventDispatcherInterface $eventDispatcher,
-        private readonly ChannelRegistry $channelRegistry,
+        private readonly MediaManagerInterface $mediaManager,
     ) {
         $this->httpClient = HttpClient::create([
             'base_uri' => 'https://api2.order.mi.com',
@@ -83,7 +80,7 @@ class XiaomiDataCommand extends Command
             ]);
 
             $output->writeln(\sprintf('<info>%s: 下载主图</info>', $message));
-            $media = $this->handleUploadMedia('product_img', $product['goods_list'][0]['goods_info']['img_url']);
+            $media = $this->handleMedia($product['goods_list'][0]['goods_info']['img_url']);
 
             $entity = new Product();
             $entity->setImg($media);
@@ -133,7 +130,7 @@ class XiaomiDataCommand extends Command
                 }
 
                 $output->writeln(\sprintf('<info>%s: 下载第 %d 张商品图</info>', $message, $index + 1));
-                $variantImg = $this->handleUploadMedia('product_img', $variants[$key]['img_url']);
+                $variantImg = $this->handleMedia($variants[$key]['img_url']);
 
                 $variant = new ProductVariant($choice);
                 $variant->setImg($variantImg);
@@ -176,21 +173,13 @@ class XiaomiDataCommand extends Command
         return $parsedResponse['data'] ?? [];
     }
 
-    private function handleUploadMedia(string $alias, string $imgUrl): ?Media
+    private function handleMedia(string $imgUrl): Media
     {
         if (str_starts_with($imgUrl, '//')) {
             $imgUrl = 'https:'.$imgUrl;
         }
 
-        $channel = $this->channelRegistry->get($alias);
-
-        $event = new MediaSaveEvent($channel, FileUtils::createFromUrl($imgUrl));
-        $this->eventDispatcher->dispatch($event);
-
-        $meida = $event->getMedia();
-        if (null === $meida) {
-            return null;
-        }
+        $meida = $this->mediaManager->save('product_img', FileUtils::createFromUrl($imgUrl));
 
         $this->entityManager->persist($meida);
         $this->entityManager->flush();
