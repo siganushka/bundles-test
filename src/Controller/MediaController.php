@@ -6,7 +6,6 @@ namespace App\Controller;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
-use Siganushka\GenericBundle\Dto\PaginationDto;
 use Siganushka\MediaBundle\Form\MediaUploadType;
 use Siganushka\MediaBundle\Form\Type\MediaType;
 use Siganushka\MediaBundle\Repository\MediaRepository;
@@ -16,7 +15,6 @@ use Symfony\Component\Form\FormError;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Attribute\MapQueryString;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
@@ -27,10 +25,10 @@ class MediaController extends AbstractController
     }
 
     #[Route('/media')]
-    public function index(PaginatorInterface $paginator, #[MapQueryString] PaginationDto $dto): Response
+    public function index(PaginatorInterface $paginator): Response
     {
         $queryBuilder = $this->repository->createQueryBuilder('m');
-        $pagination = $paginator->paginate($queryBuilder, $dto->page, $dto->size);
+        $pagination = $paginator->paginate($queryBuilder);
 
         return $this->render('media/index.html.twig', [
             'pagination' => $pagination,
