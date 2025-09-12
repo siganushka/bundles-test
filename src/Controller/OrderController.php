@@ -31,7 +31,7 @@ class OrderController extends AbstractController
         $queryBuilder = $this->repository->createQueryBuilderWithFilter('o', $dto);
         $countForState = $this->repository->countByStateMapping();
 
-        $pagination = $paginator->paginate($queryBuilder);
+        $pagination = $paginator->paginate($queryBuilder, $dto->page, $dto->size);
 
         return $this->render('order/index.html.twig', compact('pagination', 'dto', 'countForState'));
     }
