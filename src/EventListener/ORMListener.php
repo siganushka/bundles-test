@@ -14,7 +14,7 @@ use Doctrine\ORM\Event\PreRemoveEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
 use Doctrine\ORM\Events;
 use Psr\Log\LoggerInterface;
-use Siganushka\OrderBundle\Enum\OrderStateFlow;
+use Siganushka\OrderBundle\Enum\OrderStateTransition;
 use Symfony\Component\Workflow\WorkflowInterface;
 
 #[AsDoctrineListener(Events::prePersist)]
@@ -61,7 +61,7 @@ class ORMListener
 
         $object = $event->getObject();
         if ($object instanceof Order) {
-            $this->orderStateFlow->apply($object, OrderStateFlow::Cancel->value);
+            $this->orderStateFlow->apply($object, OrderStateTransition::Cancel->value);
         }
     }
 

@@ -2262,10 +2262,10 @@
             "dist": {
                 "type": "path",
                 "url": "../doctrine-contracts",
-                "reference": "d39834a6fe6df5158a312f1299617872c1e43030"
+                "reference": "f7d1d013cd826480ebc6bda1ccedfd857e31c454"
             },
             "require": {
-                "doctrine/orm": "^2.11|^3.0",
+                "doctrine/orm": "^2.15|^3.0",
                 "php": ">=8.1"
             },
             "type": "library",
@@ -2311,7 +2311,7 @@
             "dist": {
                 "type": "path",
                 "url": "../generic-bundle",
-                "reference": "8681b93dfe6720d382227aec065bd1e347fa50cf"
+                "reference": "651af763aab56c933fe1b7f0dca7498f022ae886"
             },
             "require": {
                 "php": ">=8.1",
@@ -2377,7 +2377,7 @@
             "dist": {
                 "type": "path",
                 "url": "../media-bundle",
-                "reference": "e4094c1e53ff09bfb09ca8d45ceff0e3efd88480"
+                "reference": "8f3768f91879c2008488bedc9a696148d3c0cf97"
             },
             "require": {
                 "ext-fileinfo": "*",
@@ -2439,7 +2439,7 @@
             "dist": {
                 "type": "path",
                 "url": "../order-bundle",
-                "reference": "794e9f1257653acee8fab6d94cbb265cdc2482e5"
+                "reference": "ae84d2d5b242eb24be9343ada7178c01beca4d67"
             },
             "require": {
                 "knplabs/knp-components": "^4.4|^5.0",
@@ -2500,7 +2500,7 @@
             "dist": {
                 "type": "path",
                 "url": "../product-bundle",
-                "reference": "44ee76bd248f4e207d3e96fc8110eaf4dcc6f175"
+                "reference": "c3c81d4181eedc9cdf28fb350fa1a192bbb704bc"
             },
             "require": {
                 "bentools/cartesian-product": "^1.4",
@@ -2616,7 +2616,7 @@
             "dist": {
                 "type": "path",
                 "url": "../user-bundle",
-                "reference": "cc6ccc796768ab9d85fb5a50509c790df39ee9c0"
+                "reference": "af399ced9d71c1b2c6967b4ca9f7a1ee61d1bb5a"
             },
             "require": {
                 "knplabs/knp-components": "^4.4|^5.0",
