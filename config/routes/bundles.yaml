@@ -13,3 +13,7 @@ siganushka_product:
 siganushka_order:
     resource: "@SiganushkaOrderBundle/config/routes.php"
     prefix: /api
+
+siganushka_user:
+    resource: "@SiganushkaUserBundle/config/routes.php"
+    prefix: /api
