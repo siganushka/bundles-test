@@ -29,7 +29,7 @@ class MediaController extends AbstractController
     #[Route('/media')]
     public function index(PaginatorInterface $paginator, #[MapQueryString] PaginationDto $dto): Response
     {
-        $queryBuilder = $this->repository->createQueryBuilder('m');
+        $queryBuilder = $this->repository->createQueryBuilderWithOrderBy('m');
         $pagination = $paginator->paginate($queryBuilder, $dto->page, $dto->size);
 
         return $this->render('media/index.html.twig', [

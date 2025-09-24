@@ -27,7 +27,7 @@ class UserController extends AbstractController
     #[Route('/users')]
     public function index(PaginatorInterface $paginator, #[MapQueryString] PaginationDto $dto): Response
     {
-        $queryBuilder = $this->repository->createQueryBuilderWithOrdered('u');
+        $queryBuilder = $this->repository->createQueryBuilderWithOrderBy('u');
         $pagination = $paginator->paginate($queryBuilder, $dto->page, $dto->size);
 
         return $this->render('user/index.html.twig', [

@@ -29,7 +29,7 @@ class ProductController extends AbstractController
     #[Route('/products')]
     public function index(PaginatorInterface $paginator, #[MapQueryString] PaginationDto $dto): Response
     {
-        $queryBuilder = $this->repository->createQueryBuilderWithOrdered('p');
+        $queryBuilder = $this->repository->createQueryBuilderWithOrderBy('p');
         $pagination = $paginator->paginate($queryBuilder, $dto->page, $dto->size);
 
         return $this->render('product/index.html.twig', [
