@@ -15,8 +15,8 @@ class MoneyTypeExtension extends AbstractTypeExtension
 {
     public function __construct(
         #[Autowire(env: 'APP_CURRENCY')]
-        private readonly string $currencyCode = 'zh_CN')
-    {
+        private readonly string $currencyCode,
+    ) {
     }
 
     public function configureOptions(OptionsResolver $resolver): void
