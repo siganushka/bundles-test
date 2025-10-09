@@ -2,5 +2,6 @@ siganushka_generic:
     doctrine:
         table_prefix: app_
     serializer:
+        entity_mapping: true
         form_error_normalizer: true
         knp_pagination_normalizer: true

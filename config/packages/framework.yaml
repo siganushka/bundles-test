@@ -1,19 +1,12 @@
 # see https://symfony.com/doc/current/reference/configuration/framework.html
 framework:
     secret: '%env(APP_SECRET)%'
-    #csrf_protection: true
 
     # Note that the session will be started ONLY if you read or write from it.
     session: true
 
     #esi: true
     #fragments: true
-
-    serializer:
-        mapping:
-            paths: ['%kernel.project_dir%/config/serialization']
-        default_context:
-            datetime_format: Y-m-d H:i:s
 
 when@test:
     framework:
