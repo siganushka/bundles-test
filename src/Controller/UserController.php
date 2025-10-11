@@ -6,7 +6,7 @@ namespace App\Controller;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
-use Siganushka\GenericBundle\Dto\PaginationDto;
+use Siganushka\GenericBundle\Dto\PageQueryDto;
 use Siganushka\UserBundle\Form\ChangePasswordType;
 use Siganushka\UserBundle\Form\ResetPasswordType;
 use Siganushka\UserBundle\Form\UserType;
@@ -25,7 +25,7 @@ class UserController extends AbstractController
     }
 
     #[Route('/users')]
-    public function index(PaginatorInterface $paginator, #[MapQueryString] PaginationDto $dto): Response
+    public function index(PaginatorInterface $paginator, #[MapQueryString] PageQueryDto $dto): Response
     {
         $queryBuilder = $this->repository->createQueryBuilderWithOrderBy('u');
         $pagination = $paginator->paginate($queryBuilder, $dto->page, $dto->size);

@@ -6,7 +6,7 @@ namespace App\Controller;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
-use Siganushka\GenericBundle\Dto\PaginationDto;
+use Siganushka\GenericBundle\Dto\PageQueryDto;
 use Siganushka\MediaBundle\Form\MediaUploadType;
 use Siganushka\MediaBundle\Form\Type\MediaType;
 use Siganushka\MediaBundle\Repository\MediaRepository;
@@ -27,7 +27,7 @@ class MediaController extends AbstractController
     }
 
     #[Route('/media')]
-    public function index(PaginatorInterface $paginator, #[MapQueryString] PaginationDto $dto): Response
+    public function index(PaginatorInterface $paginator, #[MapQueryString] PageQueryDto $dto): Response
     {
         $queryBuilder = $this->repository->createQueryBuilderWithOrderBy('m');
         $pagination = $paginator->paginate($queryBuilder, $dto->page, $dto->size);

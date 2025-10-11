@@ -6,7 +6,7 @@ namespace App\Controller;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
-use Siganushka\GenericBundle\Dto\PaginationDto;
+use Siganushka\GenericBundle\Dto\PageQueryDto;
 use Siganushka\ProductBundle\Form\ProductOptionType;
 use Siganushka\ProductBundle\Form\ProductOptionValueType;
 use Siganushka\ProductBundle\Form\ProductType;
@@ -27,7 +27,7 @@ class ProductController extends AbstractController
     }
 
     #[Route('/products')]
-    public function index(PaginatorInterface $paginator, #[MapQueryString] PaginationDto $dto): Response
+    public function index(PaginatorInterface $paginator, #[MapQueryString] PageQueryDto $dto): Response
     {
         $queryBuilder = $this->repository->createQueryBuilderWithOrderBy('p');
         $pagination = $paginator->paginate($queryBuilder, $dto->page, $dto->size);

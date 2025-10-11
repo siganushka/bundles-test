@@ -28,7 +28,7 @@ class OrderController extends AbstractController
     #[Route('/orders')]
     public function index(PaginatorInterface $paginator, #[MapQueryString] OrderFilterDto $dto): Response
     {
-        $queryBuilder = $this->repository->createQueryBuilderWithFilter('o', $dto);
+        $queryBuilder = $this->repository->createQueryBuilderByFilter('o', $dto);
         $countForState = $this->repository->countByStateMapping();
 
         $pagination = $paginator->paginate($queryBuilder, $dto->page, $dto->size);
