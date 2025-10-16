@@ -43,7 +43,7 @@
       <td class="text-nowrap">
         {%- set _variants = _item.variants|filter(v => v.enabled) -%}
         {%- set _prices = _variants|map(v => v.price) %}
-        {{- _prices ? min(_prices)|intl_currency : '-' -}}
+        {{ _prices ? min(_prices)|intl_currency : '-' }}
       </td>
       <td class="text-nowrap">{{ _item.createdAt|intl_date }}</td>
       <td class="text-nowrap">

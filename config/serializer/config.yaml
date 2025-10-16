@@ -1,0 +1,26 @@
+App\Entity\Product:
+    attributes:
+        options:
+            groups: ['item', 'collection']
+        variants:
+            groups: ['item', 'collection']
+
+App\Entity\ProductOption:
+    attributes:
+        values:
+            groups: ['item', 'collection']
+
+App\Entity\ProductOptionValue:
+    attributes:
+        img:
+            groups: ['item', 'collection']
+
+App\Entity\ProductVariant:
+    attributes:
+        img:
+            groups: ['item', 'collection']
+
+App\Entity\Order:
+    attributes:
+        deletedAt:
+            ignore: true

@@ -1,4 +1,0 @@
-App\Entity\Order:
-    attributes:
-        deletedAt:
-            ignore: true
