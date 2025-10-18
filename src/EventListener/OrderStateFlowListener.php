@@ -19,7 +19,7 @@ class OrderStateFlowListener implements EventSubscriberInterface
             return;
         }
 
-        if ($subject->isFree() && OrderState::Processing === $subject->getState()) {
+        if (OrderState::Processing === $subject->getState() && $subject->getTotal() <= 0) {
             $event->setBlocked(true);
         }
     }
@@ -31,7 +31,7 @@ class OrderStateFlowListener implements EventSubscriberInterface
             return;
         }
 
-        if ($subject->isFree()) {
+        if ($subject->getTotal() <= 0) {
             $marking = $event->getMarking();
             $marking->mark(OrderState::Processing->value);
         }

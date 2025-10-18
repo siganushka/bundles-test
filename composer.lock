@@ -2310,7 +2310,7 @@
             "dist": {
                 "type": "path",
                 "url": "../generic-bundle",
-                "reference": "751d9e02c9ea43a62c9eec2deee5506a9f0ef091"
+                "reference": "38964b8b6d54c06b354cc82d2069500fb9bad73d"
             },
             "require": {
                 "php": ">=8.1",
@@ -2438,7 +2438,7 @@
             "dist": {
                 "type": "path",
                 "url": "../order-bundle",
-                "reference": "0561e7c7f1b086d060a3528fb16c3c4554fa2bc1"
+                "reference": "071ee9daa26ac1698c969293acc457ab944c3d93"
             },
             "require": {
                 "knplabs/knp-components": "^4.4|^5.0",
@@ -2499,7 +2499,7 @@
             "dist": {
                 "type": "path",
                 "url": "../product-bundle",
-                "reference": "e2e82c7de55b2b542f111fd5e4279e27fda179e0"
+                "reference": "9f4ca663f830178eaa0ac7c1144287651b94a459"
             },
             "require": {
                 "bentools/cartesian-product": "^1.4",
