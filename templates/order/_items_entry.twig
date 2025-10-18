@@ -1,10 +1,10 @@
 <div class="d-flex align-items-center">
-  <img src="{{ item.subject.img.url ?? item.subject.product.img.url }}" width="50px" class="img-thumbnail" />
+  <img src="{{ item.subjectImg }}" width="50px" class="img-thumbnail" />
   <div class="ms-2 lh-sm">
-    <p class="mb-1">{{ item.subject.product.name }}</p>
+    <p class="mb-1">{{ item.subjectTitle }}</p>
 
-    {% if item.subject.label %}
-      <small class="text-secondary">{{ item.subject.label }}</small>
+    {% if item.subjectSubtitle %}
+      <small class="text-secondary">{{ item.subjectSubtitle }}</small>
     {% endif %}
 
     <small class="text-secondary">&times;{{ item.quantity }}</small>

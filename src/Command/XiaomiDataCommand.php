@@ -135,7 +135,7 @@ class XiaomiDataCommand extends Command
                 $variant = new ProductVariant($choice);
                 $variant->setImg($variantImg);
                 $variant->setPrice((int) ($variants[$key]['price'] * 100));
-                $variant->setInventory($variants[$key]['sku'] ?? null);
+                $variant->setStock($variants[$key]['sku'] ?? null);
 
                 $entity->addVariant($variant);
             }
