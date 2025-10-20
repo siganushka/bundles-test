@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\DataFixtures;
 
 use App\Entity\Media;
+use App\Entity\Product;
+use App\Entity\ProductVariant;
 use App\Repository\ProductRepository;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
@@ -153,6 +155,22 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
         $product10->setName('迪卡侬保冷野餐包');
         $product10->setImg($this->getReference('media-7', Media::class));
 
+        /** @var array<int, Product> */
+        $products = [$product0, $product1, $product2, $product3, $product4, $product5, $product6, $product7, $product8, $product9, $product10];
+
+        $prices = [100, 200, 300, 400, 500];
+        foreach ($products as $index => $product) {
+            foreach ($product->generateChoices() as $index2 => $choice) {
+                $variant = new ProductVariant($choice);
+                $variant->setPrice($prices[array_rand($prices)]);
+                $variant->setStock(10000);
+                $variant->setEnabled(true);
+                $product->addVariant($variant);
+
+                $this->addReference(\sprintf('product-%d-variant-%d', $index, $index2), $variant);
+            }
+        }
+
         $manager->persist($product0);
         $manager->persist($product1);
         $manager->persist($product2);
@@ -166,17 +184,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
         $manager->persist($product10);
         $manager->flush();
 
-        $this->addReference('product-0', $product0);
-        $this->addReference('product-1', $product1);
-        $this->addReference('product-2', $product2);
-        $this->addReference('product-3', $product3);
-        $this->addReference('product-4', $product4);
-        $this->addReference('product-5', $product5);
-        $this->addReference('product-6', $product6);
-        $this->addReference('product-7', $product7);
-        $this->addReference('product-8', $product8);
-        $this->addReference('product-9', $product9);
-        $this->addReference('product-10', $product10);
+        array_walk($products, fn (Product $item, int $index) => $this->addReference(\sprintf('product-%d', $index), $item));
     }
 
     public function getDependencies(): array

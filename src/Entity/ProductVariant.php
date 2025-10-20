@@ -23,7 +23,7 @@ class ProductVariant extends BaseProductVariant implements OrderItemSubjectInter
 
     public function getSubjectSubtitle(): ?string
     {
-        return $this->label;
+        return $this->name;
     }
 
     public function getSubjectImg(): ?string

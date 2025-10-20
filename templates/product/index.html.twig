@@ -28,11 +28,10 @@
           <div class="mx-3">
             <p class="m-0 text-break">{{ _item.name }}</p>
             {% if _item.options|length %}
-              <small class="text-body-tertiary">
+              <small class="fs-sm text-secondary">
                 {% for option in _item.options %}
                   <a href="{{ path('app_productoption_edit', {id: option.id}) }}" class="text-reset text-decoration-none">
-                    {{ option.name }}
-                    ({{ option.values|length }})
+                    {{ option.name }} ({{ option.values|length }})
                   </a>
                 {% endfor %}
               </small>

@@ -53,7 +53,7 @@ class OrderFixtures extends Fixture implements DependentFixtureInterface
     public function getDependencies(): array
     {
         return [
-            ProductVariantFixtures::class,
+            ProductFixtures::class,
         ];
     }
 }

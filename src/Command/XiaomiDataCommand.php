@@ -115,8 +115,8 @@ class XiaomiDataCommand extends Command
                     }
 
                     $choice = new ProductVariantChoice($values);
-                    if ($choice->value) {
-                        $variants[$choice->value] = $v1['goods_info'];
+                    if ($choice->code) {
+                        $variants[$choice->code] = $v1['goods_info'];
                     }
                 }
             } else {
@@ -124,7 +124,7 @@ class XiaomiDataCommand extends Command
             }
 
             foreach ($entity->generateChoices() as $index => $choice) {
-                $key = $choice->value ?? 0;
+                $key = $choice->code ?? 0;
                 if (!isset($variants[$key])) {
                     continue;
                 }

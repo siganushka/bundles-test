@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\OptimisticLockException;
 use Knp\Component\Pager\PaginatorInterface;
 use Siganushka\GenericBundle\Dto\PageQueryDto;
 use Siganushka\ProductBundle\Form\ProductOptionType;
@@ -108,8 +109,12 @@ class ProductController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
-            $this->addFlash('success', 'Your changes were saved!');
+            try {
+                $entityManager->flush();
+                $this->addFlash('success', 'Your changes were saved!');
+            } catch (OptimisticLockException $th) {
+                $this->addFlash('danger', $th->getMessage());
+            }
 
             return $this->redirectToRoute('app_product_variants', ['id' => $entity->getId()]);
         }
