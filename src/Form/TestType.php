@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Form;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -24,8 +24,10 @@ class TestType extends AbstractType
                 'constraints' => new NotBlank(),
                 'row_attr' => ['class' => 'bar_class'],
             ])
-            ->add('baz', NumberType::class, [
-                'row_attr' => ['class' => 'baz_class'],
+            ->add('baz', CollectionType::class, [
+                'row_attr' => ['class' => 'py-0'],
+                'allow_add' => true,
+                'allow_delete' => true,
             ])
         ;
     }
