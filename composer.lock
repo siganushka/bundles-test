@@ -2309,21 +2309,21 @@
             "dist": {
                 "type": "path",
                 "url": "../generic-bundle",
-                "reference": "f2ae052c1cf6126ed0bff8f2970256cbe7d7dd59"
+                "reference": "bd83af5046559fc90af4d6f38e908ea5e7c68738"
             },
             "require": {
                 "php": ">=8.1",
-                "symfony/framework-bundle": "^6.4|^7.0"
+                "symfony/framework-bundle": "^6.4|^7.0|^8.0"
             },
             "require-dev": {
                 "composer/semver": "^3.0",
                 "knplabs/knp-components": "^4.4|^5.0",
                 "siganushka/doctrine-contracts": "dev-main",
-                "symfony/form": "^6.4|^7.0",
-                "symfony/http-foundation": "^6.4|^7.0",
-                "symfony/serializer": "^6.4|^7.0",
-                "symfony/translation": "^6.4|^7.0",
-                "symfony/validator": "^6.4|^7.0"
+                "symfony/form": "^6.4|^7.0|^8.0",
+                "symfony/http-foundation": "^6.4|^7.0|^8.0",
+                "symfony/serializer": "^6.4|^7.0|^8.0",
+                "symfony/translation": "^6.4|^7.0|^8.0",
+                "symfony/validator": "^6.4|^7.0|^8.0"
             },
             "type": "symfony-bundle",
             "extra": {
@@ -2375,7 +2375,7 @@
             "dist": {
                 "type": "path",
                 "url": "../media-bundle",
-                "reference": "b590d3f09275501d04dc0578d50e87dd4e33f369"
+                "reference": "c2928b2f059f74ddf168da65b1a4c426a24626ee"
             },
             "require": {
                 "ext-fileinfo": "*",
@@ -2383,10 +2383,10 @@
                 "php": ">=8.1",
                 "siganushka/doctrine-contracts": "dev-main",
                 "siganushka/generic-bundle": "dev-main",
-                "symfony/form": "^6.4|^7.0",
-                "symfony/framework-bundle": "^6.4|^7.0",
-                "symfony/serializer": "^6.4|^7.0",
-                "symfony/validator": "^6.4|^7.0"
+                "symfony/form": "^6.4|^7.0|^8.0",
+                "symfony/framework-bundle": "^6.4|^7.0|^8.0",
+                "symfony/serializer": "^6.4|^7.0|^8.0",
+                "symfony/validator": "^6.4|^7.0|^8.0"
             },
             "require-dev": {
                 "aliyuncs/oss-sdk-php": "^2.7",
@@ -2437,23 +2437,23 @@
             "dist": {
                 "type": "path",
                 "url": "../order-bundle",
-                "reference": "e5d32b3453421271d22a1705382d57c1d5e3544f"
+                "reference": "77d30a675f9e8ba142a1619f1305b403e3110353"
             },
             "require": {
                 "knplabs/knp-components": "^4.4|^5.0",
                 "php": ">=8.1",
                 "siganushka/doctrine-contracts": "dev-main",
                 "siganushka/generic-bundle": "dev-main",
-                "symfony/doctrine-bridge": "^6.4|^7.0",
-                "symfony/form": "^6.4|^7.0",
-                "symfony/framework-bundle": "^6.4|^7.0",
-                "symfony/validator": "^6.4|^7.0",
-                "symfony/workflow": "^6.4|^7.0"
+                "symfony/doctrine-bridge": "^6.4|^7.0|^8.0",
+                "symfony/form": "^6.4|^7.0|^8.0",
+                "symfony/framework-bundle": "^6.4|^7.0|^8.0",
+                "symfony/validator": "^6.4|^7.0|^8.0",
+                "symfony/workflow": "^6.4|^7.0|^8.0"
             },
             "require-dev": {
                 "godruoyi/php-snowflake": "^3.1",
-                "symfony/messenger": "^6.4|^7.0",
-                "symfony/translation": "^6.4|^7.0"
+                "symfony/messenger": "^6.4|^7.0|^8.0",
+                "symfony/translation": "^6.4|^7.0|^8.0"
             },
             "type": "symfony-bundle",
             "autoload": {
@@ -2498,7 +2498,7 @@
             "dist": {
                 "type": "path",
                 "url": "../product-bundle",
-                "reference": "c8d3d158a1e700f0b98d7be8961f9e71fa867b3e"
+                "reference": "0d20b40e6b5799a2e239eff4d556a209d0ce6780"
             },
             "require": {
                 "bentools/cartesian-product": "^1.4",
@@ -2507,9 +2507,9 @@
                 "siganushka/doctrine-contracts": "dev-main",
                 "siganushka/generic-bundle": "dev-main",
                 "siganushka/media-bundle": "dev-main",
-                "symfony/form": "^6.4|^7.0",
-                "symfony/framework-bundle": "^6.4|^7.0",
-                "symfony/validator": "^6.4|^7.0"
+                "symfony/form": "^6.4|^7.0|^8.0",
+                "symfony/framework-bundle": "^6.4|^7.0|^8.0",
+                "symfony/validator": "^6.4|^7.0|^8.0"
             },
             "require-dev": {
                 "symfony/ux-autocomplete": "^2.10"
@@ -2557,19 +2557,19 @@
             "dist": {
                 "type": "path",
                 "url": "../region-bundle",
-                "reference": "4755310412f3d2708123a11e161fb44a191edccc"
+                "reference": "c63f986ead27dc57e395da3ec54a68c43f1e153a"
             },
             "require": {
                 "php": ">=8.1",
                 "siganushka/doctrine-contracts": "dev-main",
                 "siganushka/generic-bundle": "dev-main",
-                "symfony/form": "^6.4|^7.0",
-                "symfony/framework-bundle": "^6.4|^7.0",
-                "symfony/http-client": "^6.4|^7.0"
+                "symfony/form": "^6.4|^7.0|^8.0",
+                "symfony/framework-bundle": "^6.4|^7.0|^8.0",
+                "symfony/http-client": "^6.4|^7.0|^8.0"
             },
             "require-dev": {
-                "symfony/serializer": "^6.4|^7.0",
-                "symfony/yaml": "^6.4|^7.0"
+                "symfony/serializer": "^6.4|^7.0|^8.0",
+                "symfony/yaml": "^6.4|^7.0|^8.0"
             },
             "type": "symfony-bundle",
             "autoload": {
@@ -2615,18 +2615,18 @@
             "dist": {
                 "type": "path",
                 "url": "../user-bundle",
-                "reference": "6653030263236d478febcfbc3101f60c27e79153"
+                "reference": "1237c3a1c0410909fef49a90a8c0e0516745fe8c"
             },
             "require": {
                 "knplabs/knp-components": "^4.4|^5.0",
                 "php": ">=8.1",
                 "siganushka/doctrine-contracts": "dev-main",
                 "siganushka/generic-bundle": "dev-main",
-                "symfony/doctrine-bridge": "^6.4|^7.0",
-                "symfony/form": "^6.4|^7.0",
-                "symfony/framework-bundle": "^6.4|^7.0",
-                "symfony/security-core": "^6.4|^7.0",
-                "symfony/validator": "^6.4|^7.0"
+                "symfony/doctrine-bridge": "^6.4|^7.0|^8.0",
+                "symfony/form": "^6.4|^7.0|^8.0",
+                "symfony/framework-bundle": "^6.4|^7.0|^8.0",
+                "symfony/security-core": "^6.4|^7.0|^8.0",
+                "symfony/validator": "^6.4|^7.0|^8.0"
             },
             "type": "symfony-bundle",
             "autoload": {
