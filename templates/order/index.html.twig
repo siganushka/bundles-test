@@ -61,12 +61,13 @@
       <td class="text-nowrap">
         <div class="d-inline-block">
           <a class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">流转</a>
-          <ul class="dropdown-menu">
-            {% for transition in workflow_transitions(_item) %}
-              {% if transition.name == 'reset' %}
-                <div class="dropdown-divider"></div>
+          <ul class="dropdown-menu dropdown-menu-end">
+            {% set _transitions = workflow_transitions(_item) %}
+            {% for transition in _transitions %}
+              {% if transition.name == 'reset' and _transitions|length > 1 %}
+                <li><hr class="dropdown-divider"></li>
               {% endif %}
-              <li><a href="{{ path('app_order_workflow', {number: _item.number, transition: transition.name}) }}" class="dropdown-item">{{ transition.name }}</a></li>
+              <li><a href="{{ path('app_order_workflow', {number: _item.number, transition: transition.name}) }}" class="dropdown-item{{ transition.name == 'reset' ? ' text-danger' }}">{{ transition.name }}</a></li>
             {% else %}
               <li><span class="dropdown-item disabled">No actions available.</span></li>
             {% endfor %}

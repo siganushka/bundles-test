@@ -84,7 +84,7 @@ class OrderController extends AbstractController
     }
 
     #[Route('/orders/{number}/workflow/{transition}')]
-    public function workflow(Request $request, EntityManagerInterface $entityManager, WorkflowInterface $orderStateFlow, string $number, string $transition): Response
+    public function workflow(Request $request, EntityManagerInterface $entityManager, WorkflowInterface $orderStateMachine, string $number, string $transition): Response
     {
         $entity = $this->repository->findOneByNumber($number)
             ?? throw $this->createNotFoundException();
@@ -92,7 +92,7 @@ class OrderController extends AbstractController
         $entityManager->beginTransaction();
 
         try {
-            $orderStateFlow->apply($entity, $transition);
+            $orderStateMachine->apply($entity, $transition);
         } catch (LogicException $e) {
             $entityManager->rollback();
 

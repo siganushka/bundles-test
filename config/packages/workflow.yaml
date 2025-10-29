@@ -1,6 +1,6 @@
 framework:
     workflows:
-        order_state_flow:
+        order:
             transitions:
                 reset:
                     from:

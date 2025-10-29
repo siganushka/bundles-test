@@ -41,6 +41,12 @@
     <th class="text-end">{{ 'generic.created_at'|trans }}</th>
     <td>{{ entity.createdAt|intl_date }}</td>
   </tr>
+  {% if entity.note %}
+  <tr>
+    <th class="text-end">{{ 'order.note'|trans }}</th>
+    <td class="text-warning">{{ entity.note }}</td>
+  </tr>
+  {% endif %}
   <tr>
     <th class="text-end">{{ 'order.items'|trans }}</th>
     <td>
