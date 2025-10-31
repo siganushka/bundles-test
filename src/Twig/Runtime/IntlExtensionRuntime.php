@@ -12,8 +12,6 @@ use Twig\Extra\Intl\IntlExtension;
 
 class IntlExtensionRuntime implements RuntimeExtensionInterface
 {
-    public const CURRENCY_DIVISOR = 100;
-
     public function __construct(
         #[Autowire(service: 'twig.extension.intl')]
         private readonly IntlExtension $extension,
