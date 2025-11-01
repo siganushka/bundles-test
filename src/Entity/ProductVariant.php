@@ -21,7 +21,14 @@ class ProductVariant extends BaseProductVariant implements OrderItemSubjectInter
         return $title;
     }
 
-    public function getSubjectSubtitle(): ?string
+    public function getSubjectPrice(): int
+    {
+        \assert(null !== $this->price);
+
+        return $this->price;
+    }
+
+    public function getSubjectExtra(): ?string
     {
         return $this->name;
     }
@@ -29,13 +36,6 @@ class ProductVariant extends BaseProductVariant implements OrderItemSubjectInter
     public function getSubjectImg(): ?string
     {
         return ($this->img ?? $this->product?->getImg())?->getUrl();
-    }
-
-    public function getSubjectPrice(): int
-    {
-        \assert(null !== $this->price);
-
-        return $this->price;
     }
 
     public function getAvailableStock(): ?int

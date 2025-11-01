@@ -102,7 +102,14 @@ class OrderItemSubject implements OrderItemSubjectInterface
         return $this->title;
     }
 
-    public function getSubjectSubtitle(): ?string
+    public function getSubjectPrice(): int
+    {
+        \assert(null !== $this->price);
+
+        return $this->price;
+    }
+
+    public function getSubjectExtra(): ?string
     {
         return $this->subtitle;
     }
@@ -110,12 +117,5 @@ class OrderItemSubject implements OrderItemSubjectInterface
     public function getSubjectImg(): ?string
     {
         return $this->cover;
-    }
-
-    public function getSubjectPrice(): int
-    {
-        \assert(null !== $this->price);
-
-        return $this->price;
     }
 }
