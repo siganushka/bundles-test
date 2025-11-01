@@ -2309,7 +2309,7 @@
             "dist": {
                 "type": "path",
                 "url": "../generic-bundle",
-                "reference": "1df5df5b1bba9f5c25de52c1d0bab7422b1cfbbc"
+                "reference": "dcf4fc11a1ad3ea1e188ca4ea22a1eea9b6bbde6"
             },
             "require": {
                 "php": ">=8.1",
@@ -2321,6 +2321,7 @@
                 "siganushka/doctrine-contracts": "dev-main",
                 "symfony/form": "^6.4|^7.0|^8.0",
                 "symfony/http-foundation": "^6.4|^7.0|^8.0",
+                "symfony/intl": "^6.4|^7.0|^8.0",
                 "symfony/serializer": "^6.4|^7.0|^8.0",
                 "symfony/translation": "^6.4|^7.0|^8.0",
                 "symfony/validator": "^6.4|^7.0|^8.0"
