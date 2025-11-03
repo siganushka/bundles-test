@@ -2,32 +2,6 @@
 
 {% form_theme form _self %}
 
-{%- block _product_length_label -%}
-  {{- form_label(form, 'product.volume') -}}
-{%- endblock -%}
-
-{%- block _product_length_widget -%}
-  <div class="input-group">
-    {% for _form in [form, form.parent.width, form.parent.height] %}
-      {% if _form.vars.label is not same as(false) %}
-        <span class="input-group-text">
-          {% with _form.vars %}
-            {{- block('form_label_content') -}}
-          {% endwith %}
-        </span>
-      {% endif %}
-
-      {{- form_widget(_form) -}}
-    {% endfor %}
-  </div>
-{%- endblock -%}
-
-{%- block _product_length_errors -%}
-  {% for _form in [form, form.parent.width, form.parent.height] %}
-    {{- form_errors(_form) -}}
-  {% endfor %}
-{%- endblock -%}
-
 {%- block _product_variants_row -%}
   {{- block('form_rows') -}}
 {%- endblock -%}
