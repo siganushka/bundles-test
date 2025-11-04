@@ -2309,7 +2309,7 @@
             "dist": {
                 "type": "path",
                 "url": "../generic-bundle",
-                "reference": "9d2ddb8cfc8093a5a076c3c6894dbd1eb8c2cea2"
+                "reference": "231657cbd9d39a58ad02eb2396f3df747adc5e84"
             },
             "require": {
                 "php": ">=8.1",
@@ -2376,7 +2376,7 @@
             "dist": {
                 "type": "path",
                 "url": "../media-bundle",
-                "reference": "c2928b2f059f74ddf168da65b1a4c426a24626ee"
+                "reference": "b6e8051e0131a84e730103bdb8e52a39bd38ee00"
             },
             "require": {
                 "ext-fileinfo": "*",
@@ -2438,7 +2438,7 @@
             "dist": {
                 "type": "path",
                 "url": "../order-bundle",
-                "reference": "3c269f38d57840b61f4e92723da2625b322d37bf"
+                "reference": "e8dc240dd1e3158280adfae0e9d0c9176aa125fc"
             },
             "require": {
                 "knplabs/knp-components": "^4.4|^5.0",
@@ -2558,7 +2558,7 @@
             "dist": {
                 "type": "path",
                 "url": "../region-bundle",
-                "reference": "c63f986ead27dc57e395da3ec54a68c43f1e153a"
+                "reference": "51f16be6eaabc5178c768eb2d5f00e6f178d107a"
             },
             "require": {
                 "php": ">=8.1",
