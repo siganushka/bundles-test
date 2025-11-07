@@ -17,3 +17,7 @@ siganushka_order:
 siganushka_user:
     resource: "@SiganushkaUserBundle/config/routes.php"
     prefix: /api
+
+when@dev:
+    siganushka_generic:
+        resource: "@SiganushkaGenericBundle/config/routes.php"
