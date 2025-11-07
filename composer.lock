@@ -53,24 +53,25 @@
         },
         {
             "name": "bentools/cartesian-product",
-            "version": "1.5",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bpolaszek/cartesian-product.git",
-                "reference": "e1f7c2660450b0746afc1dc012ba39dae4133cfc"
+                "reference": "9a76b4752678476e7a8db95e9d5014cb5742a1b3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bpolaszek/cartesian-product/zipball/e1f7c2660450b0746afc1dc012ba39dae4133cfc",
-                "reference": "e1f7c2660450b0746afc1dc012ba39dae4133cfc",
+                "url": "https://api.github.com/repos/bpolaszek/cartesian-product/zipball/9a76b4752678476e7a8db95e9d5014cb5742a1b3",
+                "reference": "9a76b4752678476e7a8db95e9d5014cb5742a1b3",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.4"
+                "php": "^8.2"
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^3.82",
-                "phpunit/phpunit": "^9.0",
+                "pestphp/pest": "^3.8",
+                "pestphp/pest-plugin-drift": "^3.0",
                 "symfony/var-dumper": "^6.0|^7.0"
             },
             "type": "library",
@@ -89,9 +90,9 @@
             "description": "A simple, low-memory footprint function to generate all combinations from a multi-dimensionnal array.",
             "support": {
                 "issues": "https://github.com/bpolaszek/cartesian-product/issues",
-                "source": "https://github.com/bpolaszek/cartesian-product/tree/1.5"
+                "source": "https://github.com/bpolaszek/cartesian-product/tree/2.0.1"
             },
-            "time": "2025-07-08T12:55:38+00:00"
+            "time": "2025-07-09T15:03:24+00:00"
         },
         {
             "name": "composer/semver",
@@ -2500,10 +2501,10 @@
             "dist": {
                 "type": "path",
                 "url": "../product-bundle",
-                "reference": "6ee56a33f68e8cb11e9e3311dfb93c19cbc2306c"
+                "reference": "d30e3cc7b26094541247cd4a009827d59e2dda65"
             },
             "require": {
-                "bentools/cartesian-product": "^1.4",
+                "bentools/cartesian-product": "^1.4|^2.0",
                 "knplabs/knp-components": "^4.4|^5.0",
                 "php": ">=8.1",
                 "siganushka/doctrine-contracts": "dev-main",
