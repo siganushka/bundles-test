@@ -1,8 +1,3 @@
-/** siganushka/generic-bundle */
-[data-controller=siganushka-generic-collection] td { --bs-table-bg: transparent; }
-[data-controller=siganushka-generic-collection] td:first-child { padding-left: 0; }
-[data-controller=siganushka-generic-collection] td:last-child { padding-right: 0; }
-
 /** knplabs/knp-paginator-bundle */
 .table .sortable,
 .table .asc,
@@ -28,7 +23,8 @@ select + .ts-wrapper .ts-control > input::placeholder { color: var(--bs-body-col
 .img-thumbnail { max-width: none !important; }
 
 /** app */
-label.required::after { color: var(--bs-form-invalid-color); content: "*"; }
+label.required::after,
+legend.required::after{ color: var(--bs-form-invalid-color); content: "*"; }
 textarea.form-control { min-height: 86px !important; max-height: 320px !important; field-sizing: content; }
 .fs-sm { font-size: .75rem; }
 .w-0 { width: 0%; }

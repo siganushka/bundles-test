@@ -3,7 +3,10 @@
         "@siganushka/generic-bundle": {
             "collection": {
                 "enabled": true,
-                "fetch": "eager"
+                "fetch": "eager",
+                "autoimport": {
+                    "@siganushka/generic-bundle/dist/collection.css": true
+                }
             }
         },
         "@siganushka/media-bundle": {
