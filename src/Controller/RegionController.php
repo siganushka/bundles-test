@@ -44,7 +44,7 @@ class RegionController extends AbstractController
                 'label' => 'region.street',
                 'constraints' => new NotBlank(),
             ])
-            ->add('submit', SubmitType::class, ['label' => 'generic.submit'])
+            ->add('submit', SubmitType::class)
         ;
 
         $form = $builder->getForm();

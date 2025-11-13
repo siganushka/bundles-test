@@ -45,7 +45,7 @@ class ProductController extends AbstractController
         $combinable = $request->query->has('combinable');
 
         $form = $this->createForm(ProductType::class, $entity, compact('combinable'));
-        $form->add('submit', SubmitType::class, ['label' => 'generic.submit']);
+        $form->add('submit', SubmitType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -105,7 +105,7 @@ class ProductController extends AbstractController
             ?? throw $this->createNotFoundException();
 
         $form = $this->createForm(ProductVariantCollectionType::class, $entity);
-        $form->add('submit', SubmitType::class, ['label' => 'generic.submit']);
+        $form->add('submit', SubmitType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -128,7 +128,7 @@ class ProductController extends AbstractController
     public function ProductType(Request $request): Response
     {
         $form = $this->createForm(ProductType::class)
-            ->add('submit', SubmitType::class, ['label' => 'generic.submit'])
+            ->add('submit', SubmitType::class)
         ;
 
         $form->handleRequest($request);
@@ -145,7 +145,7 @@ class ProductController extends AbstractController
     public function ProductOptionType(Request $request): Response
     {
         $form = $this->createForm(ProductOptionType::class)
-            ->add('submit', SubmitType::class, ['label' => 'generic.submit'])
+            ->add('submit', SubmitType::class)
         ;
 
         $form->handleRequest($request);
@@ -162,7 +162,7 @@ class ProductController extends AbstractController
     public function ProductOptionValueType(Request $request): Response
     {
         $form = $this->createForm(ProductOptionValueType::class)
-            ->add('submit', SubmitType::class, ['label' => 'generic.submit'])
+            ->add('submit', SubmitType::class)
         ;
 
         $form->handleRequest($request);
@@ -181,7 +181,7 @@ class ProductController extends AbstractController
         $entity = $this->repository->createNew();
 
         $form = $this->createForm(ProductVariantCollectionType::class, $entity)
-            ->add('submit', SubmitType::class, ['label' => 'generic.submit'])
+            ->add('submit', SubmitType::class)
         ;
 
         $form->handleRequest($request);
@@ -198,7 +198,7 @@ class ProductController extends AbstractController
     public function ProductVariantType(Request $request): Response
     {
         $form = $this->createForm(ProductVariantType::class)
-            ->add('submit', SubmitType::class, ['label' => 'generic.submit'])
+            ->add('submit', SubmitType::class)
         ;
 
         $form->handleRequest($request);

@@ -41,7 +41,7 @@ class UserController extends AbstractController
         $entity = $this->repository->createNew();
 
         $form = $this->createForm(UserType::class, $entity);
-        $form->add('submit', SubmitType::class, ['label' => 'generic.submit']);
+        $form->add('submit', SubmitType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -65,7 +65,7 @@ class UserController extends AbstractController
             ?? throw $this->createNotFoundException();
 
         $form = $this->createForm(UserType::class, $entity);
-        $form->add('submit', SubmitType::class, ['label' => 'generic.submit']);
+        $form->add('submit', SubmitType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -98,7 +98,7 @@ class UserController extends AbstractController
     public function UserType(Request $request): Response
     {
         $form = $this->createForm(UserType::class)
-            ->add('submit', SubmitType::class, ['label' => 'generic.submit'])
+            ->add('submit', SubmitType::class)
         ;
 
         $form->handleRequest($request);
@@ -115,7 +115,7 @@ class UserController extends AbstractController
     public function ChangePasswordType(Request $request): Response
     {
         $form = $this->createForm(ChangePasswordType::class)
-            ->add('submit', SubmitType::class, ['label' => 'generic.submit'])
+            ->add('submit', SubmitType::class)
         ;
 
         $form->handleRequest($request);
@@ -132,7 +132,7 @@ class UserController extends AbstractController
     public function ResetPasswordType(Request $request): Response
     {
         $form = $this->createForm(ResetPasswordType::class)
-            ->add('submit', SubmitType::class, ['label' => 'generic.submit'])
+            ->add('submit', SubmitType::class)
         ;
 
         $form->handleRequest($request);

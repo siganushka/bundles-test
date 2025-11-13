@@ -82,7 +82,7 @@ class IndexController extends AbstractController
                 'allow_add' => true,
                 'allow_delete' => true,
             ])
-            ->add('submit', SubmitType::class, ['label' => 'generic.submit'])
+            ->add('submit', SubmitType::class)
         ;
 
         $form = $builder->getForm();
@@ -106,7 +106,7 @@ class IndexController extends AbstractController
             ->add('language', LanguageType::class)
             ->add('locale', LocaleType::class)
             ->add('timezone', TimezoneType::class)
-            ->add('submit', SubmitType::class, ['label' => 'generic.submit'])
+            ->add('submit', SubmitType::class)
         ;
 
         $form = $builder->getForm();
