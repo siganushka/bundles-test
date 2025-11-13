@@ -17,7 +17,9 @@ select + .ts-wrapper .ts-control > input::placeholder { color: var(--bs-body-col
 .ts-wrapper.multi .ts-control > div { font-size: 83%; }
 .ts-wrapper.multi .ts-control > input { margin-bottom: 3px !important; }
 
-/** bootstrap */
+/** bootstrap extra */
+.fs-sm { font-size: .75rem; }
+.w-0 { width: 0%; }
 .btn { white-space: nowrap !important; }
 .pagination { margin-bottom: 0 !important; }
 .img-thumbnail { max-width: none !important; }
@@ -26,5 +28,3 @@ select + .ts-wrapper .ts-control > input::placeholder { color: var(--bs-body-col
 label.required::after,
 legend.required::after{ color: var(--bs-form-invalid-color); content: "*"; }
 textarea.form-control { min-height: 86px !important; max-height: 320px !important; field-sizing: content; }
-.fs-sm { font-size: .75rem; }
-.w-0 { width: 0%; }
