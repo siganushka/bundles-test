@@ -18,6 +18,20 @@ select + .ts-wrapper .ts-control > input::placeholder { color: var(--bs-body-col
 .ts-wrapper.multi .ts-control > input { margin-bottom: 3px !important; }
 
 /** bootstrap extra */
+:root {
+  --bs-font-sans-serif:
+    -apple-system,
+    Roboto,
+    "Helvetica Neue",
+    "Noto Sans",
+    "Liberation Sans",
+    Arial,
+    sans-serif,
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol",
+    "Noto Color Emoji";
+}
 .fs-sm { font-size: .75rem; }
 .w-0 { width: 0%; }
 .btn { white-space: nowrap !important; }
