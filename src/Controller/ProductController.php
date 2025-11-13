@@ -7,7 +7,7 @@ namespace App\Controller;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\OptimisticLockException;
 use Knp\Component\Pager\PaginatorInterface;
-use Siganushka\GenericBundle\Dto\PageQueryDto;
+use Siganushka\ProductBundle\Dto\ProductQueryDto;
 use Siganushka\ProductBundle\Form\ProductOptionType;
 use Siganushka\ProductBundle\Form\ProductOptionValueType;
 use Siganushka\ProductBundle\Form\ProductType;
@@ -28,9 +28,9 @@ class ProductController extends AbstractController
     }
 
     #[Route('/products')]
-    public function index(PaginatorInterface $paginator, #[MapQueryString] PageQueryDto $dto): Response
+    public function index(PaginatorInterface $paginator, #[MapQueryString] ProductQueryDto $dto): Response
     {
-        $queryBuilder = $this->repository->createQueryBuilderWithOrderBy('p');
+        $queryBuilder = $this->repository->createQueryBuilderByDto('p', $dto);
         $pagination = $paginator->paginate($queryBuilder, $dto->page, $dto->size);
 
         return $this->render('product/index.html.twig', [

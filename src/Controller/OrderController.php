@@ -6,7 +6,7 @@ namespace App\Controller;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
-use Siganushka\OrderBundle\Dto\OrderFilterDto;
+use Siganushka\OrderBundle\Dto\OrderQueryDto;
 use Siganushka\OrderBundle\Form\OrderItemType;
 use Siganushka\OrderBundle\Form\OrderType;
 use Siganushka\OrderBundle\Repository\OrderRepository;
@@ -26,9 +26,9 @@ class OrderController extends AbstractController
     }
 
     #[Route('/orders')]
-    public function index(PaginatorInterface $paginator, #[MapQueryString] OrderFilterDto $dto): Response
+    public function index(PaginatorInterface $paginator, #[MapQueryString] OrderQueryDto $dto): Response
     {
-        $queryBuilder = $this->repository->createQueryBuilderByFilter('o', $dto);
+        $queryBuilder = $this->repository->createQueryBuilderByDto('o', $dto);
         $countForState = $this->repository->countByStateMapping();
 
         $pagination = $paginator->paginate($queryBuilder, $dto->page, $dto->size);
