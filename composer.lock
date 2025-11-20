@@ -2310,7 +2310,7 @@
             "dist": {
                 "type": "path",
                 "url": "../generic-bundle",
-                "reference": "9a66ed2ee0dc92c0e50fd4fd01d00ba4ac64df45"
+                "reference": "d14000df1221825c48a5cfeebf631a747651bcde"
             },
             "require": {
                 "php": ">=8.1",

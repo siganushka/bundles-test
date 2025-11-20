@@ -6,27 +6,6 @@
 
   <hr />
 
-  <h3>Gender enumerations</h3>
-  {% for case in enum_cases('Siganushka\\GenericBundle\\Enum\\Gender') %}
-    <span class="badge text-bg-secondary">{{ case|trans }}</span>
-  {% endfor %}
-
-  <hr />
-
-  <h3>ReviewState enumerations</h3>
-  {% for case in enum_cases('Siganushka\\GenericBundle\\Enum\\ReviewState') %}
-    <span class="badge text-bg-{{ case.theme }}">{{ case|trans }}</span>
-  {% endfor %}
-
-  <hr />
-
-  <h3>ReviewStateTransition enumerations</h3>
-  {% for case in enum_cases('Siganushka\\GenericBundle\\Enum\\ReviewStateTransition') %}
-    <span class="badge text-bg-{{ case.theme }}">{{ case|trans }}</span>
-  {% endfor %}
-
-  <hr />
-
   {% if form is defined %}
   <div class="bg-body-secondary p-3">
     {{ form(form) }}
