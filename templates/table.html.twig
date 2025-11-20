@@ -12,7 +12,7 @@
       {%~ block thead %}
       <tr>
         {%~ block th %}
-          <th>{{ 'generic.total_results'|trans({'%total_item_count%': _items_count}) }}</th>
+          <th>{{ 'generic.total_results'|trans({'%total_results%': _items_count}) }}</th>
         {%~ endblock %}
       </tr>
       {%~ endblock %}
@@ -44,7 +44,7 @@
 
   <div class="pagination d-none d-md-block">
     <span class="page-link text-body-secondary rounded">
-      {{- 'generic.total_results'|trans({'%total_item_count%': _items_count}) -}}
+      {{- 'generic.total_results'|trans({'%total_results%': _items_count}) -}}
     </span>
   </div>
 </div>

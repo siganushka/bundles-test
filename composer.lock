@@ -2310,7 +2310,7 @@
             "dist": {
                 "type": "path",
                 "url": "../generic-bundle",
-                "reference": "a2f3e8af2b1265c95451c5763b6cd257974fa64e"
+                "reference": "9a66ed2ee0dc92c0e50fd4fd01d00ba4ac64df45"
             },
             "require": {
                 "php": ">=8.1",
@@ -2378,7 +2378,7 @@
             "dist": {
                 "type": "path",
                 "url": "../media-bundle",
-                "reference": "4c776e0ab3bec5db59e2df793e17f9908de98717"
+                "reference": "a6a80695c27a1b5bdb96cc886a54a040c8de3710"
             },
             "require": {
                 "ext-fileinfo": "*",
@@ -2440,7 +2440,7 @@
             "dist": {
                 "type": "path",
                 "url": "../order-bundle",
-                "reference": "51ad79a13c5a1b89c6117660750cb2fbc414ec48"
+                "reference": "522c45635d77081622b415a2841ea4df65bcc943"
             },
             "require": {
                 "knplabs/knp-components": "^4.4|^5.0",
@@ -2501,7 +2501,7 @@
             "dist": {
                 "type": "path",
                 "url": "../product-bundle",
-                "reference": "664c047fd9f729e3e5e3fc085b45a062458e6a7e"
+                "reference": "ff53a95fd965ce07e99d151a8acc545121611df6"
             },
             "require": {
                 "bentools/cartesian-product": "^1.4|^2.0",
@@ -2560,7 +2560,7 @@
             "dist": {
                 "type": "path",
                 "url": "../region-bundle",
-                "reference": "74412afb069c66f85c30000e9ce447309a4016a6"
+                "reference": "6c79ce0edc8cde71593b4702d1634856ba9c4bff"
             },
             "require": {
                 "php": ">=8.1",
@@ -2618,7 +2618,7 @@
             "dist": {
                 "type": "path",
                 "url": "../user-bundle",
-                "reference": "2752885e813d44db80aef44986442e36ce4e2241"
+                "reference": "ef6ac5b366015776667b91f8d2bb6689e2be955d"
             },
             "require": {
                 "knplabs/knp-components": "^4.4|^5.0",
