@@ -80,32 +80,38 @@ class MediaController extends AbstractController
             ->add('media0', MediaType::class, [
                 'label' => '默认状态',
                 'rule' => 'test_img',
+                'required' => false,
             ])
             ->add('media1', MediaType::class, [
                 'label' => '有值状态',
                 'rule' => 'test_img',
+                'required' => false,
             ])
             ->add('media2', MediaType::class, [
-                'label' => '错误状态',
-                'rule' => 'test_img',
-            ])
-            ->add('media3', MediaType::class, [
                 'label' => '禁用状态',
                 'rule' => 'test_img',
+                'required' => false,
                 'disabled' => true,
             ])
-            ->add('media4', MediaType::class, [
-                'label' => '自定义尺寸',
+            ->add('media3', MediaType::class, [
+                'label' => '自定义尺寸(16:9)',
                 'rule' => 'test_img',
-                'style' => 'width: 100%; height: 240px',
+                'style' => 'width: 320px; height: auto; aspect-ratio: 16/9',
+                'required' => false,
+            ])
+            ->add('media4', MediaType::class, [
+                'label' => '仅限图片',
+                'rule' => 'test_img',
+                'required' => false,
             ])
             ->add('media5', MediaType::class, [
-                'label' => '自定义文件类型',
+                'label' => '仅限 PDf',
                 'rule' => 'test_pdf',
+                'required' => false,
             ])
             ->add('media6', MediaType::class, [
-                'label' => '自定义表单验证',
-                'rule' => 'test_pdf',
+                'label' => '必填',
+                'rule' => 'test_img',
                 'constraints' => new NotBlank(),
             ])
             ->add('submit', SubmitType::class)
@@ -113,10 +119,6 @@ class MediaController extends AbstractController
 
         $form = $builder->getForm();
         $form->handleRequest($request);
-
-        if ($form['media2'] instanceof FormInterface) {
-            $form['media2']->addError(new FormError('This value should not be blank.'));
-        }
 
         if ($form->isSubmitted() && $form->isValid()) {
             dd(__METHOD__, $form->getData());
