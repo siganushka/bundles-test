@@ -17,6 +17,10 @@
 /.php-cs-fixer.cache
 ###< friendsofphp/php-cs-fixer ###
 
+###> symfony/phpunit-bridge ###
+.phpunit.result.cache
+###< symfony/phpunit-bridge ###
+
 ###> app ###
 /tools/vendor
 /tools/composer.lock

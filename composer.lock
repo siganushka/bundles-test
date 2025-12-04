@@ -2615,7 +2615,7 @@
             "dist": {
                 "type": "path",
                 "url": "../user-bundle",
-                "reference": "102dee5cb5509a10d2c4c53139a3f6187b8d203f"
+                "reference": "ac45812b362929a3240b99fb7e738507916da17c"
             },
             "require": {
                 "knplabs/knp-components": "^5.0",
