@@ -7,13 +7,12 @@
         "php": ">=8.2",
         "ext-ctype": "*",
         "ext-iconv": "*",
-        "aliyuncs/oss-sdk-php": "^2.7",
-        "doctrine/dbal": "4.2.5",
-        "doctrine/doctrine-bundle": "^2.12",
-        "doctrine/orm": "^3.2",
-        "godruoyi/php-snowflake": "^3.1",
-        "knplabs/knp-paginator-bundle": "^6.4",
-        "obs/esdk-obs-php": "^3.24",
+        "aliyuncs/oss-sdk-php": "^2.7.2",
+        "doctrine/doctrine-bundle": "^2.18.1",
+        "doctrine/orm": "^3.5.8",
+        "godruoyi/php-snowflake": "^3.2.1",
+        "knplabs/knp-paginator-bundle": "^6.10",
+        "obs/esdk-obs-php": "^3.24.9",
         "siganushka/doctrine-contracts": "dev-main",
         "siganushka/generic-bundle": "dev-main",
         "siganushka/media-bundle": "dev-main",
@@ -21,40 +20,36 @@
         "siganushka/product-bundle": "dev-main",
         "siganushka/region-bundle": "dev-main",
         "siganushka/user-bundle": "dev-main",
-        "spatie/image-optimizer": "^1.8",
-        "symfony/asset": "7.3.*",
-        "symfony/asset-mapper": "7.3.*",
-        "symfony/console": "7.3.*",
-        "symfony/doctrine-messenger": "7.3.*",
-        "symfony/dotenv": "7.3.*",
-        "symfony/flex": "^2",
-        "symfony/form": "7.3.*",
-        "symfony/framework-bundle": "7.3.*",
-        "symfony/intl": "7.3.*",
-        "symfony/messenger": "7.3.*",
-        "symfony/mime": "7.3.*",
-        "symfony/monolog-bundle": "^3.10",
-        "symfony/redis-messenger": "7.3.*",
-        "symfony/runtime": "7.3.*",
-        "symfony/security-bundle": "7.3.*",
-        "symfony/serializer": "7.3.*",
-        "symfony/stimulus-bundle": "^2.21",
-        "symfony/stopwatch": "^7.1",
-        "symfony/translation": "7.3.*",
-        "symfony/twig-bundle": "7.3.*",
-        "symfony/uid": "7.3.*",
-        "symfony/ux-autocomplete": "^2.21",
-        "symfony/validator": "7.3.*",
-        "symfony/workflow": "7.3.*",
-        "symfony/yaml": "7.3.*",
-        "twig/extra-bundle": "^3.20",
-        "twig/intl-extra": "^3.20"
+        "spatie/image-optimizer": "^1.8.1",
+        "symfony/asset": "7.4.*",
+        "symfony/asset-mapper": "7.4.*",
+        "symfony/console": "7.4.*",
+        "symfony/dotenv": "7.4.*",
+        "symfony/flex": "^2.10",
+        "symfony/framework-bundle": "7.4.*",
+        "symfony/messenger": "7.4.*",
+        "symfony/mime": "7.4.*",
+        "symfony/monolog-bundle": "^4.0",
+        "symfony/redis-messenger": "7.4.*",
+        "symfony/runtime": "7.4.*",
+        "symfony/security-bundle": "7.4.*",
+        "symfony/serializer": "7.4.*",
+        "symfony/stimulus-bundle": "^2.31",
+        "symfony/stopwatch": "7.4.*",
+        "symfony/translation": "7.4.*",
+        "symfony/twig-bundle": "7.4.*",
+        "symfony/ux-autocomplete": "^2.31",
+        "symfony/validator": "7.4.*",
+        "symfony/workflow": "7.4.*",
+        "symfony/yaml": "7.4.*",
+        "twig/extra-bundle": "^3.22.1",
+        "twig/intl-extra": "^3.22.1"
     },
     "require-dev": {
-        "doctrine/doctrine-fixtures-bundle": "^3.6",
-        "symfony/debug-bundle": "7.3.*",
-        "symfony/maker-bundle": "^1.60",
-        "symfony/web-profiler-bundle": "7.3.*"
+        "doctrine/doctrine-fixtures-bundle": "^4.3.1",
+        "symfony/debug-bundle": "7.4.*",
+        "symfony/maker-bundle": "^1.65.1",
+        "symfony/web-profiler-bundle": "7.4.*"
     },
     "config": {
         "allow-plugins": {
@@ -62,6 +57,7 @@
             "symfony/flex": true,
             "symfony/runtime": true
         },
+        "bump-after-update": true,
         "sort-packages": true
     },
     "autoload": {
@@ -97,10 +93,10 @@
             "@auto-scripts"
         ],
         "tools:run": [
-            "tools/vendor/bin/php-cs-fixer fix",
-            "tools/vendor/bin/twigcs",
-            "tools/vendor/bin/simple-phpunit --debug",
-            "tools/vendor/bin/phpstan"
+            "tools/vendor/bin/php-cs-fixer fix -vvv",
+            "tools/vendor/bin/twigcs -vvv",
+            "tools/vendor/bin/simple-phpunit",
+            "tools/vendor/bin/phpstan analyse -vvv"
         ]
     },
     "conflict": {
@@ -109,7 +105,8 @@
     "extra": {
         "symfony": {
             "allow-contrib": false,
-            "require": "7.3.*"
+            "require": "7.4.*",
+            "docker": false
         }
     },
     "repositories": [

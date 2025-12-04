@@ -5,15 +5,14 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Siganushka\Contracts\Doctrine\ResourceInterface;
+use Siganushka\Contracts\Doctrine\ResourceTrait;
 use Siganushka\OrderBundle\Model\OrderItemSubjectInterface;
 
 #[ORM\Entity]
-class OrderItemSubject implements OrderItemSubjectInterface
+class OrderItemSubject implements ResourceInterface, OrderItemSubjectInterface
 {
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column]
-    private ?int $id = null;
+    use ResourceTrait;
 
     #[ORM\Column]
     private ?string $title = null;
@@ -29,11 +28,6 @@ class OrderItemSubject implements OrderItemSubjectInterface
 
     #[ORM\Column(nullable: true)]
     private ?int $stock = null;
-
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
 
     public function getTitle(): ?string
     {

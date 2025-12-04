@@ -1,14 +1,12 @@
+
 ###> symfony/framework-bundle ###
 /.env.local
 /.env.local.php
 /.env.*.local
 /config/secrets/prod/prod.decrypt.private.php
 /public/bundles/
-/public/uploads/
 /var/
 /vendor/
-/tools/vendor
-/tools/composer.lock
 ###< symfony/framework-bundle ###
 
 ###> symfony/asset-mapper ###
@@ -17,15 +15,12 @@
 ###< symfony/asset-mapper ###
 
 ###> friendsofphp/php-cs-fixer ###
-/.php-cs-fixer.php
 /.php-cs-fixer.cache
 ###< friendsofphp/php-cs-fixer ###
 
-###> symfony/phpunit-bridge ###
-.phpunit.result.cache
-/phpunit.xml
-###< symfony/phpunit-bridge ###
-
 ###> app ###
+/tools/vendor
+/tools/composer.lock
+/public/uploads/
 /ab.json
 ###< app ###

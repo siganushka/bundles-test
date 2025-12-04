@@ -16,35 +16,14 @@ return [
         'path' => './assets/app.js',
         'entrypoint' => true,
     ],
-    '@symfony/stimulus-bundle' => [
-        'path' => './vendor/symfony/stimulus-bundle/assets/dist/loader.js',
-    ],
     '@hotwired/stimulus' => [
         'version' => '3.2.2',
     ],
-    '@hotwired/turbo' => [
-        'version' => '8.0.13',
-    ],
-    'bootstrap' => [
-        'version' => '5.3.6',
-    ],
-    'bootstrap/dist/css/bootstrap.min.css' => [
-        'version' => '5.3.6',
-        'type' => 'css',
-    ],
-    'bootstrap-icons/font/bootstrap-icons.min.css' => [
-        'version' => '1.13.1',
-        'type' => 'css',
-    ],
-    '@popperjs/core' => [
-        'version' => '2.11.8',
+    '@symfony/stimulus-bundle' => [
+        'path' => './vendor/symfony/stimulus-bundle/assets/dist/loader.js',
     ],
     'tom-select' => [
         'version' => '2.4.3',
-    ],
-    'tom-select/dist/css/tom-select.bootstrap5.css' => [
-        'version' => '2.4.3',
-        'type' => 'css',
     ],
     '@orchidjs/sifter' => [
         'version' => '1.1.0',
@@ -62,6 +41,24 @@ return [
     ],
     'tom-select/dist/css/tom-select.bootstrap4.css' => [
         'version' => '2.4.3',
+        'type' => 'css',
+    ],
+    'tom-select/dist/css/tom-select.bootstrap5.css' => [
+        'version' => '2.4.3',
+        'type' => 'css',
+    ],
+    'bootstrap' => [
+        'version' => '5.3.8',
+    ],
+    '@popperjs/core' => [
+        'version' => '2.11.8',
+    ],
+    'bootstrap/dist/css/bootstrap.min.css' => [
+        'version' => '5.3.8',
+        'type' => 'css',
+    ],
+    'bootstrap-icons/font/bootstrap-icons.min.css' => [
+        'version' => '1.13.1',
         'type' => 'css',
     ],
 ];
