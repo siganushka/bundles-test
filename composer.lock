@@ -259,16 +259,16 @@
         },
         {
             "name": "doctrine/dbal",
-            "version": "4.4.0",
+            "version": "4.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "e8c5163fbec0f34e357431bd1e5fc4056cdf4fdc"
+                "reference": "3d544473fb93f5c25b483ea4f4ce99f8c4d9d44c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/e8c5163fbec0f34e357431bd1e5fc4056cdf4fdc",
-                "reference": "e8c5163fbec0f34e357431bd1e5fc4056cdf4fdc",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/3d544473fb93f5c25b483ea4f4ce99f8c4d9d44c",
+                "reference": "3d544473fb93f5c25b483ea4f4ce99f8c4d9d44c",
                 "shasum": ""
             },
             "require": {
@@ -345,7 +345,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/dbal/issues",
-                "source": "https://github.com/doctrine/dbal/tree/4.4.0"
+                "source": "https://github.com/doctrine/dbal/tree/4.4.1"
             },
             "funding": [
                 {
@@ -361,7 +361,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-11-29T12:17:09+00:00"
+            "time": "2025-12-04T10:11:03+00:00"
         },
         {
             "name": "doctrine/deprecations",
@@ -2257,7 +2257,7 @@
             "dist": {
                 "type": "path",
                 "url": "../doctrine-contracts",
-                "reference": "8327a3e6efedb15af1f0ce482437c2a74f936aa7"
+                "reference": "7af436ef2ac91b72a9bab020b6f8bd079191f5ad"
             },
             "require": {
                 "doctrine/orm": "^2.15|^3.0",
@@ -2276,9 +2276,9 @@
             },
             "scripts": {
                 "tools:run": [
-                    "tools/vendor/bin/php-cs-fixer fix -vvv",
-                    "tools/vendor/bin/simple-phpunit -vvv",
-                    "tools/vendor/bin/phpstan analyse -vvv"
+                    "tools/vendor/bin/php-cs-fixer fix",
+                    "tools/vendor/bin/simple-phpunit",
+                    "tools/vendor/bin/phpstan"
                 ]
             },
             "license": [
@@ -2306,7 +2306,7 @@
             "dist": {
                 "type": "path",
                 "url": "../generic-bundle",
-                "reference": "4cb33ed451a1ecc1109f087d23987cad9f5fcf78"
+                "reference": "16bc0713737f5e4a8dbcc7f43da9cb27954cc58a"
             },
             "require": {
                 "php": ">=8.1",
@@ -2342,10 +2342,10 @@
             },
             "scripts": {
                 "tools:run": [
-                    "tools/vendor/bin/php-cs-fixer fix -vvv",
-                    "tools/vendor/bin/twigcs -vvv",
-                    "tools/vendor/bin/simple-phpunit -vvv",
-                    "tools/vendor/bin/phpstan analyse -vvv"
+                    "tools/vendor/bin/php-cs-fixer fix",
+                    "tools/vendor/bin/twigcs",
+                    "tools/vendor/bin/simple-phpunit",
+                    "tools/vendor/bin/phpstan"
                 ]
             },
             "license": [
@@ -2374,7 +2374,7 @@
             "dist": {
                 "type": "path",
                 "url": "../media-bundle",
-                "reference": "091ba4fededed8e620de085482f286323e191693"
+                "reference": "2f7a83053ad9c0a6f123c4d2c41170118450d770"
             },
             "require": {
                 "ext-fileinfo": "*",
@@ -2405,10 +2405,10 @@
             },
             "scripts": {
                 "tools:run": [
-                    "tools/vendor/bin/php-cs-fixer fix -vvv",
-                    "tools/vendor/bin/twigcs -vvv",
-                    "tools/vendor/bin/simple-phpunit -vvv",
-                    "tools/vendor/bin/phpstan analyse -vvv"
+                    "tools/vendor/bin/php-cs-fixer fix",
+                    "tools/vendor/bin/twigcs",
+                    "tools/vendor/bin/simple-phpunit",
+                    "tools/vendor/bin/phpstan"
                 ]
             },
             "license": [
@@ -2437,7 +2437,7 @@
             "dist": {
                 "type": "path",
                 "url": "../order-bundle",
-                "reference": "faf52c50a232b5808cf69eda81312d69bfd64685"
+                "reference": "ab579c6def0374ef42c4e6c723ae0d4a8bc65c0b"
             },
             "require": {
                 "knplabs/knp-components": "^5.0",
@@ -2468,9 +2468,9 @@
             },
             "scripts": {
                 "tools:run": [
-                    "tools/vendor/bin/php-cs-fixer fix -vvv",
-                    "tools/vendor/bin/simple-phpunit -vvv",
-                    "tools/vendor/bin/phpstan analyse -vvv"
+                    "tools/vendor/bin/php-cs-fixer fix",
+                    "tools/vendor/bin/simple-phpunit",
+                    "tools/vendor/bin/phpstan"
                 ]
             },
             "license": [
@@ -2498,7 +2498,7 @@
             "dist": {
                 "type": "path",
                 "url": "../product-bundle",
-                "reference": "36fb47ccedd50e2066a002230e6286e21ba34a15"
+                "reference": "740c364b7ef3ec119199711f920a01b286d3dfb1"
             },
             "require": {
                 "bentools/cartesian-product": "^2.0",
@@ -2527,9 +2527,9 @@
             },
             "scripts": {
                 "tools:run": [
-                    "tools/vendor/bin/php-cs-fixer fix -vvv",
-                    "tools/vendor/bin/simple-phpunit -vvv",
-                    "tools/vendor/bin/phpstan analyse -vvv"
+                    "tools/vendor/bin/php-cs-fixer fix",
+                    "tools/vendor/bin/simple-phpunit",
+                    "tools/vendor/bin/phpstan"
                 ]
             },
             "license": [
@@ -2557,7 +2557,7 @@
             "dist": {
                 "type": "path",
                 "url": "../region-bundle",
-                "reference": "df4d214ae81748b36e09381c715a6c397ae7b14a"
+                "reference": "00a4d597197e30e43c994e4726979dd43f9cc4d3"
             },
             "require": {
                 "php": ">=8.1",
@@ -2584,9 +2584,9 @@
             },
             "scripts": {
                 "tools:run": [
-                    "tools/vendor/bin/php-cs-fixer fix -vvv",
-                    "tools/vendor/bin/simple-phpunit -vvv",
-                    "tools/vendor/bin/phpstan analyse -vvv"
+                    "tools/vendor/bin/php-cs-fixer fix",
+                    "tools/vendor/bin/simple-phpunit",
+                    "tools/vendor/bin/phpstan"
                 ]
             },
             "license": [
@@ -2615,7 +2615,7 @@
             "dist": {
                 "type": "path",
                 "url": "../user-bundle",
-                "reference": "ac45812b362929a3240b99fb7e738507916da17c"
+                "reference": "7bcb43a94efb21a787a8cb50f0ad848e0e2ffd8d"
             },
             "require": {
                 "knplabs/knp-components": "^5.0",
@@ -2641,9 +2641,9 @@
             },
             "scripts": {
                 "tools:run": [
-                    "tools/vendor/bin/php-cs-fixer fix -vvv",
-                    "tools/vendor/bin/simple-phpunit -vvv",
-                    "tools/vendor/bin/phpstan analyse -vvv"
+                    "tools/vendor/bin/php-cs-fixer fix",
+                    "tools/vendor/bin/simple-phpunit",
+                    "tools/vendor/bin/phpstan"
                 ]
             },
             "license": [
