@@ -25,6 +25,9 @@ class TestType extends AbstractType
                 'row_attr' => ['class' => 'bar_class'],
             ])
             ->add('baz', CollectionType::class, [
+                'entry_options' => [
+                    'label' => 'bar...',
+                ],
                 'row_attr' => ['class' => 'py-0'],
                 'allow_add' => true,
                 'allow_delete' => true,

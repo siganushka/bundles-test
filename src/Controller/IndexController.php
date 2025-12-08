@@ -10,7 +10,6 @@ use App\Entity\ProductVariant;
 use App\Form\TestType;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
-use Siganushka\OrderBundle\Enum\OrderState;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
@@ -140,7 +139,6 @@ class IndexController extends AbstractController
 
         // $entity = $entityManager->getRepository(Order::class)->findBy([], ['id' => 'DESC'])[0];
         // $entity->setNote(uniqid());
-        // $entity->setStateAsString(OrderState::Cancelled->value);
 
         // $entityManager->flush();
 
