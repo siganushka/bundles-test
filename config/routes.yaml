@@ -13,22 +13,27 @@ controllers:
 siganushka_region:
     resource: "@SiganushkaRegionBundle/config/routes.php"
     prefix: /api
+    stateless: true
 
 siganushka_media:
     resource: "@SiganushkaMediaBundle/config/routes.php"
     prefix: /api
+    stateless: true
 
 siganushka_product:
     resource: "@SiganushkaProductBundle/config/routes.php"
     prefix: /api
+    stateless: true
 
 siganushka_order:
     resource: "@SiganushkaOrderBundle/config/routes.php"
     prefix: /api
+    stateless: true
 
 siganushka_user:
     resource: "@SiganushkaUserBundle/config/routes.php"
     prefix: /api
+    stateless: true
 
 when@dev:
     siganushka_generic:

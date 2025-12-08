@@ -2257,7 +2257,7 @@
             "dist": {
                 "type": "path",
                 "url": "../doctrine-contracts",
-                "reference": "7af436ef2ac91b72a9bab020b6f8bd079191f5ad"
+                "reference": "f7e7f0e56f0d685c101ce005807907e0c1afe104"
             },
             "require": {
                 "doctrine/orm": "^2.15|^3.0",
@@ -2306,7 +2306,7 @@
             "dist": {
                 "type": "path",
                 "url": "../generic-bundle",
-                "reference": "97fe63c720d24417b92ece97964d8e3c1cb2d0be"
+                "reference": "d84335585fe12724b0be89569586fe5ec3d9c4c5"
             },
             "require": {
                 "php": ">=8.1",
@@ -2437,7 +2437,7 @@
             "dist": {
                 "type": "path",
                 "url": "../order-bundle",
-                "reference": "0f8669c443e8ce0dc9d5cf017be39c8f0834705e"
+                "reference": "190aff9778783b5ef00a0e8155b43d815e900766"
             },
             "require": {
                 "knplabs/knp-components": "^5.0",
