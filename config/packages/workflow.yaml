@@ -1,11 +1,2 @@
 framework:
-    workflows:
-        order:
-            transitions:
-                reset:
-                    from:
-                        - !php/enum Siganushka\OrderBundle\Enum\OrderState::Processing->value
-                        - !php/enum Siganushka\OrderBundle\Enum\OrderState::Shipping->value
-                        - !php/enum Siganushka\OrderBundle\Enum\OrderState::Completed->value
-                    to:
-                        - !php/enum Siganushka\OrderBundle\Enum\OrderState::Pending->value
+    workflows: ~
