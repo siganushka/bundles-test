@@ -5,7 +5,10 @@ security:
 
     # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
     providers:
-        users_in_memory: { memory: null }
+        users_in_memory:
+            memory:
+                users:
+                    Siganushka: { password: test }
 
     firewalls:
         dev:
@@ -15,6 +18,8 @@ security:
         main:
             lazy: true
             provider: users_in_memory
+            pattern: ^/admin
+            http_basic: ~
 
             # Activate different ways to authenticate:
             # https://symfony.com/doc/current/security.html#the-firewall

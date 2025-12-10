@@ -4,12 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Entity\Order;
-use App\Entity\OrderItem;
-use App\Entity\ProductVariant;
 use App\Form\TestType;
-use Doctrine\ORM\EntityManagerInterface;
-use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
@@ -118,41 +113,5 @@ class IndexController extends AbstractController
         return $this->render('index/index.html.twig', [
             'form' => $form,
         ]);
-    }
-
-    #[Route('/test')]
-    public function test(EntityManagerInterface $entityManager, LoggerInterface $logger): Response
-    {
-        $subject = $entityManager->getRepository(ProductVariant::class)->find(109);
-
-        // $logger->debug('CREATE_BEFORE');
-
-        // $entity = new Order();
-        // $entity->addItem(new OrderItem($subject, 1));
-
-        // $entityManager->persist($entity);
-        // $entityManager->flush();
-
-        // $logger->debug('CREATE_AFTER');
-
-        // $logger->debug('UPDATE_BEFORE');
-
-        // $entity = $entityManager->getRepository(Order::class)->findBy([], ['id' => 'DESC'])[0];
-        // $entity->setNote(uniqid());
-
-        // $entityManager->flush();
-
-        // $logger->debug('UPDATE_AFTER');
-
-        // $logger->debug('DELETE_BEFORE');
-
-        // $entity = $entityManager->getRepository(Order::class)->findBy([], ['id' => 'DESC'])[0];
-
-        // $entityManager->remove($entity);
-        // $entityManager->flush();
-
-        // $logger->debug('DELETE_AFTER');
-
-        return $this->render('index/index.html.twig');
     }
 }

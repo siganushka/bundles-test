@@ -20,4 +20,6 @@ return [
     Siganushka\ProductBundle\SiganushkaProductBundle::class => ['all' => true],
     Siganushka\RegionBundle\SiganushkaRegionBundle::class => ['all' => true],
     Siganushka\UserBundle\SiganushkaUserBundle::class => ['all' => true],
+    Knp\Bundle\MenuBundle\KnpMenuBundle::class => ['all' => true],
+    Siganushka\AdminBundle\SiganushkaAdminBundle::class => ['all' => true],
 ];

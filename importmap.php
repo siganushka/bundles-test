@@ -61,4 +61,11 @@ return [
         'version' => '1.13.1',
         'type' => 'css',
     ],
+    'admin' => [
+        'path' => './vendor/siganushka/admin-bundle/assets/dist/admin.js',
+        'entrypoint' => true,
+    ],
+    'js-cookie' => [
+        'version' => '3.0.5',
+    ],
 ];

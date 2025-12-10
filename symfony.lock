@@ -34,8 +34,14 @@
             "src/DataFixtures/AppFixtures.php"
         ]
     },
+    "knplabs/knp-menu-bundle": {
+        "version": "v3.7.0"
+    },
     "knplabs/knp-paginator-bundle": {
         "version": "v6.10.0"
+    },
+    "siganushka/admin-bundle": {
+        "version": "dev-main"
     },
     "siganushka/generic-bundle": {
         "version": "dev-main"

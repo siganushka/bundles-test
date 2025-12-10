@@ -1549,6 +1549,20 @@ namespace Symfony\Component\DependencyInjection\Loader\Configurator;
  *     identifier_type?: scalar|null, // Default: "Siganushka\\UserBundle\\Identifier\\IdentifierType"
  *     password_strength_min_score?: -1|1|2|3|4, // Default: 1
  * }
+ * @psalm-type KnpMenuConfig = array{
+ *     providers?: array{
+ *         builder_alias?: bool, // Default: true
+ *     },
+ *     twig?: array{
+ *         template?: scalar|null, // Default: "@KnpMenu/menu.html.twig"
+ *     },
+ *     templating?: bool, // Default: false
+ *     default_renderer?: scalar|null, // Default: "twig"
+ * }
+ * @psalm-type SiganushkaAdminConfig = array{
+ *     theme_cookie?: scalar|null, // Default: "siganushka_admin_theme"
+ *     collapse_cookie?: scalar|null, // Default: "siganushka_admin_collapse"
+ * }
  * @psalm-type ConfigType = array{
  *     imports?: ImportsConfig,
  *     parameters?: ParametersConfig,
@@ -1567,6 +1581,8 @@ namespace Symfony\Component\DependencyInjection\Loader\Configurator;
  *     siganushka_product?: SiganushkaProductConfig,
  *     siganushka_region?: SiganushkaRegionConfig,
  *     siganushka_user?: SiganushkaUserConfig,
+ *     knp_menu?: KnpMenuConfig,
+ *     siganushka_admin?: SiganushkaAdminConfig,
  *     "when@dev"?: array{
  *         imports?: ImportsConfig,
  *         parameters?: ParametersConfig,
@@ -1588,6 +1604,8 @@ namespace Symfony\Component\DependencyInjection\Loader\Configurator;
  *         siganushka_product?: SiganushkaProductConfig,
  *         siganushka_region?: SiganushkaRegionConfig,
  *         siganushka_user?: SiganushkaUserConfig,
+ *         knp_menu?: KnpMenuConfig,
+ *         siganushka_admin?: SiganushkaAdminConfig,
  *     },
  *     "when@prod"?: array{
  *         imports?: ImportsConfig,
@@ -1607,6 +1625,8 @@ namespace Symfony\Component\DependencyInjection\Loader\Configurator;
  *         siganushka_product?: SiganushkaProductConfig,
  *         siganushka_region?: SiganushkaRegionConfig,
  *         siganushka_user?: SiganushkaUserConfig,
+ *         knp_menu?: KnpMenuConfig,
+ *         siganushka_admin?: SiganushkaAdminConfig,
  *     },
  *     "when@test"?: array{
  *         imports?: ImportsConfig,
@@ -1627,6 +1647,8 @@ namespace Symfony\Component\DependencyInjection\Loader\Configurator;
  *         siganushka_product?: SiganushkaProductConfig,
  *         siganushka_region?: SiganushkaRegionConfig,
  *         siganushka_user?: SiganushkaUserConfig,
+ *         knp_menu?: KnpMenuConfig,
+ *         siganushka_admin?: SiganushkaAdminConfig,
  *     },
  *     ...<string, ExtensionType|array{ // extra keys must follow the when@%env% pattern or match an extension alias
  *         imports?: ImportsConfig,
