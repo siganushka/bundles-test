@@ -2398,7 +2398,7 @@
             "dist": {
                 "type": "path",
                 "url": "../admin-bundle",
-                "reference": "bf289423550213667b12448a61ac4dca7732e7be"
+                "reference": "6ad03c789222063b8f3832449b7e285e441ca922"
             },
             "require": {
                 "knplabs/knp-menu-bundle": "^3.7",
@@ -2409,7 +2409,7 @@
                 "symfony/property-access": "^7.4|^8.0"
             },
             "require-dev": {
-                "doctrine/dbal": "^4.2",
+                "doctrine/dbal": "^4.3",
                 "symfony/security-bundle": "^7.4|^8.0"
             },
             "type": "symfony-bundle",
@@ -2569,7 +2569,7 @@
             "dist": {
                 "type": "path",
                 "url": "../media-bundle",
-                "reference": "3a58356c049c8491186c176a14f01959dd45cccd"
+                "reference": "5051b68a1139823a17effea7d152f2f3ecbb6c3c"
             },
             "require": {
                 "ext-fileinfo": "*",
@@ -2632,7 +2632,7 @@
             "dist": {
                 "type": "path",
                 "url": "../order-bundle",
-                "reference": "190aff9778783b5ef00a0e8155b43d815e900766"
+                "reference": "09bbd4a4a07660f10a450eea21bebf6b1946b163"
             },
             "require": {
                 "knplabs/knp-components": "^5.0",
@@ -2693,7 +2693,7 @@
             "dist": {
                 "type": "path",
                 "url": "../product-bundle",
-                "reference": "2062270a33d083d1f1fe6e923db02b671281ef5a"
+                "reference": "92b23a609628e78dd196240831399c30bdfeafc1"
             },
             "require": {
                 "bentools/cartesian-product": "^2.0",
@@ -2707,7 +2707,7 @@
                 "symfony/validator": "^7.4|^8.0"
             },
             "require-dev": {
-                "symfony/ux-autocomplete": "^2.30|^3.0"
+                "symfony/ux-autocomplete": "^2.14"
             },
             "type": "symfony-bundle",
             "autoload": {
@@ -2810,7 +2810,7 @@
             "dist": {
                 "type": "path",
                 "url": "../user-bundle",
-                "reference": "668be0d59239c253d45276d8ae57f041be945329"
+                "reference": "7c3954759234ef8081be30017b5640aee65e1db8"
             },
             "require": {
                 "knplabs/knp-components": "^5.0",
