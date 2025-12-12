@@ -2570,7 +2570,7 @@
             "dist": {
                 "type": "path",
                 "url": "../media-bundle",
-                "reference": "c0ee4830f9c7455c26f59784908a46afe8a37240"
+                "reference": "b057e22b41e4d6d383175c8880690699e6a42fbd"
             },
             "require": {
                 "ext-fileinfo": "*",

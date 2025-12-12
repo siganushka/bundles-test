@@ -18,7 +18,7 @@
       <td class="text-nowrap"><a href="{{ _item.url }}" target="_blank" class="d-inline-block text-truncate" style="max-width: 200px" title="{{ _item.name }}">{{ _item.name }}</a></td>
       <td class="text-nowrap">{{ _item.extension }}</td>
       <td class="text-nowrap">{{ _item.mime }}</td>
-      <td class="text-nowrap">{{ _item.size }}</td>
+      <td class="text-nowrap">{{ _item.sizeStr }}</td>
       <td class="text-nowrap">{{ _item.width and _item.height ? _item.width ~ '*' ~ _item.height : '-' }}</td>
       <td class="text-nowrap">{{ _item.createdAt|intl_date }}</td>
       <td class="text-nowrap">
