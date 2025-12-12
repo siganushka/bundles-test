@@ -1,0 +1,26 @@
+App\Entity\Region:
+    attributes:
+        code:
+            groups: ['region:item', 'region:collection']
+        name:
+            groups: ['region:item', 'region:collection']
+        fullname:
+            groups: ['region:item', 'region:collection']
+        level:
+            groups: ['region:item', 'region:collection']
+        parent:
+            groups: ['region:parent']
+        children:
+            groups: ['region:children']
+        ancestors:
+            ignore: true
+        siblings:
+            ignore: true
+        descendants:
+            ignore: true
+        depth:
+            ignore: true
+        root:
+            groups: ['region:item', 'region:collection']
+        leaf:
+            groups: ['region:item', 'region:collection']

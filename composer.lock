@@ -2506,7 +2506,7 @@
             "dist": {
                 "type": "path",
                 "url": "../generic-bundle",
-                "reference": "6482199040f5cf0591ccefe3b414c24bc16123ed"
+                "reference": "1f0d6277edb4a8a579b17cbbb5089e91a6800ee5"
             },
             "require": {
                 "php": ">=8.2",
@@ -2522,6 +2522,7 @@
                 "symfony/serializer": "^7.4|^8.0",
                 "symfony/translation": "^7.4|^8.0",
                 "symfony/validator": "^7.4|^8.0",
+                "symfony/yaml": "^7.4|^8.0",
                 "twig/twig": "^3.20"
             },
             "type": "symfony-bundle",
@@ -2569,7 +2570,7 @@
             "dist": {
                 "type": "path",
                 "url": "../media-bundle",
-                "reference": "5051b68a1139823a17effea7d152f2f3ecbb6c3c"
+                "reference": "c0ee4830f9c7455c26f59784908a46afe8a37240"
             },
             "require": {
                 "ext-fileinfo": "*",
@@ -2632,7 +2633,7 @@
             "dist": {
                 "type": "path",
                 "url": "../order-bundle",
-                "reference": "09bbd4a4a07660f10a450eea21bebf6b1946b163"
+                "reference": "eca1debc95ee44206a8f351fe24d0d457db72b22"
             },
             "require": {
                 "knplabs/knp-components": "^5.0",
@@ -2693,7 +2694,7 @@
             "dist": {
                 "type": "path",
                 "url": "../product-bundle",
-                "reference": "92b23a609628e78dd196240831399c30bdfeafc1"
+                "reference": "5461cfdc01fa09256a1600eecb72f1ae8992f3fc"
             },
             "require": {
                 "bentools/cartesian-product": "^2.0",
@@ -2752,7 +2753,7 @@
             "dist": {
                 "type": "path",
                 "url": "../region-bundle",
-                "reference": "f3723200b8cb4045c27082c7c157a011cb929cd3"
+                "reference": "17fa00691286afbda8eaf8cae977b3597a69e2e3"
             },
             "require": {
                 "php": ">=8.2",
@@ -2810,7 +2811,7 @@
             "dist": {
                 "type": "path",
                 "url": "../user-bundle",
-                "reference": "7c3954759234ef8081be30017b5640aee65e1db8"
+                "reference": "f2bd03fda311d48f4dd97579a08d58c5edf0ecab"
             },
             "require": {
                 "knplabs/knp-components": "^5.0",

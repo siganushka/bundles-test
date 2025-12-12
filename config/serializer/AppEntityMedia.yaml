@@ -1,0 +1,22 @@
+App\Entity\Media:
+    attributes:
+        id:
+            groups: []
+        hash:
+            groups: []
+        url:
+            groups: []
+        name:
+            groups: []
+        extension:
+            groups: []
+        mime:
+            groups: []
+        size:
+            groups: []
+        width:
+            groups: []
+        height:
+            groups: []
+        createdAt:
+            groups: []

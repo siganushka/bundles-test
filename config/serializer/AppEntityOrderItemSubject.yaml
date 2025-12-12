@@ -1,0 +1,22 @@
+App\Entity\OrderItemSubject:
+    attributes:
+        id:
+            groups: ['order_item_subject:item', 'order_item_subject:collection']
+        title:
+            groups: ['order_item_subject:item', 'order_item_subject:collection']
+        subtitle:
+            groups: ['order_item_subject:item', 'order_item_subject:collection']
+        cover:
+            groups: ['order_item_subject:item', 'order_item_subject:collection']
+        price:
+            groups: ['order_item_subject:item', 'order_item_subject:collection']
+        stock:
+            groups: ['order_item_subject:item', 'order_item_subject:collection']
+        subjectTitle:
+            groups: ['order:item', 'order:collection']
+        subjectPrice:
+            groups: ['order:item', 'order:collection']
+        subjectExtra:
+            groups: ['order:item', 'order:collection']
+        subjectImg:
+            groups: ['order:item', 'order:collection']

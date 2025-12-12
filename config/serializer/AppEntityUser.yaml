@@ -1,0 +1,18 @@
+App\Entity\User:
+    attributes:
+        id:
+            groups: ['user:item', 'user:collection']
+        identifier:
+            groups: ['user:item', 'user:collection']
+        password:
+            ignore: true
+        roles:
+            groups: ['user:item', 'user:collection']
+        userIdentifier:
+            ignore: true
+        enabled:
+            groups: ['user:item', 'user:collection']
+        createdAt:
+            groups: ['user:item', 'user:collection']
+        updatedAt:
+            groups: ['user:item', 'user:collection']
