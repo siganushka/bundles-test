@@ -5,11 +5,11 @@ App\Entity\User:
         identifier:
             groups: ['user:item', 'user:collection']
         password:
-            ignore: true
+            groups: []
         roles:
             groups: ['user:item', 'user:collection']
         userIdentifier:
-            ignore: true
+            groups: []
         enabled:
             groups: ['user:item', 'user:collection']
         createdAt:

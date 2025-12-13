@@ -23,4 +23,4 @@ App\Entity\Order:
         updatedAt:
             groups: ['order:item', 'order:collection']
         deletedAt:
-            ignore: true
+            groups: []

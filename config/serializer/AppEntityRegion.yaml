@@ -9,17 +9,17 @@ App\Entity\Region:
         level:
             groups: ['region:item', 'region:collection']
         parent:
-            groups: ['region:parent']
+            groups: []
         children:
-            groups: ['region:children']
+            groups: []
         ancestors:
-            ignore: true
+            groups: []
         siblings:
-            ignore: true
+            groups: []
         descendants:
-            ignore: true
+            groups: []
         depth:
-            ignore: true
+            groups: []
         root:
             groups: ['region:item', 'region:collection']
         leaf:

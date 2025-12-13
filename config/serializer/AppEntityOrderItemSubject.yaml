@@ -13,10 +13,10 @@ App\Entity\OrderItemSubject:
         stock:
             groups: ['order_item_subject:item', 'order_item_subject:collection']
         subjectTitle:
-            groups: ['order:item', 'order:collection']
+            groups: []
         subjectPrice:
-            groups: ['order:item', 'order:collection']
+            groups: []
         subjectExtra:
-            groups: ['order:item', 'order:collection']
+            groups: []
         subjectImg:
-            groups: ['order:item', 'order:collection']
+            groups: []
