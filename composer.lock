@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2d11cda73b2ec36e36101fbdd8b7c250",
+    "content-hash": "92830a2ffa8f8d0b8b2ca284a9d7ab7c",
     "packages": [
         {
             "name": "aliyuncs/oss-sdk-php",
@@ -2506,7 +2506,7 @@
             "dist": {
                 "type": "path",
                 "url": "../generic-bundle",
-                "reference": "1f0d6277edb4a8a579b17cbbb5089e91a6800ee5"
+                "reference": "71cd4686c2e41f5b74de543babc02791500dc39d"
             },
             "require": {
                 "php": ">=8.2",
@@ -2633,7 +2633,7 @@
             "dist": {
                 "type": "path",
                 "url": "../order-bundle",
-                "reference": "eca1debc95ee44206a8f351fe24d0d457db72b22"
+                "reference": "eefa691ee4698210deb552117fd376a4563bb1f8"
             },
             "require": {
                 "knplabs/knp-components": "^5.0",
@@ -2694,7 +2694,7 @@
             "dist": {
                 "type": "path",
                 "url": "../product-bundle",
-                "reference": "5461cfdc01fa09256a1600eecb72f1ae8992f3fc"
+                "reference": "4e5cb130382b64970c36aeafe91e5256f55bc670"
             },
             "require": {
                 "bentools/cartesian-product": "^2.0",
@@ -8471,16 +8471,16 @@
         },
         {
             "name": "twig/extra-bundle",
-            "version": "v3.22.1",
+            "version": "v3.22.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/twig-extra-bundle.git",
-                "reference": "b6534bc925bec930004facca92fccebd0c809247"
+                "reference": "09de9be7f6c0d19ede7b5a1dbfcfb2e9d1e0ea9e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/twig-extra-bundle/zipball/b6534bc925bec930004facca92fccebd0c809247",
-                "reference": "b6534bc925bec930004facca92fccebd0c809247",
+                "url": "https://api.github.com/repos/twigphp/twig-extra-bundle/zipball/09de9be7f6c0d19ede7b5a1dbfcfb2e9d1e0ea9e",
+                "reference": "09de9be7f6c0d19ede7b5a1dbfcfb2e9d1e0ea9e",
                 "shasum": ""
             },
             "require": {
@@ -8529,7 +8529,7 @@
                 "twig"
             ],
             "support": {
-                "source": "https://github.com/twigphp/twig-extra-bundle/tree/v3.22.1"
+                "source": "https://github.com/twigphp/twig-extra-bundle/tree/v3.22.2"
             },
             "funding": [
                 {
@@ -8541,7 +8541,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-11-02T11:00:49+00:00"
+            "time": "2025-12-05T08:51:53+00:00"
         },
         {
             "name": "twig/intl-extra",
