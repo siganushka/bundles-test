@@ -2506,7 +2506,7 @@
             "dist": {
                 "type": "path",
                 "url": "../generic-bundle",
-                "reference": "71cd4686c2e41f5b74de543babc02791500dc39d"
+                "reference": "f8ff010b412777e6ecf37cb73975759d9a1740fc"
             },
             "require": {
                 "php": ">=8.2",
@@ -2570,7 +2570,7 @@
             "dist": {
                 "type": "path",
                 "url": "../media-bundle",
-                "reference": "b057e22b41e4d6d383175c8880690699e6a42fbd"
+                "reference": "3ccea354f16fb70523ca1b5305d2fd5bda346761"
             },
             "require": {
                 "ext-fileinfo": "*",
@@ -2811,7 +2811,7 @@
             "dist": {
                 "type": "path",
                 "url": "../user-bundle",
-                "reference": "f2bd03fda311d48f4dd97579a08d58c5edf0ecab"
+                "reference": "d7c5f816e884a5021136acaeebd0dbcf6fb9eb99"
             },
             "require": {
                 "knplabs/knp-components": "^5.0",
@@ -8609,16 +8609,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v3.22.1",
+            "version": "v3.22.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "1de2ec1fc43ab58a4b7e80b214b96bfc895750f3"
+                "reference": "946ddeafa3c9f4ce279d1f34051af041db0e16f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/1de2ec1fc43ab58a4b7e80b214b96bfc895750f3",
-                "reference": "1de2ec1fc43ab58a4b7e80b214b96bfc895750f3",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/946ddeafa3c9f4ce279d1f34051af041db0e16f2",
+                "reference": "946ddeafa3c9f4ce279d1f34051af041db0e16f2",
                 "shasum": ""
             },
             "require": {
@@ -8672,7 +8672,7 @@
             ],
             "support": {
                 "issues": "https://github.com/twigphp/Twig/issues",
-                "source": "https://github.com/twigphp/Twig/tree/v3.22.1"
+                "source": "https://github.com/twigphp/Twig/tree/v3.22.2"
             },
             "funding": [
                 {
@@ -8684,7 +8684,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-11-16T16:01:12+00:00"
+            "time": "2025-12-14T11:28:47+00:00"
         }
     ],
     "packages-dev": [

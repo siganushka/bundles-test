@@ -34,7 +34,3 @@ siganushka_user:
     resource: "@SiganushkaUserBundle/config/routes.php"
     prefix: /api
     stateless: true
-
-when@dev:
-    siganushka_generic:
-        resource: "@SiganushkaGenericBundle/config/routes.php"
