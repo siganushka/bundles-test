@@ -10,6 +10,9 @@
 controllers:
     resource: routing.controllers
 
+siganushka_generic:
+    resource: "@SiganushkaGenericBundle/config/routes.php"
+
 siganushka_region:
     resource: "@SiganushkaRegionBundle/config/routes.php"
     prefix: /api
