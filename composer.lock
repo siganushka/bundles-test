@@ -2506,11 +2506,14 @@
             "dist": {
                 "type": "path",
                 "url": "../generic-bundle",
-                "reference": "ae24562316cd4281d37a3b99a71515d4aee4e0f5"
+                "reference": "e2bd03411929b78c2708b66077389efc07a36fb4"
             },
             "require": {
                 "php": ">=8.2",
                 "symfony/framework-bundle": "^7.4|^8.0"
+            },
+            "conflict": {
+                "doctrine/dbal": "<4.3"
             },
             "require-dev": {
                 "composer/semver": "^3.0",
