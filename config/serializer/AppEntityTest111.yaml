@@ -1,0 +1,8 @@
+App\Entity\Test111:
+    attributes:
+        id:
+            groups: []
+        a:
+            groups: []
+        foo:
+            groups: []

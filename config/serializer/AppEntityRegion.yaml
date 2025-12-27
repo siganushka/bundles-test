@@ -12,6 +12,10 @@ App\Entity\Region:
             groups: []
         children:
             groups: []
+        root:
+            groups: ['region:item', 'region:collection']
+        leaf:
+            groups: ['region:item', 'region:collection']
         ancestors:
             groups: []
         siblings:
@@ -20,7 +24,3 @@ App\Entity\Region:
             groups: []
         depth:
             groups: []
-        root:
-            groups: ['region:item', 'region:collection']
-        leaf:
-            groups: ['region:item', 'region:collection']

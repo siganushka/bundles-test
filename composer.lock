@@ -2506,7 +2506,7 @@
             "dist": {
                 "type": "path",
                 "url": "../generic-bundle",
-                "reference": "55df1906684836c50cb7e6ae544abd22464d5486"
+                "reference": "d7598a9a091b9c1816adbd328da5d4ef3b76d721"
             },
             "require": {
                 "php": ">=8.2",
@@ -2573,7 +2573,7 @@
             "dist": {
                 "type": "path",
                 "url": "../media-bundle",
-                "reference": "3ccea354f16fb70523ca1b5305d2fd5bda346761"
+                "reference": "0658e18730e40d286f264b8bd62eb4b8947c59d7"
             },
             "require": {
                 "ext-fileinfo": "*",
@@ -2636,7 +2636,7 @@
             "dist": {
                 "type": "path",
                 "url": "../order-bundle",
-                "reference": "eefa691ee4698210deb552117fd376a4563bb1f8"
+                "reference": "88c70721924f42cc134ddfeb3bca5430da069f14"
             },
             "require": {
                 "knplabs/knp-components": "^5.0",
@@ -2697,7 +2697,7 @@
             "dist": {
                 "type": "path",
                 "url": "../product-bundle",
-                "reference": "dcd9b36864980ba5f3f1de506c294f5eca9df97b"
+                "reference": "82c02ffd57f413c8bd6d751d5e2eb0f6eb043829"
             },
             "require": {
                 "bentools/cartesian-product": "^2.0",
@@ -2756,7 +2756,7 @@
             "dist": {
                 "type": "path",
                 "url": "../region-bundle",
-                "reference": "17fa00691286afbda8eaf8cae977b3597a69e2e3"
+                "reference": "6111b6dcb88a643163fb716ef5ead050f24c00c1"
             },
             "require": {
                 "php": ">=8.2",
@@ -2814,7 +2814,7 @@
             "dist": {
                 "type": "path",
                 "url": "../user-bundle",
-                "reference": "d7c5f816e884a5021136acaeebd0dbcf6fb9eb99"
+                "reference": "a5f347443e16614d96ac5ab49c9690cfd80d3c1e"
             },
             "require": {
                 "knplabs/knp-components": "^5.0",

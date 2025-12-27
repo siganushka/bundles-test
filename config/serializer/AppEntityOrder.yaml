@@ -1,7 +1,7 @@
 App\Entity\Order:
     attributes:
         id:
-            groups: ['order:item', 'order:collection']
+            groups: []
         number:
             groups: ['order:item', 'order:collection']
         itemsTotal:

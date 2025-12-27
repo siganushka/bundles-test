@@ -1,0 +1,6 @@
+App\Entity\TestInheritanceSingleTable:
+    attributes:
+        id:
+            groups: []
+        foo:
+            groups: []
