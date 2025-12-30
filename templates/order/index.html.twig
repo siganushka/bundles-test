@@ -21,7 +21,7 @@
 
   <ul class="nav nav-tabs">
     <li class="nav-item">
-      {{ _self.nav_link('generic.choice_all', countForState|reduce((carry, item) => carry + item), dto.state == null) }}
+      {{ _self.nav_link('generic.all', countForState|reduce((carry, item) => carry + item), dto.state == null) }}
     </li>
     {% for case in enum_cases('Siganushka\\OrderBundle\\Enum\\OrderState') %}
       <li class="nav-item">
