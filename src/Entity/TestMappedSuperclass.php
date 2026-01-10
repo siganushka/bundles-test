@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Repository\TestMappedSuperclassRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Siganushka\Contracts\Doctrine\ResourceInterface;
 use Siganushka\Contracts\Doctrine\ResourceTrait;
 
-#[ORM\MappedSuperclass]
-class TestMappedSuperclass implements ResourceInterface
+#[ORM\MappedSuperclass(repositoryClass: TestMappedSuperclassRepository::class)]
+abstract class TestMappedSuperclass implements ResourceInterface
 {
     use ResourceTrait;
 
