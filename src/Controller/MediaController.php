@@ -90,28 +90,34 @@ class MediaController extends AbstractController
                 'disabled' => true,
             ])
             ->add('media3', MediaType::class, [
+                'label' => '自定义尺寸(38*38px)',
+                'rule' => 'test_img',
+                'style' => 'width: 38px; height: 38px',
+                'required' => false,
+            ])
+            ->add('media4', MediaType::class, [
                 'label' => '自定义尺寸(16:9)',
                 'rule' => 'test_img',
                 'style' => 'width: 320px; height: auto; aspect-ratio: 16/9',
                 'required' => false,
             ])
-            ->add('media4', MediaType::class, [
+            ->add('media5', MediaType::class, [
                 'label' => '仅限图片',
                 'rule' => 'test_img',
                 'required' => false,
             ])
-            ->add('media5', MediaType::class, [
+            ->add('media6', MediaType::class, [
                 'label' => '仅限视频',
                 'rule' => 'test_video',
                 'style' => 'width: 320px; height: auto; aspect-ratio: 16/9',
                 'required' => false,
             ])
-            ->add('media6', MediaType::class, [
+            ->add('media7', MediaType::class, [
                 'label' => '仅限 PDf',
                 'rule' => 'test_pdf',
                 'required' => false,
             ])
-            ->add('media7', MediaType::class, [
+            ->add('media8', MediaType::class, [
                 'label' => '必填',
                 'rule' => 'test_img',
                 'constraints' => new NotBlank(),

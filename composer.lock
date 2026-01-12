@@ -2506,7 +2506,7 @@
             "dist": {
                 "type": "path",
                 "url": "../generic-bundle",
-                "reference": "b6ce60177d6bc07f1afa21726c260bb2636caea2"
+                "reference": "056289b72bf80ed09d72cdd8045fdd65cdb3035c"
             },
             "require": {
                 "php": ">=8.2",
@@ -2573,7 +2573,7 @@
             "dist": {
                 "type": "path",
                 "url": "../media-bundle",
-                "reference": "f35327db171b141e0a37f66747312a76af419858"
+                "reference": "702b9ffea10e633eea137ccdee9752daaf18b15a"
             },
             "require": {
                 "ext-fileinfo": "*",
