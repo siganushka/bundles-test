@@ -111,11 +111,13 @@ class MediaController extends AbstractController
             ->add('media6', MediaType::class, [
                 'label' => '仅限图片',
                 'rule' => 'test_img',
+                'icon' => 'img',
                 'required' => false,
             ])
             ->add('media7', MediaType::class, [
                 'label' => '仅限视频',
                 'rule' => 'test_video',
+                'icon' => 'file',
                 'style' => 'width: 320px; height: auto; aspect-ratio: 16/9',
                 'required' => false,
             ])
