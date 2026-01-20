@@ -38,7 +38,7 @@ class ProductVariant extends BaseProductVariant implements OrderItemSubjectInter
         return ($this->img ?? $this->product?->getImg())?->getUrl();
     }
 
-    public function getAvailableStock(): ?int
+    public function availableStock(): ?int
     {
         return $this->stock;
     }

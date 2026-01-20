@@ -4,5 +4,7 @@ App\Entity\Test111:
             groups: []
         a:
             groups: []
+        range:
+            groups: []
         foo:
             groups: []

@@ -24,10 +24,6 @@ App\Entity\ProductVariant:
             groups: []
         subjectImg:
             groups: []
-        availableStock:
-            groups: []
-        outOfStock:
-            groups: ['product_variant:collection', 'product:item', 'product:collection']
         version:
             groups: ['product_variant:collection', 'product:item', 'product:collection']
         enabled:
