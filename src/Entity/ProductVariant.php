@@ -21,6 +21,11 @@ class ProductVariant extends BaseProductVariant implements OrderItemSubjectInter
         return $title;
     }
 
+    public function getSubjectSubtitle(): ?string
+    {
+        return $this->name;
+    }
+
     public function getSubjectPrice(): int
     {
         \assert(null !== $this->price);

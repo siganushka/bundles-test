@@ -96,6 +96,11 @@ class OrderItemSubject implements ResourceInterface, OrderItemSubjectInterface
         return $this->title;
     }
 
+    public function getSubjectSubtitle(): ?string
+    {
+        return $this->subtitle;
+    }
+
     public function getSubjectPrice(): int
     {
         \assert(null !== $this->price);

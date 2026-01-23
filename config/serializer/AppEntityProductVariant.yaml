@@ -18,6 +18,8 @@ App\Entity\ProductVariant:
             groups: []
         subjectTitle:
             groups: []
+        subjectSubtitle:
+            groups: []
         subjectPrice:
             groups: []
         subjectExtra:

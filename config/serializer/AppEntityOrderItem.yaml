@@ -20,6 +20,8 @@ App\Entity\OrderItem:
             groups: ['order:item', 'order:collection']
         subjectImg:
             groups: ['order:item', 'order:collection']
+        subjectSubtitle:
+            groups: ['order:item', 'order:collection']
         createdAt:
             groups: ['order:item', 'order:collection']
         updatedAt:
