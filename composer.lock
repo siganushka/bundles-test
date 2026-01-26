@@ -2506,7 +2506,7 @@
             "dist": {
                 "type": "path",
                 "url": "../generic-bundle",
-                "reference": "21d40d51d9d618ed064926a463801ade7a07a66e"
+                "reference": "9c605e57fb6ca7d5260fcb9bc90a7f35bb17c4ae"
             },
             "require": {
                 "php": ">=8.2",
@@ -2636,7 +2636,7 @@
             "dist": {
                 "type": "path",
                 "url": "../order-bundle",
-                "reference": "3f7ae7d3a40ef8f56da8fc9b980393af792d269b"
+                "reference": "69d41777e1d729e14276e5b40a5bc639dc936957"
             },
             "require": {
                 "knplabs/knp-components": "^5.0",
@@ -2756,7 +2756,7 @@
             "dist": {
                 "type": "path",
                 "url": "../region-bundle",
-                "reference": "06987e3ec59e4e1d542c261fd07ed3c2ac429f52"
+                "reference": "181fcc56c97f650b5a8e66ee8facff4b28b7a1e9"
             },
             "require": {
                 "php": ">=8.2",
