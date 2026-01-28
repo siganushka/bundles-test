@@ -27,16 +27,18 @@ services:
 
     # Siganushka\MediaBundle\Storage\LocalStorage:
     #     $publicDir: '%kernel.project_dir%/public'
-    #     $options: { prefix_dir: assets }
+    #     $options: { prefix_dir: uploads }
 
     Siganushka\MediaBundle\Storage\AliyunOssStorage:
         $accessKeyId: '%env(string:ALIYUN_ACCESS_KEY_ID)%'
         $accessKeySecret: '%env(string:ALIYUN_ACCESS_KEY_SECRET)%'
         $endpoint: '%env(string:ALIYUN_OSS_ENDPOINT)%'
         $bucket: '%env(string:ALIYUN_OSS_BUCKET)%'
+        $options: { prefix_dir: test, cname: '%env(bool:ALIYUN_OSS_CNAME)%' }
 
     Siganushka\MediaBundle\Storage\HuaweiObsStorage:
         $accessKeyId: '%env(string:HUAWEI_ACCESS_KEY_ID)%'
         $accessKeySecret: '%env(string:HUAWEI_ACCESS_KEY_SECRET)%'
         $endpoint: '%env(string:HUAWEI_OBS_ENDPOINT)%'
         $bucket: '%env(string:HUAWEI_OBS_BUCKET)%'
+        $options: { prefix_dir: test, is_cname: '%env(bool:HUAWEI_OBS_CNAME)%' }

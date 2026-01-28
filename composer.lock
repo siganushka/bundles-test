@@ -2573,7 +2573,7 @@
             "dist": {
                 "type": "path",
                 "url": "../media-bundle",
-                "reference": "5e6cdbc0d38ebc28f68022074b59c9ceb76da664"
+                "reference": "22745a0451d05afb4f2980706342c0c6accebdb8"
             },
             "require": {
                 "ext-fileinfo": "*",
