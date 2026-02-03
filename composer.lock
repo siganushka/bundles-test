@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7718ceaa1eed8ad4504565fb432bc9a1",
+    "content-hash": "b16c4de82ef617e5302085d5f7ea4639",
     "packages": [
         {
             "name": "aliyuncs/oss-sdk-php",
@@ -862,16 +862,16 @@
         },
         {
             "name": "doctrine/orm",
-            "version": "3.6.1",
+            "version": "3.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/orm.git",
-                "reference": "2148940290e4c44b9101095707e71fb590832fa5"
+                "reference": "4262eb495b4d2a53b45de1ac58881e0091f2970f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/orm/zipball/2148940290e4c44b9101095707e71fb590832fa5",
-                "reference": "2148940290e4c44b9101095707e71fb590832fa5",
+                "url": "https://api.github.com/repos/doctrine/orm/zipball/4262eb495b4d2a53b45de1ac58881e0091f2970f",
+                "reference": "4262eb495b4d2a53b45de1ac58881e0091f2970f",
                 "shasum": ""
             },
             "require": {
@@ -944,9 +944,9 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/orm/issues",
-                "source": "https://github.com/doctrine/orm/tree/3.6.1"
+                "source": "https://github.com/doctrine/orm/tree/3.6.2"
             },
-            "time": "2026-01-09T05:28:15+00:00"
+            "time": "2026-01-30T21:41:41+00:00"
         },
         {
             "name": "doctrine/persistence",
@@ -1098,16 +1098,16 @@
         },
         {
             "name": "godruoyi/php-snowflake",
-            "version": "3.2.1",
+            "version": "3.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/godruoyi/php-snowflake.git",
-                "reference": "b82b313f353e4cf3198b9e6286cd1b5e023e8626"
+                "reference": "1f32d0a27bb88adb66e7bdeb93579d5aed2ddd71"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/godruoyi/php-snowflake/zipball/b82b313f353e4cf3198b9e6286cd1b5e023e8626",
-                "reference": "b82b313f353e4cf3198b9e6286cd1b5e023e8626",
+                "url": "https://api.github.com/repos/godruoyi/php-snowflake/zipball/1f32d0a27bb88adb66e7bdeb93579d5aed2ddd71",
+                "reference": "1f32d0a27bb88adb66e7bdeb93579d5aed2ddd71",
                 "shasum": ""
             },
             "require": {
@@ -1153,7 +1153,7 @@
             ],
             "support": {
                 "issues": "https://github.com/godruoyi/php-snowflake/issues",
-                "source": "https://github.com/godruoyi/php-snowflake/tree/3.2.1"
+                "source": "https://github.com/godruoyi/php-snowflake/tree/3.2.2"
             },
             "funding": [
                 {
@@ -1161,7 +1161,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2025-05-01T02:35:04+00:00"
+            "time": "2026-01-31T07:38:00+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -2398,7 +2398,7 @@
             "dist": {
                 "type": "path",
                 "url": "../admin-bundle",
-                "reference": "6ad03c789222063b8f3832449b7e285e441ca922"
+                "reference": "5a400ef4dfdca1d8059bfb2f5f2051a01ef40382"
             },
             "require": {
                 "knplabs/knp-menu-bundle": "^3.7",
@@ -2506,7 +2506,7 @@
             "dist": {
                 "type": "path",
                 "url": "../generic-bundle",
-                "reference": "9c605e57fb6ca7d5260fcb9bc90a7f35bb17c4ae"
+                "reference": "66d5c6798f325e5abd6a83dd204bc20ad401f0c2"
             },
             "require": {
                 "php": ">=8.2",
@@ -2636,7 +2636,7 @@
             "dist": {
                 "type": "path",
                 "url": "../order-bundle",
-                "reference": "69d41777e1d729e14276e5b40a5bc639dc936957"
+                "reference": "a4e9cadd1f1e941f04cf56910a221aaf89de1035"
             },
             "require": {
                 "knplabs/knp-components": "^5.0",
@@ -2697,7 +2697,7 @@
             "dist": {
                 "type": "path",
                 "url": "../product-bundle",
-                "reference": "50cbea0ee3354ac241d1afa5a6e1909e5fc5e2d5"
+                "reference": "5dd83e952dc79b21f6033835182cf2a25bddaa11"
             },
             "require": {
                 "bentools/cartesian-product": "^2.0",
@@ -2727,6 +2727,7 @@
             "scripts": {
                 "tools:run": [
                     "tools/vendor/bin/php-cs-fixer fix",
+                    "tools/vendor/bin/twigcs",
                     "tools/vendor/bin/simple-phpunit",
                     "tools/vendor/bin/phpstan"
                 ]
@@ -2814,7 +2815,7 @@
             "dist": {
                 "type": "path",
                 "url": "../user-bundle",
-                "reference": "a5f347443e16614d96ac5ab49c9690cfd80d3c1e"
+                "reference": "35364d3bda919f3ed2bd3331caf4dee6626f3c92"
             },
             "require": {
                 "knplabs/knp-components": "^5.0",
