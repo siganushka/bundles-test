@@ -2573,7 +2573,7 @@
             "dist": {
                 "type": "path",
                 "url": "../media-bundle",
-                "reference": "d88bccd3c644e2c2260d35a00a07bc36eaec56b5"
+                "reference": "be86f9eb8f9401ec8b8e114283ff8face6c8b88a"
             },
             "require": {
                 "ext-fileinfo": "*",
@@ -2697,7 +2697,7 @@
             "dist": {
                 "type": "path",
                 "url": "../product-bundle",
-                "reference": "5dd83e952dc79b21f6033835182cf2a25bddaa11"
+                "reference": "0fbc0fef0ea3d0c66b2f6a2a1f77b7913f33393c"
             },
             "require": {
                 "bentools/cartesian-product": "^2.0",

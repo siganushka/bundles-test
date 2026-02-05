@@ -17,9 +17,9 @@ class OrderAddAdjustmentListener
     public function __invoke(Order $entity): void
     {
         $adjustments = [
-            (new ShippingFee())->setAmount(600),
-            (new RandomDiscount())->setAmount(-300),
-            (new CouponDiscount())->setAmount(-500),
+            new ShippingFee(600),
+            new RandomDiscount(-300),
+            new CouponDiscount(-500),
         ];
 
         $num = random_int(0, 3);
