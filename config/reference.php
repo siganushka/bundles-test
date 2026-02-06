@@ -1513,6 +1513,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  * @psalm-type SiganushkaMediaConfig = array{
  *     media_class?: scalar|Param|null, // Default: "Siganushka\\MediaBundle\\Entity\\Media"
  *     storage?: scalar|Param|null, // Default: "Siganushka\\MediaBundle\\Storage\\LocalStorage"
+ *     naming?: scalar|Param|null, // This value defines the default file naming strategy (Available placeholders: yy/yyyy/m/mm/d/dd/timestamp/hash/hash:{LENGTH}:{START}/rule/original_name/ext). // Default: "[hash:2]/[hash:13:2].[ext]"
  *     rules?: list<array{ // Default: []
  *         constraint?: scalar|Param|null, // This value will be used for validation when uploading files. // Default: "Symfony\\Component\\Validator\\Constraints\\File"
  *         constraint_options?: array<string, mixed>,
