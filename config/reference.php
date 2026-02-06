@@ -1516,7 +1516,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     rules?: list<array{ // Default: []
  *         constraint?: scalar|Param|null, // This value will be used for validation when uploading files. // Default: "Symfony\\Component\\Validator\\Constraints\\File"
  *         constraint_options?: array<string, mixed>,
- *         reserve_client_name?: bool|Param, // This value determines whether to retain the client file name. // Default: false
+ *         naming?: scalar|Param|null, // This value defines the file naming strategy. // Default: null
  *         resize?: bool|array{ // This value is used when resizing the image.
  *             enabled?: bool|Param, // Default: false
  *             max_width?: int|Param, // Default: 1920
