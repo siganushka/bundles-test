@@ -17,9 +17,9 @@ class OrderAddAdjustmentListener
     public function __invoke(Order $entity): void
     {
         $adjustments = [
-            new ShippingFee(600),
             new RandomDiscount(-300),
             new CouponDiscount(-500),
+            new ShippingFee(600),
         ];
 
         $num = random_int(0, 3);
@@ -32,8 +32,22 @@ class OrderAddAdjustmentListener
             $indexs = [$indexs];
         }
 
+        $negative = [];
         foreach ($indexs as $index) {
-            $entity->addAdjustment($adjustments[$index]);
+            $adjustment = $adjustments[$index];
+            if ($adjustment->getAmount() > 0) {
+                $entity->addAdjustment($adjustments[$index]);
+            } else {
+                $negative[] = $adjustment;
+            }
+        }
+
+        foreach ($negative as $adjustment) {
+            if ($entity->getTotal() <= 0) {
+                break;
+            }
+
+            $entity->addAdjustment($adjustment);
         }
     }
 }
