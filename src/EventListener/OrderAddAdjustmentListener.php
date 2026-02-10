@@ -11,7 +11,7 @@ use App\Entity\ShippingFee;
 use Doctrine\Bundle\DoctrineBundle\Attribute\AsEntityListener;
 use Doctrine\ORM\Events;
 
-#[AsEntityListener(Events::prePersist, entity: Order::class)]
+// #[AsEntityListener(Events::prePersist, entity: Order::class)]
 class OrderAddAdjustmentListener
 {
     public function __invoke(Order $entity): void

@@ -3,4 +3,5 @@ siganushka_order:
     order_item_class: App\Entity\OrderItem
     order_number_generator: Siganushka\OrderBundle\Generator\SnowflakeNumberGenerator
     order_item_subject_type: Siganushka\ProductBundle\Form\Field\ProductVariantAutocompleteField
+    # order_stock_modifier: App\Stock\AtomicUpdateModifier
     order_cancelled_expires: 60
