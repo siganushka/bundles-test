@@ -20,7 +20,6 @@ use Symfony\Component\Form\Extension\Core\Type\TimezoneType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
 class IndexController extends AbstractController
@@ -42,11 +41,7 @@ class IndexController extends AbstractController
 
         // $entities = $entityManager->getRepository(OrderItemSubject::class)->findAll();
 
-        // dd(__METHOD__, $entities[0], $entities);
-
-        // return $this->json($entities, context: [
-        //     AbstractNormalizer::GROUPS => ['order_item_subject:collection'],
-        // ]);
+        // return $this->json($entities);
 
         // dd(__METHOD__, $entity, $entities);
 
