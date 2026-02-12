@@ -1,0 +1,22 @@
+App\Entity\OrderTransaction:
+    attributes:
+        id:
+            groups: [order_transaction.item, order_transaction.collection]
+        number:
+            groups: [order_transaction.item, order_transaction.collection]
+        amount:
+            groups: [order_transaction.item, order_transaction.collection]
+        payMethod:
+            groups: [order_transaction.item, order_transaction.collection]
+        payResponse:
+            groups: [order_transaction.item, order_transaction.collection]
+        success:
+            groups: [order_transaction.item, order_transaction.collection]
+        type:
+            groups: [order_transaction.item, order_transaction.collection]
+        label:
+            groups: [order_transaction.item, order_transaction.collection]
+        createdAt:
+            groups: [order_transaction.item, order_transaction.collection]
+        updatedAt:
+            groups: [order_transaction.item, order_transaction.collection]

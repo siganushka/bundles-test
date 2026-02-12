@@ -2624,7 +2624,7 @@
             "dist": {
                 "type": "path",
                 "url": "../generic-bundle",
-                "reference": "8d72bd6192142ec905bc4c668374ad90af17d81f"
+                "reference": "91bef70ca6faa5714bb3feb8ec974a907b51ba43"
             },
             "require": {
                 "php": ">=8.2",
@@ -2815,7 +2815,7 @@
             "dist": {
                 "type": "path",
                 "url": "../product-bundle",
-                "reference": "85208caca9af90f218c45ece1a21c907a34f6e78"
+                "reference": "b937c1c74d00aa940862bc866cb0998059181fc9"
             },
             "require": {
                 "bentools/cartesian-product": "^2.0",

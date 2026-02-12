@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Entity\OrderItemSubject;
+use App\Entity\OrderTransaction;
 use App\Form\TestType;
 use Brick\Money\Money;
 use Doctrine\ORM\EntityManagerInterface;
@@ -30,7 +31,7 @@ class IndexController extends AbstractController
     #[Route('/')]
     public function index(EntityManagerInterface $entityManager): Response
     {
-        // $transaction = new Transaction();
+        // $transaction = new OrderTransaction();
         // $transaction->number = (new Snowflake())->id();
         // $transaction->amount = 2599;
 
@@ -41,7 +42,9 @@ class IndexController extends AbstractController
         // $entities = $entityManager->getRepository(Transaction::class)->findAll();
         // dd(__METHOD__, $entities);
 
-        // return $this->json($entities);
+        // return $this->json($entities, context: [
+        //     AbstractNormalizer::GROUPS => ['order_transaction.collection'],
+        // ]);
 
         // $subject = new OrderItemSubject();
         // $subject->setTitle('动员兵');
