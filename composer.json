@@ -13,6 +13,7 @@
         "doctrine/orm": "^3.6.2",
         "godruoyi/php-snowflake": "^3.2.2",
         "knplabs/knp-paginator-bundle": "^6.10",
+        "moneyphp/money": "^4.8",
         "obs/esdk-obs-php": "^3.24.9",
         "siganushka/admin-bundle": "dev-main",
         "siganushka/doctrine-contracts": "dev-main",
@@ -21,6 +22,7 @@
         "siganushka/order-bundle": "dev-main",
         "siganushka/product-bundle": "dev-main",
         "siganushka/region-bundle": "dev-main",
+        "siganushka/transaction-bundle": "dev-main",
         "siganushka/user-bundle": "dev-main",
         "spatie/image-optimizer": "^1.8.1",
         "symfony/asset": "7.4.*",
@@ -165,6 +167,13 @@
         {
             "type": "path",
             "url": "../admin-bundle",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url": "../transaction-bundle",
             "options": {
                 "symlink": true
             }

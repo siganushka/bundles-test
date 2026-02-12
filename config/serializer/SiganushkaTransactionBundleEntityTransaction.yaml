@@ -1,0 +1,8 @@
+Siganushka\TransactionBundle\Entity\Transaction:
+    attributes:
+        id:
+            groups: []
+        createdAt:
+            groups: []
+        updatedAt:
+            groups: []

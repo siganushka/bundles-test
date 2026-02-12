@@ -58,6 +58,9 @@
     "siganushka/region-bundle": {
         "version": "dev-main"
     },
+    "siganushka/transaction-bundle": {
+        "version": "dev-main"
+    },
     "siganushka/user-bundle": {
         "version": "dev-main"
     },

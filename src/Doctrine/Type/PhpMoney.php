@@ -4,17 +4,19 @@ declare(strict_types=1);
 
 namespace App\Doctrine\Type;
 
-use Brick\Math\BigNumber;
-use Brick\Money\Currency;
-use Brick\Money\Money;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Exception\InvalidType;
 use Doctrine\DBAL\Types\Exception\ValueNotConvertible;
 use Doctrine\DBAL\Types\Type;
+use Money\Currency;
+use Money\Money;
 
-class BrickMoney extends Type
+class PhpMoney extends Type
 {
-    public function __construct(private readonly Currency|string|int $currency)
+    /**
+     * @param non-empty-string $currency
+     */
+    public function __construct(private readonly string $currency)
     {
     }
 
@@ -30,7 +32,7 @@ class BrickMoney extends Type
         }
 
         if ($value instanceof Money) {
-            return $value->getMinorAmount()->toInt();
+            return $value->getAmount();
         }
 
         throw InvalidType::new($value, Money::class, ['null', 'int', Money::class]);
@@ -42,11 +44,8 @@ class BrickMoney extends Type
             return $value;
         }
 
-        if ($value instanceof BigNumber
-            || \is_float($value)
-            || \is_int($value)
-            || \is_string($value)) {
-            return Money::ofMinor($value, $this->currency);
+        if (\is_int($value) || (\is_string($value) && is_numeric($value))) {
+            return new Money($value, new Currency($this->currency));
         }
 
         throw ValueNotConvertible::new($value, Money::class);

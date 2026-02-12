@@ -1,0 +1,12 @@
+App\Entity\Recharge:
+    attributes:
+        id:
+            groups: []
+        title:
+            groups: []
+        amount:
+            groups: []
+        createdAt:
+            groups: []
+        updatedAt:
+            groups: []

@@ -27,19 +27,11 @@ class IntlExtensionRuntime implements RuntimeExtensionInterface
 
     public function formatCurrency(?int $amount): string
     {
-        // null to 0
-        if (null === $amount) {
-            $amount = 0;
-        }
+        // NULL to 0
+        $amount ??= 0;
 
         $fractionDigits = Currencies::getFractionDigits($this->currencyCode);
-        $divisor = match ($fractionDigits) {
-            3 => 1000,
-            2 => 100,
-            default => 1,
-        };
-
-        if (1 !== $divisor) {
+        if (1 !== $divisor = 10 ** $fractionDigits) {
             $amount /= $divisor;
         }
 

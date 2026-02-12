@@ -6,8 +6,11 @@ namespace App\Controller;
 
 use App\Entity\OrderItemSubject;
 use App\Form\TestType;
-use Brick\Money\Money;
+use Brick\Money\Money as BrickMoney;
 use Doctrine\ORM\EntityManagerInterface;
+use Godruoyi\Snowflake\Snowflake;
+use Money\Money as PhpMoney;
+use Siganushka\TransactionBundle\Entity\Transaction;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
@@ -20,6 +23,7 @@ use Symfony\Component\Form\Extension\Core\Type\TimezoneType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
 class IndexController extends AbstractController
@@ -27,23 +31,38 @@ class IndexController extends AbstractController
     #[Route('/')]
     public function index(EntityManagerInterface $entityManager): Response
     {
+        // $transaction = new Transaction();
+        // $transaction->number = (new Snowflake())->id();
+        // $transaction->amount = BrickMoney::of('25.99', 'CNY');
+
+        // $entityManager->persist($transaction);
+        // $entityManager->flush();
+        // dd(__METHOD__, $transaction);
+
+        // $entities = $entityManager->getRepository(Transaction::class)->findAll();
+        // dd(__METHOD__, $entities);
+        // return $this->json($entities, context: [
+        //     AbstractNormalizer::GROUPS => ['order_item_subject:item'],
+        // ]);
+
         // $subject = new OrderItemSubject();
         // $subject->setTitle('动员兵');
         // $subject->setSubtitle('50 块一个的好兄弟，比狗还便宜。');
         // $subject->setCover('https://placehold.co/100');
-        // $subject->setPrice(Money::of(49.98, 'CNY'));
+        // $subject->setPrice(BrickMoney::of(49.98, 'CNY'));
+        // $subject->setCostPrice(PhpMoney::CNY(4598));
         // $subject->setStock(100);
 
         // $entityManager->persist($subject);
         // $entityManager->flush();
-
         // dd(__METHOD__, $subject);
 
         // $entities = $entityManager->getRepository(OrderItemSubject::class)->findAll();
+        // dd(__METHOD__, $entities);
 
-        // return $this->json($entities);
-
-        // dd(__METHOD__, $entity, $entities);
+        // return $this->json($entities, context: [
+        //     AbstractNormalizer::GROUPS => ['order_item_subject:item'],
+        // ]);
 
         return $this->render('index/index.html.twig');
     }
