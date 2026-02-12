@@ -10,8 +10,6 @@ App\Entity\OrderItemSubject:
             groups: ['order_item_subject:item', 'order_item_subject:collection']
         price:
             groups: ['order_item_subject:item', 'order_item_subject:collection']
-        costPrice:
-            groups: ['order_item_subject:item', 'order_item_subject:collection']
         stock:
             groups: ['order_item_subject:item', 'order_item_subject:collection']
         subjectTitle:

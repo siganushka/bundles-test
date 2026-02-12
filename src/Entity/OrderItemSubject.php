@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
-use Brick\Money\Money as BrickMoney;
+use Brick\Money\Money;
 use Doctrine\ORM\Mapping as ORM;
-use Money\Money as PhpMoney;
 use Siganushka\Contracts\Doctrine\ResourceInterface;
 use Siganushka\Contracts\Doctrine\ResourceTrait;
 use Siganushka\OrderBundle\Model\OrderItemSubjectInterface;
@@ -25,11 +24,8 @@ class OrderItemSubject implements ResourceInterface, OrderItemSubjectInterface
     #[ORM\Column(nullable: true)]
     private ?string $cover = null;
 
-    #[ORM\Column(type: 'brick_money')]
-    private ?BrickMoney $price = null;
-
-    #[ORM\Column(type: 'php_money')]
-    private ?PhpMoney $costPrice = null;
+    #[ORM\Column(type: 'money')]
+    private ?Money $price = null;
 
     #[ORM\Column(nullable: true)]
     private ?int $stock = null;
@@ -70,26 +66,14 @@ class OrderItemSubject implements ResourceInterface, OrderItemSubjectInterface
         return $this;
     }
 
-    public function getPrice(): ?BrickMoney
+    public function getPrice(): ?Money
     {
         return $this->price;
     }
 
-    public function setPrice(BrickMoney $price): static
+    public function setPrice(Money $price): static
     {
         $this->price = $price;
-
-        return $this;
-    }
-
-    public function getCostPrice(): ?PhpMoney
-    {
-        return $this->costPrice;
-    }
-
-    public function setCostPrice(PhpMoney $costPrice): static
-    {
-        $this->costPrice = $costPrice;
 
         return $this;
     }

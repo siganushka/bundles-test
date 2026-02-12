@@ -13,7 +13,6 @@
         "doctrine/orm": "^3.6.2",
         "godruoyi/php-snowflake": "^3.2.2",
         "knplabs/knp-paginator-bundle": "^6.10",
-        "moneyphp/money": "^4.8",
         "obs/esdk-obs-php": "^3.24.9",
         "siganushka/admin-bundle": "dev-main",
         "siganushka/doctrine-contracts": "dev-main",
