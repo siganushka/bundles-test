@@ -7,6 +7,7 @@ namespace App\Controller;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Siganushka\UserBundle\Form\ChangePasswordType;
+use Siganushka\UserBundle\Form\RegistrationType;
 use Siganushka\UserBundle\Form\ResetPasswordType;
 use Siganushka\UserBundle\Form\UserType;
 use Siganushka\UserBundle\Repository\UserRepository;
@@ -96,6 +97,23 @@ class UserController extends AbstractController
     public function UserType(Request $request): Response
     {
         $form = $this->createForm(UserType::class)
+            ->add('submit', SubmitType::class)
+        ;
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            dd(__METHOD__, $form->getData());
+        }
+
+        return $this->render('user/form.html.twig', [
+            'form' => $form,
+        ]);
+    }
+
+    #[Route('/users/RegistrationType')]
+    public function RegistrationType(Request $request): Response
+    {
+        $form = $this->createForm(RegistrationType::class)
             ->add('submit', SubmitType::class)
         ;
 

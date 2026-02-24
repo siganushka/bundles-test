@@ -10,6 +10,8 @@
   {% embed 'table.html.twig' %}
     {% block th %}
       <th class="text-nowrap">{{ 'Identifier'|trans([], 'SiganushkaUserBundle') }}</th>
+      <th class="text-nowrap">{{ 'Last Login Ip'|trans([], 'SiganushkaUserBundle') }}</th>
+      <th class="text-nowrap">{{ 'Last Login At'|trans([], 'SiganushkaUserBundle') }}</th>
       <th class="text-nowrap">{{ 'generic.enable'|trans }}</th>
       <th class="text-nowrap">{{ 'generic.created_at'|trans }}</th>
       <th class="text-nowrap">{{ 'generic.action'|trans }}</th>
@@ -17,6 +19,8 @@
 
     {% block td %}
       <td class="text-nowrap"><code class="user-select-all">{{ _item.identifier }}</code></td>
+      <td class="text-nowrap">{{ _item.lastLoginIp ?? '-' }}</td>
+      <td class="text-nowrap">{{ _item.lastLoginAt ?? '-' }}</td>
       <td class="text-nowrap">
         {% if _item.enabled %}
           <span class="badge bg-success">{{ 'generic.yes'|trans }}</span>
