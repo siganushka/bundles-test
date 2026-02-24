@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bf00512e32de40289bb7cd79423c0c9b",
+    "content-hash": "713a7ca2352c808d0c3cbd4acb62b7a6",
     "packages": [
         {
             "name": "aliyuncs/oss-sdk-php",
@@ -156,20 +156,20 @@
         },
         {
             "name": "brick/money",
-            "version": "0.11.0",
+            "version": "0.11.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/brick/money.git",
-                "reference": "56ffc5f08d0697a929c93e27bb672aa5eb6660fb"
+                "reference": "44f262f867e6ec56cac21f4e55d630f2fd343eab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/brick/money/zipball/56ffc5f08d0697a929c93e27bb672aa5eb6660fb",
-                "reference": "56ffc5f08d0697a929c93e27bb672aa5eb6660fb",
+                "url": "https://api.github.com/repos/brick/money/zipball/44f262f867e6ec56cac21f4e55d630f2fd343eab",
+                "reference": "44f262f867e6ec56cac21f4e55d630f2fd343eab",
                 "shasum": ""
             },
             "require": {
-                "brick/math": "~0.12.0|~0.13.0|~0.14.0",
+                "brick/math": "~0.14.4",
                 "php": "^8.2",
                 "symfony/deprecation-contracts": "^2.2|^3.0"
             },
@@ -202,7 +202,7 @@
             ],
             "support": {
                 "issues": "https://github.com/brick/money/issues",
-                "source": "https://github.com/brick/money/tree/0.11.0"
+                "source": "https://github.com/brick/money/tree/0.11.1"
             },
             "funding": [
                 {
@@ -210,7 +210,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-01-22T14:33:29+00:00"
+            "time": "2026-02-12T09:47:51+00:00"
         },
         {
             "name": "composer/semver",
@@ -2575,7 +2575,7 @@
             "dist": {
                 "type": "path",
                 "url": "../doctrine-contracts",
-                "reference": "d21df540093073b116ccec99689375189b420525"
+                "reference": "de76d9ccf5ecfdf4973d2db81f594850eb29337e"
             },
             "require": {
                 "doctrine/orm": "^3.0",
@@ -2815,7 +2815,7 @@
             "dist": {
                 "type": "path",
                 "url": "../product-bundle",
-                "reference": "b937c1c74d00aa940862bc866cb0998059181fc9"
+                "reference": "5b3835f540639681da095b75620191932ce5e27f"
             },
             "require": {
                 "bentools/cartesian-product": "^2.0",
@@ -2986,7 +2986,7 @@
             "dist": {
                 "type": "path",
                 "url": "../user-bundle",
-                "reference": "d13f956492306a4dbadeb00f3c36c381678174e2"
+                "reference": "d61371c6ea4e6cd365f6b120ee0f00011916f2fd"
             },
             "require": {
                 "knplabs/knp-components": "^5.0",
