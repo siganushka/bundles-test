@@ -23,4 +23,5 @@ return [
     Knp\Bundle\MenuBundle\KnpMenuBundle::class => ['all' => true],
     Siganushka\AdminBundle\SiganushkaAdminBundle::class => ['all' => true],
     Siganushka\TransactionBundle\SiganushkaTransactionBundle::class => ['all' => true],
+    Siganushka\ApiFactoryBundle\SiganushkaApiFactoryBundle::class => ['all' => true],
 ];

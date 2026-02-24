@@ -43,6 +43,9 @@
     "siganushka/admin-bundle": {
         "version": "dev-main"
     },
+    "siganushka/api-factory-bundle": {
+        "version": "dev-main"
+    },
     "siganushka/generic-bundle": {
         "version": "dev-main"
     },

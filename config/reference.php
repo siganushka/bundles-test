@@ -1565,6 +1565,44 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     theme_cookie?: scalar|Param|null, // Default: "siganushka_admin_theme"
  *     collapse_cookie?: scalar|Param|null, // Default: "siganushka_admin_collapse"
  * }
+ * @psalm-type SiganushkaApiFactoryConfig = array{
+ *     github?: bool|array{ // Github configuration
+ *         enabled?: bool|Param, // Default: false
+ *         default_configuration?: scalar|Param|null,
+ *         configurations?: array<string, array{ // Default: []
+ *             client_id: mixed,
+ *             client_secret: mixed,
+ *         }>,
+ *     },
+ *     wechat?: bool|array{ // Wechat configuration
+ *         enabled?: bool|Param, // Default: false
+ *         default_configuration?: scalar|Param|null,
+ *         configurations?: array<string, array{ // Default: []
+ *             appid: mixed,
+ *             secret: mixed,
+ *         }>,
+ *     },
+ *     wxpay?: bool|array{ // Wxpay configuration
+ *         enabled?: bool|Param, // Default: false
+ *         default_configuration?: scalar|Param|null,
+ *         configurations?: array<string, array{ // Default: []
+ *             appid: mixed,
+ *             mchid: mixed,
+ *             mchkey: mixed,
+ *             mch_client_cert?: mixed,
+ *             mch_client_key?: mixed,
+ *         }>,
+ *     },
+ *     alipay?: bool|array{ // Alipay configuration
+ *         enabled?: bool|Param, // Default: false
+ *         default_configuration?: scalar|Param|null,
+ *         configurations?: array<string, array{ // Default: []
+ *             appid: mixed,
+ *             app_private_key: mixed,
+ *             alipay_public_key: mixed,
+ *         }>,
+ *     },
+ * }
  * @psalm-type ConfigType = array{
  *     imports?: ImportsConfig,
  *     parameters?: ParametersConfig,
@@ -1585,6 +1623,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     siganushka_user?: SiganushkaUserConfig,
  *     knp_menu?: KnpMenuConfig,
  *     siganushka_admin?: SiganushkaAdminConfig,
+ *     siganushka_api_factory?: SiganushkaApiFactoryConfig,
  *     "when@dev"?: array{
  *         imports?: ImportsConfig,
  *         parameters?: ParametersConfig,
@@ -1608,6 +1647,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         siganushka_user?: SiganushkaUserConfig,
  *         knp_menu?: KnpMenuConfig,
  *         siganushka_admin?: SiganushkaAdminConfig,
+ *         siganushka_api_factory?: SiganushkaApiFactoryConfig,
  *     },
  *     "when@prod"?: array{
  *         imports?: ImportsConfig,
@@ -1629,6 +1669,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         siganushka_user?: SiganushkaUserConfig,
  *         knp_menu?: KnpMenuConfig,
  *         siganushka_admin?: SiganushkaAdminConfig,
+ *         siganushka_api_factory?: SiganushkaApiFactoryConfig,
  *     },
  *     "when@test"?: array{
  *         imports?: ImportsConfig,
@@ -1651,6 +1692,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         siganushka_user?: SiganushkaUserConfig,
  *         knp_menu?: KnpMenuConfig,
  *         siganushka_admin?: SiganushkaAdminConfig,
+ *         siganushka_api_factory?: SiganushkaApiFactoryConfig,
  *     },
  *     ...<string, ExtensionType|array{ // extra keys must follow the when@%env% pattern or match an extension alias
  *         imports?: ImportsConfig,

@@ -1,0 +1,12 @@
+siganushka_api_factory:
+    wechat:
+        appid: test
+        secret: test
+    wxpay:
+        appid: test
+        mchid: test
+        mchkey: test
+    # alipay:
+    #     appid: test
+    #     app_private_key: test
+    #     alipay_public_key: test

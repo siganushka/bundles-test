@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "713a7ca2352c808d0c3cbd4acb62b7a6",
+    "content-hash": "5e2214c30dd376d7857dc5a84eda0076",
     "packages": [
         {
             "name": "aliyuncs/oss-sdk-php",
@@ -2570,6 +2570,168 @@
             }
         },
         {
+            "name": "siganushka/alipay-api",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "../alipay-api",
+                "reference": "ed62b6574e79c884ea70f5b01f20914e85cd963a"
+            },
+            "require": {
+                "php": ">=8.2",
+                "siganushka/api-factory": "dev-main",
+                "symfony/http-foundation": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "symfony/error-handler": "^7.4|^8.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Siganushka\\ApiFactory\\Alipay\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Siganushka\\ApiFactory\\Alipay\\Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "tools:run": [
+                    "tools/vendor/bin/php-cs-fixer fix",
+                    "tools/vendor/bin/simple-phpunit",
+                    "tools/vendor/bin/phpstan"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "siganushka",
+                    "email": "siganushka@gmail.com"
+                }
+            ],
+            "description": "Alipay API.",
+            "homepage": "https://github.com/siganushka/alipay-api",
+            "keywords": [
+                "alipay-api"
+            ],
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
+            "name": "siganushka/api-factory",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "../api-factory",
+                "reference": "9372c7664e06f0f19dfad12557f1031e8e224a25"
+            },
+            "require": {
+                "php": ">=8.2",
+                "symfony/http-client": "^7.4|^8.0",
+                "symfony/options-resolver": "^7.4|^8.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Siganushka\\ApiFactory\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Siganushka\\ApiFactory\\Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "tools:run": [
+                    "tools/vendor/bin/php-cs-fixer fix",
+                    "tools/vendor/bin/simple-phpunit",
+                    "tools/vendor/bin/phpstan"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "siganushka",
+                    "email": "siganushka@gmail.com"
+                }
+            ],
+            "description": "API Factory.",
+            "homepage": "https://github.com/siganushka/api-factory",
+            "keywords": [
+                "api-factory"
+            ],
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
+            "name": "siganushka/api-factory-bundle",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "../api-factory-bundle",
+                "reference": "ae72d0d41ea5798d4d6232dfb1f3959d7701783a"
+            },
+            "require": {
+                "composer-runtime-api": ">=2.1",
+                "php": ">=8.2",
+                "siganushka/api-factory": "dev-main",
+                "symfony/config": "^7.4|^8.0",
+                "symfony/dependency-injection": "^7.4|^8.0",
+                "symfony/http-kernel": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "siganushka/alipay-api": "dev-main",
+                "siganushka/github-api": "dev-main",
+                "siganushka/wechat-api": "dev-main",
+                "siganushka/wxpay-api": "dev-main"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Siganushka\\ApiFactoryBundle\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Siganushka\\ApiFactoryBundle\\Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "tools:run": [
+                    "tools/vendor/bin/php-cs-fixer fix",
+                    "tools/vendor/bin/simple-phpunit",
+                    "tools/vendor/bin/phpstan"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "siganushka",
+                    "email": "siganushka@gmail.com"
+                }
+            ],
+            "description": "API Factory Bundle.",
+            "homepage": "https://github.com/siganushka/api-factory-bundle",
+            "keywords": [
+                "api-factory-bundle"
+            ],
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
             "name": "siganushka/doctrine-contracts",
             "version": "dev-main",
             "dist": {
@@ -2679,6 +2841,59 @@
             "keywords": [
                 "generic-bundle",
                 "symfony-ux"
+            ],
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
+            "name": "siganushka/github-api",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "../github-api",
+                "reference": "4a2cfc6c7ac3290f2bcd2cebd5e4b1f8746dac6f"
+            },
+            "require": {
+                "php": ">=8.2",
+                "siganushka/api-factory": "dev-main",
+                "symfony/cache": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "symfony/error-handler": "^7.4|^8.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Siganushka\\ApiFactory\\Github\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Siganushka\\ApiFactory\\Github\\Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "tools:run": [
+                    "tools/vendor/bin/php-cs-fixer fix",
+                    "tools/vendor/bin/simple-phpunit",
+                    "tools/vendor/bin/phpstan"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "siganushka",
+                    "email": "siganushka@gmail.com"
+                }
+            ],
+            "description": "Github API.",
+            "homepage": "https://github.com/siganushka/github-api",
+            "keywords": [
+                "github-api"
             ],
             "transport-options": {
                 "symlink": true,
@@ -2815,7 +3030,7 @@
             "dist": {
                 "type": "path",
                 "url": "../product-bundle",
-                "reference": "5b3835f540639681da095b75620191932ce5e27f"
+                "reference": "d8b2327231809ec3ded9b096ddd2df75c4e93908"
             },
             "require": {
                 "bentools/cartesian-product": "^2.0",
@@ -2986,7 +3201,7 @@
             "dist": {
                 "type": "path",
                 "url": "../user-bundle",
-                "reference": "d61371c6ea4e6cd365f6b120ee0f00011916f2fd"
+                "reference": "88d18f55742b85e14992bec1adef1dbc52c57947"
             },
             "require": {
                 "knplabs/knp-components": "^5.0",
@@ -3031,6 +3246,113 @@
             "homepage": "https://github.com/siganushka/user-bundle",
             "keywords": [
                 "user-bundle"
+            ],
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
+            "name": "siganushka/wechat-api",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "../wechat-api",
+                "reference": "470617d385f108af2529e1d9bd5ce0448372e0c5"
+            },
+            "require": {
+                "php": ">=8.2",
+                "siganushka/api-factory": "dev-main",
+                "symfony/cache": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "symfony/error-handler": "^7.4|^8.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Siganushka\\ApiFactory\\Wechat\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Siganushka\\ApiFactory\\Wechat\\Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "tools:run": [
+                    "tools/vendor/bin/php-cs-fixer fix",
+                    "tools/vendor/bin/simple-phpunit",
+                    "tools/vendor/bin/phpstan"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "siganushka",
+                    "email": "siganushka@gmail.com"
+                }
+            ],
+            "description": "Wechat API.",
+            "homepage": "https://github.com/siganushka/wechat-api",
+            "keywords": [
+                "wechat-api"
+            ],
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
+            "name": "siganushka/wxpay-api",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "../wxpay-api",
+                "reference": "61845daba60c53ec0fbbd116d177131e6de2751a"
+            },
+            "require": {
+                "php": ">=8.2",
+                "siganushka/api-factory": "dev-main",
+                "symfony/http-foundation": "^7.4|^8.0",
+                "symfony/serializer": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "symfony/error-handler": "^7.4|^8.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Siganushka\\ApiFactory\\Wxpay\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Siganushka\\ApiFactory\\Wxpay\\Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "tools:run": [
+                    "tools/vendor/bin/php-cs-fixer fix",
+                    "tools/vendor/bin/simple-phpunit",
+                    "tools/vendor/bin/phpstan"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "siganushka",
+                    "email": "siganushka@gmail.com"
+                }
+            ],
+            "description": "Wxpay API.",
+            "homepage": "https://github.com/siganushka/wxpay-api",
+            "keywords": [
+                "wxpay-api"
             ],
             "transport-options": {
                 "symlink": true,
@@ -9436,14 +9758,20 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "siganushka/admin-bundle": 20,
+        "siganushka/alipay-api": 20,
+        "siganushka/api-factory": 20,
+        "siganushka/api-factory-bundle": 20,
         "siganushka/doctrine-contracts": 20,
         "siganushka/generic-bundle": 20,
+        "siganushka/github-api": 20,
         "siganushka/media-bundle": 20,
         "siganushka/order-bundle": 20,
         "siganushka/product-bundle": 20,
         "siganushka/region-bundle": 20,
         "siganushka/transaction-bundle": 20,
-        "siganushka/user-bundle": 20
+        "siganushka/user-bundle": 20,
+        "siganushka/wechat-api": 20,
+        "siganushka/wxpay-api": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

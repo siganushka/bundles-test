@@ -15,14 +15,20 @@
         "knplabs/knp-paginator-bundle": "^6.10",
         "obs/esdk-obs-php": "^3.24.9",
         "siganushka/admin-bundle": "dev-main",
+        "siganushka/alipay-api": "dev-main",
+        "siganushka/api-factory": "dev-main",
+        "siganushka/api-factory-bundle": "dev-main",
         "siganushka/doctrine-contracts": "dev-main",
         "siganushka/generic-bundle": "dev-main",
+        "siganushka/github-api": "dev-main",
         "siganushka/media-bundle": "dev-main",
         "siganushka/order-bundle": "dev-main",
         "siganushka/product-bundle": "dev-main",
         "siganushka/region-bundle": "dev-main",
         "siganushka/transaction-bundle": "dev-main",
         "siganushka/user-bundle": "dev-main",
+        "siganushka/wechat-api": "dev-main",
+        "siganushka/wxpay-api": "dev-main",
         "spatie/image-optimizer": "^1.8.1",
         "symfony/asset": "7.4.*",
         "symfony/asset-mapper": "7.4.*",
@@ -173,6 +179,48 @@
         {
             "type": "path",
             "url": "../transaction-bundle",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url": "../api-factory",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url": "../api-factory-bundle",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url": "../github-api",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url": "../alipay-api",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url": "../wxpay-api",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url": "../wechat-api",
             "options": {
                 "symlink": true
             }
