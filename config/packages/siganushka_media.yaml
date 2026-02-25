@@ -5,11 +5,10 @@ siganushka_media:
         test_img:
             constraint: image
             constraint_options: { mimeTypes: ['image/*'] }
-            resize: 1000
-            optimize: 70
+            resize: true
+            optimize: true
         test_video:
             constraint: video
             constraint_options: { minWidth: 1280, minHeight: 720 }
         test_pdf:
-            constraint: file
-            constraint_options: { mimeTypes: ['application/pdf', 'application/x-pdf'] }
+            constraint_options: { extensions: ['pdf'] }
