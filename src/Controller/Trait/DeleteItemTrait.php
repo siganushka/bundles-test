@@ -14,7 +14,7 @@ trait DeleteItemTrait
     use HttpOperationTrait;
 
     #[Route('/{identifier}', methods: 'DELETE')]
-    public function deleteItem(EntityManagerInterface $entityManager, int $identifier): Response
+    public function deleteItem(EntityManagerInterface $entityManager, mixed $identifier): Response
     {
         $criteria = [$this->getIdentifierName() => $identifier];
 

@@ -24,7 +24,7 @@ trait PutItemTrait
         EntityManagerInterface $entityManager,
         SerializerInterface $serializer,
         FormFactoryInterface $factory,
-        string $identifier,
+        mixed $identifier,
     ): Response {
         $criteria = [$this->getIdentifierName() => $identifier];
 

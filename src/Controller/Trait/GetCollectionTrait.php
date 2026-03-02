@@ -26,7 +26,8 @@ trait GetCollectionTrait
             ? $repository->createQueryBuilderWithOrderBy('entity')
             : $repository->createQueryBuilder('entity');
 
-        $data = $serializer->serialize($paginator->paginate($queryBuilder), 'json', [
+        $pagination = $paginator->paginate($queryBuilder);
+        $data = $serializer->serialize($pagination, 'json', [
             AbstractNormalizer::GROUPS => \sprintf('%s:collection', $this->getEntityAlias()),
         ]);
 
