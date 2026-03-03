@@ -41,11 +41,6 @@ trait HttpOperationTrait
         return 'id';
     }
 
-    protected function validateEntityIdentifier(string $identifier): bool
-    {
-        return (bool) preg_match('/^\d+$/', $identifier);
-    }
-
     protected function createQueryBuilderForRequest(Request $request, EntityManagerInterface $em): QueryBuilder
     {
         $repository = $em->getRepository($this->getEntityFqcn());
@@ -65,13 +60,11 @@ trait HttpOperationTrait
         return (new \ReflectionClass($repository->getClassName()))->newInstance();
     }
 
-    protected function findEntity(EntityManagerInterface $em, string $identifier): object
+    protected function findEntity(EntityManagerInterface $em, string $_id): object
     {
-        if (!$this->validateEntityIdentifier($identifier)) {
-            throw new NotFoundHttpException('Not Found');
-        }
+        $criteria = [$this->getEntityIdentifier() => $_id];
 
-        $entity = $em->getRepository($this->getEntityFqcn())->findOneBy([$this->getEntityIdentifier() => $identifier])
+        $entity = $em->getRepository($this->getEntityFqcn())->findOneBy($criteria)
             ?? throw new NotFoundHttpException('Not Found');
 
         return $entity;

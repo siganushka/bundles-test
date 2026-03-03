@@ -17,15 +17,15 @@ trait PutItemTrait
 {
     use HttpOperationTrait;
 
-    #[Route('/{identifier}', methods: ['PUT', 'PATCH'])]
+    #[Route('/{_id}', methods: ['PUT', 'PATCH'])]
     public function putItem(
         Request $request,
         EntityManagerInterface $entityManager,
         SerializerInterface $serializer,
         FormFactoryInterface $factory,
-        string $identifier,
+        string $_id,
     ): Response {
-        $entity = $this->findEntity($entityManager, $identifier);
+        $entity = $this->findEntity($entityManager, $_id);
 
         $form = $factory->create($this->getEntityForm(), $entity);
         $form->submit($request->getPayload()->all(), !$request->isMethod('PATCH'));

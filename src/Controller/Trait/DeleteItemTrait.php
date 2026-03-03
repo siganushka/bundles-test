@@ -12,10 +12,10 @@ trait DeleteItemTrait
 {
     use HttpOperationTrait;
 
-    #[Route('/{identifier}', methods: 'DELETE')]
-    public function deleteItem(EntityManagerInterface $entityManager, string $identifier): Response
+    #[Route('/{_id}', methods: 'DELETE')]
+    public function deleteItem(EntityManagerInterface $entityManager, string $_id): Response
     {
-        $entity = $this->findEntity($entityManager, $identifier);
+        $entity = $this->findEntity($entityManager, $_id);
 
         $entityManager->remove($entity);
         $entityManager->flush();

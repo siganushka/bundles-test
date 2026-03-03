@@ -11,8 +11,9 @@ use App\Controller\Trait\PostCollectionTrait;
 use App\Controller\Trait\PutItemTrait;
 use App\Entity\Product;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Requirement\Requirement;
 
-#[Route('/test-crud-routes')]
+#[Route('/test-crud-routes', requirements: ['_id' => Requirement::DIGITS])]
 class TestController
 {
     use GetCollectionTrait;
