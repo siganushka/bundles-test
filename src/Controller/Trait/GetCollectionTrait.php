@@ -6,8 +6,8 @@ namespace App\Controller\Trait;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
-use Siganushka\GenericBundle\Repository\GenericEntityRepository;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
@@ -18,13 +18,9 @@ trait GetCollectionTrait
     use HttpOperationTrait;
 
     #[Route(methods: 'GET')]
-    public function getCollection(EntityManagerInterface $entityManager, SerializerInterface $serializer, PaginatorInterface $paginator): Response
+    public function getCollection(Request $request, EntityManagerInterface $em, SerializerInterface $serializer, PaginatorInterface $paginator): Response
     {
-        $repository = $entityManager->getRepository($this->getEntityFqcn());
-
-        $queryBuilder = $repository instanceof GenericEntityRepository
-            ? $repository->createQueryBuilderWithOrderBy('entity')
-            : $repository->createQueryBuilder('entity');
+        $queryBuilder = $this->createQueryBuilderForRequest($request, $em);
 
         $pagination = $paginator->paginate($queryBuilder);
         $data = $serializer->serialize($pagination, 'json', [

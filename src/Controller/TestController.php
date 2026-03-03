@@ -10,13 +10,10 @@ use App\Controller\Trait\GetItemTrait;
 use App\Controller\Trait\PostCollectionTrait;
 use App\Controller\Trait\PutItemTrait;
 use App\Entity\Product;
-use Siganushka\ProductBundle\Form\ProductType;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\FormTypeInterface;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('/test-curd-routes')]
-class TestController extends AbstractController
+#[Route('/test-crud-routes')]
+class TestController
 {
     use GetCollectionTrait;
     use GetItemTrait;
@@ -30,13 +27,5 @@ class TestController extends AbstractController
     protected function getEntityFqcn(): string
     {
         return Product::class;
-    }
-
-    /**
-     * @return class-string<FormTypeInterface>
-     */
-    protected function getFormType(): string
-    {
-        return ProductType::class;
     }
 }

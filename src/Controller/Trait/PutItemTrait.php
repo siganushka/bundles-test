@@ -9,7 +9,6 @@ use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Component\Serializer\SerializerInterface;
@@ -24,14 +23,11 @@ trait PutItemTrait
         EntityManagerInterface $entityManager,
         SerializerInterface $serializer,
         FormFactoryInterface $factory,
-        mixed $identifier,
+        string $identifier,
     ): Response {
-        $criteria = [$this->getIdentifierName() => $identifier];
+        $entity = $this->findEntity($entityManager, $identifier);
 
-        $entity = $entityManager->getRepository($this->getEntityFqcn())->findOneBy($criteria)
-            ?? throw new NotFoundHttpException('Not Found');
-
-        $form = $factory->create($this->getFormType(), $entity);
+        $form = $factory->create($this->getEntityForm(), $entity);
         $form->submit($request->getPayload()->all(), !$request->isMethod('PATCH'));
 
         if (!$form->isValid()) {

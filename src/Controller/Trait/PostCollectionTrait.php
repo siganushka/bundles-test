@@ -24,9 +24,9 @@ trait PostCollectionTrait
         SerializerInterface $serializer,
         FormFactoryInterface $factory,
     ): Response {
-        $entity = new ($this->getEntityFqcn());
+        $entity = $this->createEntity($entityManager);
 
-        $form = $factory->create($this->getFormType(), $entity);
+        $form = $factory->create($this->getEntityForm(), $entity);
         $form->submit($request->getPayload()->all());
 
         if (!$form->isValid()) {

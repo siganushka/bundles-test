@@ -6,7 +6,6 @@ namespace App\Controller\Trait;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Attribute\Route;
 
 trait DeleteItemTrait
@@ -14,12 +13,9 @@ trait DeleteItemTrait
     use HttpOperationTrait;
 
     #[Route('/{identifier}', methods: 'DELETE')]
-    public function deleteItem(EntityManagerInterface $entityManager, mixed $identifier): Response
+    public function deleteItem(EntityManagerInterface $entityManager, string $identifier): Response
     {
-        $criteria = [$this->getIdentifierName() => $identifier];
-
-        $entity = $entityManager->getRepository($this->getEntityFqcn())->findOneBy($criteria)
-            ?? throw new NotFoundHttpException('Not Found');
+        $entity = $this->findEntity($entityManager, $identifier);
 
         $entityManager->remove($entity);
         $entityManager->flush();
