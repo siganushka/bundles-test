@@ -61,11 +61,10 @@ trait HttpOperationTrait
     protected function createEntity(EntityManagerInterface $em): object
     {
         $repository = $em->getRepository($this->entityFqcn);
-        if ($repository instanceof GenericEntityRepository) {
-            return $repository->createNew();
-        }
 
-        return (new \ReflectionClass($repository->getClassName()))->newInstance();
+        return $repository instanceof GenericEntityRepository
+            ? $repository->createNew()
+            : (new \ReflectionClass($repository->getClassName()))->newInstance();
     }
 
     protected function findEntity(EntityManagerInterface $em, string $_id): object
