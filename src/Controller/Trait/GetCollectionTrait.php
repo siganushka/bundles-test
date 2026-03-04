@@ -20,11 +20,11 @@ trait GetCollectionTrait
     #[Route(methods: 'GET')]
     public function getCollection(Request $request, EntityManagerInterface $em, SerializerInterface $serializer, PaginatorInterface $paginator): Response
     {
-        $queryBuilder = $this->createQueryBuilderForRequest($request, $em);
+        $qb = $this->createQueryBuilderForRequest($request, $em);
+        $pagination = $paginator->paginate($qb);
 
-        $pagination = $paginator->paginate($queryBuilder);
         $data = $serializer->serialize($pagination, 'json', [
-            AbstractNormalizer::GROUPS => \sprintf('%s:collection', $this->getEntityAlias()),
+            AbstractNormalizer::GROUPS => \sprintf('%s:collection', $this->entityAlias),
         ]);
 
         return new JsonResponse($data, json: true);

@@ -15,44 +15,52 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 trait HttpOperationTrait
 {
     /**
-     * @return class-string<object>
+     * @var class-string<object>
      */
-    abstract protected function getEntityFqcn(): string;
+    private string $entityFqcn;
 
     /**
-     * @return class-string<FormTypeInterface>
+     * @var class-string<FormTypeInterface>
      */
-    protected function getEntityForm(): string
-    {
-        return FormType::class;
-    }
+    private string $entityForm;
 
-    protected function getEntityAlias(): string
-    {
-        $ref = new \ReflectionClass($this->getEntityFqcn());
-        /** @var string */
-        $class = preg_replace('/([a-z])([A-Z])/', '$1_$2', $ref->getShortName());
+    private string $entityIdentifier;
+    private string $entityAlias;
+    private string $controllerAlias;
+    private string $templateAlias;
 
-        return strtolower($class);
-    }
-
-    protected function getEntityIdentifier(): string
-    {
-        return 'id';
+    /**
+     * @param class-string<object>                 $entityFqcn
+     * @param class-string<FormTypeInterface>|null $entityForm
+     */
+    protected function configureCrud(
+        string $entityFqcn,
+        ?string $entityForm = null,
+        ?string $entityIdentifier = null,
+        ?string $entityAlias = null,
+        ?string $controllerAlias = null,
+        ?string $templateAlias = null,
+    ): void {
+        $this->entityFqcn = $entityFqcn;
+        $this->entityForm = $entityForm ?? FormType::class;
+        $this->entityIdentifier = $entityIdentifier ?? 'id';
+        $this->entityAlias = $entityAlias ?? $this->generateAlias($entityFqcn);
+        $this->controllerAlias = $controllerAlias ?? str_replace('_', '', rtrim($this->generateAlias($this), '_controller'));
+        $this->templateAlias = $templateAlias ?? rtrim($this->generateAlias($this), '_controller');
     }
 
     protected function createQueryBuilderForRequest(Request $request, EntityManagerInterface $em): QueryBuilder
     {
-        $repository = $em->getRepository($this->getEntityFqcn());
+        $repository = $em->getRepository($this->entityFqcn);
 
         return $repository instanceof GenericEntityRepository
             ? $repository->createQueryBuilderWithOrderBy('entity')
             : $repository->createQueryBuilder('entity');
     }
 
-    protected function createEntity(EntityManagerInterface $entityManager): object
+    protected function createEntity(EntityManagerInterface $em): object
     {
-        $repository = $entityManager->getRepository($this->getEntityFqcn());
+        $repository = $em->getRepository($this->entityFqcn);
         if ($repository instanceof GenericEntityRepository) {
             return $repository->createNew();
         }
@@ -62,11 +70,21 @@ trait HttpOperationTrait
 
     protected function findEntity(EntityManagerInterface $em, string $_id): object
     {
-        $criteria = [$this->getEntityIdentifier() => $_id];
-
-        $entity = $em->getRepository($this->getEntityFqcn())->findOneBy($criteria)
+        $entity = $em->getRepository($this->entityFqcn)->findOneBy([$this->entityIdentifier => $_id])
             ?? throw new NotFoundHttpException('Not Found');
 
         return $entity;
+    }
+
+    /**
+     * @param object|class-string $objectOrClass
+     */
+    private function generateAlias(object|string $objectOrClass): string
+    {
+        $ref = new \ReflectionClass($objectOrClass);
+        /** @var string */
+        $class = preg_replace('/([a-z])([A-Z])/', '$1_$2', $ref->getShortName());
+
+        return strtolower($class);
     }
 }

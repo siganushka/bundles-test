@@ -16,12 +16,12 @@ trait GetItemTrait
     use HttpOperationTrait;
 
     #[Route('/{_id}', methods: 'GET')]
-    public function getItem(EntityManagerInterface $entityManager, SerializerInterface $serializer, string $_id): Response
+    public function getItem(EntityManagerInterface $em, SerializerInterface $serializer, string $_id): Response
     {
-        $entity = $this->findEntity($entityManager, $_id);
+        $entity = $this->findEntity($em, $_id);
 
         $data = $serializer->serialize($entity, 'json', [
-            AbstractNormalizer::GROUPS => \sprintf('%s:item', $this->getEntityAlias()),
+            AbstractNormalizer::GROUPS => \sprintf('%s:item', $this->entityAlias),
         ]);
 
         return new JsonResponse($data, json: true);

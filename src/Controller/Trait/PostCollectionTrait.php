@@ -20,24 +20,24 @@ trait PostCollectionTrait
     #[Route(methods: 'POST')]
     public function postCollection(
         Request $request,
-        EntityManagerInterface $entityManager,
+        EntityManagerInterface $em,
         SerializerInterface $serializer,
         FormFactoryInterface $factory,
     ): Response {
-        $entity = $this->createEntity($entityManager);
+        $entity = $this->createEntity($em);
 
-        $form = $factory->create($this->getEntityForm(), $entity);
+        $form = $factory->create($this->entityForm, $entity);
         $form->submit($request->getPayload()->all());
 
         if (!$form->isValid()) {
             return new JsonResponse($serializer->serialize($form, 'json'), Response::HTTP_UNPROCESSABLE_ENTITY, json: true);
         }
 
-        $entityManager->persist($entity);
-        $entityManager->flush();
+        $em->persist($entity);
+        $em->flush();
 
         $data = $serializer->serialize($entity, 'json', [
-            AbstractNormalizer::GROUPS => \sprintf('%s:item', $this->getEntityAlias()),
+            AbstractNormalizer::GROUPS => \sprintf('%s:item', $this->entityAlias),
         ]);
 
         return new JsonResponse($data, Response::HTTP_CREATED, json: true);

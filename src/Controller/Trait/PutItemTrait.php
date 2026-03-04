@@ -20,25 +20,25 @@ trait PutItemTrait
     #[Route('/{_id}', methods: ['PUT', 'PATCH'])]
     public function putItem(
         Request $request,
-        EntityManagerInterface $entityManager,
+        EntityManagerInterface $em,
         SerializerInterface $serializer,
         FormFactoryInterface $factory,
         string $_id,
     ): Response {
-        $entity = $this->findEntity($entityManager, $_id);
+        $entity = $this->findEntity($em, $_id);
 
-        $form = $factory->create($this->getEntityForm(), $entity);
+        $form = $factory->create($this->entityForm, $entity);
         $form->submit($request->getPayload()->all(), !$request->isMethod('PATCH'));
 
         if (!$form->isValid()) {
             return new JsonResponse($serializer->serialize($form, 'json'), Response::HTTP_UNPROCESSABLE_ENTITY, json: true);
         }
 
-        $entityManager->persist($entity);
-        $entityManager->flush();
+        $em->persist($entity);
+        $em->flush();
 
         $data = $serializer->serialize($entity, 'json', [
-            AbstractNormalizer::GROUPS => \sprintf('%s:item', $this->getEntityAlias()),
+            AbstractNormalizer::GROUPS => \sprintf('%s:item', $this->entityAlias),
         ]);
 
         return new JsonResponse($data, json: true);

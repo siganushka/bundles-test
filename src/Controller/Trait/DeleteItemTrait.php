@@ -13,12 +13,12 @@ trait DeleteItemTrait
     use HttpOperationTrait;
 
     #[Route('/{_id}', methods: 'DELETE')]
-    public function deleteItem(EntityManagerInterface $entityManager, string $_id): Response
+    public function deleteItem(EntityManagerInterface $em, string $_id): Response
     {
-        $entity = $this->findEntity($entityManager, $_id);
+        $entity = $this->findEntity($em, $_id);
 
-        $entityManager->remove($entity);
-        $entityManager->flush();
+        $em->remove($entity);
+        $em->flush();
 
         // 204 No Content
         return new Response(status: Response::HTTP_NO_CONTENT);

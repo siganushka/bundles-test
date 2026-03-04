@@ -9,11 +9,10 @@ use App\Controller\Trait\GetCollectionTrait;
 use App\Controller\Trait\GetItemTrait;
 use App\Controller\Trait\PostCollectionTrait;
 use App\Controller\Trait\PutItemTrait;
-use App\Entity\Product;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Routing\Requirement\Requirement;
 
-#[Route('/test-crud-routes', requirements: ['_id' => Requirement::DIGITS])]
+#[Route('/api/test-crud-routes', requirements: ['_id' => Requirement::DIGITS])]
 class TestController
 {
     use GetCollectionTrait;
@@ -21,12 +20,4 @@ class TestController
     use PostCollectionTrait;
     use PutItemTrait;
     use DeleteItemTrait;
-
-    /**
-     * @return class-string<object>
-     */
-    protected function getEntityFqcn(): string
-    {
-        return Product::class;
-    }
 }
