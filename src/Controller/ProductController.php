@@ -4,9 +4,14 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Controller\Trait\Web\DeleteTrait;
+use App\Controller\Trait\Web\EditTrait;
+use App\Controller\Trait\Web\IndexTrait;
+use App\Controller\Trait\Web\NewTrait;
+use App\Controller\Trait\Web\ShowTrait;
+use App\Entity\Product;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\OptimisticLockException;
-use Knp\Component\Pager\PaginatorInterface;
+use Doctrine\ORM\QueryBuilder;
 use Siganushka\ProductBundle\Dto\ProductQueryDto;
 use Siganushka\ProductBundle\Form\ProductOptionType;
 use Siganushka\ProductBundle\Form\ProductOptionValueType;
@@ -18,87 +23,36 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Attribute\MapQueryString;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
+#[Route('/products')]
 class ProductController extends AbstractController
 {
-    public function __construct(protected readonly ProductRepository $repository)
+    use IndexTrait;
+    use NewTrait;
+    use ShowTrait;
+    use EditTrait;
+    use DeleteTrait;
+
+    public function __construct(
+        protected readonly DenormalizerInterface $denormalizer,
+        protected readonly ProductRepository $repository)
     {
+        $this->configureCrud(
+            entityFqcn: Product::class,
+            entityForm: ProductType::class,
+        );
     }
 
-    #[Route('/products')]
-    public function index(PaginatorInterface $paginator, #[MapQueryString] ProductQueryDto $dto): Response
+    protected function createQueryBuilderForRequest(Request $request, EntityManagerInterface $em): QueryBuilder
     {
-        $queryBuilder = $this->repository->createQueryBuilderByDto('p', $dto);
-        $pagination = $paginator->paginate($queryBuilder);
+        $dto = $this->denormalizer->denormalize($request->query->all(), ProductQueryDto::class, 'csv');
 
-        return $this->render('product/index.html.twig', [
-            'pagination' => $pagination,
-        ]);
+        return $this->repository->createQueryBuilderByDto('p', $dto);
     }
 
-    #[Route('/products/new')]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
-    {
-        $entity = $this->repository->createNew();
-        $combinable = $request->query->has('combinable');
-
-        $form = $this->createForm(ProductType::class, $entity, compact('combinable'));
-        $form->add('submit', SubmitType::class);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($entity);
-            $entityManager->flush();
-
-            $this->addFlash('success', 'Your changes were saved!');
-
-            return $this->redirectToRoute('app_product_index');
-        }
-
-        return $this->render('product/form.html.twig', [
-            'form' => $form,
-        ]);
-    }
-
-    #[Route('/products/{id<\d+>}/edit')]
-    public function edit(Request $request, EntityManagerInterface $entityManager, int $id): Response
-    {
-        $entity = $this->repository->find($id)
-            ?? throw $this->createNotFoundException();
-
-        $form = $this->createForm(ProductType::class, $entity);
-        $form->add('save', SubmitType::class);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
-            $this->addFlash('success', 'Your changes were saved!');
-
-            return $this->redirectToRoute('app_product_index');
-        }
-
-        return $this->render('product/form.html.twig', [
-            'form' => $form,
-        ]);
-    }
-
-    #[Route('/products/{id<\d+>}/delete')]
-    public function delete(EntityManagerInterface $entityManager, int $id): Response
-    {
-        $entity = $this->repository->find($id)
-            ?? throw $this->createNotFoundException();
-
-        $entityManager->remove($entity);
-        $entityManager->flush();
-
-        $this->addFlash('success', 'The resource has been deleted successfully!');
-
-        return $this->redirectToRoute('app_product_index');
-    }
-
-    #[Route('/products/{id<\d+>}/variants')]
+    #[Route('/{id<\d+>}/variants', methods: ['GET', 'POST'])]
     public function variants(Request $request, EntityManagerInterface $entityManager, int $id): Response
     {
         $entity = $this->repository->find($id)
@@ -109,12 +63,7 @@ class ProductController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            try {
-                $entityManager->flush();
-                $this->addFlash('success', 'Your changes were saved!');
-            } catch (OptimisticLockException $th) {
-                $this->addFlash('danger', $th->getMessage());
-            }
+            $entityManager->flush();
 
             return $this->redirectToRoute('app_product_variants', ['id' => $entity->getId()]);
         }
@@ -124,7 +73,7 @@ class ProductController extends AbstractController
         ]);
     }
 
-    #[Route('/products/ProductType')]
+    #[Route('/ProductType')]
     public function ProductType(Request $request): Response
     {
         $form = $this->createForm(ProductType::class)
@@ -141,7 +90,7 @@ class ProductController extends AbstractController
         ]);
     }
 
-    #[Route('/products/ProductOptionType')]
+    #[Route('/ProductOptionType')]
     public function ProductOptionType(Request $request): Response
     {
         $form = $this->createForm(ProductOptionType::class)
@@ -158,7 +107,7 @@ class ProductController extends AbstractController
         ]);
     }
 
-    #[Route('/products/ProductOptionValueType')]
+    #[Route('/ProductOptionValueType')]
     public function ProductOptionValueType(Request $request): Response
     {
         $form = $this->createForm(ProductOptionValueType::class)
@@ -175,7 +124,7 @@ class ProductController extends AbstractController
         ]);
     }
 
-    #[Route('/products/ProductVariantCollectionType')]
+    #[Route('/ProductVariantCollectionType')]
     public function ProductVariantCollectionType(Request $request): Response
     {
         $entity = $this->repository->createNew();
@@ -194,7 +143,7 @@ class ProductController extends AbstractController
         ]);
     }
 
-    #[Route('/products/ProductVariantType')]
+    #[Route('/ProductVariantType')]
     public function ProductVariantType(Request $request): Response
     {
         $form = $this->createForm(ProductVariantType::class)

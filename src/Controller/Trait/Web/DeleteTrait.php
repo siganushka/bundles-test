@@ -32,6 +32,8 @@ trait DeleteTrait
         if ($csrfTokenManager->isTokenValid($csrfToken)) {
             $em->remove($entity);
             $em->flush();
+        } else {
+            $this->addFlash('danger', 'Invalid csrf token.');
         }
 
         $route = \sprintf('app_%s_index', $this->controllerAlias);

@@ -22,7 +22,7 @@
       <td class="text-nowrap">{{ _item.width and _item.height ? _item.width ~ '*' ~ _item.height : '-' }}</td>
       <td class="text-nowrap">{{ _item.createdAt|intl_date }}</td>
       <td class="text-nowrap">
-        <a href="{{ path('app_media_delete', {hash: _item.hash}) }}" onclick="return confirm('{{ 'generic.delete_confirmation'|trans }}')">{{ 'generic.delete'|trans }}</a>
+        <a href="{{ path('app_media_delete', {_id: _item.hash, _token: csrf_token('delete' ~ _item.hash)}) }}" onclick="return confirm('{{ 'generic.delete_confirmation'|trans }}')">{{ 'generic.delete'|trans }}</a>
       </td>
     {% endblock %}
   {% endembed %}

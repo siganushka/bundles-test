@@ -30,7 +30,7 @@
             {% if _item.options|length %}
               <small class="fs-sm text-secondary">
                 {% for option in _item.options %}
-                  <a href="{{ path('app_productoption_edit', {id: option.id}) }}" class="text-reset text-decoration-none">
+                  <a href="{{ path('app_productoption_edit', {_id: option.id}) }}" class="text-reset text-decoration-none">
                     {{ option.name }} ({{ option.values|length }})
                   </a>
                 {% endfor %}
@@ -50,8 +50,8 @@
           {{ 'product.variants'|trans }}
           <small>({{ _variants|length }}/{{ _item.variants|length ?: 1 }})</small>
         </a>
-        <a href="{{ path('app_product_edit', {id: _item.id}) }}">{{ 'generic.edit'|trans }}</a>
-        <a href="{{ path('app_product_delete', {id: _item.id}) }}" onclick="return confirm('{{ 'generic.delete_confirmation'|trans }}')">{{ 'generic.delete'|trans }}</a>
+        <a href="{{ path('app_product_edit', {_id: _item.id}) }}">{{ 'generic.edit'|trans }}</a>
+        <a href="{{ path('app_product_delete', {_id: _item.id, _token: csrf_token('delete' ~ _item.id)}) }}" onclick="return confirm('{{ 'generic.delete_confirmation'|trans }}')">{{ 'generic.delete'|trans }}</a>
       </td>
     {% endblock %}
   {% endembed %}

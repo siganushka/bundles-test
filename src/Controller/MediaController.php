@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use Doctrine\ORM\EntityManagerInterface;
-use Knp\Component\Pager\PaginatorInterface;
+use App\Controller\Trait\Web\DeleteTrait;
+use App\Controller\Trait\Web\IndexTrait;
+use App\Entity\Media;
 use Siganushka\MediaBundle\Form\MediaUploadType;
 use Siganushka\MediaBundle\Form\Type\MediaType;
 use Siganushka\MediaBundle\Repository\MediaRepository;
@@ -16,38 +17,21 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
+#[Route('/media', requirements: ['_id' => '[0-9a-fA-F]{32}'])]
 class MediaController extends AbstractController
 {
-    public function __construct(protected readonly MediaRepository $repository)
+    use IndexTrait;
+    use DeleteTrait;
+
+    public function __construct()
     {
+        $this->configureCrud(
+            entityFqcn: Media::class,
+            entityIdentifier: 'hash',
+        );
     }
 
-    #[Route('/media')]
-    public function index(PaginatorInterface $paginator): Response
-    {
-        $queryBuilder = $this->repository->createQueryBuilderWithOrderBy('m');
-        $pagination = $paginator->paginate($queryBuilder);
-
-        return $this->render('media/index.html.twig', [
-            'pagination' => $pagination,
-        ]);
-    }
-
-    #[Route('/media/{hash}/delete')]
-    public function delete(EntityManagerInterface $entityManager, string $hash): Response
-    {
-        $entity = $this->repository->findOneByHash($hash)
-            ?? throw $this->createNotFoundException();
-
-        $entityManager->remove($entity);
-        $entityManager->flush();
-
-        $this->addFlash('success', 'The resource has been deleted successfully!');
-
-        return $this->redirectToRoute('app_media_index');
-    }
-
-    #[Route('/media/MediaUploadType')]
+    #[Route('/MediaUploadType')]
     public function MediaUploadType(Request $request): Response
     {
         $form = $this->createForm(MediaUploadType::class)
@@ -64,10 +48,10 @@ class MediaController extends AbstractController
         ]);
     }
 
-    #[Route('/media/MediaType')]
-    public function MediaType(Request $request): Response
+    #[Route('/MediaType')]
+    public function MediaType(Request $request, MediaRepository $repository): Response
     {
-        $media = $this->repository->findAll();
+        $media = $repository->findAll();
         $data = [
             'media1' => $media[0] ?? null,
             'media3' => $media[0] ?? null,

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use Siganushka\MediaBundle\Repository\MediaRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,10 +12,6 @@ use Symfony\Component\Security\Core\User\InMemoryUser;
 
 class AdminController extends AbstractController
 {
-    public function __construct(protected readonly MediaRepository $repository)
-    {
-    }
-
     #[Route('/admin/dashboard')]
     public function dashboard(?Security $security): Response
     {

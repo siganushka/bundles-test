@@ -10,14 +10,13 @@ use App\Controller\Trait\GetItemTrait;
 use App\Controller\Trait\PostCollectionTrait;
 use App\Controller\Trait\PutItemTrait;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\Routing\Requirement\Requirement;
 
-#[Route('/api/test-crud-routes', requirements: ['_id' => Requirement::DIGITS])]
+#[Route('tests')]
 class TestController
 {
     use GetCollectionTrait;
-    use GetItemTrait;
     use PostCollectionTrait;
+    use GetItemTrait;
     use PutItemTrait;
     use DeleteItemTrait;
 }
