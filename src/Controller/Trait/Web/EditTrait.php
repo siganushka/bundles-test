@@ -19,7 +19,7 @@ trait EditTrait
 {
     use HttpOperationTrait;
 
-    #[Route('/{_id}/edit')]
+    #[Route('/{_id<\d+>}/edit', methods: ['GET', 'POST'])]
     public function edit(
         Request $request,
         EntityManagerInterface $em,
@@ -31,7 +31,7 @@ trait EditTrait
         $entity = $this->findEntity($em, $_id);
 
         $form = $factory->create($this->entityForm, $entity);
-        $form->add('submit', SubmitType::class);
+        $form->add('submit', SubmitType::class, ['label' => 'generic.save']);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

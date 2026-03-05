@@ -4,96 +4,40 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use Doctrine\ORM\EntityManagerInterface;
-use Knp\Component\Pager\PaginatorInterface;
+use App\Controller\Trait\Web\DeleteTrait;
+use App\Controller\Trait\Web\EditTrait;
+use App\Controller\Trait\Web\IndexTrait;
+use App\Controller\Trait\Web\NewTrait;
+use App\Controller\Trait\Web\ShowTrait;
+use App\Entity\User;
 use Siganushka\UserBundle\Form\ChangePasswordType;
 use Siganushka\UserBundle\Form\RegistrationType;
 use Siganushka\UserBundle\Form\ResetPasswordType;
 use Siganushka\UserBundle\Form\UserType;
-use Siganushka\UserBundle\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
+#[Route('/users')]
 class UserController extends AbstractController
 {
-    public function __construct(protected readonly UserRepository $repository)
+    use IndexTrait;
+    use NewTrait;
+    use ShowTrait;
+    use EditTrait;
+    use DeleteTrait;
+
+    public function __construct()
     {
+        $this->configureCrud(
+            entityFqcn: User::class,
+            entityForm: UserType::class,
+        );
     }
 
-    #[Route('/users')]
-    public function index(PaginatorInterface $paginator): Response
-    {
-        $queryBuilder = $this->repository->createQueryBuilderWithOrderBy('u');
-        $pagination = $paginator->paginate($queryBuilder);
-
-        return $this->render('user/index.html.twig', [
-            'pagination' => $pagination,
-        ]);
-    }
-
-    #[Route('/users/new')]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
-    {
-        $entity = $this->repository->createNew();
-
-        $form = $this->createForm(UserType::class, $entity);
-        $form->add('submit', SubmitType::class);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($entity);
-            $entityManager->flush();
-
-            $this->addFlash('success', 'Your changes were saved!');
-
-            return $this->redirectToRoute('app_user_index');
-        }
-
-        return $this->render('user/form.html.twig', [
-            'form' => $form,
-        ]);
-    }
-
-    #[Route('/users/{id<\d+>}/edit')]
-    public function edit(Request $request, EntityManagerInterface $entityManager, int $id): Response
-    {
-        $entity = $this->repository->find($id)
-            ?? throw $this->createNotFoundException();
-
-        $form = $this->createForm(UserType::class, $entity);
-        $form->add('submit', SubmitType::class);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
-            $this->addFlash('success', 'Your changes were saved!');
-
-            return $this->redirectToRoute('app_user_index');
-        }
-
-        return $this->render('user/form.html.twig', [
-            'form' => $form,
-        ]);
-    }
-
-    #[Route('/users/{id<\d+>}/delete')]
-    public function delete(EntityManagerInterface $entityManager, int $id): Response
-    {
-        $entity = $this->repository->find($id)
-            ?? throw $this->createNotFoundException();
-
-        $entityManager->remove($entity);
-        $entityManager->flush();
-
-        $this->addFlash('success', 'The resource has been deleted successfully!');
-
-        return $this->redirectToRoute('app_user_index');
-    }
-
-    #[Route('/users/UserType')]
+    #[Route('/UserType')]
     public function UserType(Request $request): Response
     {
         $form = $this->createForm(UserType::class)
@@ -110,7 +54,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/users/RegistrationType')]
+    #[Route('/RegistrationType')]
     public function RegistrationType(Request $request): Response
     {
         $form = $this->createForm(RegistrationType::class)
@@ -127,7 +71,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/users/ChangePasswordType')]
+    #[Route('/ChangePasswordType')]
     public function ChangePasswordType(Request $request): Response
     {
         $form = $this->createForm(ChangePasswordType::class)
@@ -144,7 +88,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/users/ResetPasswordType')]
+    #[Route('/ResetPasswordType')]
     public function ResetPasswordType(Request $request): Response
     {
         $form = $this->createForm(ResetPasswordType::class)

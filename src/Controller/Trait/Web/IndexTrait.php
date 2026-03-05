@@ -16,7 +16,7 @@ trait IndexTrait
 {
     use HttpOperationTrait;
 
-    #[Route]
+    #[Route(methods: 'GET')]
     public function index(
         Request $request,
         EntityManagerInterface $em,

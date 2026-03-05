@@ -30,8 +30,9 @@
       </td>
       <td class="text-nowrap">{{ _item.createdAt|intl_date }}</td>
       <td class="text-nowrap">
-        <a href="{{ path('app_user_edit', {id: _item.id}) }}">{{ 'generic.edit'|trans }}</a>
-        <a href="{{ path('app_user_delete', {id: _item.id}) }}" onclick="return confirm('{{ 'generic.delete_confirmation'|trans }}')">{{ 'generic.delete'|trans }}</a>
+        <a href="{{ path('app_user_show', {_id: _item.id}) }}">{{ 'generic.show'|trans }}</a>
+        <a href="{{ path('app_user_edit', {_id: _item.id}) }}">{{ 'generic.edit'|trans }}</a>
+        <a href="{{ path('app_user_delete', {_id: _item.id, _token: csrf_token('delete' ~ _item.id)}) }}" onclick="return confirm('{{ 'generic.delete_confirmation'|trans }}')">{{ 'generic.delete'|trans }}</a>
       </td>
     {% endblock %}
   {% endembed %}

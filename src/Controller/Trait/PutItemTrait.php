@@ -17,7 +17,7 @@ trait PutItemTrait
 {
     use HttpOperationTrait;
 
-    #[Route('/{_id}', methods: ['PUT', 'PATCH'])]
+    #[Route('/{_id<\d+>}', methods: ['PUT', 'PATCH'])]
     public function putItem(
         Request $request,
         EntityManagerInterface $em,

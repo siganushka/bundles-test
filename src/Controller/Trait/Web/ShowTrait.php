@@ -14,7 +14,7 @@ trait ShowTrait
 {
     use HttpOperationTrait;
 
-    #[Route('/{_id}')]
+    #[Route('/{_id<\d+>}', methods: 'GET')]
     public function show(EntityManagerInterface $em, Environment $twig, string $_id): Response
     {
         $entity = $this->findEntity($em, $_id);

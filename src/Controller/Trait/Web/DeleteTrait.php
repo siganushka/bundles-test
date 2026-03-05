@@ -18,7 +18,7 @@ trait DeleteTrait
 {
     use HttpOperationTrait;
 
-    #[Route('/{_id}/delete')]
+    #[Route('/{_id<\d+>}/delete', methods: 'GET')]
     public function delete(
         Request $request,
         EntityManagerInterface $em,
@@ -28,7 +28,7 @@ trait DeleteTrait
     ): Response {
         $entity = $this->findEntity($em, $_id);
 
-        $csrfToken = new CsrfToken('delete'.$_id, $request->getPayload()->getString('_token'));
+        $csrfToken = new CsrfToken('delete'.$_id, $request->query->getString('_token'));
         if ($csrfTokenManager->isTokenValid($csrfToken)) {
             $em->remove($entity);
             $em->flush();

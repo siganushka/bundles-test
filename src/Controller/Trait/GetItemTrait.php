@@ -15,7 +15,7 @@ trait GetItemTrait
 {
     use HttpOperationTrait;
 
-    #[Route('/{_id}', methods: 'GET')]
+    #[Route('/{_id<\d+>}', methods: 'GET')]
     public function getItem(EntityManagerInterface $em, SerializerInterface $serializer, string $_id): Response
     {
         $entity = $this->findEntity($em, $_id);

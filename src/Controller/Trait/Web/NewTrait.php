@@ -19,7 +19,7 @@ trait NewTrait
 {
     use HttpOperationTrait;
 
-    #[Route('/new')]
+    #[Route('/new', methods: ['GET', 'POST'])]
     public function new(
         Request $request,
         EntityManagerInterface $em,

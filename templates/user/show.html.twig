@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<p>
+  <a href="{{ path('app_user_index') }}" class="btn btn-secondary">{{ 'generic.back'|trans }}</a>
+</p>
+<table class="table">
+  <tr>
+    <th class="text-end" width="20%">{{ 'Identifier'|trans([], 'SiganushkaUserBundle') }}</th>
+    <td width="80%"><code class="user-select-all">{{ entity.identifier }}</code></td>
+  </tr>
+  <tr>
+    <th class="text-end">{{ 'Last Login Ip'|trans([], 'SiganushkaUserBundle') }}</th>
+    <td>{{ entity.lastLoginIp ?? '-' }}</td>
+  </tr>
+  <tr>
+    <th class="text-end">{{ 'Last Login At'|trans([], 'SiganushkaUserBundle') }}</th>
+    <td>{{ entity.lastLoginAt ?? '-' }}</td>
+  </tr>
+  <tr>
+    <th class="text-end">{{ 'generic.enable'|trans }}</th>
+    <td>
+      {% if entity.enabled %}
+        <span class="badge bg-success">{{ 'generic.yes'|trans }}</span>
+      {% else %}
+        <span class="badge bg-danger">{{ 'generic.no'|trans }}</span>
+      {% endif %}
+    </td>
+  </tr>
+ <tr>
+    <th class="text-end">{{ 'generic.created_at'|trans }}</th>
+    <td>{{ entity.createdAt|intl_date }}</td>
+  </tr>
+</table>
+{% endblock %}

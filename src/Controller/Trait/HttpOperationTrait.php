@@ -45,8 +45,8 @@ trait HttpOperationTrait
         $this->entityForm = $entityForm ?? FormType::class;
         $this->entityIdentifier = $entityIdentifier ?? 'id';
         $this->entityAlias = $entityAlias ?? $this->generateAlias($entityFqcn);
-        $this->controllerAlias = $controllerAlias ?? str_replace('_', '', rtrim($this->generateAlias($this), '_controller'));
-        $this->templateAlias = $templateAlias ?? rtrim($this->generateAlias($this), '_controller');
+        $this->controllerAlias = $controllerAlias ?? str_replace(['_controller', '_'], '', $this->generateAlias($this));
+        $this->templateAlias = $templateAlias ?? str_replace('_controller', '', $this->generateAlias($this));
     }
 
     protected function createQueryBuilderForRequest(Request $request, EntityManagerInterface $em): QueryBuilder
