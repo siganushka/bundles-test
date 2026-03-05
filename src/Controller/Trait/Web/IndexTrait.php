@@ -17,8 +17,12 @@ trait IndexTrait
     use HttpOperationTrait;
 
     #[Route]
-    public function index(Request $request, EntityManagerInterface $em, Environment $twig, PaginatorInterface $paginator): Response
-    {
+    public function index(
+        Request $request,
+        EntityManagerInterface $em,
+        Environment $twig,
+        PaginatorInterface $paginator,
+    ): Response {
         $qb = $this->createQueryBuilderForRequest($request, $em);
         $pagination = $paginator->paginate($qb);
 

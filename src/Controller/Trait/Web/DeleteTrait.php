@@ -23,7 +23,8 @@ trait DeleteTrait
         Request $request,
         EntityManagerInterface $em,
         CsrfTokenManagerInterface $csrfTokenManager,
-        UrlGeneratorInterface $urlGenerator, string $_id,
+        UrlGeneratorInterface $urlGenerator,
+        string $_id,
     ): Response {
         $entity = $this->findEntity($em, $_id);
 

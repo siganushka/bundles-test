@@ -18,8 +18,12 @@ trait GetCollectionTrait
     use HttpOperationTrait;
 
     #[Route(methods: 'GET')]
-    public function getCollection(Request $request, EntityManagerInterface $em, SerializerInterface $serializer, PaginatorInterface $paginator): Response
-    {
+    public function getCollection(
+        Request $request,
+        EntityManagerInterface $em,
+        SerializerInterface $serializer,
+        PaginatorInterface $paginator,
+    ): Response {
         $qb = $this->createQueryBuilderForRequest($request, $em);
         $pagination = $paginator->paginate($qb);
 
