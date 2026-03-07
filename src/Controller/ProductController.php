@@ -21,7 +21,9 @@ use Siganushka\ProductBundle\Form\ProductVariantType;
 use Siganushka\ProductBundle\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -36,8 +38,9 @@ class ProductController extends AbstractController
     use DeleteTrait;
 
     public function __construct(
+        protected readonly ProductRepository $repository,
         protected readonly DenormalizerInterface $denormalizer,
-        protected readonly ProductRepository $repository)
+        protected readonly RequestStack $requestStack)
     {
         $this->configureCrud(
             entityFqcn: Product::class,
@@ -45,11 +48,19 @@ class ProductController extends AbstractController
         );
     }
 
-    protected function createQueryBuilderForRequest(Request $request, EntityManagerInterface $em): QueryBuilder
+    private function createEntityQueryBuilder(string $alias): QueryBuilder
     {
-        $dto = $this->denormalizer->denormalize($request->query->all(), ProductQueryDto::class, 'csv');
+        $data = $this->requestStack->getCurrentRequest()?->query->all() ?? [];
+        $dto = $this->denormalizer->denormalize($data, ProductQueryDto::class, 'csv');
 
-        return $this->repository->createQueryBuilderByDto('p', $dto);
+        return $this->repository->createQueryBuilderByDto($alias, $dto);
+    }
+
+    private function createEntityForm(object $data, array $options = []): FormInterface
+    {
+        $options['combinable'] = $this->requestStack->getCurrentRequest()?->query->has('combinable') ?? false;
+
+        return $this->createForm($this->entityForm, $data, $options);
     }
 
     #[Route('/{id<\d+>}/variants', methods: ['GET', 'POST'])]

@@ -8,12 +8,21 @@ use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\QueryBuilder;
 use Siganushka\GenericBundle\Repository\GenericEntityRepository;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
+use Symfony\Component\Form\FormFactoryInterface;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormTypeInterface;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
+use Symfony\Contracts\Service\Attribute\Required;
 
 trait HttpOperationTrait
 {
+    #[Required]
+    public EntityManagerInterface $entityManager;
+
+    #[Required]
+    public FormFactoryInterface $formFactory;
+
     /**
      * @var class-string<object>
      */
@@ -28,6 +37,8 @@ trait HttpOperationTrait
     private string $entityAlias;
     private string $controllerAlias;
     private string $templateAlias;
+    private array $serializerCollectionContext;
+    private array $serializerItemContext;
 
     /**
      * @param class-string<object>                 $entityFqcn
@@ -40,45 +51,56 @@ trait HttpOperationTrait
         ?string $entityAlias = null,
         ?string $controllerAlias = null,
         ?string $templateAlias = null,
+        ?array $serializerCollectionContext = null,
+        ?array $serializerItemContext = null,
     ): void {
         $this->entityFqcn = $entityFqcn;
         $this->entityForm = $entityForm ?? FormType::class;
         $this->entityIdentifier = $entityIdentifier ?? 'id';
-        $this->entityAlias = $entityAlias ?? $this->generateAlias($entityFqcn);
-        $this->controllerAlias = $controllerAlias ?? str_replace(['_controller', '_'], '', $this->generateAlias($this));
-        $this->templateAlias = $templateAlias ?? str_replace('_controller', '', $this->generateAlias($this));
+        $this->entityAlias = $entityAlias ?? self::generateAlias($entityFqcn);
+        $this->controllerAlias = $controllerAlias ?? str_replace(['_controller', '_'], '', self::generateAlias($this));
+        $this->templateAlias = $templateAlias ?? str_replace('_controller', '', self::generateAlias($this));
+        $this->serializerCollectionContext = $serializerCollectionContext ?? [AbstractNormalizer::GROUPS => \sprintf('%s:collection', $this->entityAlias)];
+        $this->serializerItemContext = $serializerItemContext ?? [AbstractNormalizer::GROUPS => \sprintf('%s:item', $this->entityAlias)];
     }
 
-    protected function createQueryBuilderForRequest(Request $request, EntityManagerInterface $em): QueryBuilder
+    private function createEntityQueryBuilder(string $alias): QueryBuilder
     {
-        $repository = $em->getRepository($this->entityFqcn);
+        $er = $this->entityManager->getRepository($this->entityFqcn);
 
-        return $repository instanceof GenericEntityRepository
-            ? $repository->createQueryBuilderWithOrderBy('entity')
-            : $repository->createQueryBuilder('entity');
+        return $er instanceof GenericEntityRepository
+            ? $er->createQueryBuilderWithOrderBy($alias)
+            : $er->createQueryBuilder($alias);
     }
 
-    protected function createEntity(EntityManagerInterface $em): object
+    private function createEntity(): object
     {
-        $repository = $em->getRepository($this->entityFqcn);
+        $er = $this->entityManager->getRepository($this->entityFqcn);
 
-        return $repository instanceof GenericEntityRepository
-            ? $repository->createNew()
-            : (new \ReflectionClass($repository->getClassName()))->newInstance();
+        return $er instanceof GenericEntityRepository
+            ? $er->createNew()
+            : (new \ReflectionClass($er->getClassName()))->newInstance();
     }
 
-    protected function findEntity(EntityManagerInterface $em, string $_id): object
+    private function findEntity(string $_id): object
     {
-        $entity = $em->getRepository($this->entityFqcn)->findOneBy([$this->entityIdentifier => $_id])
+        $er = $this->entityManager->getRepository($this->entityFqcn);
+
+        $entity = $er->findOneBy([$this->entityIdentifier => $_id])
             ?? throw new NotFoundHttpException('Not Found');
 
         return $entity;
     }
 
+    private function createEntityForm(object $data, array $options = []): FormInterface
+    {
+        return $this->formFactory->create($this->entityForm, $data, $options);
+    }
+
     /**
      * @param object|class-string $objectOrClass
      */
-    private function generateAlias(object|string $objectOrClass): string
+    private static function generateAlias(object|string $objectOrClass): string
     {
         $ref = new \ReflectionClass($objectOrClass);
         /** @var string */

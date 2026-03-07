@@ -15,7 +15,7 @@ trait DeleteItemTrait
     #[Route('/{_id<\d+>}', methods: 'DELETE')]
     public function deleteItem(EntityManagerInterface $em, string $_id): Response
     {
-        $entity = $this->findEntity($em, $_id);
+        $entity = $this->findEntity($_id);
 
         $em->remove($entity);
         $em->flush();

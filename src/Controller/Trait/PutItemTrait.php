@@ -5,12 +5,10 @@ declare(strict_types=1);
 namespace App\Controller\Trait;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Component\Serializer\SerializerInterface;
 
 trait PutItemTrait
@@ -22,12 +20,11 @@ trait PutItemTrait
         Request $request,
         EntityManagerInterface $em,
         SerializerInterface $serializer,
-        FormFactoryInterface $factory,
         string $_id,
     ): Response {
-        $entity = $this->findEntity($em, $_id);
+        $entity = $this->findEntity($_id);
 
-        $form = $factory->create($this->entityForm, $entity);
+        $form = $this->createEntityForm($entity);
         $form->submit($request->getPayload()->all(), !$request->isMethod('PATCH'));
 
         if (!$form->isValid()) {
@@ -37,9 +34,7 @@ trait PutItemTrait
         $em->persist($entity);
         $em->flush();
 
-        $data = $serializer->serialize($entity, 'json', [
-            AbstractNormalizer::GROUPS => \sprintf('%s:item', $this->entityAlias),
-        ]);
+        $data = $serializer->serialize($entity, 'json', $this->serializerItemContext);
 
         return new JsonResponse($data, json: true);
     }

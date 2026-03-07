@@ -5,12 +5,10 @@ declare(strict_types=1);
 namespace App\Controller\Trait;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Component\Serializer\SerializerInterface;
 
 trait PostCollectionTrait
@@ -22,11 +20,10 @@ trait PostCollectionTrait
         Request $request,
         EntityManagerInterface $em,
         SerializerInterface $serializer,
-        FormFactoryInterface $factory,
     ): Response {
-        $entity = $this->createEntity($em);
+        $entity = $this->createEntity();
 
-        $form = $factory->create($this->entityForm, $entity);
+        $form = $this->createEntityForm($entity);
         $form->submit($request->getPayload()->all());
 
         if (!$form->isValid()) {
@@ -36,9 +33,7 @@ trait PostCollectionTrait
         $em->persist($entity);
         $em->flush();
 
-        $data = $serializer->serialize($entity, 'json', [
-            AbstractNormalizer::GROUPS => \sprintf('%s:item', $this->entityAlias),
-        ]);
+        $data = $serializer->serialize($entity, 'json', $this->serializerItemContext);
 
         return new JsonResponse($data, Response::HTTP_CREATED, json: true);
     }

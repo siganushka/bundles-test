@@ -26,7 +26,7 @@ trait DeleteTrait
         UrlGeneratorInterface $urlGenerator,
         string $_id,
     ): Response {
-        $entity = $this->findEntity($em, $_id);
+        $entity = $this->findEntity($_id);
 
         $csrfToken = new CsrfToken('delete'.$_id, $request->query->getString('_token'));
         if ($csrfTokenManager->isTokenValid($csrfToken)) {

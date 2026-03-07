@@ -7,7 +7,6 @@ namespace App\Controller\Trait\Web;
 use App\Controller\Trait\HttpOperationTrait;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -25,13 +24,12 @@ trait EditTrait
         EntityManagerInterface $em,
         Environment $twig,
         UrlGeneratorInterface $urlGenerator,
-        FormFactoryInterface $factory,
         string $_id,
     ): Response {
-        $entity = $this->findEntity($em, $_id);
+        $entity = $this->findEntity($_id);
 
-        $form = $factory->create($this->entityForm, $entity);
-        $form->add('submit', SubmitType::class, ['label' => 'generic.save']);
+        $form = $this->createEntityForm($entity);
+        $form->add('submit', SubmitType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
