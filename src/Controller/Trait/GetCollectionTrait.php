@@ -12,7 +12,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 trait GetCollectionTrait
 {
-    use HttpOperationTrait;
+    use OperationsTrait;
 
     #[Route(methods: 'GET')]
     public function getCollection(SerializerInterface $serializer, PaginatorInterface $paginator): Response
@@ -20,7 +20,7 @@ trait GetCollectionTrait
         $qb = $this->createEntityQueryBuilder('entity');
         $pagination = $paginator->paginate($qb);
 
-        $data = $serializer->serialize($pagination, 'json', $this->serializerCollectionContext);
+        $data = $serializer->serialize($pagination, 'json', $this->serializationCollectionContext);
 
         return new JsonResponse($data, json: true);
     }

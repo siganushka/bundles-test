@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller\Trait\Web;
 
-use App\Controller\Trait\HttpOperationTrait;
+use App\Controller\Trait\OperationsTrait;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -12,7 +12,7 @@ use Twig\Environment;
 
 trait IndexTrait
 {
-    use HttpOperationTrait;
+    use OperationsTrait;
 
     #[Route(methods: 'GET')]
     public function index(Environment $twig, PaginatorInterface $paginator): Response

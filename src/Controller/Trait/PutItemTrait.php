@@ -13,7 +13,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 trait PutItemTrait
 {
-    use HttpOperationTrait;
+    use OperationsTrait;
 
     #[Route('/{_id<\d+>}', methods: ['PUT', 'PATCH'])]
     public function putItem(
@@ -34,7 +34,7 @@ trait PutItemTrait
         $em->persist($entity);
         $em->flush();
 
-        $data = $serializer->serialize($entity, 'json', $this->serializerItemContext);
+        $data = $serializer->serialize($entity, 'json', $this->serializationItemContext);
 
         return new JsonResponse($data, json: true);
     }

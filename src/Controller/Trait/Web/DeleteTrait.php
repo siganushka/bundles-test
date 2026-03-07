@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller\Trait\Web;
 
-use App\Controller\Trait\HttpOperationTrait;
+use App\Controller\Trait\OperationsTrait;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,7 +16,7 @@ use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 
 trait DeleteTrait
 {
-    use HttpOperationTrait;
+    use OperationsTrait;
 
     #[Route('/{_id<\d+>}/delete', methods: 'GET')]
     public function delete(

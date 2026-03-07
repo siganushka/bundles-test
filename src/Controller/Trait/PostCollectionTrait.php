@@ -13,7 +13,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 trait PostCollectionTrait
 {
-    use HttpOperationTrait;
+    use OperationsTrait;
 
     #[Route(methods: 'POST')]
     public function postCollection(
@@ -33,7 +33,7 @@ trait PostCollectionTrait
         $em->persist($entity);
         $em->flush();
 
-        $data = $serializer->serialize($entity, 'json', $this->serializerItemContext);
+        $data = $serializer->serialize($entity, 'json', $this->serializationItemContext);
 
         return new JsonResponse($data, Response::HTTP_CREATED, json: true);
     }

@@ -15,7 +15,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Contracts\Service\Attribute\Required;
 
-trait HttpOperationTrait
+trait OperationsTrait
 {
     #[Required]
     public EntityManagerInterface $entityManager;
@@ -36,8 +36,8 @@ trait HttpOperationTrait
     private string $entityIdentifier;
     private string $controllerAlias;
     private string $templateAlias;
-    private array $serializerCollectionContext;
-    private array $serializerItemContext;
+    private array $serializationCollectionContext;
+    private array $serializationItemContext;
 
     /**
      * @param class-string<object>                 $entityFqcn
@@ -49,16 +49,16 @@ trait HttpOperationTrait
         ?string $entityIdentifier = null,
         ?string $controllerAlias = null,
         ?string $templateAlias = null,
-        ?array $serializerCollectionContext = null,
-        ?array $serializerItemContext = null,
+        ?array $serializationCollectionContext = null,
+        ?array $serializationItemContext = null,
     ): void {
         $this->entityFqcn = $entityFqcn;
         $this->entityForm = $entityForm ?? FormType::class;
         $this->entityIdentifier = $entityIdentifier ?? 'id';
         $this->controllerAlias = $controllerAlias ?? str_replace(['_controller', '_'], '', self::generateAlias($this));
         $this->templateAlias = $templateAlias ?? str_replace('_controller', '', self::generateAlias($this));
-        $this->serializerCollectionContext = $serializerCollectionContext ?? [AbstractNormalizer::GROUPS => \sprintf('%s:collection', self::generateAlias($entityFqcn))];
-        $this->serializerItemContext = $serializerItemContext ?? [AbstractNormalizer::GROUPS => \sprintf('%s:item', self::generateAlias($entityFqcn))];
+        $this->serializationCollectionContext = $serializationCollectionContext ?? [AbstractNormalizer::GROUPS => \sprintf('%s:collection', self::generateAlias($entityFqcn))];
+        $this->serializationItemContext = $serializationItemContext ?? [AbstractNormalizer::GROUPS => \sprintf('%s:item', self::generateAlias($entityFqcn))];
     }
 
     private function createEntityQueryBuilder(string $alias): QueryBuilder

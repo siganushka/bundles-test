@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace App\Controller\Trait\Web;
 
-use App\Controller\Trait\HttpOperationTrait;
+use App\Controller\Trait\OperationsTrait;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Twig\Environment;
 
 trait ShowTrait
 {
-    use HttpOperationTrait;
+    use OperationsTrait;
 
     #[Route('/{_id<\d+>}', methods: 'GET')]
     public function show(Environment $twig, string $_id): Response

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller\Trait\Web;
 
-use App\Controller\Trait\HttpOperationTrait;
+use App\Controller\Trait\OperationsTrait;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -16,7 +16,7 @@ use Twig\Environment;
 
 trait EditTrait
 {
-    use HttpOperationTrait;
+    use OperationsTrait;
 
     #[Route('/{_id<\d+>}/edit', methods: ['GET', 'POST'])]
     public function edit(

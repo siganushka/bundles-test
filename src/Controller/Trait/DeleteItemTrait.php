@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 trait DeleteItemTrait
 {
-    use HttpOperationTrait;
+    use OperationsTrait;
 
     #[Route('/{_id<\d+>}', methods: 'DELETE')]
     public function deleteItem(EntityManagerInterface $em, string $_id): Response

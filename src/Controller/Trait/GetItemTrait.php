@@ -11,14 +11,14 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 trait GetItemTrait
 {
-    use HttpOperationTrait;
+    use OperationsTrait;
 
     #[Route('/{_id<\d+>}', methods: 'GET')]
     public function getItem(SerializerInterface $serializer, string $_id): Response
     {
         $entity = $this->findEntity($_id);
 
-        $data = $serializer->serialize($entity, 'json', $this->serializerItemContext);
+        $data = $serializer->serialize($entity, 'json', $this->serializationItemContext);
 
         return new JsonResponse($data, json: true);
     }
