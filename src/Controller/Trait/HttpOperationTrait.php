@@ -34,7 +34,6 @@ trait HttpOperationTrait
     private string $entityForm;
 
     private string $entityIdentifier;
-    private string $entityAlias;
     private string $controllerAlias;
     private string $templateAlias;
     private array $serializerCollectionContext;
@@ -48,7 +47,6 @@ trait HttpOperationTrait
         string $entityFqcn,
         ?string $entityForm = null,
         ?string $entityIdentifier = null,
-        ?string $entityAlias = null,
         ?string $controllerAlias = null,
         ?string $templateAlias = null,
         ?array $serializerCollectionContext = null,
@@ -57,11 +55,10 @@ trait HttpOperationTrait
         $this->entityFqcn = $entityFqcn;
         $this->entityForm = $entityForm ?? FormType::class;
         $this->entityIdentifier = $entityIdentifier ?? 'id';
-        $this->entityAlias = $entityAlias ?? self::generateAlias($entityFqcn);
         $this->controllerAlias = $controllerAlias ?? str_replace(['_controller', '_'], '', self::generateAlias($this));
         $this->templateAlias = $templateAlias ?? str_replace('_controller', '', self::generateAlias($this));
-        $this->serializerCollectionContext = $serializerCollectionContext ?? [AbstractNormalizer::GROUPS => \sprintf('%s:collection', $this->entityAlias)];
-        $this->serializerItemContext = $serializerItemContext ?? [AbstractNormalizer::GROUPS => \sprintf('%s:item', $this->entityAlias)];
+        $this->serializerCollectionContext = $serializerCollectionContext ?? [AbstractNormalizer::GROUPS => \sprintf('%s:collection', self::generateAlias($entityFqcn))];
+        $this->serializerItemContext = $serializerItemContext ?? [AbstractNormalizer::GROUPS => \sprintf('%s:item', self::generateAlias($entityFqcn))];
     }
 
     private function createEntityQueryBuilder(string $alias): QueryBuilder
