@@ -50,15 +50,17 @@ class ProductController extends AbstractController
 
     private function createEntityQueryBuilder(string $alias): QueryBuilder
     {
-        $data = $this->requestStack->getCurrentRequest()?->query->all() ?? [];
-        $dto = $this->denormalizer->denormalize($data, ProductQueryDto::class, 'csv');
+        $queries = $this->requestStack->getCurrentRequest()?->query->all() ?? [];
+        $dto = $this->denormalizer->denormalize($queries, ProductQueryDto::class, 'csv');
 
         return $this->repository->createQueryBuilderByDto($alias, $dto);
     }
 
     private function createEntityForm(object $data, array $options = []): FormInterface
     {
-        $options['combinable'] = $this->requestStack->getCurrentRequest()?->query->getBoolean('combinable');
+        $options['combinable'] = $data instanceof Product && null !== $data->getId()
+            ? !$data->getOptions()->isEmpty()
+            : $this->requestStack->getCurrentRequest()?->query->getBoolean('combinable');
 
         return $this->createForm($this->entityForm, $data, $options);
     }
