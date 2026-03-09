@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Controller\Trait\DeleteItemTrait;
-use App\Controller\Trait\GetCollectionTrait;
-use App\Controller\Trait\GetItemTrait;
-use App\Controller\Trait\PostCollectionTrait;
-use App\Controller\Trait\PutItemTrait;
+use Siganushka\GenericBundle\Controller\Crud\DeleteItemTrait;
+use Siganushka\GenericBundle\Controller\Crud\GetCollectionTrait;
+use Siganushka\GenericBundle\Controller\Crud\GetItemTrait;
+use Siganushka\GenericBundle\Controller\Crud\PostCollectionTrait;
+use Siganushka\GenericBundle\Controller\Crud\PutItemTrait;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('tests')]
+#[Route('/rest/tests')]
 class TestController
 {
     use GetCollectionTrait;

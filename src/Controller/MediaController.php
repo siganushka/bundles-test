@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Controller\Trait\Web\DeleteTrait;
-use App\Controller\Trait\Web\IndexTrait;
+use App\Controller\Crud\DeleteTrait;
+use App\Controller\Crud\IndexTrait;
 use App\Entity\Media;
 use Siganushka\MediaBundle\Form\MediaUploadType;
 use Siganushka\MediaBundle\Form\Type\MediaType;

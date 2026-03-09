@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Controller\Trait\Web\EditTrait;
+use App\Controller\Crud\EditTrait;
 use App\Entity\ProductOption;
 use Siganushka\ProductBundle\Form\ProductOptionType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -20,7 +20,11 @@ class ProductOptionController extends AbstractController
         $this->configureCrud(
             entityFqcn: ProductOption::class,
             entityForm: ProductOptionType::class,
-            controllerAlias: 'product',
         );
+    }
+
+    private function getControllerAlias(): string
+    {
+        return 'product';
     }
 }

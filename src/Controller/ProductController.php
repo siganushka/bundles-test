@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Controller\Trait\Web\DeleteTrait;
-use App\Controller\Trait\Web\EditTrait;
-use App\Controller\Trait\Web\IndexTrait;
-use App\Controller\Trait\Web\NewTrait;
-use App\Controller\Trait\Web\ShowTrait;
+use App\Controller\Crud\DeleteTrait;
+use App\Controller\Crud\EditTrait;
+use App\Controller\Crud\IndexTrait;
+use App\Controller\Crud\NewTrait;
+use App\Controller\Crud\ShowTrait;
 use App\Entity\Product;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\QueryBuilder;

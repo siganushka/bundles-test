@@ -2,9 +2,8 @@
 
 declare(strict_types=1);
 
-namespace App\Controller\Trait\Web;
+namespace App\Controller\Crud;
 
-use App\Controller\Trait\OperationsTrait;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -16,7 +15,7 @@ use Twig\Environment;
 
 trait NewTrait
 {
-    use OperationsTrait;
+    use WebOperationsTrait;
 
     #[Route('/new', methods: ['GET', 'POST'])]
     public function new(
@@ -35,13 +34,13 @@ trait NewTrait
             $em->persist($entity);
             $em->flush();
 
-            $route = \sprintf('app_%s_index', $this->controllerAlias);
+            $route = \sprintf('app_%s_index', $this->getControllerAlias());
             $url = $urlGenerator->generate($route, []);
 
             return new RedirectResponse($url, Response::HTTP_SEE_OTHER);
         }
 
-        $template = \sprintf('%s/form.html.twig', $this->templateAlias);
+        $template = \sprintf('%s/form.html.twig', $this->getTemplateAlias());
         $content = $twig->render($template, ['form' => $form->createView()]);
 
         return new Response($content);

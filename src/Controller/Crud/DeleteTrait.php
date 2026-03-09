@@ -2,9 +2,8 @@
 
 declare(strict_types=1);
 
-namespace App\Controller\Trait\Web;
+namespace App\Controller\Crud;
 
-use App\Controller\Trait\OperationsTrait;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,7 +15,7 @@ use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 
 trait DeleteTrait
 {
-    use OperationsTrait;
+    use WebOperationsTrait;
 
     #[Route('/{_id<\d+>}/delete', methods: 'GET')]
     public function delete(
@@ -36,7 +35,7 @@ trait DeleteTrait
             $this->addFlash('danger', 'Invalid csrf token.');
         }
 
-        $route = \sprintf('app_%s_index', $this->controllerAlias);
+        $route = \sprintf('app_%s_index', $this->getControllerAlias());
         $url = $urlGenerator->generate($route, []);
 
         return new RedirectResponse($url, Response::HTTP_SEE_OTHER);
