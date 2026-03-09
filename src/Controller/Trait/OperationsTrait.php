@@ -83,10 +83,8 @@ trait OperationsTrait
     {
         $er = $this->entityManager->getRepository($this->entityFqcn);
 
-        $entity = $er->findOneBy([$this->entityIdentifier => $_id])
+        return $er->findOneBy([$this->entityIdentifier => $_id])
             ?? throw new NotFoundHttpException('Not Found');
-
-        return $entity;
     }
 
     private function createEntityForm(object $data, array $options = []): FormInterface
