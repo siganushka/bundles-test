@@ -8,7 +8,6 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\FlashBagAwareSessionInterface;
-use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Csrf\CsrfToken;
@@ -25,20 +24,23 @@ trait DeleteTrait
         $entity = $this->findEntity($_id);
 
         $token = new CsrfToken('delete'.$_id, $request->query->getString('_token'));
-        if (!$tokenManager->isTokenValid($token)) {
-            throw new AccessDeniedHttpException('Invalid csrf token.');
-        }
+        if ($tokenManager->isTokenValid($token)) {
+            $this->entityManager->remove($entity);
+            $this->entityManager->flush();
 
-        $this->entityManager->remove($entity);
-        $this->entityManager->flush();
+            $metadata = $this->entityManager->getClassMetadata($entity::class);
+            $identifier = $metadata->getFieldValue($entity, $metadata->getSingleIdentifierFieldName());
+
+            $type = 'success';
+            $message = new TranslatableMessage(\sprintf('Entity %s deleted successfully!', $entity::class), ['%_id%' => $identifier]);
+        } else {
+            $type = 'danger';
+            $message = new TranslatableMessage('Invalid csrf token.');
+        }
 
         $session = $request->getSession();
         if ($session instanceof FlashBagAwareSessionInterface) {
-            $metadata = $this->entityManager->getClassMetadata($entity::class);
-            $session->getFlashBag()->add('success', new TranslatableMessage(
-                \sprintf('Entity %s deleted successfully!', $entity::class),
-                ['%_id%' => $metadata->getFieldValue($entity, $metadata->getSingleIdentifierFieldName())],
-            ));
+            $session->getFlashBag()->add($type, $message);
         }
 
         $route = \sprintf('app_%s_index', $this->getControllerAlias());
