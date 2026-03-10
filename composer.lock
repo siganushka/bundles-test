@@ -3029,7 +3029,7 @@
             "dist": {
                 "type": "path",
                 "url": "../product-bundle",
-                "reference": "08de5656e9a5ac7768cb5c48ebb667666056b7b7"
+                "reference": "522886273d4886eb6e19d34c601ebda38e9bab1d"
             },
             "require": {
                 "bentools/cartesian-product": "^2.0",

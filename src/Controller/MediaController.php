@@ -26,7 +26,7 @@ class MediaController extends AbstractController
     public function __construct()
     {
         $this->configureCrud(
-            entityFqcn: Media::class,
+            entityName: Media::class,
             entityIdentifier: 'hash',
         );
     }

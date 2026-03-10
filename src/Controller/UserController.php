@@ -32,7 +32,7 @@ class UserController extends AbstractController
     public function __construct()
     {
         $this->configureCrud(
-            entityFqcn: User::class,
+            entityName: User::class,
             entityForm: UserType::class,
         );
     }

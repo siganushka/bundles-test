@@ -8,7 +8,7 @@ namespace App\Attribute;
 class Crud
 {
     public function __construct(
-        public readonly string $entityFqcn,
+        public readonly string $entityName,
         public readonly ?string $entityForm = null,
         public readonly ?string $entityIdentifier = null,
         public readonly ?string $entityAlias = null,

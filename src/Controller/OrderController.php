@@ -37,7 +37,7 @@ class OrderController extends AbstractController
     public function __construct(protected readonly OrderRepository $repository)
     {
         $this->configureCrud(
-            entityFqcn: Order::class,
+            entityName: Order::class,
             entityForm: OrderType::class,
             entityIdentifier: 'number',
         );

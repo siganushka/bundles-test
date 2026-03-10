@@ -43,7 +43,7 @@ class ProductController extends AbstractController
         protected readonly RequestStack $requestStack)
     {
         $this->configureCrud(
-            entityFqcn: Product::class,
+            entityName: Product::class,
             entityForm: ProductType::class,
         );
     }

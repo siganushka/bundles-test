@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Controller\Crud;
 
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,12 +17,8 @@ trait NewTrait
     use WebOperationsTrait;
 
     #[Route('/new', methods: ['GET', 'POST'])]
-    public function new(
-        Request $request,
-        EntityManagerInterface $em,
-        Environment $twig,
-        UrlGeneratorInterface $urlGenerator,
-    ): Response {
+    public function new(Request $request, Environment $twig, UrlGeneratorInterface $urlGenerator): Response
+    {
         $entity = $this->createEntity();
 
         $form = $this->createEntityForm($entity);
@@ -31,8 +26,8 @@ trait NewTrait
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em->persist($entity);
-            $em->flush();
+            $this->entityManager->persist($entity);
+            $this->entityManager->flush();
 
             $route = \sprintf('app_%s_index', $this->getControllerAlias());
             $url = $urlGenerator->generate($route, []);

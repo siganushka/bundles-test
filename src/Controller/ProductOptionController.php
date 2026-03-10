@@ -18,7 +18,7 @@ class ProductOptionController extends AbstractController
     public function __construct()
     {
         $this->configureCrud(
-            entityFqcn: ProductOption::class,
+            entityName: ProductOption::class,
             entityForm: ProductOptionType::class,
         );
     }

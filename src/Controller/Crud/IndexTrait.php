@@ -16,11 +16,17 @@ trait IndexTrait
     #[Route(methods: 'GET')]
     public function index(Environment $twig, PaginatorInterface $paginator): Response
     {
-        $qb = $this->createEntityQueryBuilder('entity');
-        $pagination = $paginator->paginate($qb);
+        $queryBuilder = $this->createEntityQueryBuilder('entity');
+        $query = $queryBuilder->getQuery();
+
+        if ($this->pagination) {
+            $context['pagination'] = $paginator->paginate($query);
+        } else {
+            $context['items'] = $query->getResult();
+        }
 
         $template = \sprintf('%s/%s.html.twig', $this->getTemplateAlias(), __FUNCTION__);
-        $content = $twig->render($template, compact('pagination'));
+        $content = $twig->render($template, $context);
 
         return new Response($content);
     }

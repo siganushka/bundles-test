@@ -27,9 +27,7 @@ class Kernel extends BaseKernel
     {
         parent::boot();
 
-        if (!Type::hasType('money')) {
-            /** @var string */
-            $currency = $_ENV['APP_CURRENCY'] ?? 'USD';
+        if (!Type::hasType('money') && \is_string($currency = $_ENV['APP_CURRENCY'] ?? 'USD')) {
             Type::addType('money', new BrickMoneyType($currency));
         }
     }

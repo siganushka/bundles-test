@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Controller\Crud;
 
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,13 +17,8 @@ trait EditTrait
     use WebOperationsTrait;
 
     #[Route('/{_id<\d+>}/edit', methods: ['GET', 'POST'])]
-    public function edit(
-        Request $request,
-        EntityManagerInterface $em,
-        Environment $twig,
-        UrlGeneratorInterface $urlGenerator,
-        string $_id,
-    ): Response {
+    public function edit(Request $request, Environment $twig, UrlGeneratorInterface $urlGenerator, string $_id): Response
+    {
         $entity = $this->findEntity($_id);
 
         $form = $this->createEntityForm($entity);
@@ -32,7 +26,7 @@ trait EditTrait
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em->flush();
+            $this->entityManager->flush();
 
             $route = \sprintf('app_%s_index', $this->getControllerAlias());
             $url = $urlGenerator->generate($route, []);

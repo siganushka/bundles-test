@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Controller\Crud;
 
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,19 +17,14 @@ trait DeleteTrait
     use WebOperationsTrait;
 
     #[Route('/{_id<\d+>}/delete', methods: 'GET')]
-    public function delete(
-        Request $request,
-        EntityManagerInterface $em,
-        CsrfTokenManagerInterface $csrfTokenManager,
-        UrlGeneratorInterface $urlGenerator,
-        string $_id,
-    ): Response {
+    public function delete(Request $request, CsrfTokenManagerInterface $csrfTokenManager, UrlGeneratorInterface $urlGenerator, string $_id): Response
+    {
         $entity = $this->findEntity($_id);
 
         $csrfToken = new CsrfToken('delete'.$_id, $request->query->getString('_token'));
         if ($csrfTokenManager->isTokenValid($csrfToken)) {
-            $em->remove($entity);
-            $em->flush();
+            $this->entityManager->remove($entity);
+            $this->entityManager->flush();
         } else {
             $this->addFlash('danger', 'Invalid csrf token.');
         }
