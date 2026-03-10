@@ -23,7 +23,7 @@ class ProductOptionController extends AbstractController
         );
     }
 
-    private function getControllerAlias(): string
+    protected function getControllerAlias(): string
     {
         return 'product';
     }
