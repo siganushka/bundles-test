@@ -59,13 +59,16 @@ trait OperationsTrait
             : $er->createQueryBuilder($alias);
     }
 
-    protected function createEntity(): object
+    /**
+     * @param mixed ...$args
+     */
+    protected function createEntity(...$args): object
     {
         $er = $this->entityManager->getRepository($this->entityName);
 
         return $er instanceof GenericEntityRepository
-            ? $er->createNew()
-            : (new \ReflectionClass($er->getClassName()))->newInstance();
+            ? $er->createNew($args)
+            : (new \ReflectionClass($er->getClassName()))->newInstanceArgs($args);
     }
 
     protected function findEntity(string $_id): object
