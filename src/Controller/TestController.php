@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Controller\Crud\DeleteItemTrait;
-use App\Controller\Crud\GetCollectionTrait;
-use App\Controller\Crud\GetItemTrait;
-use App\Controller\Crud\PostCollectionTrait;
-use App\Controller\Crud\PutItemTrait;
 use App\Entity\Product;
+use Siganushka\GenericBundle\Controller\Crud\DeleteItemTrait;
+use Siganushka\GenericBundle\Controller\Crud\GetCollectionTrait;
+use Siganushka\GenericBundle\Controller\Crud\GetItemTrait;
+use Siganushka\GenericBundle\Controller\Crud\PostCollectionTrait;
+use Siganushka\GenericBundle\Controller\Crud\PutItemTrait;
 use Siganushka\ProductBundle\Form\ProductType;
 use Symfony\Component\Routing\Attribute\Route;
 
