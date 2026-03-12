@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Controller\Crud\DeleteTrait;
-use App\Controller\Crud\EditTrait;
-use App\Controller\Crud\IndexTrait;
-use App\Controller\Crud\NewTrait;
-use App\Controller\Crud\ShowTrait;
 use App\Entity\Order;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
+use Siganushka\GenericBundle\Controller\Crud\Web\DeleteTrait;
+use Siganushka\GenericBundle\Controller\Crud\Web\EditTrait;
+use Siganushka\GenericBundle\Controller\Crud\Web\IndexTrait;
+use Siganushka\GenericBundle\Controller\Crud\Web\NewTrait;
+use Siganushka\GenericBundle\Controller\Crud\Web\ShowTrait;
 use Siganushka\OrderBundle\Dto\OrderQueryDto;
 use Siganushka\OrderBundle\Form\OrderItemType;
 use Siganushka\OrderBundle\Form\OrderType;

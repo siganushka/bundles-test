@@ -2786,7 +2786,7 @@
             "dist": {
                 "type": "path",
                 "url": "../generic-bundle",
-                "reference": "ee4379986c1a2dd4f4291fffa058021ab705bc0d"
+                "reference": "87db4ef5fde621e61c7d651999ce607dc4900286"
             },
             "require": {
                 "php": ">=8.2",
@@ -2802,6 +2802,8 @@
                 "symfony/form": "^7.4|^8.0",
                 "symfony/http-foundation": "^7.4|^8.0",
                 "symfony/intl": "^7.4|^8.0",
+                "symfony/security-core": "^7.4|^8.0",
+                "symfony/security-csrf": "^7.4|^8.0",
                 "symfony/serializer": "^7.4|^8.0",
                 "symfony/translation": "^7.4|^8.0",
                 "symfony/validator": "^7.4|^8.0",

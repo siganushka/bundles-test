@@ -4,14 +4,13 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Controller\Crud\DeleteTrait;
-use App\Controller\Crud\EditTrait;
-use App\Controller\Crud\IndexTrait;
-use App\Controller\Crud\NewTrait;
-use App\Controller\Crud\ShowTrait;
 use App\Entity\Product;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\QueryBuilder;
+use Siganushka\GenericBundle\Controller\Crud\Web\DeleteTrait;
+use Siganushka\GenericBundle\Controller\Crud\Web\EditTrait;
+use Siganushka\GenericBundle\Controller\Crud\Web\IndexTrait;
+use Siganushka\GenericBundle\Controller\Crud\Web\NewTrait;
 use Siganushka\ProductBundle\Dto\ProductQueryDto;
 use Siganushka\ProductBundle\Form\ProductOptionType;
 use Siganushka\ProductBundle\Form\ProductOptionValueType;
@@ -33,7 +32,6 @@ class ProductController extends AbstractController
 {
     use IndexTrait;
     use NewTrait;
-    use ShowTrait;
     use EditTrait;
     use DeleteTrait;
 
@@ -63,6 +61,14 @@ class ProductController extends AbstractController
             : $this->requestStack->getCurrentRequest()?->query->getBoolean('combinable');
 
         return $this->createForm($this->entityForm, $data, $options);
+    }
+
+    protected function isGrantedForOperation(string $operation): bool
+    {
+        return match ($operation) {
+            self::OPERATION_CREATE => true,
+            default => false,
+        };
     }
 
     #[Route('/{id<\d+>}/variants', methods: ['GET', 'POST'])]
