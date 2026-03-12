@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Entity\Order;
+use App\Repository\OrderRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Siganushka\GenericBundle\Controller\Crud\Web\DeleteTrait;
@@ -15,7 +16,6 @@ use Siganushka\GenericBundle\Controller\Crud\Web\ShowTrait;
 use Siganushka\OrderBundle\Dto\OrderQueryDto;
 use Siganushka\OrderBundle\Form\OrderItemType;
 use Siganushka\OrderBundle\Form\OrderType;
-use Siganushka\OrderBundle\Repository\OrderRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
