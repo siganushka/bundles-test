@@ -10,10 +10,6 @@
 controllers:
     resource: routing.controllers
 
-app_crud:
-    resource: .
-    type: crud
-
 siganushka_generic:
     resource: "@SiganushkaGenericBundle/config/routes.php"
 
