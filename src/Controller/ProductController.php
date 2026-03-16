@@ -56,9 +56,7 @@ class ProductController extends AbstractController
 
     protected function createEntityForm(object $data, array $options = []): FormInterface
     {
-        $options['combinable'] = $data instanceof Product && null !== $data->getId()
-            ? !$data->getOptions()->isEmpty()
-            : $this->requestStack->getCurrentRequest()?->query->getBoolean('combinable');
+        $options['combinable'] = $this->requestStack->getCurrentRequest()?->query->getBoolean('combinable');
 
         return $this->createForm($this->entityForm, $data, $options);
     }
@@ -66,7 +64,8 @@ class ProductController extends AbstractController
     protected function isGrantedForOperation(string $operation): bool
     {
         return match ($operation) {
-            self::OPERATION_CREATE => true,
+            self::OPERATION_CREATE,
+            self::OPERATION_UPDATE => true,
             default => false,
         };
     }
