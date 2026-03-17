@@ -25,7 +25,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 #[Route('/products')]
 class ProductController extends AbstractController
@@ -37,20 +36,17 @@ class ProductController extends AbstractController
 
     public function __construct(
         protected readonly ProductRepository $repository,
-        protected readonly DenormalizerInterface $denormalizer,
         protected readonly RequestStack $requestStack)
     {
         $this->configureCrud(
             entityName: Product::class,
             entityForm: ProductType::class,
+            queryDtoClass: ProductQueryDto::class,
         );
     }
 
-    protected function createEntityQueryBuilder(string $alias): QueryBuilder
+    protected function createEntityQueryBuilder(string $alias, ProductQueryDto $dto): QueryBuilder
     {
-        $queries = $this->requestStack->getCurrentRequest()?->query->all() ?? [];
-        $dto = $this->denormalizer->denormalize($queries, ProductQueryDto::class, 'csv');
-
         return $this->repository->createQueryBuilderByDto($alias, $dto);
     }
 
