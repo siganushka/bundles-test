@@ -25,6 +25,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Translation\TranslatableMessage;
 
 #[Route('/products')]
 class ProductController extends AbstractController
@@ -78,6 +79,9 @@ class ProductController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
+
+            $message = \sprintf('Entity %s updated successfully!', $entity::class);
+            $this->addFlashMessage($request, 'success', new TranslatableMessage($message, ['%_id%' => $id]));
 
             return $this->redirectToRoute('app_product_variants', ['id' => $entity->getId()]);
         }
