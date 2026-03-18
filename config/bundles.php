@@ -24,4 +24,5 @@ return [
     Siganushka\AdminBundle\SiganushkaAdminBundle::class => ['all' => true],
     Siganushka\TransactionBundle\SiganushkaTransactionBundle::class => ['all' => true],
     Siganushka\ApiFactoryBundle\SiganushkaApiFactoryBundle::class => ['all' => true],
+    Nelmio\CorsBundle\NelmioCorsBundle::class => ['all' => true],
 ];
