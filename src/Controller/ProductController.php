@@ -73,7 +73,7 @@ class ProductController extends AbstractController
         $entity = $this->repository->find($id)
             ?? throw $this->createNotFoundException();
 
-        $form = $this->createForm(ProductVariantCollectionType::class, $entity);
+        $form = $this->createForm(ProductVariantCollectionType::class, $entity, ['csrf_protection' => false]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

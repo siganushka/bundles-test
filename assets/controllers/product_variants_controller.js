@@ -39,7 +39,7 @@ export default class extends Controller {
     }).then(res => {
       modalBody.innerHTML = res
     }).catch(err => {
-      modalBody.innerHTML = `<p class="text-center text-danger m-0">${err}</p>`
+      modalBody.innerHTML = `<p class="alert alert-danger m-0">${err}</p>`
     })
   }
 
