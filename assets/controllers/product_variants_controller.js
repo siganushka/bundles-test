@@ -23,7 +23,7 @@ export default class extends Controller {
     modalTitle.innerText = name
     modalBody.innerHTML = `
       <div class="d-flex justify-content-center">
-        <div class="spinner-border text-primary" role="status">
+        <div class="spinner-border text-secondary" role="status">
           <span class="visually-hidden">Loading...</span>
         </div>
       </div>
@@ -38,7 +38,9 @@ export default class extends Controller {
         : Promise.reject(response.statusText)
     }).then(res => {
       modalBody.innerHTML = res
-    }).catch(err => alert(err))
+    }).catch(err => {
+      modalBody.innerHTML = `<p class="text-center text-danger m-0">${err}</p>`
+    })
   }
 
   submit(event) {
@@ -54,7 +56,7 @@ export default class extends Controller {
       body: new FormData(modalForm)
     }).then(async response => {
       modalBody.innerHTML = await response.text()
-    }).finally(() => {
+    }).catch(alert).finally(() => {
       event.target.disabled = false
     })
   }
