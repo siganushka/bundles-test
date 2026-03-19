@@ -13,7 +13,7 @@
         "doctrine/orm": "^3.6.2",
         "godruoyi/php-snowflake": "^3.2.2",
         "knplabs/knp-paginator-bundle": "^6.10",
-        "nelmio/cors-bundle": "^2.6",
+        "nelmio/cors-bundle": "^2.6.1",
         "obs/esdk-obs-php": "^3.24.9",
         "siganushka/admin-bundle": "dev-main",
         "siganushka/alipay-api": "dev-main",
@@ -45,21 +45,21 @@
         "symfony/runtime": "7.4.*",
         "symfony/security-bundle": "7.4.*",
         "symfony/serializer": "7.4.*",
-        "symfony/stimulus-bundle": "^2.32",
+        "symfony/stimulus-bundle": "^2.33",
         "symfony/stopwatch": "7.4.*",
         "symfony/translation": "7.4.*",
         "symfony/twig-bundle": "7.4.*",
-        "symfony/ux-autocomplete": "^2.32",
+        "symfony/ux-autocomplete": "^2.33",
         "symfony/validator": "7.4.*",
         "symfony/workflow": "7.4.*",
         "symfony/yaml": "7.4.*",
-        "twig/extra-bundle": "^3.23.0",
-        "twig/intl-extra": "^3.23.0"
+        "twig/extra-bundle": "^3.24.0",
+        "twig/intl-extra": "^3.24.0"
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^4.3.1",
         "symfony/debug-bundle": "7.4.*",
-        "symfony/maker-bundle": "^1.66.0",
+        "symfony/maker-bundle": "^1.67.0",
         "symfony/web-profiler-bundle": "7.4.*"
     },
     "config": {

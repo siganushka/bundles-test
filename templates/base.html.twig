@@ -107,11 +107,7 @@
               </ul>
             </div>
             <div class="col-lg-8 col-xl-9 col-xxl-10">
-              {% for label, messages in app.flashes %}
-                {% for message in messages %}
-                  <div class="alert alert-{{ label }}">{{ message|trans }}</div>
-                {% endfor %}
-              {% endfor %}
+              {% include 'flash.html.twig' %}
               {% block body %}{% endblock %}
             </div>
           </div>

@@ -74,7 +74,6 @@ class ProductController extends AbstractController
             ?? throw $this->createNotFoundException();
 
         $form = $this->createForm(ProductVariantCollectionType::class, $entity);
-        $form->add('submit', SubmitType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -82,11 +81,9 @@ class ProductController extends AbstractController
 
             $message = \sprintf('Entity %s updated successfully!', $entity::class);
             $this->addFlashMessage($request, 'success', new TranslatableMessage($message, ['%_id%' => $id]));
-
-            return $this->redirectToRoute('app_product_variants', ['id' => $entity->getId()]);
         }
 
-        return $this->render('product/form.html.twig', [
+        return $this->render('product/_product_variants_form.html.twig', [
             'form' => $form,
         ]);
     }
