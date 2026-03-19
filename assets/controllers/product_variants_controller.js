@@ -58,4 +58,12 @@ export default class extends Controller {
       event.target.disabled = false
     })
   }
+
+  onShow(event) {
+    event.target.inert = false
+  }
+
+  onHide(event) {
+    event.target.inert = true
+  }
 }
