@@ -21,8 +21,8 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
-#[AsCommand('app:xiaomi:data', 'Add xiaomi data.')]
-class XiaomiDataCommand extends Command
+#[AsCommand('app:collect:xiaomi', 'Collect xiaomi data.')]
+class CollectXiaomiCommand extends Command
 {
     private readonly HttpClientInterface $httpClient;
 
@@ -147,7 +147,6 @@ class XiaomiDataCommand extends Command
         }
 
         $this->entityManager->flush();
-        $this->entityManager->clear();
 
         return Command::SUCCESS;
     }
