@@ -9,6 +9,8 @@ security:
             memory:
                 users:
                     Siganushka: { password: test }
+        user_provider:
+            entity: { class: App\Entity\User, property: identifier }
 
     firewalls:
         dev:

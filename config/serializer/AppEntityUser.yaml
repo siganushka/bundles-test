@@ -6,10 +6,8 @@ App\Entity\User:
             groups: ['user:item', 'user:collection']
         password:
             groups: []
-        lastLoginIp:
-            groups: ['user:item', 'user:collection']
-        lastLoginAt:
-            groups: ['user:item', 'user:collection']
+        logins:
+            groups: []
         roles:
             groups: ['user:item', 'user:collection']
         userIdentifier:
