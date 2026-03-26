@@ -2851,7 +2851,7 @@
             "dist": {
                 "type": "path",
                 "url": "../generic-bundle",
-                "reference": "e6cbb7d1d22b76ca479d71e5f6ca64c6ee33ddf8"
+                "reference": "3bbe309f4831061faa53db46abbb919a0e831212"
             },
             "require": {
                 "php": ">=8.2",
@@ -3268,7 +3268,7 @@
             "dist": {
                 "type": "path",
                 "url": "../user-bundle",
-                "reference": "5f7a0a822f93ecda0243e50ec65480089f1d80d4"
+                "reference": "df44f0663b6424feec4b62f6be8c56400fbf007d"
             },
             "require": {
                 "knplabs/knp-components": "^5.0",

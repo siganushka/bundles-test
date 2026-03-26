@@ -40,6 +40,7 @@ class OrderController extends AbstractController
             entityName: Order::class,
             entityForm: OrderType::class,
             entityIdentifier: 'number',
+            transactionUsed: true,
         );
     }
 
