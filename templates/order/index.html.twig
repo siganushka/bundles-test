@@ -32,7 +32,6 @@
 
   {% embed 'table.html.twig' %}
     {% block th %}
-      <th class="text-nowrap">{{ knp_pagination_sortable(pagination, 'order.number'|trans, 'o.number') }}</th>
       <th class="text-nowrap">{{ 'order.items'|trans }}</th>
       <th class="text-nowrap">{{ knp_pagination_sortable(pagination, 'order.items_total'|trans, 'o.itemsTotal') }}</th>
       <th class="text-nowrap">{{ knp_pagination_sortable(pagination, 'order.adjustments_total'|trans, 'o.adjustmentsTotal') }}</th>
@@ -43,40 +42,57 @@
     {% endblock %}
 
     {% block td %}
-      <td class="text-nowrap"><code class="user-select-all">{{ _item.number }}</code></td>
-      <td class="text-nowrap">
-        <div class="d-flex flex-column row-gap-2">
-          {% for item in _item.items %}
-            {% include 'order/_items_entry.twig' with {item} only %}
-          {% endfor %}
-        </div>
-      </td>
-      <td class="text-nowrap">{{ _item.itemsTotal|intl_currency }}</td>
-      <td class="text-nowrap">{{ _item.adjustmentsTotal|intl_currency }}</td>
-      <td class="text-nowrap">{{ _item.total|intl_currency }}</td>
-      <td class="text-nowrap">
-        <span class="badge text-bg-{{ _item.state.theme }}">{{ _item.state|trans }}</span>
-      </td>
-      <td class="text-nowrap">{{ _item.createdAt|intl_date }}</td>
-      <td class="text-nowrap">
-        <div class="d-inline-block">
-          <a class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">流转</a>
-          <ul class="dropdown-menu dropdown-menu-end">
-            {% set _transitions = workflow_transitions(_item) %}
-            {% for transition in _transitions %}
-              {% if transition.name == 'reset' and _transitions|length > 1 %}
-                <li><hr class="dropdown-divider"></li>
-              {% endif %}
-              <li><a href="{{ path('app_order_workflow', {number: _item.number, transition: transition.name}) }}" class="dropdown-item{{ transition.name == 'reset' ? ' text-danger' }}">{{ transition.name }}</a></li>
-            {% else %}
-              <li><span class="dropdown-item disabled">No actions available.</span></li>
+        <td class="fs-sm" colspan="999" style="border-bottom-width: 0">
+          <span class="text-secondary">{{ 'order.number'|trans }}</span>
+          <code class="user-select-all">{{ _item.number }}</code>
+        </td>
+      </tr>
+      <tr>
+        <td class="text-nowrap">
+          {% set _items1 = _item.items|slice(0, 1) %}
+          {% set _items2 = _item.items|slice(1) %}
+          {% set _collapse_id = 'collapse-' ~ _item.number %}
+          <div class="d-flex flex-column row-gap-2">
+            {% for item in _items1 %}
+              {% include 'order/_items_entry.twig' with {item} only %}
             {% endfor %}
-          </ul>
-        </div>
-        <a href="{{ path('app_order_show', {_id: _item.number}) }}">{{ 'generic.detail'|trans }}</a>
-        <a href="{{ path('app_order_edit', {_id: _item.number}) }}">{{ 'generic.edit'|trans }}</a>
-        <a href="{{ path('app_order_delete', {_id: _item.number, _token: csrf_token('delete' ~ _item.number)}) }}" onclick="return confirm('{{ 'generic.delete_confirmation'|trans }}')">{{ 'generic.delete'|trans }}</a>
-      </td>
+
+            {% if _items2|length %}
+              <div class="collapse" id="{{ _collapse_id }}">
+                {% for item in _items2 %}
+                  {% include 'order/_items_entry.twig' with {item} only %}
+                {% endfor %}
+              </div>
+              <a href="#{{ _collapse_id }}" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="{{ _collapse_id }}" class="fs-sm lh-1" style="margin-left: 58px">{{ _item.items|length }} 个项目</a>
+            {% endif %}
+          </div>
+        </td>
+        <td class="text-nowrap">{{ _item.itemsTotal|intl_currency }}</td>
+        <td class="text-nowrap">{{ _item.adjustmentsTotal|intl_currency }}</td>
+        <td class="text-nowrap">{{ _item.total|intl_currency }}</td>
+        <td class="text-nowrap">
+          <span class="badge text-bg-{{ _item.state.theme }}">{{ _item.state|trans }}</span>
+        </td>
+        <td class="text-nowrap">{{ _item.createdAt|intl_date }}</td>
+        <td class="text-nowrap">
+          <div class="d-inline-block">
+            <a class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">流转</a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              {% set _transitions = workflow_transitions(_item) %}
+              {% for transition in _transitions %}
+                {% if transition.name == 'reset' and _transitions|length > 1 %}
+                  <li><hr class="dropdown-divider"></li>
+                {% endif %}
+                <li><a href="{{ path('app_order_workflow', {number: _item.number, transition: transition.name}) }}" class="dropdown-item{{ transition.name == 'reset' ? ' text-danger' }}">{{ transition.name }}</a></li>
+              {% else %}
+                <li><span class="dropdown-item disabled">No actions available.</span></li>
+              {% endfor %}
+            </ul>
+          </div>
+          <a href="{{ path('app_order_show', {_id: _item.number}) }}">{{ 'generic.detail'|trans }}</a>
+          <a href="{{ path('app_order_edit', {_id: _item.number}) }}">{{ 'generic.edit'|trans }}</a>
+          <a href="{{ path('app_order_delete', {_id: _item.number, _token: csrf_token('delete' ~ _item.number)}) }}" onclick="return confirm('{{ 'generic.delete_confirmation'|trans }}')">{{ 'generic.delete'|trans }}</a>
+        </td>
     {% endblock %}
   {% endembed %}
 {% endblock %}
