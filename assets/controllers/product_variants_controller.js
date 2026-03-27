@@ -1,5 +1,5 @@
 import { Controller } from '@hotwired/stimulus';
-import { Modal } from 'bootstrap';
+import { Offcanvas } from 'bootstrap';
 
 /*
 * The following line makes this controller "lazy": it won't be downloaded until needed
@@ -8,7 +8,7 @@ import { Modal } from 'bootstrap';
 
 /* stimulusFetch: 'lazy' */
 export default class extends Controller {
-  static targets = ['modal']
+  static targets = ['offcanvas']
   static values = {
     url: String,
   }
@@ -17,55 +17,47 @@ export default class extends Controller {
     const { url, name } = event.params
     this.urlValue = url
 
-    const modalTitle = this.modalTarget.querySelector('.modal-title')
-    const modalBody = this.modalTarget.querySelector('.modal-body')
+    const title = this.offcanvasTarget.querySelector('.offcanvas-title')
+    const body = this.offcanvasTarget.querySelector('.offcanvas-body')
 
-    modalTitle.innerText = name
-    modalBody.innerHTML = `
-      <div class="d-flex justify-content-center">
+    title.innerText = name
+    body.innerHTML = `
+      <div class="d-flex justify-content-center align-items-center h-100">
         <div class="spinner-border text-secondary" role="status">
           <span class="visually-hidden">Loading...</span>
         </div>
       </div>
     `
 
-    const modal = Modal.getOrCreateInstance(this.modalTarget)
-    modal.show(event.currentTarget)
+    const offcanvas = Offcanvas.getOrCreateInstance(this.offcanvasTarget)
+    offcanvas.show()
 
     fetch(url).then(async response => {
       return response.ok
         ? Promise.resolve(await response.text())
         : Promise.reject(response.statusText)
     }).then(res => {
-      modalBody.innerHTML = res
+      body.innerHTML = res
     }).catch(err => {
-      modalBody.innerHTML = `<p class="alert alert-danger m-0">${err}</p>`
+      body.innerHTML = `<p class="alert alert-danger m-0">${err}</p>`
     })
   }
 
   submit(event) {
     if (!this.urlValue) return
 
-    const modalBody = this.modalTarget.querySelector('.modal-body')
-    const modalForm = modalBody.querySelector('form')
-    if (!modalForm) return
+    const body = this.offcanvasTarget.querySelector('.offcanvas-body')
+    const form = body.querySelector('form')
+    if (!form) return
 
     event.target.disabled = true
     fetch(this.urlValue, {
       method: 'POST',
-      body: new FormData(modalForm)
+      body: new FormData(form)
     }).then(async response => {
-      modalBody.innerHTML = await response.text()
+      body.innerHTML = await response.text()
     }).catch(alert).finally(() => {
       event.target.disabled = false
     })
-  }
-
-  onShow(event) {
-    event.target.inert = false
-  }
-
-  onHide(event) {
-    event.target.inert = true
   }
 }

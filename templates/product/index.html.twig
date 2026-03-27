@@ -55,19 +55,15 @@
       {% endblock %}
     {% endembed %}
 
-    <div class="modal fade" tabindex="-1" aria-hidden="true" data-bs-backdrop="static" {{ stimulus_target('product-variants', 'modal') }} {{ stimulus_action('product-variants', 'onShow', 'show.bs.modal')|stimulus_action('product-variants', 'onHide', 'hide.bs.modal') }}>
-      <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h6 class="modal-title">{{ 'product.variants'|trans }}</h6>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body"></div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ 'generic.cancel'|trans }}</button>
-            <button type="button" class="btn btn-primary" {{ stimulus_action('product-variants', 'submit') }}>{{ 'generic.save'|trans }}</button>
-          </div>
-        </div>
+    <div class="offcanvas offcanvas-end w-auto" data-bs-backdrop="static" tabindex="-1" {{ stimulus_target('product-variants', 'offcanvas') }}>
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title">{{ 'product.variants'|trans }}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body"></div>
+      <div class="d-flex justify-content-end gap-3 bg-light border-top p-3">
+        <button type="button" class="btn" data-bs-dismiss="offcanvas">{{ 'generic.cancel'|trans }}</button>
+        <button type="button" class="btn btn-primary" {{ stimulus_action('product-variants', 'submit') }}>{{ 'generic.save'|trans }}</button>
       </div>
     </div>
   </div>
