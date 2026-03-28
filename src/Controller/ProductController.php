@@ -25,7 +25,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\Translation\TranslatableMessage;
+use Twig\Environment;
 
 #[Route('/products')]
 class ProductController extends AbstractController
@@ -68,7 +68,7 @@ class ProductController extends AbstractController
     }
 
     #[Route('/{id<\d+>}/variants', methods: ['GET', 'POST'])]
-    public function variants(Request $request, EntityManagerInterface $entityManager, int $id): Response
+    public function variants(Request $request, Environment $twig, EntityManagerInterface $entityManager, int $id): Response
     {
         $entity = $this->repository->find($id)
             ?? throw $this->createNotFoundException();
@@ -78,14 +78,14 @@ class ProductController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
-
-            $message = \sprintf('Entity %s updated successfully!', $entity::class);
-            $this->addFlashMessage($request, 'success', new TranslatableMessage($message, ['%_id%' => $id]));
         }
 
-        return $this->render('product/_product_variants_form.html.twig', [
-            'form' => $form,
+        $template = $twig->createTemplate('{{ form(form) }}');
+        $content = $twig->render($template, [
+            'form' => $form->createView(),
         ]);
+
+        return new Response($content, $form->isSubmitted() && !$form->isValid() ? 422 : 200);
     }
 
     #[Route('/ProductType')]

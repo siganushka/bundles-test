@@ -17,6 +17,8 @@ export default class extends Controller {
     const { url, name } = event.params
     this.urlValue = url
 
+    Offcanvas.getOrCreateInstance(this.offcanvasTarget).show()
+
     const title = this.offcanvasTarget.querySelector('.offcanvas-title')
     const body = this.offcanvasTarget.querySelector('.offcanvas-body')
 
@@ -28,9 +30,6 @@ export default class extends Controller {
         </div>
       </div>
     `
-
-    const offcanvas = Offcanvas.getOrCreateInstance(this.offcanvasTarget)
-    offcanvas.show()
 
     fetch(url).then(async response => {
       return response.ok
@@ -44,20 +43,24 @@ export default class extends Controller {
   }
 
   submit(event) {
-    if (!this.urlValue) return
-
     const body = this.offcanvasTarget.querySelector('.offcanvas-body')
     const form = body.querySelector('form')
-    if (!form) return
+    if (!form || !this.urlValue) return
 
-    event.target.disabled = true
+    const { currentTarget } = event
+    currentTarget.disabled = true
+
     fetch(this.urlValue, {
       method: 'POST',
       body: new FormData(form)
     }).then(async response => {
-      body.innerHTML = await response.text()
+      if (response.ok) {
+        Offcanvas.getOrCreateInstance(this.offcanvasTarget).hide()
+      } else {
+        body.innerHTML = await response.text()
+      }
     }).catch(alert).finally(() => {
-      event.target.disabled = false
+      currentTarget.disabled = false
     })
   }
 }

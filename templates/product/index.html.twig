@@ -1,5 +1,13 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+  <style>
+    [data-action="product-variants#submit"]:disabled .spinner-border {
+      display: inline-block !important;
+    }
+  </style>
+{% endblock %}
+
 {% block body %}
   <h3 class="mb-3">ProductBundle</h3>
 
@@ -56,14 +64,17 @@
     {% endembed %}
 
     <div class="offcanvas offcanvas-end w-auto" data-bs-backdrop="static" tabindex="-1" {{ stimulus_target('product-variants', 'offcanvas') }}>
-      <div class="offcanvas-header">
+      <div class="offcanvas-header bg-light border-bottom">
         <h5 class="offcanvas-title">{{ 'product.variants'|trans }}</h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body"></div>
       <div class="d-flex justify-content-end gap-3 bg-light border-top p-3">
         <button type="button" class="btn" data-bs-dismiss="offcanvas">{{ 'generic.cancel'|trans }}</button>
-        <button type="button" class="btn btn-primary" {{ stimulus_action('product-variants', 'submit') }}>{{ 'generic.save'|trans }}</button>
+        <button type="button" class="btn btn-primary" {{ stimulus_action('product-variants', 'submit') }}>
+          <span class="spinner-border spinner-border-sm d-none" aria-hidden="true"></span>
+          <span role="status">{{ 'generic.save'|trans }}</span>
+        </button>
       </div>
     </div>
   </div>
