@@ -72,7 +72,7 @@
           {% set _items_count = _item.items|length %}
           {% if _items_count > 1 %}
             <a role="button" data-bs-toggle="collapse" data-bs-target=".{{ _collapse_class }}" aria-expanded="false" aria-controls="{{ _collapse_class }}" class="fs-sm lh-1 text-decoration-none" style="margin-left: 58px">
-              {{ _items_count }} 个项目
+              {{ 'Order items collapsed'|trans({'%count%': _items_count}) }}
               <i class="bi bi-chevron-down"></i>
             </a>
           {% endif %}

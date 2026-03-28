@@ -41,4 +41,5 @@ return [
     'order.adjustment.shipping_fee' => '运费',
     'order.adjustment.random_discount' => '随机立减',
     'order.adjustment.coupon_discount' => '优惠券抵扣',
+    'Order items collapsed' => '%count% 个项目',
 ];
