@@ -25,7 +25,7 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Workflow\Exception\LogicException;
 use Symfony\Component\Workflow\WorkflowInterface;
 
-#[Route('/orders')]
+#[Route('/orders', requirements: ['_id' => '[0-9a-zA-Z]+'])]
 class OrderController extends AbstractController
 {
     use IndexTrait;
