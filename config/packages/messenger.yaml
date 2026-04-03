@@ -14,7 +14,6 @@ framework:
         routing:
             # Route your messages to the transports
             # 'App\Message\YourMessage': async
-            'Siganushka\OrderBundle\Message\OrderExpireMessage': async
 
 # when@test:
 #    framework:
