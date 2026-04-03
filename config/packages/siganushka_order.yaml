@@ -4,4 +4,5 @@ siganushka_order:
     order_number_generator: Siganushka\OrderBundle\Generator\RedisNumberGenerator
     order_item_subject_type: Siganushka\ProductBundle\Form\Field\ProductVariantAutocompleteField
     # order_stock_modifier: App\Stock\AtomicUpdateModifier
+    order_cancelled_transport: async
     order_cancelled_expires: 60
