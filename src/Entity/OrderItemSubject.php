@@ -109,11 +109,6 @@ class OrderItemSubject implements ResourceInterface, OrderItemSubjectInterface
         return $this->price->getMinorAmount()->toInt();
     }
 
-    public function getSubjectExtra(): ?string
-    {
-        return $this->subtitle;
-    }
-
     public function getSubjectImg(): ?string
     {
         return $this->cover;

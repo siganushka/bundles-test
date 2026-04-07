@@ -33,11 +33,6 @@ class ProductVariant extends BaseProductVariant implements OrderItemSubjectInter
         return $this->price;
     }
 
-    public function getSubjectExtra(): ?string
-    {
-        return $this->name;
-    }
-
     public function getSubjectImg(): ?string
     {
         return ($this->img ?? $this->product?->getImg())?->getUrl();
