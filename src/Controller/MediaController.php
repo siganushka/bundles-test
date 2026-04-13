@@ -51,7 +51,7 @@ class MediaController extends AbstractController
     #[Route('/MediaType')]
     public function MediaType(Request $request, MediaRepository $repository): Response
     {
-        $media = $repository->findAll();
+        $media = $repository->findBy([], ['id' => 'ASC']);
         $data = [
             'media1' => $media[0] ?? null,
             'media3' => $media[0] ?? null,
