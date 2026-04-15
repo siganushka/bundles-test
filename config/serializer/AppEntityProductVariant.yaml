@@ -22,8 +22,6 @@ App\Entity\ProductVariant:
             groups: []
         subjectPrice:
             groups: []
-        subjectExtra:
-            groups: []
         subjectImg:
             groups: []
         enabled:

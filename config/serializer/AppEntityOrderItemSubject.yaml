@@ -18,7 +18,5 @@ App\Entity\OrderItemSubject:
             groups: ['order:item', 'order:collection']
         subjectPrice:
             groups: ['order:item', 'order:collection']
-        subjectExtra:
-            groups: ['order:item', 'order:collection']
         subjectImg:
             groups: ['order:item', 'order:collection']

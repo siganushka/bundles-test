@@ -4,10 +4,6 @@ App\Entity\Region:
             groups: ['region:item', 'region:collection']
         name:
             groups: ['region:item', 'region:collection']
-        fullname:
-            groups: ['region:item', 'region:collection']
-        level:
-            groups: ['region:item', 'region:collection']
         parent:
             groups: []
         children:
@@ -16,11 +12,11 @@ App\Entity\Region:
             groups: ['region:item', 'region:collection']
         leaf:
             groups: ['region:item', 'region:collection']
+        depth:
+            groups: ['region:item', 'region:collection']
         ancestors:
             groups: []
         siblings:
             groups: []
         descendants:
-            groups: []
-        depth:
             groups: []
