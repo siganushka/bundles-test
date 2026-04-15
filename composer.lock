@@ -2973,7 +2973,7 @@
             "dist": {
                 "type": "path",
                 "url": "../media-bundle",
-                "reference": "2f2c8f838b5ee008cfac56ff9cad9a5bbbffb2ad"
+                "reference": "834e7ed6fc0db01034beb1a4bc48eba00a49f0f2"
             },
             "require": {
                 "ext-fileinfo": "*",
@@ -6173,7 +6173,7 @@
         },
         {
             "name": "symfony/polyfill-intl-grapheme",
-            "version": "v1.34.0",
+            "version": "v1.35.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-intl-grapheme.git",
@@ -6231,7 +6231,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-intl-grapheme/tree/v1.34.0"
+                "source": "https://github.com/symfony/polyfill-intl-grapheme/tree/v1.35.0"
             },
             "funding": [
                 {
