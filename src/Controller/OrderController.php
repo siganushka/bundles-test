@@ -56,10 +56,13 @@ class OrderController extends AbstractController
     }
 
     #[Route('/{number}/workflow/{transition}')]
-    public function workflow(EntityManagerInterface $entityManager, WorkflowInterface $orderStateMachine, string $number, string $transition): Response
+    public function workflow(Request $request, EntityManagerInterface $entityManager, WorkflowInterface $orderStateMachine, string $number, string $transition): Response
     {
         $entity = $this->repository->findOneByNumber($number)
             ?? throw $this->createNotFoundException();
+
+        $redirectUrl = $request->headers->get('referer')
+            ?? $this->generateUrl('app_order_index');
 
         $entityManager->beginTransaction();
 
@@ -70,7 +73,7 @@ class OrderController extends AbstractController
 
             $this->addFlash('danger', $e->getMessage());
 
-            return $this->redirectToRoute('app_order_index');
+            return $this->redirect($redirectUrl);
         }
 
         $entityManager->flush();
@@ -78,7 +81,7 @@ class OrderController extends AbstractController
 
         $this->addFlash('success', 'Your changes were saved!');
 
-        return $this->redirectToRoute('app_order_index');
+        return $this->redirect($redirectUrl);
     }
 
     #[Route('/OrderType')]
