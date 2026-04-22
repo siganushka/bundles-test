@@ -5,10 +5,6 @@ security:
 
     # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
     providers:
-        users_in_memory:
-            memory:
-                users:
-                    Siganushka: { password: test }
         user_provider:
             entity: { class: App\Entity\User, property: identifier }
 
@@ -19,7 +15,7 @@ security:
             security: false
         main:
             lazy: true
-            provider: users_in_memory
+            provider: user_provider
             pattern: ^/admin
             http_basic: ~
 
