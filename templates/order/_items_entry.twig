@@ -1,10 +1,10 @@
 <div class="d-flex align-items-center">
-  <img src="{{ item.subjectImg }}" width="50px" class="img-thumbnail" />
+  <img src="{{ item.img }}" width="50px" class="img-thumbnail" />
   <div class="ms-2 lh-sm">
-    <p class="mb-1">{{ item.subjectTitle }}</p>
+    <p class="mb-1">{{ item.title }}</p>
 
-    {% if item.subjectSubtitle %}
-      <small class="fs-sm text-secondary">[{{ item.subjectSubtitle }}]</small>
+    {% if item.subtitle %}
+      <small class="fs-sm text-secondary">[{{ item.subtitle }}]</small>
     {% endif %}
 
     <small class="fs-sm text-secondary">&times;{{ item.quantity }}</small>

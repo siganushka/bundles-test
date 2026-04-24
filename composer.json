@@ -11,7 +11,7 @@
         "brick/money": "^0.11.2",
         "doctrine/doctrine-bundle": "^2.18.2",
         "doctrine/orm": "^3.6.3",
-        "godruoyi/php-snowflake": "^3.2.2",
+        "godruoyi/php-snowflake": "^3.2.3",
         "knplabs/knp-paginator-bundle": "^6.10",
         "nelmio/cors-bundle": "^2.6.1",
         "obs/esdk-obs-php": "^3.24.9",

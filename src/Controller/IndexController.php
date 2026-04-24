@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Entity\OrderItemSubject;
+use App\Entity\Goods;
 use App\Entity\OrderTransaction;
 use App\Form\TestType;
 use Brick\Money\Money;
@@ -46,7 +46,7 @@ class IndexController extends AbstractController
         //     AbstractNormalizer::GROUPS => ['order_transaction.collection'],
         // ]);
 
-        // $subject = new OrderItemSubject();
+        // $subject = new Goods();
         // $subject->setTitle('动员兵');
         // $subject->setSubtitle('50 块一个的好兄弟，比狗还便宜。');
         // $subject->setCover('https://placehold.co/100');
@@ -57,7 +57,7 @@ class IndexController extends AbstractController
         // $entityManager->flush();
         // dd(__METHOD__, $subject);
 
-        // $entities = $entityManager->getRepository(OrderItemSubject::class)->findAll();
+        // $entities = $entityManager->getRepository(Goods::class)->findAll();
         // dd(__METHOD__, $entities);
 
         // return $this->json($entities, context: [

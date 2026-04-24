@@ -8,10 +8,11 @@ use Brick\Money\Money;
 use Doctrine\ORM\Mapping as ORM;
 use Siganushka\Contracts\Doctrine\ResourceInterface;
 use Siganushka\Contracts\Doctrine\ResourceTrait;
+use Siganushka\OrderBundle\Model\OrderItemSubjectData;
 use Siganushka\OrderBundle\Model\OrderItemSubjectInterface;
 
 #[ORM\Entity]
-class OrderItemSubject implements ResourceInterface, OrderItemSubjectInterface
+class Goods implements ResourceInterface, OrderItemSubjectInterface
 {
     use ResourceTrait;
 
@@ -90,27 +91,13 @@ class OrderItemSubject implements ResourceInterface, OrderItemSubjectInterface
         return $this;
     }
 
-    public function getSubjectTitle(): string
+    public function createForOrderItem(int $quantity): OrderItemSubjectData
     {
-        \assert(null !== $this->title);
-
-        return $this->title;
-    }
-
-    public function getSubjectSubtitle(): ?string
-    {
-        return $this->subtitle;
-    }
-
-    public function getSubjectPrice(): int
-    {
-        \assert(null !== $this->price);
-
-        return $this->price->getMinorAmount()->toInt();
-    }
-
-    public function getSubjectImg(): ?string
-    {
-        return $this->cover;
+        return new OrderItemSubjectData(
+            title: $this->title,
+            price: $this->price?->getMinorAmount()->toInt(),
+            subtitle: $this->subtitle,
+            img: $this->cover
+        );
     }
 }

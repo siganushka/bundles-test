@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c3a986adcd1a68e9ddfe941f6a76c648",
+    "content-hash": "a1cfea161feac06acf10ddd4f0badeca",
     "packages": [
         {
             "name": "aliyuncs/oss-sdk-php",
@@ -1215,16 +1215,16 @@
         },
         {
             "name": "godruoyi/php-snowflake",
-            "version": "3.2.2",
+            "version": "3.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/godruoyi/php-snowflake.git",
-                "reference": "1f32d0a27bb88adb66e7bdeb93579d5aed2ddd71"
+                "reference": "46bf78bdf4bb42186216c082b4abc32eea77c6a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/godruoyi/php-snowflake/zipball/1f32d0a27bb88adb66e7bdeb93579d5aed2ddd71",
-                "reference": "1f32d0a27bb88adb66e7bdeb93579d5aed2ddd71",
+                "url": "https://api.github.com/repos/godruoyi/php-snowflake/zipball/46bf78bdf4bb42186216c082b4abc32eea77c6a4",
+                "reference": "46bf78bdf4bb42186216c082b4abc32eea77c6a4",
                 "shasum": ""
             },
             "require": {
@@ -1270,7 +1270,7 @@
             ],
             "support": {
                 "issues": "https://github.com/godruoyi/php-snowflake/issues",
-                "source": "https://github.com/godruoyi/php-snowflake/tree/3.2.2"
+                "source": "https://github.com/godruoyi/php-snowflake/tree/3.2.3"
             },
             "funding": [
                 {
@@ -1278,7 +1278,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2026-01-31T07:38:00+00:00"
+            "time": "2026-04-23T01:56:44+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -2851,7 +2851,7 @@
             "dist": {
                 "type": "path",
                 "url": "../generic-bundle",
-                "reference": "f3dde67b8895be782faa84bee447126c8f450195"
+                "reference": "8532229170432fb60fdc8651ddb0848bbc939149"
             },
             "require": {
                 "php": ">=8.2",
@@ -2973,7 +2973,7 @@
             "dist": {
                 "type": "path",
                 "url": "../media-bundle",
-                "reference": "834e7ed6fc0db01034beb1a4bc48eba00a49f0f2"
+                "reference": "489374616f371b61d2b70f481aff32a0fa6e723b"
             },
             "require": {
                 "ext-fileinfo": "*",
@@ -3037,7 +3037,7 @@
             "dist": {
                 "type": "path",
                 "url": "../order-bundle",
-                "reference": "4f446fcbab825c29998a065a42e39912372ec36a"
+                "reference": "25c21dfbfd1d6342fbd5fa35b99473d5c344c932"
             },
             "require": {
                 "knplabs/knp-components": "^5.0",

@@ -82,7 +82,7 @@ class OrderFixtures extends Fixture implements DependentFixtureInterface
     {
         return [
             ProductFixtures::class,
-            OrderItemSubjectFixtures::class,
+            GoodsFixtures::class,
         ];
     }
 }

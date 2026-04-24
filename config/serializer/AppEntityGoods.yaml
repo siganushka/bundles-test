@@ -1,0 +1,14 @@
+App\Entity\Goods:
+    attributes:
+        id:
+            groups: []
+        title:
+            groups: []
+        subtitle:
+            groups: []
+        cover:
+            groups: []
+        price:
+            groups: []
+        stock:
+            groups: []

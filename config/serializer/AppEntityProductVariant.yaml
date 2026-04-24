@@ -16,14 +16,6 @@ App\Entity\ProductVariant:
             groups: ['product_variant:collection', 'product:item', 'product:collection']
         optionValues:
             groups: []
-        subjectTitle:
-            groups: []
-        subjectSubtitle:
-            groups: []
-        subjectPrice:
-            groups: []
-        subjectImg:
-            groups: []
         enabled:
             groups: ['product_variant:collection', 'product:item', 'product:collection']
         createdAt:

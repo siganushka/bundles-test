@@ -6,6 +6,12 @@ App\Entity\OrderItem:
             groups: []
         subject:
             groups: []
+        title:
+            groups: ['order:item', 'order:collection']
+        subtitle:
+            groups: ['order:item', 'order:collection']
+        img:
+            groups: ['order:item', 'order:collection']
         price:
             groups: ['order:item', 'order:collection']
         quantity:
@@ -13,12 +19,6 @@ App\Entity\OrderItem:
         subtotal:
             groups: ['order:item', 'order:collection']
         subjectId:
-            groups: ['order:item', 'order:collection']
-        subjectTitle:
-            groups: ['order:item', 'order:collection']
-        subjectImg:
-            groups: ['order:item', 'order:collection']
-        subjectSubtitle:
             groups: ['order:item', 'order:collection']
         createdAt:
             groups: ['order:item', 'order:collection']
