@@ -130,10 +130,8 @@ class CollectXiaomiCommand extends Command
                 }
 
                 $output->writeln(\sprintf('<info>%s: 下载第 %d 张商品图</info>', $message, $index + 1));
-                $variantImg = $this->handleMedia($variants[$key]['img_url']);
 
                 $variant = new ProductVariant($choice);
-                $variant->setImg($variantImg);
                 $variant->setPrice((int) ($variants[$key]['price'] * 100));
                 $variant->setStock($variants[$key]['sku'] ?? null);
 

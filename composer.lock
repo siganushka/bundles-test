@@ -3037,7 +3037,7 @@
             "dist": {
                 "type": "path",
                 "url": "../order-bundle",
-                "reference": "25c21dfbfd1d6342fbd5fa35b99473d5c344c932"
+                "reference": "18a2245678f6e7d60ff5860c23c65a7e0b8c6557"
             },
             "require": {
                 "knplabs/knp-components": "^5.0",
@@ -3099,7 +3099,7 @@
             "dist": {
                 "type": "path",
                 "url": "../product-bundle",
-                "reference": "337b3d4440c9e0c65a1d20cac38fec8aeb46a83b"
+                "reference": "f7d6696c790edf6eee282be378a92722a13d9d91"
             },
             "require": {
                 "bentools/cartesian-product": "^2.0",

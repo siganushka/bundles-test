@@ -20,7 +20,7 @@ class ProductVariant extends BaseProductVariant implements OrderItemSubjectInter
             title: $this->product?->getName(),
             price: $this->price,
             subtitle: $this->name,
-            img: ($this->img ?? $this->product?->getImg())?->getUrl(),
+            img: $this->product?->getImg()?->getUrl(),
         );
     }
 

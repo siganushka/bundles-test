@@ -12,8 +12,6 @@ App\Entity\ProductVariant:
             groups: ['product_variant:collection', 'product:item', 'product:collection']
         stock:
             groups: ['product_variant:collection', 'product:item', 'product:collection']
-        img:
-            groups: ['product_variant:collection', 'product:item', 'product:collection']
         optionValues:
             groups: []
         enabled:
