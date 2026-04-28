@@ -96,7 +96,20 @@ class CollectXiaomiCommand extends Command
                 $option->setName($v1['name']);
 
                 foreach ($v1['list'] as $v2) {
-                    $option->addValue(new ProductOptionValue(\sprintf('prop_value_id_%d', $v2['prop_value_id']), $v2['name']));
+                    $result = array_find($product['goods_list'], static function (array $item) use ($v1, $v2) {
+                        foreach ($item['goods_info']['prop_list'] ?? [] as $prop) {
+                            if ($prop['prop_cfg_id'] == $v1['prop_cfg_id'] && $prop['prop_value_id'] == $v2['prop_value_id']) {
+                                return true;
+                            }
+                        }
+
+                        return false;
+                    });
+
+                    $imgUrl = $result['goods_info']['img_url'] ?? null;
+                    $media = $imgUrl ? $this->handleMedia($imgUrl) : null;
+
+                    $option->addValue(new ProductOptionValue(\sprintf('prop_value_id_%d', $v2['prop_value_id']), $v2['name'], $media));
                 }
 
                 $entity->addOption($option);
