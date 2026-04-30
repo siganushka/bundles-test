@@ -95,65 +95,65 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
         $option10->addValue($this->productOptionValueRepository->createNew(null, '变态辣', $this->getReference('media-14', Media::class)));
 
         $product0 = $this->productRepository->createNew();
-        $product0->setName('苹果 iPhone 15');
+        $product0->setName('苹果 iPhone 17');
         $product0->setImg($this->getReference('media-0', Media::class));
         $product0->addOption($option0);
         $product0->addOption($option1);
 
         $product1 = $this->productRepository->createNew();
-        $product1->setName('苹果 iPhone 15 Plus');
+        $product1->setName('苹果 iPhone 17 Plus');
         $product1->setImg($this->getReference('media-0', Media::class));
         $product1->addOption(clone $option0);
         $product1->addOption(clone $option1);
 
         $product2 = $this->productRepository->createNew();
-        $product2->setName('苹果 iPhone 15 Pro');
+        $product2->setName('苹果 iPhone 17 Pro');
         $product2->setImg($this->getReference('media-1', Media::class));
         $product2->addOption($option2);
         $product2->addOption($option3);
 
         $product3 = $this->productRepository->createNew();
-        $product3->setName('苹果 iPhone 15 Pro Max');
-        $product3->setImg($this->getReference('media-1', Media::class));
+        $product3->setName('苹果 iPhone 17 Pro Max');
+        $product3->setImg($this->getReference('media-2', Media::class));
         $product3->addOption(clone $option2);
         $product3->addOption(clone $option3);
 
         $product4 = $this->productRepository->createNew();
-        $product4->setName('三星 S24');
-        $product4->setImg($this->getReference('media-2', Media::class));
+        $product4->setName('三星 S26');
+        $product4->setImg($this->getReference('media-3', Media::class));
         $product4->addOption($option4);
         $product4->addOption($option5);
 
         $product5 = $this->productRepository->createNew();
-        $product5->setName('三星 S24+');
-        $product5->setImg($this->getReference('media-2', Media::class));
+        $product5->setName('三星 S26+');
+        $product5->setImg($this->getReference('media-4', Media::class));
         $product5->addOption(clone $option4);
         $product5->addOption(clone $option5);
 
         $product6 = $this->productRepository->createNew();
-        $product6->setName('三星 S24 Ultra');
-        $product6->setImg($this->getReference('media-3', Media::class));
+        $product6->setName('三星 S26 Ultra');
+        $product6->setImg($this->getReference('media-5', Media::class));
         $product6->addOption($option6);
         $product6->addOption($option7);
 
         $product7 = $this->productRepository->createNew();
         $product7->setName('耐克幼童易穿脱运动童鞋');
-        $product7->setImg($this->getReference('media-4', Media::class));
+        $product7->setImg($this->getReference('media-6', Media::class));
         $product7->addOption($option8);
 
         $product8 = $this->productRepository->createNew();
         $product8->setName('新品春季时尚卫衣');
-        $product8->setImg($this->getReference('media-5', Media::class));
+        $product8->setImg($this->getReference('media-7', Media::class));
         $product8->addOption($option9);
 
         $product9 = $this->productRepository->createNew();
         $product9->setName('正宗陕西油泼面');
-        $product9->setImg($this->getReference('media-6', Media::class));
+        $product9->setImg($this->getReference('media-8', Media::class));
         $product9->addOption($option10);
 
         $product10 = $this->productRepository->createNew();
         $product10->setName('迪卡侬保冷野餐包');
-        $product10->setImg($this->getReference('media-7', Media::class));
+        $product10->setImg($this->getReference('media-9', Media::class));
 
         /** @var array<int, Product> */
         $products = [$product0, $product1, $product2, $product3, $product4, $product5, $product6, $product7, $product8, $product9, $product10];
