@@ -47,15 +47,13 @@
           </div>
         </td>
         <td class="text-nowrap">
-          {%- set _variants = _item.variants|filter(v => v.enabled) -%}
-          {%- set _prices = _variants|map(v => v.price) %}
-          {{ _prices ? min(_prices)|intl_currency : '-' }}
+          {{ _item.lowestPrice ? _item.lowestPrice|intl_currency : '-' }}
         </td>
         <td class="text-nowrap">{{ _item.createdAt|intl_date }}</td>
         <td class="text-nowrap">
           <a role="button" class="btn-link" {{ stimulus_action('product-variants', 'show', null, {url: path('app_product_variants', {id: _item.id}), name: _item.name}) }}>
             {{ 'product.variants'|trans }}
-            <small>({{ _variants|length }}/{{ _item.variants|length ?: 1 }})</small>
+            <small>({{ _item.variants|filter(v => v.enabled)|length }}/{{ _item.variants|length ?: 1 }})</small>
           </a>
           <a href="{{ path('app_product_edit', {_id: _item.id}) }}">{{ 'generic.edit'|trans }}</a>
           <a href="{{ path('app_product_delete', {_id: _item.id, _token: csrf_token('delete' ~ _item.id)}) }}" onclick="return confirm('{{ 'generic.delete_confirmation'|trans }}')">{{ 'generic.delete'|trans }}</a>
