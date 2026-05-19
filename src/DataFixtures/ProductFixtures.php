@@ -26,137 +26,90 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
     public function load(ObjectManager $manager): void
     {
         $option0 = $this->productOptionRepository->createNew('颜色');
-        $option0->addValue($this->productOptionValueRepository->createNew('blue', '蓝色'));
-        $option0->addValue($this->productOptionValueRepository->createNew('pink', '粉色'));
-        $option0->addValue($this->productOptionValueRepository->createNew('yellow', '黄色'));
-        $option0->addValue($this->productOptionValueRepository->createNew('green', '绿色'));
-        $option0->addValue($this->productOptionValueRepository->createNew('black', '黑色'));
+        $option0->addValue($this->productOptionValueRepository->createNew('lavender', '薰衣草紫色', $this->getReference('media-product-option-value-3', Media::class)));
+        $option0->addValue($this->productOptionValueRepository->createNew('sage', '鼠尾草绿色', $this->getReference('media-product-option-value-4', Media::class)));
+        $option0->addValue($this->productOptionValueRepository->createNew('mistblue', '青雾蓝色', $this->getReference('media-product-option-value-5', Media::class)));
+        $option0->addValue($this->productOptionValueRepository->createNew('white', '白色', $this->getReference('media-product-option-value-6', Media::class)));
+        $option0->addValue($this->productOptionValueRepository->createNew('black', '黑色', $this->getReference('media-product-option-value-7', Media::class)));
 
         $option1 = $this->productOptionRepository->createNew('存储');
-        $option1->addValue($this->productOptionValueRepository->createNew('128gb', '128GB'));
-        $option1->addValue($this->productOptionValueRepository->createNew('256gb', '256GB'));
-        $option1->addValue($this->productOptionValueRepository->createNew('512gb', '512GB'));
+        $option1->addValue($this->productOptionValueRepository->createNew(null, '256GB'));
+        $option1->addValue($this->productOptionValueRepository->createNew(null, '512GB'));
 
         $option2 = $this->productOptionRepository->createNew('颜色');
-        $option2->addValue($this->productOptionValueRepository->createNew(null, '原色钛金属'));
-        $option2->addValue($this->productOptionValueRepository->createNew(null, '蓝色钛金属'));
-        $option2->addValue($this->productOptionValueRepository->createNew(null, '白色钛金属'));
-        $option2->addValue($this->productOptionValueRepository->createNew(null, '黑色钛金属'));
+        $option2->addValue($this->productOptionValueRepository->createNew('silver', '银色', $this->getReference('media-product-option-value-0', Media::class)));
+        $option2->addValue($this->productOptionValueRepository->createNew('cosmicorange', '星宇橙色', $this->getReference('media-product-option-value-1', Media::class)));
+        $option2->addValue($this->productOptionValueRepository->createNew('deepblue', '深蓝色', $this->getReference('media-product-option-value-2', Media::class)));
 
         $option3 = $this->productOptionRepository->createNew('存储');
         $option3->addValue($this->productOptionValueRepository->createNew(null, '256GB'));
         $option3->addValue($this->productOptionValueRepository->createNew(null, '512GB'));
         $option3->addValue($this->productOptionValueRepository->createNew(null, '1TB'));
+        $option3->addValue($this->productOptionValueRepository->createNew(null, '2TB'));
 
-        $option4 = $this->productOptionRepository->createNew('存储');
-        $option4->addValue($this->productOptionValueRepository->createNew(null, '8GB+256GB'));
-        $option4->addValue($this->productOptionValueRepository->createNew(null, '8GB+512GB'));
-        $option4->addValue($this->productOptionValueRepository->createNew(null, '12GB+512GB'));
+        $option4 = $this->productOptionRepository->createNew('尺码');
+        $option4->addValue($this->productOptionValueRepository->createNew(null, '25'));
+        $option4->addValue($this->productOptionValueRepository->createNew(null, '26'));
+        $option4->addValue($this->productOptionValueRepository->createNew(null, '27'));
+        $option4->addValue($this->productOptionValueRepository->createNew(null, '28'));
+        $option4->addValue($this->productOptionValueRepository->createNew(null, '29'));
+        $option4->addValue($this->productOptionValueRepository->createNew(null, '30'));
+        $option4->addValue($this->productOptionValueRepository->createNew(null, '31'));
+        $option4->addValue($this->productOptionValueRepository->createNew(null, '32'));
 
-        $option5 = $this->productOptionRepository->createNew('颜色');
-        $option5->addValue($this->productOptionValueRepository->createNew(null, '秘矿紫'));
-        $option5->addValue($this->productOptionValueRepository->createNew(null, '浅珀黄'));
-        $option5->addValue($this->productOptionValueRepository->createNew(null, '水墨黑'));
-        $option5->addValue($this->productOptionValueRepository->createNew(null, '雅岩灰'));
+        $option5 = $this->productOptionRepository->createNew('尺码');
+        $option5->addValue($this->productOptionValueRepository->createNew(null, 'M'));
+        $option5->addValue($this->productOptionValueRepository->createNew(null, 'L'));
+        $option5->addValue($this->productOptionValueRepository->createNew(null, 'XL'));
+        $option5->addValue($this->productOptionValueRepository->createNew(null, '2XL'));
+        $option5->addValue($this->productOptionValueRepository->createNew(null, '3XL'));
 
-        $option6 = $this->productOptionRepository->createNew('存储');
-        $option6->addValue($this->productOptionValueRepository->createNew(null, '12GB+256GB'));
-        $option6->addValue($this->productOptionValueRepository->createNew(null, '12GB+512GB'));
-        $option6->addValue($this->productOptionValueRepository->createNew(null, '12GB+1TB'));
-
-        $option7 = $this->productOptionRepository->createNew('颜色');
-        $option7->addValue($this->productOptionValueRepository->createNew(null, '钛灰'));
-        $option7->addValue($this->productOptionValueRepository->createNew(null, '钛黑'));
-        $option7->addValue($this->productOptionValueRepository->createNew(null, '钛暮紫'));
-        $option7->addValue($this->productOptionValueRepository->createNew(null, '钛羽黄'));
-
-        $option8 = $this->productOptionRepository->createNew('尺码');
-        $option8->addValue($this->productOptionValueRepository->createNew(null, '25'));
-        $option8->addValue($this->productOptionValueRepository->createNew(null, '26'));
-        $option8->addValue($this->productOptionValueRepository->createNew(null, '27'));
-        $option8->addValue($this->productOptionValueRepository->createNew(null, '28'));
-        $option8->addValue($this->productOptionValueRepository->createNew(null, '29'));
-        $option8->addValue($this->productOptionValueRepository->createNew(null, '30'));
-        $option8->addValue($this->productOptionValueRepository->createNew(null, '31'));
-        $option8->addValue($this->productOptionValueRepository->createNew(null, '32'));
-
-        $option9 = $this->productOptionRepository->createNew('尺码');
-        $option9->addValue($this->productOptionValueRepository->createNew(null, 'M'));
-        $option9->addValue($this->productOptionValueRepository->createNew(null, 'L'));
-        $option9->addValue($this->productOptionValueRepository->createNew(null, 'XL'));
-        $option9->addValue($this->productOptionValueRepository->createNew(null, '2XL'));
-        $option9->addValue($this->productOptionValueRepository->createNew(null, '3XL'));
-
-        $option10 = $this->productOptionRepository->createNew('辣度');
-        $option10->addValue($this->productOptionValueRepository->createNew(null, '不辣', $this->getReference('media-10', Media::class)));
-        $option10->addValue($this->productOptionValueRepository->createNew(null, '微辣', $this->getReference('media-11', Media::class)));
-        $option10->addValue($this->productOptionValueRepository->createNew(null, '中辣', $this->getReference('media-12', Media::class)));
-        $option10->addValue($this->productOptionValueRepository->createNew(null, '特辣', $this->getReference('media-13', Media::class)));
-        $option10->addValue($this->productOptionValueRepository->createNew(null, '变态辣', $this->getReference('media-14', Media::class)));
+        $option6 = $this->productOptionRepository->createNew('辣度');
+        $option6->addValue($this->productOptionValueRepository->createNew(null, '不辣', $this->getReference('media-product-option-value-8', Media::class)));
+        $option6->addValue($this->productOptionValueRepository->createNew(null, '微辣', $this->getReference('media-product-option-value-9', Media::class)));
+        $option6->addValue($this->productOptionValueRepository->createNew(null, '中辣', $this->getReference('media-product-option-value-10', Media::class)));
+        $option6->addValue($this->productOptionValueRepository->createNew(null, '特辣', $this->getReference('media-product-option-value-11', Media::class)));
+        $option6->addValue($this->productOptionValueRepository->createNew(null, '变态辣', $this->getReference('media-product-option-value-12', Media::class)));
 
         $product0 = $this->productRepository->createNew();
-        $product0->setName('苹果 iPhone 17');
-        $product0->setImg($this->getReference('media-0', Media::class));
+        $product0->setName('Apple iPhone 17');
+        $product0->setImg($this->getReference('media-product-0', Media::class));
         $product0->addOption($option0);
         $product0->addOption($option1);
 
         $product1 = $this->productRepository->createNew();
-        $product1->setName('苹果 iPhone 17 Plus');
-        $product1->setImg($this->getReference('media-0', Media::class));
-        $product1->addOption(clone $option0);
-        $product1->addOption(clone $option1);
+        $product1->setName('Apple iPhone 17 Pro');
+        $product1->setImg($this->getReference('media-product-1', Media::class));
+        $product1->addOption($option2);
+        $product1->addOption($option3);
 
         $product2 = $this->productRepository->createNew();
-        $product2->setName('苹果 iPhone 17 Pro');
-        $product2->setImg($this->getReference('media-1', Media::class));
-        $product2->addOption($option2);
-        $product2->addOption($option3);
+        $product2->setName('Apple iPhone 17 Pro Max');
+        $product2->setImg($this->getReference('media-product-1', Media::class));
+        $product2->addOption(clone $option2);
+        $product2->addOption(clone $option3);
 
         $product3 = $this->productRepository->createNew();
-        $product3->setName('苹果 iPhone 17 Pro Max');
-        $product3->setImg($this->getReference('media-2', Media::class));
-        $product3->addOption(clone $option2);
-        $product3->addOption(clone $option3);
+        $product3->setName('耐克幼童易穿脱运动童鞋');
+        $product3->setImg($this->getReference('media-product-2', Media::class));
+        $product3->addOption($option4);
 
         $product4 = $this->productRepository->createNew();
-        $product4->setName('三星 S26');
-        $product4->setImg($this->getReference('media-3', Media::class));
-        $product4->addOption($option4);
+        $product4->setName('新品春季时尚卫衣');
+        $product4->setImg($this->getReference('media-product-3', Media::class));
         $product4->addOption($option5);
 
         $product5 = $this->productRepository->createNew();
-        $product5->setName('三星 S26+');
-        $product5->setImg($this->getReference('media-4', Media::class));
-        $product5->addOption(clone $option4);
-        $product5->addOption(clone $option5);
+        $product5->setName('正宗陕西油泼面');
+        $product5->setImg($this->getReference('media-product-4', Media::class));
+        $product5->addOption($option6);
 
         $product6 = $this->productRepository->createNew();
-        $product6->setName('三星 S26 Ultra');
-        $product6->setImg($this->getReference('media-5', Media::class));
-        $product6->addOption($option6);
-        $product6->addOption($option7);
-
-        $product7 = $this->productRepository->createNew();
-        $product7->setName('耐克幼童易穿脱运动童鞋');
-        $product7->setImg($this->getReference('media-6', Media::class));
-        $product7->addOption($option8);
-
-        $product8 = $this->productRepository->createNew();
-        $product8->setName('新品春季时尚卫衣');
-        $product8->setImg($this->getReference('media-7', Media::class));
-        $product8->addOption($option9);
-
-        $product9 = $this->productRepository->createNew();
-        $product9->setName('正宗陕西油泼面');
-        $product9->setImg($this->getReference('media-8', Media::class));
-        $product9->addOption($option10);
-
-        $product10 = $this->productRepository->createNew();
-        $product10->setName('迪卡侬保冷野餐包');
-        $product10->setImg($this->getReference('media-9', Media::class));
+        $product6->setName('迪卡侬保冷野餐包');
+        $product6->setImg($this->getReference('media-product-5', Media::class));
 
         /** @var array<int, Product> */
-        $products = [$product0, $product1, $product2, $product3, $product4, $product5, $product6, $product7, $product8, $product9, $product10];
+        $products = [$product0, $product1, $product2, $product3, $product4, $product5, $product6];
 
         $prices = [100, 200, 300, 400, 500];
         foreach ($products as $index => $product) {
@@ -178,10 +131,6 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
         $manager->persist($product4);
         $manager->persist($product5);
         $manager->persist($product6);
-        $manager->persist($product7);
-        $manager->persist($product8);
-        $manager->persist($product9);
-        $manager->persist($product10);
         $manager->flush();
 
         array_walk($products, fn (Product $item, int $index) => $this->addReference(\sprintf('product-%d', $index), $item));

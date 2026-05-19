@@ -11,16 +11,22 @@ use Siganushka\OrderBundle\Model\OrderItemSubjectInterface;
 use Siganushka\OrderBundle\Model\StockableInterface;
 use Siganushka\ProductBundle\Entity\ProductVariant as BaseProductVariant;
 
+/**
+ * @extends BaseProductVariant<Product, ProductOptionValue>
+ */
 #[ORM\Entity(repositoryClass: ProductVariantRepository::class)]
 class ProductVariant extends BaseProductVariant implements OrderItemSubjectInterface, StockableInterface
 {
     public function createForOrderItem(int $quantity): OrderItemSubjectData
     {
+        $fn = static fn ($_, ProductOptionValue $item) => null !== $item->getImg();
+        $img = $this->choice->findFirst($fn)?->getImg() ?? $this->product?->getImg();
+
         return new OrderItemSubjectData(
             title: $this->product?->getName(),
             price: $this->price,
             subtitle: $this->name,
-            img: $this->product?->getImg()?->getUrl(),
+            img: $img?->getUrl(),
         );
     }
 

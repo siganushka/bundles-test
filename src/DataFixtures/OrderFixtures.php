@@ -21,24 +21,24 @@ class OrderFixtures extends Fixture implements DependentFixtureInterface
 
     public function load(ObjectManager $manager): void
     {
-        $subject0 = $this->getReference('product-0-variant-0', ProductVariant::class);
-        $subject1 = $this->getReference('product-0-variant-1', ProductVariant::class);
-        $subject2 = $this->getReference('product-0-variant-2', ProductVariant::class);
-        $subject3 = $this->getReference('product-8-variant-0', ProductVariant::class);
-        $subject4 = $this->getReference('product-8-variant-1', ProductVariant::class);
-        $subject5 = $this->getReference('product-10-variant-0', ProductVariant::class);
+        $subject0 = $this->getReference('product-2-variant-0', ProductVariant::class);
+        $subject1 = $this->getReference('product-2-variant-4', ProductVariant::class);
+        $subject2 = $this->getReference('product-2-variant-8', ProductVariant::class);
+        $subject3 = $this->getReference('product-5-variant-0', ProductVariant::class);
+        $subject4 = $this->getReference('product-5-variant-3', ProductVariant::class);
+        $subject5 = $this->getReference('product-6-variant-0', ProductVariant::class);
 
         $order0 = $this->orderRepository->createNew();
-        $order0->addItem($this->orderItemRepository->createNew($subject0, 2));
-        $order0->addItem($this->orderItemRepository->createNew($subject1, 2));
-        $order0->addItem($this->orderItemRepository->createNew($subject2, 2));
+        $order0->addItem($this->orderItemRepository->createNew($subject0, 1));
+        $order0->addItem($this->orderItemRepository->createNew($subject1, 1));
+        $order0->addItem($this->orderItemRepository->createNew($subject2, 1));
 
         $order1 = $this->orderRepository->createNew();
-        $order1->addItem($this->orderItemRepository->createNew($subject3, 2));
-        $order1->addItem($this->orderItemRepository->createNew($subject4, 2));
+        $order1->addItem($this->orderItemRepository->createNew($subject3, 1));
+        $order1->addItem($this->orderItemRepository->createNew($subject4, 1));
 
         $order2 = $this->orderRepository->createNew();
-        $order2->addItem($this->orderItemRepository->createNew($subject5, 2));
+        $order2->addItem($this->orderItemRepository->createNew($subject5, 3));
 
         $manager->persist($order0);
         $manager->persist($order1);
