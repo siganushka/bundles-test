@@ -47,7 +47,7 @@ class IndexController extends AbstractController
         // ]);
 
         // $subject = new Goods();
-        // $subject->setTitle('动员兵');
+        // $subject->setTitle('苏军动员兵');
         // $subject->setSubtitle('50 块一个的好兄弟，比狗还便宜。');
         // $subject->setCover('https://placehold.co/100');
         // $subject->setPrice(Money::of(49.98, 'CNY'));
@@ -61,7 +61,7 @@ class IndexController extends AbstractController
         // dd(__METHOD__, $entities);
 
         // return $this->json($entities, context: [
-        //     AbstractNormalizer::GROUPS => ['order_item_subject:item'],
+        //     AbstractNormalizer::GROUPS => ['goods:collection'],
         // ]);
 
         return $this->render('index/index.html.twig');

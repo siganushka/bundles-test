@@ -1,14 +1,14 @@
 App\Entity\Goods:
     attributes:
         id:
-            groups: []
+            groups: ['goods:item', 'goods:collection']
         title:
-            groups: []
+            groups: ['goods:item', 'goods:collection']
         subtitle:
-            groups: []
+            groups: ['goods:item', 'goods:collection']
         cover:
-            groups: []
+            groups: ['goods:item', 'goods:collection']
         price:
-            groups: []
+            groups: ['goods:item', 'goods:collection']
         stock:
-            groups: []
+            groups: ['goods:item', 'goods:collection']
