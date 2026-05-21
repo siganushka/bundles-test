@@ -12,7 +12,7 @@ App\Entity\ProductVariant:
             groups: ['product_variant:collection', 'product:item', 'product:collection']
         stock:
             groups: ['product_variant:collection', 'product:item', 'product:collection']
-        choice:
+        optionValues:
             groups: []
         enabled:
             groups: ['product_variant:collection', 'product:item', 'product:collection']

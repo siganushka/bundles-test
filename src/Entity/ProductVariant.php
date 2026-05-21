@@ -20,7 +20,7 @@ class ProductVariant extends BaseProductVariant implements OrderItemSubjectInter
     public function createForOrderItem(int $quantity): OrderItemSubjectData
     {
         $fn = static fn ($_, ProductOptionValue $item) => null !== $item->getImg();
-        $img = $this->choice->findFirst($fn)?->getImg() ?? $this->product?->getImg();
+        $img = $this->optionValues->findFirst($fn)?->getImg() ?? $this->product?->getImg();
 
         return new OrderItemSubjectData(
             title: $this->product?->getName(),

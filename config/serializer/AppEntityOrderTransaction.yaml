@@ -10,8 +10,8 @@ App\Entity\OrderTransaction:
             groups: [order_transaction.item, order_transaction.collection]
         payResponse:
             groups: [order_transaction.item, order_transaction.collection]
-        success:
-            groups: [order_transaction.item, order_transaction.collection]
+        successful:
+            groups: []
         type:
             groups: [order_transaction.item, order_transaction.collection]
         label:
