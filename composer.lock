@@ -3042,7 +3042,7 @@
             "dist": {
                 "type": "path",
                 "url": "../media-bundle",
-                "reference": "2eec818a4ab29029c91fab91d786c345a9141721"
+                "reference": "49027b001e9672879c8b16d82bfcd3b04bb67601"
             },
             "require": {
                 "ext-fileinfo": "*",

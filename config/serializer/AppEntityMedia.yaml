@@ -12,13 +12,13 @@ App\Entity\Media:
             groups: []
         mime:
             groups: []
+        bytes:
+            groups: []
         size:
             groups: []
         width:
             groups: []
         height:
-            groups: []
-        sizeStr:
             groups: []
         createdAt:
             groups: []
