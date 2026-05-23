@@ -6,6 +6,8 @@ App\Entity\Topup:
             groups: []
         amount:
             groups: []
+        transactions:
+            groups: []
         createdAt:
             groups: []
         updatedAt:

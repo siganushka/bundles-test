@@ -10,4 +10,19 @@ use Siganushka\TransactionBundle\Entity\Transaction;
 #[ORM\Entity]
 class OrderTransaction extends Transaction
 {
+    #[ORM\ManyToOne(inversedBy: 'transactions')]
+    private ?Order $order = null;
+
+    public function getOrder(): ?Order
+    {
+        return $this->order;
+    }
+
+    public function setOrder(?Order $order): static
+    {
+        $this->amount = $order?->getTotal();
+        $this->order = $order;
+
+        return $this;
+    }
 }

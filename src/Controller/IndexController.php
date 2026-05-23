@@ -5,7 +5,11 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Entity\Goods;
+use App\Entity\Order;
 use App\Entity\OrderTransaction;
+use App\Entity\OrderTransactionAggregate;
+use App\Entity\Topup;
+use App\Entity\TopupTransaction;
 use App\Form\TestType;
 use Brick\Money\Money;
 use Doctrine\ORM\EntityManagerInterface;
@@ -31,19 +35,52 @@ class IndexController extends AbstractController
     #[Route('/')]
     public function index(EntityManagerInterface $entityManager): Response
     {
+        $order1 = $entityManager->find(Order::class, 1);
+        $order2 = $entityManager->find(Order::class, 2);
+
+        $topup = $entityManager->find(Topup::class, 1);
+
+        // dd(__METHOD__,
+        //     $order1->getTransactions()->toArray(),
+        //     $order1->getAggregateTransactions()->toArray(),
+        //     $order2->getAggregateTransactions()->toArray(),
+        //     $topup->getTransactions()->toArray(),
+        // );
+
+        // // 单个订单交易
         // $transaction = new OrderTransaction();
-        // $transaction->number = (new Snowflake())->id();
-        // $transaction->amount = 2599;
+        // $transaction->setNumber((new Snowflake())->id());
+        // $transaction->setOrder($order1);
 
         // $entityManager->persist($transaction);
         // $entityManager->flush();
         // dd(__METHOD__, $transaction);
 
+        // // 多个订单合并交易
+        // $transaction = new OrderTransactionAggregate();
+        // $transaction->setNumber((new Snowflake())->id());
+        // $transaction->addOrder($order1);
+        // $transaction->addOrder($order2);
+
+        // $entityManager->persist($transaction);
+        // $entityManager->flush();
+        // dd(__METHOD__, $transaction);
+
+        // // 冲值交易
+        // $transaction = new TopupTransaction();
+        // $transaction->setNumber((new Snowflake())->id());
+        // $transaction->setTopup($topup);
+
+        // $entityManager->persist($transaction);
+        // $entityManager->flush();
+        // dd(__METHOD__, $transaction);
+
+        // // 查询所有交易
         // $entities = $entityManager->getRepository(Transaction::class)->findAll();
-        // dd(__METHOD__, $entities);
+        // // dd(__METHOD__, $entities);
 
         // return $this->json($entities, context: [
-        //     AbstractNormalizer::GROUPS => ['order_transaction.collection'],
+        //     AbstractNormalizer::GROUPS => ['transaction.collection'],
         // ]);
 
         // $subject = new Goods();
@@ -58,7 +95,7 @@ class IndexController extends AbstractController
         // dd(__METHOD__, $subject);
 
         // $entities = $entityManager->getRepository(Goods::class)->findAll();
-        // dd(__METHOD__, $entities);
+        // // dd(__METHOD__, $entities);
 
         // return $this->json($entities, context: [
         //     AbstractNormalizer::GROUPS => ['goods:collection'],

@@ -2,6 +2,10 @@ App\Entity\Order:
     attributes:
         id:
             groups: []
+        transactions:
+            groups: []
+        aggregateTransactions:
+            groups: []
         number:
             groups: ['order:item', 'order:collection']
         itemsTotal:
