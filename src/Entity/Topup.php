@@ -11,7 +11,7 @@ use Siganushka\Contracts\Doctrine\TimestampableInterface;
 use Siganushka\Contracts\Doctrine\TimestampableTrait;
 
 #[ORM\Entity]
-class Recharge implements ResourceInterface, TimestampableInterface
+class Topup implements ResourceInterface, TimestampableInterface
 {
     use ResourceTrait;
     use TimestampableTrait;

@@ -1283,16 +1283,16 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "7.10.3",
+            "version": "7.10.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "47ba23c7a55247e2e1b7407aca90e9bbed0d9d86"
+                "reference": "aec528da477062d3af11f51e6b33402be233b21f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/47ba23c7a55247e2e1b7407aca90e9bbed0d9d86",
-                "reference": "47ba23c7a55247e2e1b7407aca90e9bbed0d9d86",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/aec528da477062d3af11f51e6b33402be233b21f",
+                "reference": "aec528da477062d3af11f51e6b33402be233b21f",
                 "shasum": ""
             },
             "require": {
@@ -1390,7 +1390,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/guzzle/issues",
-                "source": "https://github.com/guzzle/guzzle/tree/7.10.3"
+                "source": "https://github.com/guzzle/guzzle/tree/7.10.4"
             },
             "funding": [
                 {
@@ -1406,7 +1406,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-05-20T22:59:19+00:00"
+            "time": "2026-05-22T19:00:53+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -2920,7 +2920,7 @@
             "dist": {
                 "type": "path",
                 "url": "../generic-bundle",
-                "reference": "66df2a199f421b136b0ebf42f27472e30f9e2e2a"
+                "reference": "c238eefb1ec4f0abff2ba42b8d97f6fff5b02b98"
             },
             "require": {
                 "php": ">=8.2",
@@ -3042,7 +3042,7 @@
             "dist": {
                 "type": "path",
                 "url": "../media-bundle",
-                "reference": "49027b001e9672879c8b16d82bfcd3b04bb67601"
+                "reference": "5823d5e7f52698c7a12b10cbce4c2e4aba114eba"
             },
             "require": {
                 "ext-fileinfo": "*",
@@ -3106,7 +3106,7 @@
             "dist": {
                 "type": "path",
                 "url": "../order-bundle",
-                "reference": "082d27c0d651a9700965e0345d8b5a76ff4f12c7"
+                "reference": "5d85ad973733843a898f36f8406b4d067d9ef8ce"
             },
             "require": {
                 "knplabs/knp-components": "^5.0",
@@ -3228,7 +3228,7 @@
             "dist": {
                 "type": "path",
                 "url": "../region-bundle",
-                "reference": "254a3229381888da4326cb332e948ef5073f30da"
+                "reference": "16bba9580db01cb06f92c0cf7f0d79430d9af2f4"
             },
             "require": {
                 "php": ">=8.2",
@@ -3339,7 +3339,7 @@
             "dist": {
                 "type": "path",
                 "url": "../user-bundle",
-                "reference": "602584740220c6e89bfd8eb1135d39aeadb7102f"
+                "reference": "514f65457c4b84e1df2193777cc80f1b6b137fc0"
             },
             "require": {
                 "knplabs/knp-components": "^5.0",

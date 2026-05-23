@@ -1,0 +1,22 @@
+App\Entity\TopupTransaction:
+    attributes:
+        id:
+            groups: []
+        number:
+            groups: []
+        amount:
+            groups: []
+        payMethod:
+            groups: []
+        payResponse:
+            groups: []
+        successful:
+            groups: []
+        type:
+            groups: []
+        label:
+            groups: []
+        createdAt:
+            groups: []
+        updatedAt:
+            groups: []
