@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Siganushka\TransactionBundle\Entity\Transaction;
 
 #[ORM\Entity]
-class OrderTransaction extends Transaction
+class TransactionOrder extends Transaction
 {
     #[ORM\ManyToOne(inversedBy: 'transactions')]
     private ?Order $order = null;

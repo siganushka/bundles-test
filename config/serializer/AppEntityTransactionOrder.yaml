@@ -1,8 +1,8 @@
-App\Entity\OrderTransactionAggregate:
+App\Entity\TransactionOrder:
     attributes:
         id:
             groups: [transaction.item, transaction.collection]
-        orders:
+        order:
             groups: []
         number:
             groups: [transaction.item, transaction.collection]

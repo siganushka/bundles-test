@@ -18,15 +18,15 @@ class Order extends BaseOrder implements DeletableInterface
     use DeletableTrait;
 
     /**
-     * @var Collection<int, OrderTransaction>
+     * @var Collection<int, TransactionOrder>
      */
-    #[ORM\OneToMany(targetEntity: OrderTransaction::class, mappedBy: 'order')]
+    #[ORM\OneToMany(targetEntity: TransactionOrder::class, mappedBy: 'order')]
     private Collection $transactions;
 
     /**
-     * @var Collection<int, OrderTransactionAggregate>
+     * @var Collection<int, TransactionOrderAggregate>
      */
-    #[ORM\ManyToMany(targetEntity: OrderTransactionAggregate::class, mappedBy: 'orders')]
+    #[ORM\ManyToMany(targetEntity: TransactionOrderAggregate::class, mappedBy: 'orders')]
     private Collection $aggregateTransactions;
 
     public function __construct()
@@ -38,14 +38,14 @@ class Order extends BaseOrder implements DeletableInterface
     }
 
     /**
-     * @return Collection<int, OrderTransaction>
+     * @return Collection<int, TransactionOrder>
      */
     public function getTransactions(): Collection
     {
         return $this->transactions;
     }
 
-    public function addTransaction(OrderTransaction $transaction): static
+    public function addTransaction(TransactionOrder $transaction): static
     {
         if (!$this->transactions->contains($transaction)) {
             $this->transactions->add($transaction);
@@ -55,7 +55,7 @@ class Order extends BaseOrder implements DeletableInterface
         return $this;
     }
 
-    public function removeTransaction(OrderTransaction $transaction): static
+    public function removeTransaction(TransactionOrder $transaction): static
     {
         if ($this->transactions->removeElement($transaction)) {
             // set the owning side to null (unless already changed)
@@ -68,14 +68,14 @@ class Order extends BaseOrder implements DeletableInterface
     }
 
     /**
-     * @return Collection<int, OrderTransactionAggregate>
+     * @return Collection<int, TransactionOrderAggregate>
      */
     public function getAggregateTransactions(): Collection
     {
         return $this->aggregateTransactions;
     }
 
-    public function addAggregateTransaction(OrderTransactionAggregate $aggregateTransaction): static
+    public function addAggregateTransaction(TransactionOrderAggregate $aggregateTransaction): static
     {
         if (!$this->aggregateTransactions->contains($aggregateTransaction)) {
             $this->aggregateTransactions->add($aggregateTransaction);
@@ -85,7 +85,7 @@ class Order extends BaseOrder implements DeletableInterface
         return $this;
     }
 
-    public function removeAggregateTransaction(OrderTransactionAggregate $aggregateTransaction): static
+    public function removeAggregateTransaction(TransactionOrderAggregate $aggregateTransaction): static
     {
         if ($this->aggregateTransactions->removeElement($aggregateTransaction)) {
             $aggregateTransaction->removeOrder($this);

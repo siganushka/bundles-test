@@ -1,8 +1,8 @@
-App\Entity\TopupTransaction:
+App\Entity\TransactionOrderAggregate:
     attributes:
         id:
             groups: [transaction.item, transaction.collection]
-        topup:
+        orders:
             groups: []
         number:
             groups: [transaction.item, transaction.collection]

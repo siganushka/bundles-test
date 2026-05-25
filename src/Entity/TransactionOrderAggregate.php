@@ -11,7 +11,7 @@ use Siganushka\TransactionBundle\Entity\Transaction;
 
 #[ORM\Entity]
 #[ORM\HasLifecycleCallbacks]
-class OrderTransactionAggregate extends Transaction
+class TransactionOrderAggregate extends Transaction
 {
     /**
      * @var Collection<int, Order>
