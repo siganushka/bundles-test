@@ -30,7 +30,7 @@ class OrderCreatePerformanceTestCommand extends Command
     {
         $this
             ->addArgument('count', InputArgument::OPTIONAL, 'Generate count', '100')
-            ->addArgument('subjectId', InputArgument::OPTIONAL, 'Generated subject id', '109')
+            ->addArgument('subjectId', InputArgument::OPTIONAL, 'Generated subject id', '53')
         ;
     }
 

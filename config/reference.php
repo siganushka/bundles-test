@@ -1566,6 +1566,10 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     theme_cookie?: scalar|Param|null, // Default: "siganushka_admin_theme"
  *     collapse_cookie?: scalar|Param|null, // Default: "siganushka_admin_collapse"
  * }
+ * @psalm-type SiganushkaTransactionConfig = array{
+ *     transaction_class?: scalar|Param|null, // Default: "Siganushka\\TransactionBundle\\Entity\\Transaction"
+ *     transaction_number_generator?: scalar|Param|null, // Default: "Siganushka\\TransactionBundle\\Generator\\TransactionNumberGenerator"
+ * }
  * @psalm-type SiganushkaApiFactoryConfig = array{
  *     github?: bool|array{ // Github configuration
  *         enabled?: bool|Param, // Default: false
@@ -1652,6 +1656,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     siganushka_user?: SiganushkaUserConfig,
  *     knp_menu?: KnpMenuConfig,
  *     siganushka_admin?: SiganushkaAdminConfig,
+ *     siganushka_transaction?: SiganushkaTransactionConfig,
  *     siganushka_api_factory?: SiganushkaApiFactoryConfig,
  *     nelmio_cors?: NelmioCorsConfig,
  *     "when@dev"?: array{
@@ -1677,6 +1682,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         siganushka_user?: SiganushkaUserConfig,
  *         knp_menu?: KnpMenuConfig,
  *         siganushka_admin?: SiganushkaAdminConfig,
+ *         siganushka_transaction?: SiganushkaTransactionConfig,
  *         siganushka_api_factory?: SiganushkaApiFactoryConfig,
  *         nelmio_cors?: NelmioCorsConfig,
  *     },
@@ -1700,6 +1706,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         siganushka_user?: SiganushkaUserConfig,
  *         knp_menu?: KnpMenuConfig,
  *         siganushka_admin?: SiganushkaAdminConfig,
+ *         siganushka_transaction?: SiganushkaTransactionConfig,
  *         siganushka_api_factory?: SiganushkaApiFactoryConfig,
  *         nelmio_cors?: NelmioCorsConfig,
  *     },
@@ -1724,6 +1731,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         siganushka_user?: SiganushkaUserConfig,
  *         knp_menu?: KnpMenuConfig,
  *         siganushka_admin?: SiganushkaAdminConfig,
+ *         siganushka_transaction?: SiganushkaTransactionConfig,
  *         siganushka_api_factory?: SiganushkaApiFactoryConfig,
  *         nelmio_cors?: NelmioCorsConfig,
  *     },

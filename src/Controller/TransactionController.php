@@ -10,7 +10,6 @@ use App\Entity\TransactionOrder;
 use App\Entity\TransactionOrderAggregate;
 use App\Entity\TransactionTopup;
 use Doctrine\ORM\EntityManagerInterface;
-use Godruoyi\Snowflake\Snowflake;
 use Siganushka\GenericBundle\Controller\Crud\Web\IndexTrait;
 use Siganushka\TransactionBundle\Entity\Transaction;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -47,7 +46,6 @@ class TransactionController extends AbstractController
 
         // // 单个订单交易
         // $transaction = new TransactionOrder();
-        // $transaction->setNumber((new Snowflake())->id());
         // $transaction->setOrder($order1);
 
         // $entityManager->persist($transaction);
@@ -56,7 +54,6 @@ class TransactionController extends AbstractController
 
         // // 多个订单合并交易
         // $transaction = new TransactionOrderAggregate();
-        // $transaction->setNumber((new Snowflake())->id());
         // $transaction->addOrder($order1);
         // $transaction->addOrder($order2);
 
@@ -66,7 +63,6 @@ class TransactionController extends AbstractController
 
         // // 冲值交易
         // $transaction = new TransactionTopup();
-        // $transaction->setNumber((new Snowflake())->id());
         // $transaction->setTopup($topup);
 
         // $entityManager->persist($transaction);
@@ -74,7 +70,7 @@ class TransactionController extends AbstractController
         // dd(__METHOD__, $transaction);
 
         // 查询所有交易
-        $entities = $entityManager->getRepository(Transaction::class)->findAll();
+        $entities = $entityManager->getRepository(Transaction::class)->findBy([], ['id' => 'DESC']);
         // dd(__METHOD__, $entities);
 
         return $this->json($entities, context: [
