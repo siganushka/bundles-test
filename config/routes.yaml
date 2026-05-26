@@ -33,6 +33,11 @@ siganushka_order:
     prefix: /api
     stateless: true
 
+siganushka_transaction:
+    resource: "@SiganushkaTransactionBundle/config/routes.php"
+    prefix: /api
+    stateless: true
+
 siganushka_user:
     resource: "@SiganushkaUserBundle/config/routes.php"
     prefix: /api

@@ -16,7 +16,11 @@ App\Entity\TransactionTopup:
             groups: [transaction.item, transaction.collection]
         successful:
             groups: [transaction.item, transaction.collection]
+        expiredAt:
+            groups: [transaction.item, transaction.collection]
         type:
+            groups: [transaction.item, transaction.collection]
+        expired:
             groups: [transaction.item, transaction.collection]
         createdAt:
             groups: [transaction.item, transaction.collection]

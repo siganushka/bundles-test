@@ -2871,7 +2871,7 @@
             "dist": {
                 "type": "path",
                 "url": "../doctrine-contracts",
-                "reference": "6c6b0e848f23ce4bec6488db58479bff98b22c65"
+                "reference": "ebd1344aa02abd7df14a63f5f400306e9050a5aa"
             },
             "require": {
                 "doctrine/orm": "^3.0",
@@ -3285,7 +3285,7 @@
             "dist": {
                 "type": "path",
                 "url": "../transaction-bundle",
-                "reference": "8469155487bebbadcefea8c56d8f4d1ec17bcede"
+                "reference": "d4b752cca94c53c9dbb8ac698ac5cb8275d3d7ba"
             },
             "require": {
                 "knplabs/knp-components": "^5.0",

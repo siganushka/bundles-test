@@ -1201,6 +1201,105 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         },
  *     }>,
  * }
+ * @psalm-type SiganushkaGenericConfig = array{
+ *     doctrine?: array{
+ *         schema_resort?: bool|Param, // Default: true
+ *         table_prefix?: scalar|Param|null, // Default: null
+ *         mapping_override?: array<string, scalar|Param|null>,
+ *     },
+ *     serializer?: array{
+ *         form_error_normalizer?: bool|Param, // Default: false
+ *         knp_pagination_normalizer?: bool|Param, // Default: false
+ *     },
+ * }
+ * @psalm-type SiganushkaMediaConfig = array{
+ *     media_class?: scalar|Param|null, // Default: "Siganushka\\MediaBundle\\Entity\\Media"
+ *     storage?: scalar|Param|null, // Default: "Siganushka\\MediaBundle\\Storage\\LocalStorage"
+ *     naming?: scalar|Param|null, // This value defines the default file naming strategy (Available placeholders: yy/yyyy/m/mm/d/dd/timestamp/uniqid/random/random:{LENGTH}:{START}/rule/ext/original_name_with_ext). // Default: "[random:2]/[random:2:2]/[random:12:4].[ext]"
+ *     rules?: list<array{ // Default: []
+ *         constraint?: scalar|Param|null, // This value will be used for validation when uploading files. // Default: "Symfony\\Component\\Validator\\Constraints\\File"
+ *         constraint_options?: array<string, mixed>,
+ *         naming?: scalar|Param|null, // This value defines the file naming strategy. // Default: null
+ *         resize?: bool|array{ // This value is used when resizing the image.
+ *             enabled?: bool|Param, // Default: false
+ *             max_width?: int|Param, // Default: 1920
+ *             max_height?: int|Param, // Default: 7680
+ *         },
+ *         optimize?: bool|array{ // This value is used to optimize the image quality.
+ *             enabled?: bool|Param, // Default: false
+ *             quality?: int|Param, // Default: 90
+ *         },
+ *     }>,
+ * }
+ * @psalm-type SiganushkaOrderConfig = array{
+ *     order_class?: scalar|Param|null, // Default: "Siganushka\\OrderBundle\\Entity\\Order"
+ *     order_item_class?: scalar|Param|null, // Default: "Siganushka\\OrderBundle\\Entity\\OrderItem"
+ *     order_number_generator?: scalar|Param|null, // Default: "Siganushka\\OrderBundle\\Generator\\OrderNumberGenerator"
+ *     order_stock_modifier?: scalar|Param|null, // Default: "Siganushka\\OrderBundle\\Stock\\OrderStockModifier"
+ *     order_item_subject_type?: scalar|Param|null, // Default: "Siganushka\\OrderBundle\\Form\\Type\\OrderItemSubjectType"
+ *     order_cancelled_transport?: scalar|Param|null, // Default: null
+ *     order_cancelled_expires?: int|Param, // Default: 3600
+ * }
+ * @psalm-type SiganushkaProductConfig = array{
+ *     product_class?: scalar|Param|null, // Default: "Siganushka\\ProductBundle\\Entity\\Product"
+ *     product_option_class?: scalar|Param|null, // Default: "Siganushka\\ProductBundle\\Entity\\ProductOption"
+ *     product_option_value_class?: scalar|Param|null, // Default: "Siganushka\\ProductBundle\\Entity\\ProductOptionValue"
+ *     product_variant_class?: scalar|Param|null, // Default: "Siganushka\\ProductBundle\\Entity\\ProductVariant"
+ * }
+ * @psalm-type SiganushkaRegionConfig = array{
+ *     region_class?: scalar|Param|null, // Default: "Siganushka\\RegionBundle\\Entity\\Region"
+ * }
+ * @psalm-type SiganushkaUserConfig = array{
+ *     user_class?: scalar|Param|null, // Default: "Siganushka\\UserBundle\\Entity\\User"
+ *     identifier_type?: scalar|Param|null, // Default: "Siganushka\\UserBundle\\Identifier\\IdentifierType"
+ *     password_strength_min_score?: -1|1|2|3|4|Param, // Default: 1
+ * }
+ * @psalm-type SiganushkaAdminConfig = array{
+ *     theme_cookie?: scalar|Param|null, // Default: "siganushka_admin_theme"
+ *     collapse_cookie?: scalar|Param|null, // Default: "siganushka_admin_collapse"
+ * }
+ * @psalm-type SiganushkaTransactionConfig = array{
+ *     transaction_class?: scalar|Param|null, // Default: "Siganushka\\TransactionBundle\\Entity\\Transaction"
+ *     transaction_number_generator?: scalar|Param|null, // Default: "Siganushka\\TransactionBundle\\Generator\\TransactionNumberGenerator"
+ * }
+ * @psalm-type SiganushkaApiFactoryConfig = array{
+ *     github?: bool|array{ // Github configuration
+ *         enabled?: bool|Param, // Default: false
+ *         default_configuration?: scalar|Param|null,
+ *         configurations?: array<string, array{ // Default: []
+ *             client_id?: mixed,
+ *             client_secret?: mixed,
+ *         }>,
+ *     },
+ *     wechat?: bool|array{ // Wechat configuration
+ *         enabled?: bool|Param, // Default: false
+ *         default_configuration?: scalar|Param|null,
+ *         configurations?: array<string, array{ // Default: []
+ *             appid?: mixed,
+ *             secret?: mixed,
+ *         }>,
+ *     },
+ *     wxpay?: bool|array{ // Wxpay configuration
+ *         enabled?: bool|Param, // Default: false
+ *         default_configuration?: scalar|Param|null,
+ *         configurations?: array<string, array{ // Default: []
+ *             appid?: mixed,
+ *             mchid?: mixed,
+ *             mchkey?: mixed,
+ *             mch_client_cert?: mixed,
+ *             mch_client_key?: mixed,
+ *         }>,
+ *     },
+ *     alipay?: bool|array{ // Alipay configuration
+ *         enabled?: bool|Param, // Default: false
+ *         default_configuration?: scalar|Param|null,
+ *         configurations?: array<string, array{ // Default: []
+ *             appid?: mixed,
+ *             app_private_key?: mixed,
+ *             alipay_public_key?: mixed,
+ *         }>,
+ *     },
+ * }
  * @psalm-type DoctrineConfig = array{
  *     dbal?: array{
  *         default_connection?: scalar|Param|null,
@@ -1499,59 +1598,6 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     convert_exception?: bool|Param, // Default: false
  *     remove_first_page_param?: bool|Param, // Default: false
  * }
- * @psalm-type SiganushkaGenericConfig = array{
- *     doctrine?: array{
- *         schema_resort?: bool|Param, // Default: true
- *         table_prefix?: scalar|Param|null, // Default: null
- *         mapping_override?: array<string, scalar|Param|null>,
- *     },
- *     serializer?: array{
- *         form_error_normalizer?: bool|Param, // Default: false
- *         knp_pagination_normalizer?: bool|Param, // Default: false
- *     },
- * }
- * @psalm-type SiganushkaMediaConfig = array{
- *     media_class?: scalar|Param|null, // Default: "Siganushka\\MediaBundle\\Entity\\Media"
- *     storage?: scalar|Param|null, // Default: "Siganushka\\MediaBundle\\Storage\\LocalStorage"
- *     naming?: scalar|Param|null, // This value defines the default file naming strategy (Available placeholders: yy/yyyy/m/mm/d/dd/timestamp/uniqid/random/random:{LENGTH}:{START}/rule/ext/original_name_with_ext). // Default: "[random:2]/[random:2:2]/[random:12:4].[ext]"
- *     rules?: list<array{ // Default: []
- *         constraint?: scalar|Param|null, // This value will be used for validation when uploading files. // Default: "Symfony\\Component\\Validator\\Constraints\\File"
- *         constraint_options?: array<string, mixed>,
- *         naming?: scalar|Param|null, // This value defines the file naming strategy. // Default: null
- *         resize?: bool|array{ // This value is used when resizing the image.
- *             enabled?: bool|Param, // Default: false
- *             max_width?: int|Param, // Default: 1920
- *             max_height?: int|Param, // Default: 7680
- *         },
- *         optimize?: bool|array{ // This value is used to optimize the image quality.
- *             enabled?: bool|Param, // Default: false
- *             quality?: int|Param, // Default: 90
- *         },
- *     }>,
- * }
- * @psalm-type SiganushkaOrderConfig = array{
- *     order_class?: scalar|Param|null, // Default: "Siganushka\\OrderBundle\\Entity\\Order"
- *     order_item_class?: scalar|Param|null, // Default: "Siganushka\\OrderBundle\\Entity\\OrderItem"
- *     order_number_generator?: scalar|Param|null, // Default: "Siganushka\\OrderBundle\\Generator\\OrderNumberGenerator"
- *     order_stock_modifier?: scalar|Param|null, // Default: "Siganushka\\OrderBundle\\Stock\\OrderStockModifier"
- *     order_item_subject_type?: scalar|Param|null, // Default: "Siganushka\\OrderBundle\\Form\\Type\\OrderItemSubjectType"
- *     order_cancelled_transport?: scalar|Param|null, // Default: null
- *     order_cancelled_expires?: int|Param, // Default: 3600
- * }
- * @psalm-type SiganushkaProductConfig = array{
- *     product_class?: scalar|Param|null, // Default: "Siganushka\\ProductBundle\\Entity\\Product"
- *     product_option_class?: scalar|Param|null, // Default: "Siganushka\\ProductBundle\\Entity\\ProductOption"
- *     product_option_value_class?: scalar|Param|null, // Default: "Siganushka\\ProductBundle\\Entity\\ProductOptionValue"
- *     product_variant_class?: scalar|Param|null, // Default: "Siganushka\\ProductBundle\\Entity\\ProductVariant"
- * }
- * @psalm-type SiganushkaRegionConfig = array{
- *     region_class?: scalar|Param|null, // Default: "Siganushka\\RegionBundle\\Entity\\Region"
- * }
- * @psalm-type SiganushkaUserConfig = array{
- *     user_class?: scalar|Param|null, // Default: "Siganushka\\UserBundle\\Entity\\User"
- *     identifier_type?: scalar|Param|null, // Default: "Siganushka\\UserBundle\\Identifier\\IdentifierType"
- *     password_strength_min_score?: -1|1|2|3|4|Param, // Default: 1
- * }
  * @psalm-type KnpMenuConfig = array{
  *     providers?: array{
  *         builder_alias?: bool|Param, // Default: true
@@ -1561,52 +1607,6 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     },
  *     templating?: bool|Param, // Default: false
  *     default_renderer?: scalar|Param|null, // Default: "twig"
- * }
- * @psalm-type SiganushkaAdminConfig = array{
- *     theme_cookie?: scalar|Param|null, // Default: "siganushka_admin_theme"
- *     collapse_cookie?: scalar|Param|null, // Default: "siganushka_admin_collapse"
- * }
- * @psalm-type SiganushkaTransactionConfig = array{
- *     transaction_class?: scalar|Param|null, // Default: "Siganushka\\TransactionBundle\\Entity\\Transaction"
- *     transaction_number_generator?: scalar|Param|null, // Default: "Siganushka\\TransactionBundle\\Generator\\TransactionNumberGenerator"
- * }
- * @psalm-type SiganushkaApiFactoryConfig = array{
- *     github?: bool|array{ // Github configuration
- *         enabled?: bool|Param, // Default: false
- *         default_configuration?: scalar|Param|null,
- *         configurations?: array<string, array{ // Default: []
- *             client_id?: mixed,
- *             client_secret?: mixed,
- *         }>,
- *     },
- *     wechat?: bool|array{ // Wechat configuration
- *         enabled?: bool|Param, // Default: false
- *         default_configuration?: scalar|Param|null,
- *         configurations?: array<string, array{ // Default: []
- *             appid?: mixed,
- *             secret?: mixed,
- *         }>,
- *     },
- *     wxpay?: bool|array{ // Wxpay configuration
- *         enabled?: bool|Param, // Default: false
- *         default_configuration?: scalar|Param|null,
- *         configurations?: array<string, array{ // Default: []
- *             appid?: mixed,
- *             mchid?: mixed,
- *             mchkey?: mixed,
- *             mch_client_cert?: mixed,
- *             mch_client_key?: mixed,
- *         }>,
- *     },
- *     alipay?: bool|array{ // Alipay configuration
- *         enabled?: bool|Param, // Default: false
- *         default_configuration?: scalar|Param|null,
- *         configurations?: array<string, array{ // Default: []
- *             appid?: mixed,
- *             app_private_key?: mixed,
- *             alipay_public_key?: mixed,
- *         }>,
- *     },
  * }
  * @psalm-type NelmioCorsConfig = array{
  *     defaults?: array{
@@ -1645,19 +1645,19 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     stimulus?: StimulusConfig,
  *     twig?: TwigConfig,
  *     monolog?: MonologConfig,
- *     doctrine?: DoctrineConfig,
- *     twig_extra?: TwigExtraConfig,
- *     knp_paginator?: KnpPaginatorConfig,
  *     siganushka_generic?: SiganushkaGenericConfig,
  *     siganushka_media?: SiganushkaMediaConfig,
  *     siganushka_order?: SiganushkaOrderConfig,
  *     siganushka_product?: SiganushkaProductConfig,
  *     siganushka_region?: SiganushkaRegionConfig,
  *     siganushka_user?: SiganushkaUserConfig,
- *     knp_menu?: KnpMenuConfig,
  *     siganushka_admin?: SiganushkaAdminConfig,
  *     siganushka_transaction?: SiganushkaTransactionConfig,
  *     siganushka_api_factory?: SiganushkaApiFactoryConfig,
+ *     doctrine?: DoctrineConfig,
+ *     twig_extra?: TwigExtraConfig,
+ *     knp_paginator?: KnpPaginatorConfig,
+ *     knp_menu?: KnpMenuConfig,
  *     nelmio_cors?: NelmioCorsConfig,
  *     "when@dev"?: array{
  *         imports?: ImportsConfig,
@@ -1671,19 +1671,19 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         maker?: MakerConfig,
  *         web_profiler?: WebProfilerConfig,
  *         monolog?: MonologConfig,
- *         doctrine?: DoctrineConfig,
- *         twig_extra?: TwigExtraConfig,
- *         knp_paginator?: KnpPaginatorConfig,
  *         siganushka_generic?: SiganushkaGenericConfig,
  *         siganushka_media?: SiganushkaMediaConfig,
  *         siganushka_order?: SiganushkaOrderConfig,
  *         siganushka_product?: SiganushkaProductConfig,
  *         siganushka_region?: SiganushkaRegionConfig,
  *         siganushka_user?: SiganushkaUserConfig,
- *         knp_menu?: KnpMenuConfig,
  *         siganushka_admin?: SiganushkaAdminConfig,
  *         siganushka_transaction?: SiganushkaTransactionConfig,
  *         siganushka_api_factory?: SiganushkaApiFactoryConfig,
+ *         doctrine?: DoctrineConfig,
+ *         twig_extra?: TwigExtraConfig,
+ *         knp_paginator?: KnpPaginatorConfig,
+ *         knp_menu?: KnpMenuConfig,
  *         nelmio_cors?: NelmioCorsConfig,
  *     },
  *     "when@prod"?: array{
@@ -1695,19 +1695,19 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         stimulus?: StimulusConfig,
  *         twig?: TwigConfig,
  *         monolog?: MonologConfig,
- *         doctrine?: DoctrineConfig,
- *         twig_extra?: TwigExtraConfig,
- *         knp_paginator?: KnpPaginatorConfig,
  *         siganushka_generic?: SiganushkaGenericConfig,
  *         siganushka_media?: SiganushkaMediaConfig,
  *         siganushka_order?: SiganushkaOrderConfig,
  *         siganushka_product?: SiganushkaProductConfig,
  *         siganushka_region?: SiganushkaRegionConfig,
  *         siganushka_user?: SiganushkaUserConfig,
- *         knp_menu?: KnpMenuConfig,
  *         siganushka_admin?: SiganushkaAdminConfig,
  *         siganushka_transaction?: SiganushkaTransactionConfig,
  *         siganushka_api_factory?: SiganushkaApiFactoryConfig,
+ *         doctrine?: DoctrineConfig,
+ *         twig_extra?: TwigExtraConfig,
+ *         knp_paginator?: KnpPaginatorConfig,
+ *         knp_menu?: KnpMenuConfig,
  *         nelmio_cors?: NelmioCorsConfig,
  *     },
  *     "when@test"?: array{
@@ -1720,19 +1720,19 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         twig?: TwigConfig,
  *         web_profiler?: WebProfilerConfig,
  *         monolog?: MonologConfig,
- *         doctrine?: DoctrineConfig,
- *         twig_extra?: TwigExtraConfig,
- *         knp_paginator?: KnpPaginatorConfig,
  *         siganushka_generic?: SiganushkaGenericConfig,
  *         siganushka_media?: SiganushkaMediaConfig,
  *         siganushka_order?: SiganushkaOrderConfig,
  *         siganushka_product?: SiganushkaProductConfig,
  *         siganushka_region?: SiganushkaRegionConfig,
  *         siganushka_user?: SiganushkaUserConfig,
- *         knp_menu?: KnpMenuConfig,
  *         siganushka_admin?: SiganushkaAdminConfig,
  *         siganushka_transaction?: SiganushkaTransactionConfig,
  *         siganushka_api_factory?: SiganushkaApiFactoryConfig,
+ *         doctrine?: DoctrineConfig,
+ *         twig_extra?: TwigExtraConfig,
+ *         knp_paginator?: KnpPaginatorConfig,
+ *         knp_menu?: KnpMenuConfig,
  *         nelmio_cors?: NelmioCorsConfig,
  *     },
  *     ...<string, ExtensionType|array{ // extra keys must follow the when@%env% pattern or match an extension alias
