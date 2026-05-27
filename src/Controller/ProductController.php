@@ -53,7 +53,7 @@ class ProductController extends AbstractController
 
     protected function createEntityForm(object $data, array $options = []): FormInterface
     {
-        $options['combinable'] = $this->requestStack->getCurrentRequest()?->query->getBoolean('combinable');
+        $options['combinable'] = $this->requestStack->getCurrentRequest()?->query->getBoolean('combinable') ?? false;
 
         return $this->createForm($this->entityForm, $data, $options);
     }
