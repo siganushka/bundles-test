@@ -13,8 +13,8 @@ use Siganushka\GenericBundle\Controller\Crud\PutItemTrait;
 use Siganushka\ProductBundle\Form\ProductType;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('/rest/products')]
-class TestController
+#[Route('/crud/products')]
+class CrudController
 {
     use GetCollectionTrait;
     use PostCollectionTrait;

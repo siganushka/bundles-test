@@ -15,30 +15,30 @@ siganushka_generic:
 
 siganushka_region:
     resource: "@SiganushkaRegionBundle/config/routes.php"
-    prefix: /api
+    prefix: /rest
     stateless: true
 
 siganushka_media:
     resource: "@SiganushkaMediaBundle/config/routes.php"
-    prefix: /api
+    prefix: /rest
     stateless: true
 
 siganushka_product:
     resource: "@SiganushkaProductBundle/config/routes.php"
-    prefix: /api
+    prefix: /rest
     stateless: true
 
 siganushka_order:
     resource: "@SiganushkaOrderBundle/config/routes.php"
-    prefix: /api
+    prefix: /rest
     stateless: true
 
 siganushka_transaction:
     resource: "@SiganushkaTransactionBundle/config/routes.php"
-    prefix: /api
+    prefix: /rest
     stateless: true
 
 siganushka_user:
     resource: "@SiganushkaUserBundle/config/routes.php"
-    prefix: /api
+    prefix: /rest
     stateless: true
