@@ -4,10 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Entity\Goods;
 use App\Form\TestType;
-use Brick\Money\Money;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
@@ -20,32 +17,13 @@ use Symfony\Component\Form\Extension\Core\Type\TimezoneType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
 class IndexController extends AbstractController
 {
     #[Route('/')]
-    public function index(EntityManagerInterface $entityManager): Response
+    public function index(): Response
     {
-        // $subject = new Goods();
-        // $subject->setTitle('苏军动员兵');
-        // $subject->setSubtitle('50 块一个的好兄弟，比狗还便宜。');
-        // $subject->setCover('https://placehold.co/100');
-        // $subject->setPrice(Money::of(49.98, 'CNY'));
-        // $subject->setStock(100);
-
-        // $entityManager->persist($subject);
-        // $entityManager->flush();
-        // dd(__METHOD__, $subject);
-
-        // $entities = $entityManager->getRepository(Goods::class)->findAll();
-        // // dd(__METHOD__, $entities);
-
-        // return $this->json($entities, context: [
-        //     AbstractNormalizer::GROUPS => ['goods:collection'],
-        // ]);
-
         return $this->render('index/index.html.twig');
     }
 
