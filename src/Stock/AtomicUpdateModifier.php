@@ -44,8 +44,9 @@ class AtomicUpdateModifier implements OrderStockModifierInterface
                 continue;
             }
 
+            $quantity = $item->getQuantity();
             $stock = $subject->availableStock();
-            if (null === $stock) {
+            if (null === $quantity || null === $stock) {
                 continue;
             }
 
@@ -54,7 +55,7 @@ class AtomicUpdateModifier implements OrderStockModifierInterface
                 ->set('entity.stock', $assignment)
                 ->where('entity.id = :id')
                 ->setParameter('id', $subject->getId(), ParameterType::INTEGER)
-                ->setParameter('quantity', $item->getQuantity(), ParameterType::INTEGER)
+                ->setParameter('quantity', $quantity, ParameterType::INTEGER)
             ;
 
             if (self::DECREMENT === $action) {
@@ -63,7 +64,7 @@ class AtomicUpdateModifier implements OrderStockModifierInterface
 
             $query = $queryBuilder->getQuery();
             if (!$query->execute()) {
-                throw new OutOfStockException($subject, $stock, $item->getQuantity());
+                throw new OutOfStockException($subject, $stock, $quantity);
             }
         }
     }
