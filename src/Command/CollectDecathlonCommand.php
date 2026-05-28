@@ -115,7 +115,7 @@ class CollectDecathlonCommand extends Command
                     $label = '-';
                 }
 
-                $option->addValue(new ProductOptionValue($model['model_code'], $label, $this->handleMedia($model['media']['images'][0]['image_url'])));
+                $option->addValue(new ProductOptionValue(\sprintf('model_code_%s', $model['model_code']), $label, $this->handleMedia($model['media']['images'][0]['image_url'])));
             }
 
             $entity->addOption($option);
@@ -124,7 +124,7 @@ class CollectDecathlonCommand extends Command
         if (\count($items) > 1) {
             $option = new ProductOption('尺码');
             foreach ($items as $item) {
-                $option->addValue(new ProductOptionValue($item['item_code'], $item['size_label']));
+                $option->addValue(new ProductOptionValue(\sprintf('model_code_%s', $item['item_code']), $item['size_label']));
             }
 
             $entity->addOption($option);

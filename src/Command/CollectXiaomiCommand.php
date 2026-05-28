@@ -120,11 +120,9 @@ class CollectXiaomiCommand extends Command
                 foreach ($product['goods_list'] as $v1) {
                     $values = [];
                     foreach ($v1['goods_info']['prop_list'] as $v2) {
-                        if (1 === $v2['prop_cfg_id']) {
-                            continue;
+                        if (1 != $v2['prop_cfg_id']) {
+                            $values[] = new ProductOptionValue(\sprintf('prop_value_id_%d', $v2['prop_value_id']));
                         }
-
-                        $values[] = new ProductOptionValue(\sprintf('prop_value_id_%d', $v2['prop_value_id']));
                     }
 
                     $choice = new ProductVariantChoice($values);

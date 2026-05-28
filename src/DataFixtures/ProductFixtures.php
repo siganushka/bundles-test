@@ -26,20 +26,20 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
     public function load(ObjectManager $manager): void
     {
         $option0 = $this->productOptionRepository->createNew('颜色');
-        $option0->addValue($this->productOptionValueRepository->createNew('lavender', '薰衣草紫色', $this->getReference('media-product-option-value-3', Media::class)));
-        $option0->addValue($this->productOptionValueRepository->createNew('sage', '鼠尾草绿色', $this->getReference('media-product-option-value-4', Media::class)));
-        $option0->addValue($this->productOptionValueRepository->createNew('mistblue', '青雾蓝色', $this->getReference('media-product-option-value-5', Media::class)));
-        $option0->addValue($this->productOptionValueRepository->createNew('white', '白色', $this->getReference('media-product-option-value-6', Media::class)));
-        $option0->addValue($this->productOptionValueRepository->createNew('black', '黑色', $this->getReference('media-product-option-value-7', Media::class)));
+        $option0->addValue($this->productOptionValueRepository->createNew(null, '薰衣草紫色', $this->getReference('media-product-option-value-3', Media::class)));
+        $option0->addValue($this->productOptionValueRepository->createNew(null, '鼠尾草绿色', $this->getReference('media-product-option-value-4', Media::class)));
+        $option0->addValue($this->productOptionValueRepository->createNew(null, '青雾蓝色', $this->getReference('media-product-option-value-5', Media::class)));
+        $option0->addValue($this->productOptionValueRepository->createNew(null, '白色', $this->getReference('media-product-option-value-6', Media::class)));
+        $option0->addValue($this->productOptionValueRepository->createNew(null, '黑色', $this->getReference('media-product-option-value-7', Media::class)));
 
         $option1 = $this->productOptionRepository->createNew('存储');
         $option1->addValue($this->productOptionValueRepository->createNew(null, '256GB'));
         $option1->addValue($this->productOptionValueRepository->createNew(null, '512GB'));
 
         $option2 = $this->productOptionRepository->createNew('颜色');
-        $option2->addValue($this->productOptionValueRepository->createNew('silver', '银色', $this->getReference('media-product-option-value-0', Media::class)));
-        $option2->addValue($this->productOptionValueRepository->createNew('cosmicorange', '星宇橙色', $this->getReference('media-product-option-value-1', Media::class)));
-        $option2->addValue($this->productOptionValueRepository->createNew('deepblue', '深蓝色', $this->getReference('media-product-option-value-2', Media::class)));
+        $option2->addValue($this->productOptionValueRepository->createNew(null, '银色', $this->getReference('media-product-option-value-0', Media::class)));
+        $option2->addValue($this->productOptionValueRepository->createNew(null, '星宇橙色', $this->getReference('media-product-option-value-1', Media::class)));
+        $option2->addValue($this->productOptionValueRepository->createNew(null, '深蓝色', $this->getReference('media-product-option-value-2', Media::class)));
 
         $option3 = $this->productOptionRepository->createNew('存储');
         $option3->addValue($this->productOptionValueRepository->createNew(null, '256GB'));
