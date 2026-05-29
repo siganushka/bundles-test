@@ -3042,7 +3042,7 @@
             "dist": {
                 "type": "path",
                 "url": "../media-bundle",
-                "reference": "5823d5e7f52698c7a12b10cbce4c2e4aba114eba"
+                "reference": "e9eff90aaf79cfafd0f5a59c489b8d105610e3c7"
             },
             "require": {
                 "ext-fileinfo": "*",
@@ -3106,7 +3106,7 @@
             "dist": {
                 "type": "path",
                 "url": "../order-bundle",
-                "reference": "815598f00b9b9df9b1b2817fe446913c570f065a"
+                "reference": "fd415e3168a15c007db3f1399e41b1668f53c169"
             },
             "require": {
                 "godruoyi/php-snowflake": "^3.0",
@@ -3285,7 +3285,7 @@
             "dist": {
                 "type": "path",
                 "url": "../transaction-bundle",
-                "reference": "d4b752cca94c53c9dbb8ac698ac5cb8275d3d7ba"
+                "reference": "1c8aaa6f25819f736bdd6e080bb7698cd88bb98a"
             },
             "require": {
                 "knplabs/knp-components": "^5.0",
