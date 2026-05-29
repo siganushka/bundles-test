@@ -10,8 +10,10 @@ use App\Entity\TransactionOrder;
 use App\Entity\TransactionOrderAggregate;
 use App\Entity\TransactionTopup;
 use Doctrine\ORM\EntityManagerInterface;
+use Psr\EventDispatcher\EventDispatcherInterface;
 use Siganushka\GenericBundle\Controller\Crud\Web\IndexTrait;
 use Siganushka\TransactionBundle\Entity\Transaction;
+use Siganushka\TransactionBundle\Event\TransactionSuccessEvent;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -30,7 +32,7 @@ class TransactionController extends AbstractController
     }
 
     #[Route('/test')]
-    public function test(EntityManagerInterface $entityManager): Response
+    public function test(EntityManagerInterface $entityManager, EventDispatcherInterface $eventDispatcher): Response
     {
         // $order1 = $entityManager->find(Order::class, 1);
         // $order2 = $entityManager->find(Order::class, 2);
@@ -64,6 +66,19 @@ class TransactionController extends AbstractController
         // // 冲值交易
         // $transaction = new TransactionTopup();
         // $transaction->setTopup($topup);
+
+        // $entityManager->persist($transaction);
+        // $entityManager->flush();
+        // dd(__METHOD__, $transaction);
+
+        // // 交易成功事件
+        // $transaction = $entityManager->find(Transaction::class, 1);
+        // $transaction->setPayMethod('foo');
+        // $transaction->setPayResponse(['msg' => 'hello']);
+        // $transaction->setSuccessful(true);
+
+        // $event = new TransactionSuccessEvent($transaction);
+        // $eventDispatcher->dispatch($event);
 
         // $entityManager->persist($transaction);
         // $entityManager->flush();
