@@ -1,20 +1,18 @@
 App\Entity\TransactionOrderAggregate:
     attributes:
         id:
-            groups: [transaction.item, transaction.collection]
+            groups: []
         orders:
             groups: []
         number:
             groups: [transaction.item, transaction.collection]
         amount:
             groups: [transaction.item, transaction.collection]
-        payMethod:
+        gateway:
             groups: [transaction.item, transaction.collection]
-        payRequest:
+        details:
             groups: [transaction.item, transaction.collection]
-        payResponse:
-            groups: [transaction.item, transaction.collection]
-        successful:
+        state:
             groups: [transaction.item, transaction.collection]
         expiredAt:
             groups: [transaction.item, transaction.collection]

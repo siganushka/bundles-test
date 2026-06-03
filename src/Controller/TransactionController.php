@@ -9,12 +9,17 @@ use App\Entity\Topup;
 use App\Entity\TransactionOrder;
 use App\Entity\TransactionOrderAggregate;
 use App\Entity\TransactionTopup;
+use App\Payment\WxpayJsapi;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
+use Psr\Log\LoggerInterface;
+use Siganushka\ApiFactory\Wxpay\NotifyHandler;
 use Siganushka\GenericBundle\Controller\Crud\Web\IndexTrait;
 use Siganushka\TransactionBundle\Entity\Transaction;
 use Siganushka\TransactionBundle\Event\TransactionSuccessEvent;
+use Siganushka\TransactionBundle\Repository\TransactionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
@@ -24,7 +29,7 @@ class TransactionController extends AbstractController
 {
     use IndexTrait;
 
-    public function __construct()
+    public function __construct(private readonly TransactionRepository $transactionRepository)
     {
         $this->configureCrud(
             entityName: Transaction::class,
@@ -85,11 +90,52 @@ class TransactionController extends AbstractController
         // dd(__METHOD__, $transaction);
 
         // 查询所有交易
-        $entities = $entityManager->getRepository(Transaction::class)->findBy([], ['id' => 'DESC']);
+        $entities = $this->transactionRepository->findBy([], ['id' => 'DESC']);
         // dd(__METHOD__, $entities);
 
         return $this->json($entities, context: [
             AbstractNormalizer::GROUPS => ['transaction.collection'],
         ]);
+    }
+
+    #[Route('/wxpay-notify')]
+    public function wxpayNotify(Request $request, EventDispatcherInterface $dispatcher, NotifyHandler $handler): Response
+    {
+        try {
+            $data = $handler->handle($request);
+        } catch (\Throwable $th) {
+            return $handler->fail($th->getMessage());
+        }
+
+        $transaction = $this->transactionRepository->findOneByNumber($data['out_trade_no']);
+        if (!$transaction) {
+            return $handler->fail('Transaction not found.');
+        }
+
+        if ($transaction->getAmount() !== $data['total_fee']) {
+            return $handler->fail('The total_fee is not valid.');
+        }
+
+        $this->entityManager->beginTransaction();
+
+        $transaction->setGateway(WxpayJsapi::getName());
+        $transaction->setDetails($data);
+
+        $event = new TransactionSuccessEvent($transaction);
+        $dispatcher->dispatch($event);
+
+        $this->entityManager->flush();
+        $this->entityManager->commit();
+
+        return $handler->success();
+    }
+
+    #[Route('/alipay-notify')]
+    public function alipayNotify(Request $request, LoggerInterface $logger): Response
+    {
+        $payload = $request->getPayload()->all();
+        $logger->info('Alipay notify payload.', $payload);
+
+        return $this->json($payload);
     }
 }

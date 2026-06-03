@@ -42,6 +42,7 @@ class TransactionOrderAggregate extends Transaction
     public function addOrder(Order $order): static
     {
         if (!$this->orders->contains($order)) {
+            $this->amount = null;
             $this->orders->add($order);
         }
 
@@ -50,6 +51,7 @@ class TransactionOrderAggregate extends Transaction
 
     public function removeOrder(Order $order): static
     {
+        $this->amount = null;
         $this->orders->removeElement($order);
 
         return $this;

@@ -27,10 +27,10 @@ class TransactionSuccessListener
     public function __invoke(TransactionSuccessEvent $event): void
     {
         $transaction = $event->getTransaction();
-        if ($transaction instanceof TransactionTopup && $entity = $transaction->getTopup()) {
-            $this->handleTopup($entity);
-        } elseif ($transaction instanceof TransactionOrder && $entity = $transaction->getOrder()) {
-            $this->handleOrder($entity);
+        if ($transaction instanceof TransactionTopup && $transaction->getTopup()) {
+            $this->handleTopup($transaction->getTopup());
+        } elseif ($transaction instanceof TransactionOrder && $transaction->getOrder()) {
+            $this->handleOrder($transaction->getOrder());
         } elseif ($transaction instanceof TransactionOrderAggregate) {
             $transaction->getOrders()->map($this->handleOrder(...));
         }
@@ -38,11 +38,7 @@ class TransactionSuccessListener
 
     private function handleOrder(Order $entity): void
     {
-        try {
-            $this->registry->get($entity)->apply($entity, OrderStateTransition::Confirm->value);
-        } catch (\Throwable $th) {
-            $this->logger->error($th->getMessage());
-        }
+        $this->registry->get($entity)->apply($entity, OrderStateTransition::Confirm->value);
     }
 
     private function handleTopup(Topup $entity): void

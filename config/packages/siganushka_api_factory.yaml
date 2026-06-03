@@ -3,10 +3,10 @@ siganushka_api_factory:
         appid: test
         secret: test
     wxpay:
-        appid: test
-        mchid: test
-        mchkey: test
-    # alipay:
-    #     appid: test
-    #     app_private_key: test
-    #     alipay_public_key: test
+        appid: '%env(string:WXPAY_APPID)%'
+        mchid: '%env(string:WXPAY_MCHID)%'
+        mchkey: '%env(string:WXPAY_MCHKEY)%'
+    alipay:
+        appid: '%env(string:ALIPAY_APPID)%'
+        app_private_key: '%env(string:ALIPAY_APP_PRIVATE_KEY)%'
+        alipay_public_key: '%env(string:ALIPAY_ALIPAY_PUBLIC_KEY)%'

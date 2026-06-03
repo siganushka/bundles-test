@@ -1,14 +1,14 @@
 App\Entity\Topup:
     attributes:
         id:
-            groups: []
+            groups: [topup.item, topup.collection, 'topup:collection']
         title:
-            groups: []
+            groups: [topup.item, topup.collection]
         amount:
-            groups: []
+            groups: [topup.item, topup.collection]
         transactions:
-            groups: []
+            groups: [topup.item, topup.collection]
         createdAt:
-            groups: []
+            groups: [topup.item, topup.collection]
         updatedAt:
-            groups: []
+            groups: [topup.item, topup.collection]
