@@ -42,7 +42,7 @@ return [
     'order_adjustment.type.shipping_fee' => '运费',
     'order_adjustment.type.random_discount' => '随机立减',
     'order_adjustment.type.coupon_discount' => '优惠券抵扣',
-    'transaction.type.transaction_order' => '订单',
-    'transaction.type.transaction_order_aggregate' => '聚合订单',
-    'transaction.type.transaction_topup' => '充值',
+    'payment.type.payment_order' => '订单',
+    'payment.type.payment_order_aggregate' => '聚合订单',
+    'payment.type.payment_topup' => '充值',
 ];

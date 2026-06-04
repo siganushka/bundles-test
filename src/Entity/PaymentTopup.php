@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Siganushka\TransactionBundle\Entity\Transaction;
+use Siganushka\PaymentBundle\Entity\Payment;
 
 #[ORM\Entity]
-class TransactionTopup extends Transaction
+class PaymentTopup extends Payment
 {
-    #[ORM\ManyToOne(inversedBy: 'transactions')]
+    #[ORM\ManyToOne(inversedBy: 'payments')]
     private ?Topup $topup = null;
 
     public function getTopup(): ?Topup

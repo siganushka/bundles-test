@@ -1237,8 +1237,8 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     order_number_generator?: scalar|Param|null, // Default: "Siganushka\\OrderBundle\\Generator\\OrderNumberGenerator"
  *     order_stock_modifier?: scalar|Param|null, // Default: "Siganushka\\OrderBundle\\Stock\\OrderStockModifier"
  *     order_item_subject_type?: scalar|Param|null, // Default: "Siganushka\\OrderBundle\\Form\\Type\\OrderItemSubjectType"
- *     order_cancelled_transport?: scalar|Param|null, // Default: null
- *     order_cancelled_expires?: int|Param, // Default: 3600
+ *     order_cancel_transport?: string|Param, // Default: null
+ *     order_cancel_seconds?: int|Param, // Default: 3600
  * }
  * @psalm-type SiganushkaProductConfig = array{
  *     product_class?: scalar|Param|null, // Default: "Siganushka\\ProductBundle\\Entity\\Product"
@@ -1258,9 +1258,11 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     theme_cookie?: scalar|Param|null, // Default: "siganushka_admin_theme"
  *     collapse_cookie?: scalar|Param|null, // Default: "siganushka_admin_collapse"
  * }
- * @psalm-type SiganushkaTransactionConfig = array{
- *     transaction_class?: scalar|Param|null, // Default: "Siganushka\\TransactionBundle\\Entity\\Transaction"
- *     transaction_number_generator?: scalar|Param|null, // Default: "Siganushka\\TransactionBundle\\Generator\\TransactionNumberGenerator"
+ * @psalm-type SiganushkaPaymentConfig = array{
+ *     payment_class?: scalar|Param|null, // Default: "Siganushka\\PaymentBundle\\Entity\\Payment"
+ *     payment_number_generator?: scalar|Param|null, // Default: "Siganushka\\PaymentBundle\\Generator\\PaymentNumberGenerator"
+ *     payment_cancel_transport?: string|Param, // Default: null
+ *     payment_cancel_seconds?: int|Param, // Default: 3600
  * }
  * @psalm-type SiganushkaApiFactoryConfig = array{
  *     github?: bool|array{ // Github configuration
@@ -1652,7 +1654,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     siganushka_region?: SiganushkaRegionConfig,
  *     siganushka_user?: SiganushkaUserConfig,
  *     siganushka_admin?: SiganushkaAdminConfig,
- *     siganushka_transaction?: SiganushkaTransactionConfig,
+ *     siganushka_payment?: SiganushkaPaymentConfig,
  *     siganushka_api_factory?: SiganushkaApiFactoryConfig,
  *     doctrine?: DoctrineConfig,
  *     twig_extra?: TwigExtraConfig,
@@ -1678,7 +1680,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         siganushka_region?: SiganushkaRegionConfig,
  *         siganushka_user?: SiganushkaUserConfig,
  *         siganushka_admin?: SiganushkaAdminConfig,
- *         siganushka_transaction?: SiganushkaTransactionConfig,
+ *         siganushka_payment?: SiganushkaPaymentConfig,
  *         siganushka_api_factory?: SiganushkaApiFactoryConfig,
  *         doctrine?: DoctrineConfig,
  *         twig_extra?: TwigExtraConfig,
@@ -1702,7 +1704,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         siganushka_region?: SiganushkaRegionConfig,
  *         siganushka_user?: SiganushkaUserConfig,
  *         siganushka_admin?: SiganushkaAdminConfig,
- *         siganushka_transaction?: SiganushkaTransactionConfig,
+ *         siganushka_payment?: SiganushkaPaymentConfig,
  *         siganushka_api_factory?: SiganushkaApiFactoryConfig,
  *         doctrine?: DoctrineConfig,
  *         twig_extra?: TwigExtraConfig,
@@ -1727,7 +1729,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         siganushka_region?: SiganushkaRegionConfig,
  *         siganushka_user?: SiganushkaUserConfig,
  *         siganushka_admin?: SiganushkaAdminConfig,
- *         siganushka_transaction?: SiganushkaTransactionConfig,
+ *         siganushka_payment?: SiganushkaPaymentConfig,
  *         siganushka_api_factory?: SiganushkaApiFactoryConfig,
  *         doctrine?: DoctrineConfig,
  *         twig_extra?: TwigExtraConfig,

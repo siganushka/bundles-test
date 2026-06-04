@@ -42,7 +42,7 @@ return [
     'order_adjustment.type.shipping_fee' => 'Shipping fee',
     'order_adjustment.type.random_discount' => 'Random Discount',
     'order_adjustment.type.coupon_discount' => 'Coupon Discount',
-    'transaction.type.transaction_order' => 'Order',
-    'transaction.type.transaction_order_aggregate' => 'Aggregate Order',
-    'transaction.type.transaction_topup' => 'Topup',
+    'payment.type.payment_order' => 'Order',
+    'payment.type.payment_order_aggregate' => 'Aggregate Order',
+    'payment.type.payment_topup' => 'Topup',
 ];

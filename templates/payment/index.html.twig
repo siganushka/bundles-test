@@ -1,22 +1,22 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-  <h3>TransactionBundle</h3>
+  <h3>PaymentBundle</h3>
 
   {% embed 'table.html.twig' %}
     {% block th %}
-      <th class="text-nowrap">{{ 'transaction.number'|trans }}</th>
-      <th class="text-nowrap">{{ 'transaction.amount'|trans }}</th>
-      <th class="text-nowrap">{{ 'transaction.type'|trans }}</th>
-      <th class="text-nowrap">{{ 'transaction.gateway'|trans }}</th>
-      <th class="text-nowrap">{{ 'transaction.state'|trans }}</th>
+      <th class="text-nowrap">{{ 'payment.number'|trans }}</th>
+      <th class="text-nowrap">{{ 'payment.amount'|trans }}</th>
+      <th class="text-nowrap">{{ 'payment.type'|trans }}</th>
+      <th class="text-nowrap">{{ 'payment.gateway'|trans }}</th>
+      <th class="text-nowrap">{{ 'payment.state'|trans }}</th>
       <th class="text-nowrap">{{ 'generic.created_at'|trans }}</th>
     {% endblock %}
 
     {% block td %}
       <td class="text-nowrap"><code class="user-select-all">{{ _item.number }}</code></td>
       <td class="text-nowrap">{{ _item.amount|intl_currency }}</td>
-      <td class="text-nowrap">{{ ('transaction.type.' ~ _item.type)|trans }}</td>
+      <td class="text-nowrap">{{ ('payment.type.' ~ _item.type)|trans }}</td>
       <td class="text-nowrap">{{ _item.gateway }}</td>
       <td class="text-nowrap">
         <span class="badge text-bg-{{ _item.state.theme }}">{{ _item.state|trans }}</span>

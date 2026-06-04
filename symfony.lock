@@ -67,6 +67,9 @@
     "siganushka/order-bundle": {
         "version": "dev-main"
     },
+    "siganushka/payment-bundle": {
+        "version": "dev-main"
+    },
     "siganushka/product-bundle": {
         "version": "dev-main"
     },

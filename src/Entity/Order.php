@@ -18,77 +18,43 @@ class Order extends BaseOrder implements DeletableInterface
     use DeletableTrait;
 
     /**
-     * @var Collection<int, TransactionOrder>
+     * @var Collection<int, PaymentOrder>
      */
-    #[ORM\OneToMany(targetEntity: TransactionOrder::class, mappedBy: 'order')]
-    private Collection $transactions;
-
-    /**
-     * @var Collection<int, TransactionOrderAggregate>
-     */
-    #[ORM\ManyToMany(targetEntity: TransactionOrderAggregate::class, mappedBy: 'orders')]
-    private Collection $aggregateTransactions;
+    #[ORM\OneToMany(targetEntity: PaymentOrder::class, mappedBy: 'order')]
+    private Collection $payments;
 
     public function __construct()
     {
         parent::__construct();
 
-        $this->transactions = new ArrayCollection();
-        $this->aggregateTransactions = new ArrayCollection();
+        $this->payments = new ArrayCollection();
     }
 
     /**
-     * @return Collection<int, TransactionOrder>
+     * @return Collection<int, PaymentOrder>
      */
-    public function getTransactions(): Collection
+    public function getPayments(): Collection
     {
-        return $this->transactions;
+        return $this->payments;
     }
 
-    public function addTransaction(TransactionOrder $transaction): static
+    public function addPayment(PaymentOrder $payment): static
     {
-        if (!$this->transactions->contains($transaction)) {
-            $this->transactions->add($transaction);
-            $transaction->setOrder($this);
+        if (!$this->payments->contains($payment)) {
+            $this->payments->add($payment);
+            $payment->setOrder($this);
         }
 
         return $this;
     }
 
-    public function removeTransaction(TransactionOrder $transaction): static
+    public function removePayment(PaymentOrder $payment): static
     {
-        if ($this->transactions->removeElement($transaction)) {
+        if ($this->payments->removeElement($payment)) {
             // set the owning side to null (unless already changed)
-            if ($transaction->getOrder() === $this) {
-                $transaction->setOrder(null);
+            if ($payment->getOrder() === $this) {
+                $payment->setOrder(null);
             }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, TransactionOrderAggregate>
-     */
-    public function getAggregateTransactions(): Collection
-    {
-        return $this->aggregateTransactions;
-    }
-
-    public function addAggregateTransaction(TransactionOrderAggregate $aggregateTransaction): static
-    {
-        if (!$this->aggregateTransactions->contains($aggregateTransaction)) {
-            $this->aggregateTransactions->add($aggregateTransaction);
-            $aggregateTransaction->addOrder($this);
-        }
-
-        return $this;
-    }
-
-    public function removeAggregateTransaction(TransactionOrderAggregate $aggregateTransaction): static
-    {
-        if ($this->aggregateTransactions->removeElement($aggregateTransaction)) {
-            $aggregateTransaction->removeOrder($this);
         }
 
         return $this;

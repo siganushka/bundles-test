@@ -6,8 +6,8 @@ App\Entity\Topup:
             groups: [topup.item, topup.collection]
         amount:
             groups: [topup.item, topup.collection]
-        transactions:
-            groups: [topup.item, topup.collection]
+        payments:
+            groups: []
         createdAt:
             groups: [topup.item, topup.collection]
         updatedAt:

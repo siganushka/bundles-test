@@ -26,14 +26,14 @@ class Topup implements ResourceInterface, TimestampableInterface
     private ?int $amount = null;
 
     /**
-     * @var Collection<int, TransactionTopup>
+     * @var Collection<int, PaymentTopup>
      */
-    #[ORM\OneToMany(targetEntity: TransactionTopup::class, mappedBy: 'topup')]
-    private Collection $transactions;
+    #[ORM\OneToMany(targetEntity: PaymentTopup::class, mappedBy: 'topup')]
+    private Collection $payments;
 
     public function __construct()
     {
-        $this->transactions = new ArrayCollection();
+        $this->payments = new ArrayCollection();
     }
 
     public function getTitle(): ?string
@@ -61,29 +61,29 @@ class Topup implements ResourceInterface, TimestampableInterface
     }
 
     /**
-     * @return Collection<int, TransactionTopup>
+     * @return Collection<int, PaymentTopup>
      */
-    public function getTransactions(): Collection
+    public function getPayments(): Collection
     {
-        return $this->transactions;
+        return $this->payments;
     }
 
-    public function addTransaction(TransactionTopup $transaction): static
+    public function addPayment(PaymentTopup $payment): static
     {
-        if (!$this->transactions->contains($transaction)) {
-            $this->transactions->add($transaction);
-            $transaction->setTopup($this);
+        if (!$this->payments->contains($payment)) {
+            $this->payments->add($payment);
+            $payment->setTopup($this);
         }
 
         return $this;
     }
 
-    public function removeTransaction(TransactionTopup $transaction): static
+    public function removePayment(PaymentTopup $payment): static
     {
-        if ($this->transactions->removeElement($transaction)) {
+        if ($this->payments->removeElement($payment)) {
             // set the owning side to null (unless already changed)
-            if ($transaction->getTopup() === $this) {
-                $transaction->setTopup(null);
+            if ($payment->getTopup() === $this) {
+                $payment->setTopup(null);
             }
         }
 

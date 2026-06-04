@@ -1,0 +1,26 @@
+App\Entity\PaymentTopup:
+    attributes:
+        id:
+            groups: []
+        topup:
+            groups: []
+        number:
+            groups: [payment.item, payment.collection]
+        amount:
+            groups: [payment.item, payment.collection]
+        gateway:
+            groups: [payment.item, payment.collection]
+        details:
+            groups: [payment.item, payment.collection]
+        state:
+            groups: [payment.item, payment.collection]
+        expiredAt:
+            groups: [payment.item, payment.collection]
+        type:
+            groups: [payment.item, payment.collection]
+        expired:
+            groups: [payment.item, payment.collection]
+        createdAt:
+            groups: [payment.item, payment.collection]
+        updatedAt:
+            groups: [payment.item, payment.collection]

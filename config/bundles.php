@@ -17,7 +17,7 @@ return [
     Siganushka\RegionBundle\SiganushkaRegionBundle::class => ['all' => true],
     Siganushka\UserBundle\SiganushkaUserBundle::class => ['all' => true],
     Siganushka\AdminBundle\SiganushkaAdminBundle::class => ['all' => true],
-    Siganushka\TransactionBundle\SiganushkaTransactionBundle::class => ['all' => true],
+    Siganushka\PaymentBundle\SiganushkaPaymentBundle::class => ['all' => true],
     Siganushka\ApiFactoryBundle\SiganushkaApiFactoryBundle::class => ['all' => true],
     Doctrine\Bundle\DoctrineBundle\DoctrineBundle::class => ['all' => true],
     Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle::class => ['dev' => true, 'test' => true],

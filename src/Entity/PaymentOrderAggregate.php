@@ -7,18 +7,18 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Siganushka\TransactionBundle\Entity\Transaction;
+use Siganushka\PaymentBundle\Entity\Payment;
 
 #[ORM\Entity]
 #[ORM\HasLifecycleCallbacks]
-class TransactionOrderAggregate extends Transaction
+class PaymentOrderAggregate extends Payment
 {
     /**
      * @var Collection<int, Order>
      */
-    #[ORM\ManyToMany(targetEntity: Order::class, inversedBy: 'aggregateTransactions')]
-    #[ORM\JoinTable('transaction_order')]
-    #[ORM\JoinColumn('transaction_id')]
+    #[ORM\ManyToMany(targetEntity: Order::class)]
+    #[ORM\JoinTable('payment_order')]
+    #[ORM\JoinColumn('payment_id')]
     private Collection $orders;
 
     public function __construct()
