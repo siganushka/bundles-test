@@ -10,6 +10,7 @@
       <th class="text-nowrap">{{ 'payment.type'|trans }}</th>
       <th class="text-nowrap">{{ 'payment.gateway'|trans }}</th>
       <th class="text-nowrap">{{ 'payment.state'|trans }}</th>
+      <th class="text-nowrap">{{ 'generic.expired_at'|trans }}</th>
       <th class="text-nowrap">{{ 'generic.created_at'|trans }}</th>
     {% endblock %}
 
@@ -21,6 +22,7 @@
       <td class="text-nowrap">
         <span class="badge text-bg-{{ _item.state.theme }}">{{ _item.state|trans }}</span>
       </td>
+      <td class="text-nowrap">{{ _item.expiredAt|intl_date }}</td>
       <td class="text-nowrap">{{ _item.createdAt|intl_date }}</td>
     {% endblock %}
   {% endembed %}
