@@ -52,7 +52,7 @@ class AlipayPage extends AbstractPaymentGateway
         return new NotifyResult(true, $data, $data['out_trade_no'], $totalAmountAsCents);
     }
 
-    public function createNotifyResponse(bool $successful, ?string $message = null): Response
+    public function notifyResponse(bool $successful, ?string $message = null): Response
     {
         return \call_user_func($successful
             ? $this->notifyHandler->success(...)

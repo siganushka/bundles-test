@@ -56,7 +56,7 @@ class WalletPay extends AbstractPaymentGateway
         throw new \BadMethodCallException('Unsupported method.');
     }
 
-    public function createNotifyResponse(bool $successful, ?string $message = null): Response
+    public function notifyResponse(bool $successful, ?string $message = null): Response
     {
         throw new \BadMethodCallException('Unsupported method.');
     }
