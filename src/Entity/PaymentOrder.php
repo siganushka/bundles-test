@@ -20,6 +20,7 @@ class PaymentOrder extends Payment
 
     public function setOrder(?Order $order): static
     {
+        $this->title = 'Test Order';
         $this->amount = $order?->getTotal();
         $this->order = $order;
 

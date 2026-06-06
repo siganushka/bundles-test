@@ -38,6 +38,11 @@ siganushka_payment:
     prefix: /rest
     stateless: true
 
+siganushka_payment_notify:
+    resource: "@SiganushkaPaymentBundle/config/routes_notify.php"
+    prefix: /rest
+    stateless: true
+
 siganushka_user:
     resource: "@SiganushkaUserBundle/config/routes.php"
     prefix: /rest

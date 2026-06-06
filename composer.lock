@@ -2924,7 +2924,7 @@
             "dist": {
                 "type": "path",
                 "url": "../generic-bundle",
-                "reference": "7e357c1075d6a92dee4d3d2df32708a6171b57a3"
+                "reference": "61d98decee47db8e938099ec2e90340fc1cbae25"
             },
             "require": {
                 "php": ">=8.2",
@@ -3110,7 +3110,7 @@
             "dist": {
                 "type": "path",
                 "url": "../order-bundle",
-                "reference": "fd415e3168a15c007db3f1399e41b1668f53c169"
+                "reference": "2220e216d0ee18492f638be832cb721bbb212c94"
             },
             "require": {
                 "godruoyi/php-snowflake": "^3.0",
@@ -3171,7 +3171,7 @@
             "dist": {
                 "type": "path",
                 "url": "../payment-bundle",
-                "reference": "f1945c6d8fa2323aa77c8db060c2e92ca7cfcf6c"
+                "reference": "c75071236fb63a0688fb4e277dc63aa4a32af1fa"
             },
             "require": {
                 "knplabs/knp-components": "^5.0",
@@ -3184,6 +3184,9 @@
             },
             "require-dev": {
                 "godruoyi/php-snowflake": "^3.0",
+                "siganushka/alipay-api": "dev-main",
+                "siganushka/api-factory": "dev-main",
+                "siganushka/wxpay-api": "dev-main",
                 "symfony/messenger": "^7.4|^8.0"
             },
             "type": "symfony-bundle",

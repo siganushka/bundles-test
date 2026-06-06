@@ -20,6 +20,7 @@ class PaymentTopup extends Payment
 
     public function setTopup(?Topup $topup): static
     {
+        $this->title = 'Test Topup';
         $this->amount = $topup?->getAmount();
         $this->topup = $topup;
 

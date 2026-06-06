@@ -6,6 +6,8 @@ App\Entity\PaymentOrderAggregate:
             groups: []
         number:
             groups: [payment.item, payment.collection]
+        title:
+            groups: [payment.item, payment.collection]
         amount:
             groups: [payment.item, payment.collection]
         gateway:

@@ -26,6 +26,11 @@ class PaymentOrderAggregate extends Payment
         $this->orders = new ArrayCollection();
     }
 
+    public function getTitle(): ?string
+    {
+        return $this->title ??= \sprintf('Test Order (%d items)', $this->orders->count());
+    }
+
     public function getAmount(): ?int
     {
         return $this->amount ??= $this->orders->reduce(static fn (int $carry, Order $item) => $carry + $item->getTotal(), 0);
@@ -42,7 +47,7 @@ class PaymentOrderAggregate extends Payment
     public function addOrder(Order $order): static
     {
         if (!$this->orders->contains($order)) {
-            $this->amount = null;
+            $this->title = $this->amount = null;
             $this->orders->add($order);
         }
 
@@ -51,7 +56,7 @@ class PaymentOrderAggregate extends Payment
 
     public function removeOrder(Order $order): static
     {
-        $this->amount = null;
+        $this->title = $this->amount = null;
         $this->orders->removeElement($order);
 
         return $this;
@@ -61,6 +66,7 @@ class PaymentOrderAggregate extends Payment
     #[ORM\PreUpdate]
     public function computed(): void
     {
+        $this->getTitle();
         $this->getAmount();
     }
 }

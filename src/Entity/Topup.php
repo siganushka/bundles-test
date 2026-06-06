@@ -25,6 +25,9 @@ class Topup implements ResourceInterface, TimestampableInterface
     #[ORM\Column]
     private ?int $amount = null;
 
+    #[ORM\Column]
+    private ?int $bonus = null;
+
     /**
      * @var Collection<int, PaymentTopup>
      */
@@ -56,6 +59,18 @@ class Topup implements ResourceInterface, TimestampableInterface
     public function setAmount(int $amount): static
     {
         $this->amount = $amount;
+
+        return $this;
+    }
+
+    public function getBonus(): ?int
+    {
+        return $this->bonus;
+    }
+
+    public function setBonus(int $bonus): static
+    {
+        $this->bonus = $bonus;
 
         return $this;
     }
