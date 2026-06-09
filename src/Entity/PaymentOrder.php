@@ -11,18 +11,18 @@ use Siganushka\PaymentBundle\Entity\Payment;
 class PaymentOrder extends Payment
 {
     #[ORM\ManyToOne(inversedBy: 'payments')]
-    private ?Order $order = null;
+    private ?Order $subject = null;
 
-    public function getOrder(): ?Order
+    public function getSubject(): ?Order
     {
-        return $this->order;
+        return $this->subject;
     }
 
-    public function setOrder(?Order $order): static
+    public function setSubject(?Order $subject): static
     {
         $this->title = 'Test Order';
-        $this->amount = $order?->getTotal();
-        $this->order = $order;
+        $this->amount = $subject?->getTotal();
+        $this->subject = $subject;
 
         return $this;
     }

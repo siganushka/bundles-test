@@ -23,7 +23,7 @@ class TopupPaymentFactory implements PaymentFactoryInterface
 
         $fn = static fn ($_, Payment $item) => $gateway === $item->getGateway() && PaymentState::Pending === $item->getState();
         $payment = $entity->getPayments()->findFirst($fn) ?? new PaymentTopup();
-        $payment->setTopup($entity);
+        $payment->setSubject($entity);
         $payment->setGateway($gateway);
 
         return $payment;

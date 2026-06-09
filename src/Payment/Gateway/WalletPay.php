@@ -8,11 +8,6 @@ use App\Entity\PaymentTopup;
 use App\Repository\UserRepository;
 use Siganushka\PaymentBundle\Entity\Payment;
 use Siganushka\PaymentBundle\Gateway\AbstractPaymentGateway;
-use Siganushka\PaymentBundle\NotifyResult;
-use Siganushka\PaymentBundle\PaymentResult;
-use Siganushka\PaymentBundle\PaymentResultInterface;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 class WalletPay extends AbstractPaymentGateway
 {
@@ -27,7 +22,7 @@ class WalletPay extends AbstractPaymentGateway
         return !$payment instanceof PaymentTopup;
     }
 
-    public function pay(Payment $payment): PaymentResultInterface
+    public function pay(Payment $payment): array
     {
         $user = $this->userRepository->find(1);
         if (!$user) {
@@ -41,22 +36,10 @@ class WalletPay extends AbstractPaymentGateway
 
         $user->setBalance($balance);
 
-        return new PaymentResult(true, [
-            self::DETAILS_IDENTIFIER => $user->getIdentifier(),
-        ]);
+        return [];
     }
 
-    public function refund(Payment $payment): PaymentResultInterface
-    {
-        throw new \BadMethodCallException('Unsupported method.');
-    }
-
-    public function notify(Request $request): NotifyResult
-    {
-        throw new \BadMethodCallException('Unsupported method.');
-    }
-
-    public function notifyResponse(bool $successful, ?string $message = null): Response
+    public function refund(Payment $payment): array
     {
         throw new \BadMethodCallException('Unsupported method.');
     }

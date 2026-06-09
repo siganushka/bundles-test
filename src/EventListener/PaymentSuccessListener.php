@@ -18,8 +18,6 @@ use Symfony\Component\Workflow\Registry;
 #[AsEventListener(PaymentSuccessEvent::class)]
 class PaymentSuccessListener
 {
-    public const TOPUP_IDENTIFIER = 'identifier';
-
     public function __construct(
         private readonly UserRepository $userRepository,
         private readonly Registry $registry)
@@ -31,8 +29,8 @@ class PaymentSuccessListener
         $payment = $event->getPayment();
         if ($payment instanceof PaymentTopup) {
             $this->handleTopup($payment);
-        } elseif ($payment instanceof PaymentOrder && $payment->getOrder()) {
-            $this->handleOrder($payment->getOrder());
+        } elseif ($payment instanceof PaymentOrder && $payment->getSubject()) {
+            $this->handleOrder($payment->getSubject());
         } elseif ($payment instanceof PaymentOrderAggregate) {
             $payment->getOrders()->map($this->handleOrder(...));
         }
@@ -45,7 +43,7 @@ class PaymentSuccessListener
 
     private function handleTopup(PaymentTopup $payment): void
     {
-        $topup = $payment->getTopup();
+        $topup = $payment->getSubject();
         if (!$topup) {
             return;
         }

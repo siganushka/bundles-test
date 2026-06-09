@@ -20,7 +20,7 @@ class Order extends BaseOrder implements DeletableInterface
     /**
      * @var Collection<int, PaymentOrder>
      */
-    #[ORM\OneToMany(targetEntity: PaymentOrder::class, mappedBy: 'order')]
+    #[ORM\OneToMany(targetEntity: PaymentOrder::class, mappedBy: 'subject')]
     private Collection $payments;
 
     public function __construct()
@@ -42,7 +42,7 @@ class Order extends BaseOrder implements DeletableInterface
     {
         if (!$this->payments->contains($payment)) {
             $this->payments->add($payment);
-            $payment->setOrder($this);
+            $payment->setSubject($this);
         }
 
         return $this;
@@ -52,8 +52,8 @@ class Order extends BaseOrder implements DeletableInterface
     {
         if ($this->payments->removeElement($payment)) {
             // set the owning side to null (unless already changed)
-            if ($payment->getOrder() === $this) {
-                $payment->setOrder(null);
+            if ($payment->getSubject() === $this) {
+                $payment->setSubject(null);
             }
         }
 

@@ -1,0 +1,20 @@
+Siganushka\PaymentBundle\Entity\PaymentRefund:
+    attributes:
+        id:
+            groups: []
+        payment:
+            groups: []
+        number:
+            groups: [payment_refund.item, payment_refund.collection]
+        amount:
+            groups: [payment_refund.item, payment_refund.collection]
+        details:
+            groups: [payment_refund.item, payment_refund.collection]
+        successful:
+            groups: [payment_refund.item, payment_refund.collection]
+        failedReason:
+            groups: [payment_refund.item, payment_refund.collection]
+        createdAt:
+            groups: [payment_refund.item, payment_refund.collection]
+        updatedAt:
+            groups: [payment_refund.item, payment_refund.collection]

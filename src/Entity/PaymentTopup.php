@@ -11,18 +11,18 @@ use Siganushka\PaymentBundle\Entity\Payment;
 class PaymentTopup extends Payment
 {
     #[ORM\ManyToOne(inversedBy: 'payments')]
-    private ?Topup $topup = null;
+    private ?Topup $subject = null;
 
-    public function getTopup(): ?Topup
+    public function getSubject(): ?Topup
     {
-        return $this->topup;
+        return $this->subject;
     }
 
-    public function setTopup(?Topup $topup): static
+    public function setSubject(?Topup $subject): static
     {
         $this->title = 'Test Topup';
-        $this->amount = $topup?->getAmount();
-        $this->topup = $topup;
+        $this->amount = $subject?->getAmount();
+        $this->subject = $subject;
 
         return $this;
     }

@@ -31,7 +31,7 @@ class Topup implements ResourceInterface, TimestampableInterface
     /**
      * @var Collection<int, PaymentTopup>
      */
-    #[ORM\OneToMany(targetEntity: PaymentTopup::class, mappedBy: 'topup')]
+    #[ORM\OneToMany(targetEntity: PaymentTopup::class, mappedBy: 'subject')]
     private Collection $payments;
 
     public function __construct()
@@ -87,7 +87,7 @@ class Topup implements ResourceInterface, TimestampableInterface
     {
         if (!$this->payments->contains($payment)) {
             $this->payments->add($payment);
-            $payment->setTopup($this);
+            $payment->setSubject($this);
         }
 
         return $this;
@@ -97,8 +97,8 @@ class Topup implements ResourceInterface, TimestampableInterface
     {
         if ($this->payments->removeElement($payment)) {
             // set the owning side to null (unless already changed)
-            if ($payment->getTopup() === $this) {
-                $payment->setTopup(null);
+            if ($payment->getSubject() === $this) {
+                $payment->setSubject(null);
             }
         }
 

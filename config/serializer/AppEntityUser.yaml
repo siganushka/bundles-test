@@ -2,6 +2,8 @@ App\Entity\User:
     attributes:
         id:
             groups: ['user:item', 'user:collection']
+        balance:
+            groups: []
         identifier:
             groups: ['user:item', 'user:collection']
         password:
