@@ -26,8 +26,9 @@ class OrderPaymentFactory implements PaymentFactoryInterface
         $entity = $this->orderRepository->findOneBy(['number' => $identifier])
             ?? throw new \RuntimeException(\sprintf('The order "%s" does not found.', $identifier));
 
-        if (OrderState::Pending !== $entity->getState()) {
-            throw new \RuntimeException(\sprintf('The order "%s" state does not support payment.', $identifier));
+        $state = $entity->getState();
+        if (OrderState::Pending !== $state) {
+            throw new \RuntimeException(\sprintf('The order "%s" has been %s.', $identifier, $state->value));
         }
 
         // Payment expiration is the same as order expiration.

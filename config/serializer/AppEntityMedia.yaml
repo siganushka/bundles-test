@@ -1,24 +1,24 @@
 App\Entity\Media:
     attributes:
         id:
-            groups: []
+            groups: [media.item]
         hash:
-            groups: []
+            groups: [media.item, media.collection]
         url:
-            groups: []
+            groups: [media.item, media.collection]
         name:
-            groups: []
+            groups: [media.item, media.collection]
         extension:
-            groups: []
+            groups: [media.item, media.collection]
         mime:
-            groups: []
+            groups: [media.item, media.collection]
         bytes:
-            groups: []
+            groups: [media.item, media.collection]
         size:
-            groups: []
+            groups: [media.item, media.collection]
         width:
-            groups: []
+            groups: [media.item, media.collection]
         height:
-            groups: []
+            groups: [media.item, media.collection]
         createdAt:
-            groups: []
+            groups: [media.item, media.collection]

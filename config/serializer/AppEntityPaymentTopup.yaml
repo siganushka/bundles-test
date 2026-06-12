@@ -15,7 +15,7 @@ App\Entity\PaymentTopup:
         gateway:
             groups: [payment.item, payment.collection]
         details:
-            groups: [payment.item, payment.collection]
+            groups: []
         state:
             groups: [payment.item, payment.collection]
         failedReason:
