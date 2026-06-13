@@ -29,7 +29,12 @@ class WalletPay extends AbstractPaymentGateway
 
     public function pay(Payment $payment): PaymentResult
     {
-        $user = $this->userRepository->find(1);
+        $identifier = $payment->resolveContext()[self::DETAILS_IDENTIFIER] ?? null;
+        if (!$identifier) {
+            throw new \RuntimeException('User identifier not found.');
+        }
+
+        $user = $this->userRepository->findOneByIdentifier($identifier);
         if (!$user) {
             throw new \RuntimeException('User not found.');
         }

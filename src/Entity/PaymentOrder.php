@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Payment\Gateway\WalletPay;
 use Doctrine\ORM\Mapping as ORM;
 use Siganushka\PaymentBundle\Entity\Payment;
+use Siganushka\PaymentBundle\Gateway\WxpayJsapi;
 
 #[ORM\Entity]
 class PaymentOrder extends Payment
@@ -25,5 +27,15 @@ class PaymentOrder extends Payment
         $this->subject = $subject;
 
         return $this;
+    }
+
+    public function resolveContext(): array
+    {
+        return [
+            WalletPay::DETAILS_IDENTIFIER => 'siganushka.6a23cd4ba3b04',
+            WxpayJsapi::PAY_OPTIONS => [
+                'openid' => 'ojARc6pRwt3nEJM5YqojEq0xHxkw', // e.g. $this->getUser()->getOpenid()
+            ],
+        ];
     }
 }
