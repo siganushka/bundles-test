@@ -1,22 +1,22 @@
 App\Entity\User:
     attributes:
         id:
-            groups: ['user:item', 'user:collection']
+            groups: [user.item, user.collection]
         balance:
             groups: []
         identifier:
-            groups: ['user:item', 'user:collection']
+            groups: [user.item, user.collection]
         password:
             groups: []
         logins:
             groups: []
         roles:
-            groups: ['user:item', 'user:collection']
+            groups: [user.item, user.collection]
         userIdentifier:
             groups: []
         enabled:
-            groups: ['user:item', 'user:collection']
+            groups: [user.item, user.collection]
         createdAt:
-            groups: ['user:item', 'user:collection']
+            groups: [user.item, user.collection]
         updatedAt:
-            groups: ['user:item', 'user:collection']
+            groups: [user.item, user.collection]
