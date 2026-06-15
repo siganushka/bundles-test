@@ -1,7 +1,7 @@
 App\Entity\Media:
     attributes:
         id:
-            groups: [media.item]
+            groups: []
         hash:
             groups: [media.item, media.collection]
         url:

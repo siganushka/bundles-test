@@ -3047,7 +3047,7 @@
             "dist": {
                 "type": "path",
                 "url": "../media-bundle",
-                "reference": "413b8f542094268d4b5544eddc17a1c952c28202"
+                "reference": "51e01aea688f08af8fea8d7cba1cbf2613c807d0"
             },
             "require": {
                 "ext-fileinfo": "*",
@@ -3175,7 +3175,6 @@
                 "reference": "66e31b07a92d689b925ef0e41a3ba1af7b185fee"
             },
             "require": {
-                "brick/money": "^0.11",
                 "knplabs/knp-components": "^5.0",
                 "php": ">=8.2",
                 "siganushka/doctrine-contracts": "dev-main",
