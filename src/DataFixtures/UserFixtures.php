@@ -20,15 +20,15 @@ class UserFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $user0 = $this->userRepository->createNew();
-        $user0->setIdentifier('siganushka.'.uniqid());
+        $user0->setIdentifier('siganushka');
         $user0->setPassword($this->passwordHasher->hashPassword($user0, '123456'));
 
         $user1 = $this->userRepository->createNew();
-        $user1->setIdentifier('zhangsan.'.uniqid());
+        $user1->setIdentifier('zhangsan');
         $user1->setPassword($this->passwordHasher->hashPassword($user1, '123456'));
 
         $user2 = $this->userRepository->createNew();
-        $user2->setIdentifier('lisi.'.uniqid());
+        $user2->setIdentifier('lisi');
         $user2->setPassword($this->passwordHasher->hashPassword($user2, '123456'));
         $user2->setEnabled(false);
 

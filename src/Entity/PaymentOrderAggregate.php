@@ -13,6 +13,8 @@ use Siganushka\PaymentBundle\Entity\Payment;
 #[ORM\HasLifecycleCallbacks]
 class PaymentOrderAggregate extends Payment
 {
+    use PaymentContext;
+
     /**
      * @var Collection<int, Order>
      */

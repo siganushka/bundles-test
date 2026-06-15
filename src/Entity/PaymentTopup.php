@@ -10,6 +10,8 @@ use Siganushka\PaymentBundle\Entity\Payment;
 #[ORM\Entity]
 class PaymentTopup extends Payment
 {
+    use PaymentContext;
+
     #[ORM\ManyToOne(inversedBy: 'payments')]
     private ?Topup $subject = null;
 
