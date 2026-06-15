@@ -46,9 +46,9 @@ class ProductController extends AbstractController
         );
     }
 
-    protected function createEntityQueryBuilder(string $alias, ProductQueryDto $dto): QueryBuilder
+    protected function createEntityQueryBuilder(ProductQueryDto $dto): QueryBuilder
     {
-        return $this->repository->createQueryBuilderByDto($alias, $dto);
+        return $this->repository->createQueryBuilderByDto('p', $dto);
     }
 
     protected function createEntityForm(object $data, array $options = []): FormInterface
