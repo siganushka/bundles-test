@@ -47,6 +47,7 @@
       <th class="text-nowrap">{{ knp_pagination_sortable(pagination, 'order.items_total'|trans, 'o.itemsTotal') }}</th>
       <th class="text-nowrap">{{ knp_pagination_sortable(pagination, 'order.adjustments_total'|trans, 'o.adjustmentsTotal') }}</th>
       <th class="text-nowrap">{{ knp_pagination_sortable(pagination, 'order.total'|trans, 'o.total') }}</th>
+      <th class="text-nowrap">{{ 'payment.gateway'|trans }}</th>
       <th class="text-nowrap">{{ 'order.state'|trans }}</th>
       <th class="text-nowrap">{{ knp_pagination_sortable(pagination, 'generic.created_at'|trans, 'o.createdAt') }}</th>
       <th class="text-nowrap">{{ 'generic.action'|trans }}</th>
@@ -80,6 +81,17 @@
         <td class="text-nowrap">{{ _item.itemsTotal|intl_currency }}</td>
         <td class="text-nowrap">{{ _item.adjustmentsTotal|intl_currency }}</td>
         <td class="text-nowrap">{{ _item.total|intl_currency }}</td>
+        <td class="text-nowrap">
+          {% if _item.currentPayment %}
+            {{ ('payment.gateway.' ~ _item.currentPayment.gateway)|trans }}
+            {{ _item.currentPayment.state|trans }}
+            {% if _item.currentPayment.refundAmount %}
+              <p class="fs-sm text-danger">已退款 {{ _item.currentPayment.refundAmount|intl_currency }}</p>
+            {% endif %}
+          {% else %}
+            -
+          {% endif %}
+        </td>
         <td class="text-nowrap">
           <span class="badge text-bg-{{ _item.state.theme }}">{{ _item.state|trans }}</span>
         </td>

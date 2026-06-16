@@ -45,4 +45,5 @@ return [
     'payment.type.payment_order' => '订单',
     'payment.type.payment_order_aggregate' => '聚合订单',
     'payment.type.payment_topup' => '充值',
+    'payment.gateway.wallet_pay' => '余额支付',
 ];

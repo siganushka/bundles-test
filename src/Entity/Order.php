@@ -21,6 +21,7 @@ class Order extends BaseOrder implements DeletableInterface
      * @var Collection<int, PaymentOrder>
      */
     #[ORM\OneToMany(targetEntity: PaymentOrder::class, mappedBy: 'subject')]
+    #[ORM\OrderBy(['id' => 'ASC'])]
     private Collection $payments;
 
     public function __construct()
@@ -58,5 +59,10 @@ class Order extends BaseOrder implements DeletableInterface
         }
 
         return $this;
+    }
+
+    public function getCurrentPayment(): ?PaymentOrder
+    {
+        return $this->payments->last() ?: null;
     }
 }

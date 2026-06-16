@@ -45,4 +45,5 @@ return [
     'payment.type.payment_order' => 'Order',
     'payment.type.payment_order_aggregate' => 'Aggregate Order',
     'payment.type.payment_topup' => 'Topup',
+    'payment.gateway.wallet_pay' => 'Wallet Pay',
 ];
