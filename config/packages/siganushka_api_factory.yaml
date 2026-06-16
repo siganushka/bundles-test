@@ -6,6 +6,8 @@ siganushka_api_factory:
         appid: '%env(string:WXPAY_APPID)%'
         mchid: '%env(string:WXPAY_MCHID)%'
         mchkey: '%env(string:WXPAY_MCHKEY)%'
+        mch_client_cert: '%env(resolve:WXPAY_MCH_CLIENT_CERT)%'
+        mch_client_key: '%env(resolve:WXPAY_MCH_CLIENT_KEY)%'
     alipay:
         appid: '%env(string:ALIPAY_APPID)%'
         app_private_key: '%env(string:ALIPAY_APP_PRIVATE_KEY)%'

@@ -9,7 +9,7 @@ use Siganushka\PaymentBundle\Gateway\WxpayJsapi;
 
 trait PaymentContext
 {
-    public function resolveContext(): array
+    public function context(): array
     {
         return [
             WalletPay::DETAILS_IDENTIFIER => 'siganushka',

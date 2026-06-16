@@ -31,7 +31,6 @@ class OrderPaymentFactory implements PaymentFactoryInterface
             throw new \RuntimeException(\sprintf('The order "%s" has been %s.', $identifier, $state->value));
         }
 
-        // Payment expiration is the same as order expiration.
         $createdAt = $entity->getCreatedAt() ?? new \DateTimeImmutable();
         $expiredAt = $createdAt->modify(\sprintf('+%d seconds', $this->seconds));
 

@@ -8,9 +8,10 @@ use App\Entity\PaymentTopup;
 use App\Repository\UserRepository;
 use Siganushka\PaymentBundle\Entity\Payment;
 use Siganushka\PaymentBundle\Entity\PaymentRefund;
+use Siganushka\PaymentBundle\Enum\PaymentState;
+use Siganushka\PaymentBundle\Exception\PaymentFailedException;
 use Siganushka\PaymentBundle\Gateway\AbstractPaymentGateway;
 use Siganushka\PaymentBundle\Result\NotifyResult;
-use Siganushka\PaymentBundle\Result\PaymentResult;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -27,38 +28,51 @@ class WalletPay extends AbstractPaymentGateway
         return !$payment instanceof PaymentTopup;
     }
 
-    public function pay(Payment $payment): PaymentResult
+    public function pay(Payment $payment): array
     {
-        $identifier = $payment->resolveContext()[self::DETAILS_IDENTIFIER] ?? null;
+        $identifier = $payment->context()[self::DETAILS_IDENTIFIER] ?? null;
         if (!$identifier) {
-            throw new \RuntimeException('User identifier not found.');
+            throw new PaymentFailedException('User identifier not found.');
         }
 
         $user = $this->userRepository->findOneByIdentifier($identifier);
         if (!$user) {
-            throw new \RuntimeException('User not found.');
+            throw new PaymentFailedException('User not found.');
         }
 
         $balance = $user->getBalance() - $payment->getAmount();
         if ($balance < 0) {
-            throw new \RuntimeException(\sprintf('Insufficient balance (%s remaining).', $user->getBalance()));
+            throw new PaymentFailedException(\sprintf('Insufficient balance (%s remaining).', $user->getBalance()));
         }
 
         $user->setBalance($balance);
 
-        return new PaymentResult(null, [self::DETAILS_IDENTIFIER => $user->getIdentifier()], true);
+        $details = [self::DETAILS_IDENTIFIER => $user->getIdentifier()];
+        $payment->setDetails($details);
+        $payment->setState(PaymentState::Succeed);
+
+        return $details;
     }
 
-    public function refund(Payment $payment, PaymentRefund $refund): PaymentResult
+    public function refund(Payment $payment, PaymentRefund $refund): array
     {
-        $user = $this->userRepository->find(1);
+        $identifier = $payment->getDetails()[self::DETAILS_IDENTIFIER] ?? null;
+        if (!$identifier) {
+            throw new PaymentFailedException('User identifier not found.');
+        }
+
+        $user = $this->userRepository->findOneByIdentifier($identifier);
         if (!$user) {
-            throw new \RuntimeException('User not found.');
+            throw new PaymentFailedException('User not found.');
         }
 
         $user->setBalance($user->getBalance() + $refund->getAmount());
 
-        return new PaymentResult(null, [self::DETAILS_IDENTIFIER => $user->getIdentifier()], true);
+        $details = [self::DETAILS_IDENTIFIER => $user->getIdentifier()];
+        $refund->setDetails($details);
+        $refund->setSuccessful(true);
+
+        return $details;
     }
 
     public function notify(Request $request): NotifyResult
