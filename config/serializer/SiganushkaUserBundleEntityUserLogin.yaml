@@ -1,14 +1,14 @@
 Siganushka\UserBundle\Entity\UserLogin:
     attributes:
         id:
-            groups: [user_login.item, user_login.collection]
+            groups: [user_login.collection, user_login.item]
         user:
             groups: []
         clientIp:
-            groups: [user_login.item, user_login.collection]
+            groups: [user_login.collection, user_login.item]
         userAgent:
-            groups: [user_login.item, user_login.collection]
+            groups: [user_login.collection, user_login.item]
         authenticator:
-            groups: [user_login.item, user_login.collection]
+            groups: [user_login.collection, user_login.item]
         createdAt:
-            groups: [user_login.item, user_login.collection]
+            groups: [user_login.collection, user_login.item]

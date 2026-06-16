@@ -1259,7 +1259,6 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     collapse_cookie?: scalar|Param|null, // Default: "siganushka_admin_collapse"
  * }
  * @psalm-type SiganushkaPaymentConfig = array{
- *     payment_class?: scalar|Param|null, // Default: "Siganushka\\PaymentBundle\\Entity\\Payment"
  *     payment_number_generator?: scalar|Param|null, // Default: "Siganushka\\PaymentBundle\\Generator\\PaymentNumberGenerator"
  *     payment_cancel_transport?: string|Param, // Default: null
  *     payment_cancel_seconds?: int|Param, // Default: 3600

@@ -2714,7 +2714,7 @@
             "dist": {
                 "type": "path",
                 "url": "../alipay-api",
-                "reference": "33ed46f3d87aee49c87bdd79c943b1ccf242b9fc"
+                "reference": "298543f28dabb4424728020963effd85c08ded60"
             },
             "require": {
                 "php": ">=8.2",
@@ -2767,7 +2767,7 @@
             "dist": {
                 "type": "path",
                 "url": "../api-factory",
-                "reference": "e997a885ee66c5fb550cb2a8e9b6144d4122a390"
+                "reference": "1f0ac9eb032fc09ce7cfb472d134963952452d4a"
             },
             "require": {
                 "php": ">=8.2",
@@ -2876,7 +2876,7 @@
             "dist": {
                 "type": "path",
                 "url": "../doctrine-contracts",
-                "reference": "ebd1344aa02abd7df14a63f5f400306e9050a5aa"
+                "reference": "d25434998eaa0128a98990040e7c17352cbeaf62"
             },
             "require": {
                 "doctrine/orm": "^3.0",
@@ -2925,7 +2925,7 @@
             "dist": {
                 "type": "path",
                 "url": "../generic-bundle",
-                "reference": "61d98decee47db8e938099ec2e90340fc1cbae25"
+                "reference": "8c18c33099efbd4975b348a9474592856b49b38a"
             },
             "require": {
                 "php": ">=8.2",
@@ -3172,7 +3172,7 @@
             "dist": {
                 "type": "path",
                 "url": "../payment-bundle",
-                "reference": "66e31b07a92d689b925ef0e41a3ba1af7b185fee"
+                "reference": "62f3198bce00966aa00ae33e0e2d42f6d617c25f"
             },
             "require": {
                 "knplabs/knp-components": "^5.0",
@@ -3294,7 +3294,7 @@
             "dist": {
                 "type": "path",
                 "url": "../region-bundle",
-                "reference": "6c45a0ea4cfb1ec5e2b2f05b0ca2bcceea70fb9b"
+                "reference": "8d48b2e4d235b1860496a05aa0b0b1d301bb9320"
             },
             "require": {
                 "php": ">=8.2",
@@ -3352,7 +3352,7 @@
             "dist": {
                 "type": "path",
                 "url": "../user-bundle",
-                "reference": "835fa9806a1657c804308e5ce3bfb56ff98e5d88"
+                "reference": "26a8fd50a868357d1ce62b4fd1bd176ed5ebf16c"
             },
             "require": {
                 "knplabs/knp-components": "^5.0",
@@ -3462,7 +3462,7 @@
             "dist": {
                 "type": "path",
                 "url": "../wxpay-api",
-                "reference": "440a4c1adf014708e0374f21d62727725837a732"
+                "reference": "2173b760ec15ee09cb5b7febeb4f3e7945dd2f61"
             },
             "require": {
                 "php": ">=8.2",
