@@ -9,7 +9,6 @@ use App\Entity\ProductOption;
 use App\Entity\ProductOptionValue;
 use App\Entity\ProductVariant;
 use Doctrine\ORM\EntityManagerInterface;
-use Psr\Cache\CacheItemPoolInterface;
 use Siganushka\MediaBundle\Entity\Media;
 use Siganushka\MediaBundle\MediaManagerInterface;
 use Siganushka\MediaBundle\Utils\FileUtils;
@@ -18,6 +17,8 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Contracts\Cache\CacheInterface;
+use Symfony\Contracts\Cache\ItemInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 #[AsCommand('app:collect:decathlon', 'Collect decathlon data.')]
@@ -27,7 +28,7 @@ class CollectDecathlonCommand extends Command
         private readonly EntityManagerInterface $entityManager,
         private readonly MediaManagerInterface $mediaManager,
         private readonly HttpClientInterface $httpClient,
-        private readonly CacheItemPoolInterface $cachePool,
+        private readonly CacheInterface $cache,
     ) {
         parent::__construct();
     }
@@ -143,26 +144,21 @@ class CollectDecathlonCommand extends Command
 
     private function getToken(): string
     {
-        $item = $this->cachePool->getItem(__METHOD__);
-        if ($item->isHit() && \is_string($data = $item->get())) {
-            return $data;
-        }
-
-        $response = $this->httpClient->request('GET', 'https://www.decathlon.com.cn/product-detail?dsm_code=1');
-        foreach ($response->getHeaders(false)['set-cookie'] ?? [] as $cookie) {
-            if (str_starts_with($cookie, 'token=')) {
+        $callback = function (ItemInterface $item): string {
+            $response = $this->httpClient->request('GET', 'https://www.decathlon.com.cn/product-detail?dsm_code=1');
+            foreach ($response->getHeaders(false)['set-cookie'] ?? [] as $cookie) {
                 preg_match('/token=([^;]+)/', $cookie, $matches);
                 if ($token = $matches[1] ?? null) {
-                    $item->set($token);
                     $item->expiresAfter(900);
-                    $this->cachePool->save($item);
 
                     return $token;
                 }
             }
-        }
 
-        throw new \RuntimeException('Token not found.');
+            throw new \RuntimeException('Token not found.');
+        };
+
+        return $this->cache->get(__METHOD__, $callback);
     }
 
     private function handleMedia(string $imgUrl): Media
