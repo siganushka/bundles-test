@@ -16,8 +16,6 @@ Siganushka\PaymentBundle\Entity\PaymentRefund:
             groups: [payment_refund.item, payment_refund.collection]
         note:
             groups: [payment_refund.item, payment_refund.collection]
-        refundableAmount:
-            groups: []
         createdAt:
             groups: [payment_refund.item, payment_refund.collection]
         updatedAt:

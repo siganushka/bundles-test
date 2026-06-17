@@ -24,6 +24,8 @@ App\Entity\PaymentTopup:
             groups: []
         type:
             groups: [payment.item, payment.collection]
+        refundableAmount:
+            groups: [payment.item, payment.collection]
         createdAt:
             groups: [payment.item, payment.collection]
         updatedAt:

@@ -49,7 +49,11 @@ class PaymentSuccessListener
         }
 
         $identifier = $payment->context()[WalletPay::DETAILS_IDENTIFIER] ?? null;
-        if (\is_string($identifier) && $user = $this->userRepository->findOneByIdentifier($identifier)) {
+        if (!\is_string($identifier)) {
+            return;
+        }
+
+        if ($user = $this->userRepository->findOneByIdentifier($identifier)) {
             $user->setBalance($user->getBalance() + $topup->getAmount() + $topup->getBonus());
         }
     }

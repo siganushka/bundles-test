@@ -86,7 +86,7 @@
             {{ ('payment.gateway.' ~ _item.currentPayment.gateway)|trans }}
             {{ _item.currentPayment.state|trans }}
             {% if _item.currentPayment.refundAmount %}
-              <p class="fs-sm text-danger">已退款 {{ _item.currentPayment.refundAmount|intl_currency }}</p>
+              <p class="fs-sm text-warning m-0">已退款 {{ _item.currentPayment.refundAmount|intl_currency }}</p>
             {% endif %}
           {% else %}
             -
@@ -100,12 +100,8 @@
           <div class="d-inline-block">
             <a class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">流转</a>
             <ul class="dropdown-menu dropdown-menu-end">
-              {% set _transitions = workflow_transitions(_item) %}
-              {% for transition in _transitions %}
-                {% if transition.name == 'reset' and _transitions|length > 1 %}
-                  <li><hr class="dropdown-divider"></li>
-                {% endif %}
-                <li><a href="{{ path('app_order_workflow', {number: _item.number, transition: transition.name}) }}" class="dropdown-item{{ transition.name == 'reset' ? ' text-danger' }}">{{ transition.name }}</a></li>
+              {% for transition in workflow_transitions(_item) %}
+                <li><a href="{{ path('app_order_workflow', {number: _item.number, transition: transition.name}) }}" class="dropdown-item">{{ transition.name }}</a></li>
               {% else %}
                 <li><span class="dropdown-item disabled">No actions available.</span></li>
               {% endfor %}

@@ -4,44 +4,49 @@ declare(strict_types=1);
 
 namespace App\EventListener;
 
-use Siganushka\OrderBundle\Entity\Order;
-use Siganushka\OrderBundle\Enum\OrderState;
+use App\Entity\Order;
+use Psr\Log\LoggerInterface;
+use Siganushka\OrderBundle\Enum\OrderStateTransition;
+use Siganushka\PaymentBundle\Enum\PaymentState;
+use Siganushka\PaymentBundle\PaymentManagerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\Workflow\Event\GuardEvent;
 use Symfony\Component\Workflow\Event\TransitionEvent;
 
 class OrderStateMachineListener implements EventSubscriberInterface
 {
-    public function onGuard(GuardEvent $event): void
+    public function __construct(
+        private readonly LoggerInterface $logger,
+        private readonly PaymentManagerInterface $paymentManager)
     {
-        $subject = $event->getSubject();
-        if (!$subject instanceof Order) {
-            return;
-        }
-
-        if (OrderState::Processing === $subject->getState() && $subject->getTotal() <= 0) {
-            $event->setBlocked(true);
-        }
     }
 
-    public function onTransition(TransitionEvent $event): void
+    public function onCancel(TransitionEvent $event): void
     {
         $subject = $event->getSubject();
         if (!$subject instanceof Order) {
             return;
         }
 
-        if ($subject->getTotal() <= 0) {
-            $marking = $event->getMarking();
-            $marking->mark(OrderState::Processing->value);
+        $payment = $subject->getCurrentPayment();
+        if (!$payment || PaymentState::Succeed !== $payment->getState()) {
+            return;
+        }
+
+        $refund = $this->paymentManager->createPaymentRefund($payment);
+        $refund->setAmount($payment->getRefundableAmount());
+
+        try {
+            $this->paymentManager->refund($payment, $refund);
+        } catch (\Throwable $th) {
+            $error = $th->getMessage();
+            $this->logger->error(__METHOD__, compact('error'));
         }
     }
 
     public static function getSubscribedEvents(): array
     {
         return [
-            GuardEvent::getName('order', 'reset') => 'onGuard',
-            TransitionEvent::getName('order', 'reset') => 'onTransition',
+            TransitionEvent::getName('order', OrderStateTransition::Cancel->value) => 'onCancel',
         ];
     }
 }
