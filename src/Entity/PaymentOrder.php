@@ -13,18 +13,18 @@ class PaymentOrder extends Payment
     use PaymentContext;
 
     #[ORM\ManyToOne(inversedBy: 'payments')]
-    private ?Order $subject = null;
+    private ?Order $order = null;
 
-    public function getSubject(): ?Order
+    public function getOrder(): ?Order
     {
-        return $this->subject;
+        return $this->order;
     }
 
-    public function setSubject(?Order $subject): static
+    public function setOrder(?Order $order): static
     {
-        $this->title = 'Test Order';
-        $this->amount = $subject?->getTotal();
-        $this->subject = $subject;
+        $this->title = \sprintf('Test Order (%d items)', $order?->getItems()->count() ?? 0);
+        $this->amount = $order?->getTotal();
+        $this->order = $order;
 
         return $this;
     }

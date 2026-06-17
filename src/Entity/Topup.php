@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use App\Repository\TopupRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Siganushka\Contracts\Doctrine\ResourceInterface;
 use Siganushka\Contracts\Doctrine\ResourceTrait;
@@ -27,17 +25,6 @@ class Topup implements ResourceInterface, TimestampableInterface
 
     #[ORM\Column]
     private ?int $bonus = null;
-
-    /**
-     * @var Collection<int, PaymentTopup>
-     */
-    #[ORM\OneToMany(targetEntity: PaymentTopup::class, mappedBy: 'subject')]
-    private Collection $payments;
-
-    public function __construct()
-    {
-        $this->payments = new ArrayCollection();
-    }
 
     public function getTitle(): ?string
     {
@@ -71,36 +58,6 @@ class Topup implements ResourceInterface, TimestampableInterface
     public function setBonus(int $bonus): static
     {
         $this->bonus = $bonus;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, PaymentTopup>
-     */
-    public function getPayments(): Collection
-    {
-        return $this->payments;
-    }
-
-    public function addPayment(PaymentTopup $payment): static
-    {
-        if (!$this->payments->contains($payment)) {
-            $this->payments->add($payment);
-            $payment->setSubject($this);
-        }
-
-        return $this;
-    }
-
-    public function removePayment(PaymentTopup $payment): static
-    {
-        if ($this->payments->removeElement($payment)) {
-            // set the owning side to null (unless already changed)
-            if ($payment->getSubject() === $this) {
-                $payment->setSubject(null);
-            }
-        }
 
         return $this;
     }

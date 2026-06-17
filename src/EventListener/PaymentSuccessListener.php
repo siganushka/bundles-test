@@ -8,8 +8,6 @@ use App\Entity\Order;
 use App\Entity\PaymentOrder;
 use App\Entity\PaymentOrderAggregate;
 use App\Entity\PaymentTopup;
-use App\Payment\Gateway\WalletPay;
-use App\Repository\UserRepository;
 use Siganushka\OrderBundle\Enum\OrderStateTransition;
 use Siganushka\PaymentBundle\Event\PaymentSuccessEvent;
 use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
@@ -18,9 +16,7 @@ use Symfony\Component\Workflow\Registry;
 #[AsEventListener(PaymentSuccessEvent::class)]
 class PaymentSuccessListener
 {
-    public function __construct(
-        private readonly UserRepository $userRepository,
-        private readonly Registry $registry)
+    public function __construct(private readonly Registry $registry)
     {
     }
 
@@ -29,8 +25,8 @@ class PaymentSuccessListener
         $payment = $event->getPayment();
         if ($payment instanceof PaymentTopup) {
             $this->handleTopup($payment);
-        } elseif ($payment instanceof PaymentOrder && $payment->getSubject()) {
-            $this->handleOrder($payment->getSubject());
+        } elseif ($payment instanceof PaymentOrder && $payment->getOrder()) {
+            $this->handleOrder($payment->getOrder());
         } elseif ($payment instanceof PaymentOrderAggregate) {
             $payment->getOrders()->map($this->handleOrder(...));
         }
@@ -43,18 +39,12 @@ class PaymentSuccessListener
 
     private function handleTopup(PaymentTopup $payment): void
     {
-        $topup = $payment->getSubject();
-        if (!$topup) {
+        $user = $payment->getUser();
+        $topup = $payment->getTopup();
+        if (!$user || !$topup) {
             return;
         }
 
-        $identifier = $payment->context()[WalletPay::DETAILS_IDENTIFIER] ?? null;
-        if (!\is_string($identifier)) {
-            return;
-        }
-
-        if ($user = $this->userRepository->findOneByIdentifier($identifier)) {
-            $user->setBalance($user->getBalance() + $topup->getAmount() + $topup->getBonus());
-        }
+        $user->setBalance($user->getBalance() + $topup->getAmount() + $topup->getBonus());
     }
 }

@@ -12,19 +12,34 @@ class PaymentTopup extends Payment
 {
     use PaymentContext;
 
-    #[ORM\ManyToOne(inversedBy: 'payments')]
-    private ?Topup $subject = null;
+    #[ORM\ManyToOne(inversedBy: 'topups')]
+    private ?User $user = null;
 
-    public function getSubject(): ?Topup
+    #[ORM\ManyToOne]
+    private ?Topup $topup = null;
+
+    public function getUser(): ?User
     {
-        return $this->subject;
+        return $this->user;
     }
 
-    public function setSubject(?Topup $subject): static
+    public function setUser(?User $user): static
     {
-        $this->title = 'Test Topup';
-        $this->amount = $subject?->getAmount();
-        $this->subject = $subject;
+        $this->user = $user;
+
+        return $this;
+    }
+
+    public function getTopup(): ?Topup
+    {
+        return $this->topup;
+    }
+
+    public function setTopup(?Topup $topup): static
+    {
+        $this->title = $topup?->getTitle();
+        $this->amount = $topup?->getAmount();
+        $this->topup = $topup;
 
         return $this;
     }

@@ -36,8 +36,7 @@ class OrderPaymentFactory implements PaymentFactoryInterface
 
         $fn = static fn ($_, Payment $item) => $gateway === $item->getGateway() && PaymentState::Pending === $item->getState();
         $payment = $entity->getPayments()->findFirst($fn) ?? new PaymentOrder();
-        $payment->setSubject($entity);
-        $payment->setGateway($gateway);
+        $payment->setOrder($entity);
         $payment->setExpiredAt($expiredAt);
 
         return $payment;

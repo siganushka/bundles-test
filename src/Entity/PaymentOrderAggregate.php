@@ -30,7 +30,7 @@ class PaymentOrderAggregate extends Payment
 
     public function getTitle(): ?string
     {
-        return $this->title ??= \sprintf('Test Order (%d items)', $this->orders->count());
+        return $this->title ??= \sprintf('Test Orders (%d orders)', $this->orders->count());
     }
 
     public function getAmount(): ?int

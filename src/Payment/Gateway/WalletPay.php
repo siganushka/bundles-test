@@ -17,7 +17,8 @@ use Symfony\Component\HttpFoundation\Response;
 
 class WalletPay extends AbstractPaymentGateway
 {
-    public const DETAILS_IDENTIFIER = 'identifier';
+    public const CURRENT_USER_IDENTIFIER = 'siganushka';
+    public const DETAILS_IDENTIFIER = 'user_identifier';
 
     public function __construct(private readonly UserRepository $userRepository)
     {
@@ -30,15 +31,8 @@ class WalletPay extends AbstractPaymentGateway
 
     public function pay(Payment $payment): array
     {
-        $identifier = $payment->context()[self::DETAILS_IDENTIFIER] ?? null;
-        if (!$identifier) {
-            throw new PaymentFailedException('User identifier not found.');
-        }
-
-        $user = $this->userRepository->findOneByIdentifier($identifier);
-        if (!$user) {
-            throw new PaymentFailedException('User not found.');
-        }
+        $user = $this->userRepository->findOneByIdentifier(self::CURRENT_USER_IDENTIFIER)
+            ?? throw new PaymentFailedException(\sprintf('The user "%s" does not found.', self::CURRENT_USER_IDENTIFIER));
 
         $balance = $user->getBalance() - $payment->getAmount();
         if ($balance < 0) {
@@ -61,10 +55,8 @@ class WalletPay extends AbstractPaymentGateway
             throw new PaymentFailedException('User identifier not found.');
         }
 
-        $user = $this->userRepository->findOneByIdentifier($identifier);
-        if (!$user) {
-            throw new PaymentFailedException('User not found.');
-        }
+        $user = $this->userRepository->findOneByIdentifier($identifier)
+            ?? throw new \RuntimeException(\sprintf('The user "%s" does not found.', $identifier));
 
         $user->setBalance($user->getBalance() + $refund->getAmount());
 
