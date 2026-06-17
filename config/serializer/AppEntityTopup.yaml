@@ -8,8 +8,6 @@ App\Entity\Topup:
             groups: [topup.item, topup.collection]
         bonus:
             groups: [topup.item, topup.collection]
-        payments:
-            groups: [topup.item, topup.collection]
         createdAt:
             groups: [topup.item, topup.collection]
         updatedAt:

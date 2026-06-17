@@ -4,6 +4,8 @@ App\Entity\User:
             groups: [user.item, user.collection]
         balance:
             groups: []
+        topups:
+            groups: []
         identifier:
             groups: [user.item, user.collection]
         password:

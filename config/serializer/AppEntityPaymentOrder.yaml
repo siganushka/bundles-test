@@ -2,7 +2,7 @@ App\Entity\PaymentOrder:
     attributes:
         id:
             groups: []
-        subject:
+        order:
             groups: []
         number:
             groups: [payment.item, payment.collection]

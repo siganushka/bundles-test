@@ -2,7 +2,9 @@ App\Entity\PaymentTopup:
     attributes:
         id:
             groups: []
-        subject:
+        user:
+            groups: []
+        topup:
             groups: []
         number:
             groups: [payment.item, payment.collection]

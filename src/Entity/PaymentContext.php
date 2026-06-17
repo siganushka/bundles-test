@@ -11,9 +11,8 @@ trait PaymentContext
     public function context(): array
     {
         return [
-            WxpayJsapi::PAY_OPTIONS => [
-                'openid' => 'ojARc6pRwt3nEJM5YqojEq0xHxkw', // e.g. $this->getUser()->getOpenid()
-            ],
+            // e.g. $this->getUser()->getOpenid()
+            WxpayJsapi::OPTIONS_OPENID => 'ojARc6pRwt3nEJM5YqojEq0xHxkw',
         ];
     }
 }
