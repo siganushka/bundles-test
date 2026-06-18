@@ -6,8 +6,6 @@ App\Entity\PaymentOrderAggregate:
             groups: []
         number:
             groups: [payment.item, payment.collection]
-        title:
-            groups: [payment.item, payment.collection]
         amount:
             groups: [payment.item, payment.collection]
         refundAmount:
@@ -22,6 +20,10 @@ App\Entity\PaymentOrderAggregate:
             groups: [payment.item, payment.collection]
         refunds:
             groups: []
+        titleParameters:
+            groups: []
+        title:
+            groups: [payment.item, payment.collection]
         type:
             groups: [payment.item, payment.collection]
         refundableAmount:

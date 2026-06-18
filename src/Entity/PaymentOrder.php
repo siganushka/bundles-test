@@ -5,7 +5,10 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Override;
 use Siganushka\PaymentBundle\Entity\Payment;
+use Symfony\Component\Translation\TranslatableMessage;
+use Symfony\Contracts\Translation\TranslatableInterface;
 
 #[ORM\Entity]
 class PaymentOrder extends Payment
@@ -22,10 +25,14 @@ class PaymentOrder extends Payment
 
     public function setOrder(?Order $order): static
     {
-        $this->title = \sprintf('Test Order (%d items)', $order?->getItems()->count() ?? 0);
         $this->amount = $order?->getTotal();
         $this->order = $order;
 
         return $this;
+    }
+
+    public function getTitleParameters(): array
+    {
+        return ['%number%' => $this->order?->getNumber()];
     }
 }

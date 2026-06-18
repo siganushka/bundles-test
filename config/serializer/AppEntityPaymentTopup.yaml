@@ -8,8 +8,6 @@ App\Entity\PaymentTopup:
             groups: []
         number:
             groups: [payment.item, payment.collection]
-        title:
-            groups: [payment.item, payment.collection]
         amount:
             groups: [payment.item, payment.collection]
         refundAmount:
@@ -23,6 +21,10 @@ App\Entity\PaymentTopup:
         failedReason:
             groups: [payment.item, payment.collection]
         refunds:
+            groups: []
+        title:
+            groups: [payment.item, payment.collection]
+        titleParameters:
             groups: []
         type:
             groups: [payment.item, payment.collection]

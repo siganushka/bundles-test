@@ -5,7 +5,10 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Override;
 use Siganushka\PaymentBundle\Entity\Payment;
+use Symfony\Component\Translation\TranslatableMessage;
+use Symfony\Contracts\Translation\TranslatableInterface;
 
 #[ORM\Entity]
 class PaymentTopup extends Payment
@@ -37,10 +40,14 @@ class PaymentTopup extends Payment
 
     public function setTopup(?Topup $topup): static
     {
-        $this->title = $topup?->getTitle();
         $this->amount = $topup?->getAmount();
         $this->topup = $topup;
 
         return $this;
+    }
+
+    public function getTitle(): string|TranslatableInterface
+    {
+        return $this->topup->getTitle();
     }
 }

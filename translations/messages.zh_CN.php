@@ -42,8 +42,8 @@ return [
     'order_adjustment.type.shipping_fee' => '运费',
     'order_adjustment.type.random_discount' => '随机立减',
     'order_adjustment.type.coupon_discount' => '优惠券抵扣',
-    'payment.type.payment_order' => '订单',
-    'payment.type.payment_order_aggregate' => '聚合订单',
-    'payment.type.payment_topup' => '充值',
+    'payment.type.payment_order' => '订单 #%number%',
+    'payment.type.payment_order_aggregate' => '聚合订单 #%numbers%',
+    'payment.type.payment_topup' => '充值 #%id%',
     'payment.gateway.wallet_pay' => '余额支付',
 ];

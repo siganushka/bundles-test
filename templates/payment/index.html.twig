@@ -6,10 +6,9 @@
   {% embed 'table.html.twig' %}
     {% block th %}
       <th class="text-nowrap">{{ 'payment.number'|trans }}</th>
-      <th class="text-nowrap">{{ 'payment.title'|trans }}</th>
+      <th class="text-nowrap">{{ 'payment.type'|trans }}</th>
       <th class="text-nowrap">{{ 'payment.amount'|trans }}</th>
       <th class="text-nowrap">{{ 'payment.refund_amount'|trans }}</th>
-      <th class="text-nowrap">{{ 'payment.type'|trans }}</th>
       <th class="text-nowrap">{{ 'payment.gateway'|trans }}</th>
       <th class="text-nowrap">{{ 'payment.state'|trans }}</th>
       <th class="text-nowrap">{{ 'generic.expired_at'|trans }}</th>
@@ -18,10 +17,15 @@
 
     {% block td %}
       <td class="text-nowrap"><code class="user-select-all">{{ _item.number }}</code></td>
-      <td class="text-nowrap">{{ _item.title }}</td>
+      <td class="text-nowrap">
+        {% if _item.title is mapping %}
+          {{ _item.title|trans }}
+        {% else %}
+          {{ _item.title }}
+        {% endif %}
+      </td>
       <td class="text-nowrap">{{ _item.amount|intl_currency }}</td>
       <td class="text-nowrap">{{ _item.refundAmount|intl_currency }}</td>
-      <td class="text-nowrap">{{ ('payment.type.' ~ _item.type)|trans }}</td>
       <td class="text-nowrap">{{ ('payment.gateway.' ~ _item.gateway)|trans }}</td>
       <td class="text-nowrap">
         <span class="badge text-bg-{{ _item.state.theme }}"
