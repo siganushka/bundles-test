@@ -34,7 +34,10 @@ class PaymentSuccessListener
 
     private function handleOrder(Order $entity): void
     {
-        $this->registry->get($entity)->apply($entity, OrderStateTransition::Confirm->value);
+        try {
+            $this->registry->get($entity)->apply($entity, OrderStateTransition::Confirm->value);
+        } catch (\Throwable) {
+        }
     }
 
     private function handleTopup(PaymentTopup $payment): void

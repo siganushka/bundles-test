@@ -22,7 +22,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\MapQueryString;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\Workflow\Exception\LogicException;
 use Symfony\Component\Workflow\WorkflowInterface;
 
 #[Route('/orders', requirements: ['_id' => '[0-9a-zA-Z]+'])]
@@ -68,10 +67,10 @@ class OrderController extends AbstractController
 
         try {
             $orderStateMachine->apply($entity, $transition);
-        } catch (LogicException $e) {
+        } catch (\Throwable $th) {
             $entityManager->rollback();
 
-            $this->addFlash('danger', $e->getMessage());
+            $this->addFlash('danger', $th->getMessage());
 
             return $this->redirect($redirectUrl);
         }
