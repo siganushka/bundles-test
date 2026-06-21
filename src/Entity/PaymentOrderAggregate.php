@@ -10,51 +10,31 @@ use Doctrine\ORM\Mapping as ORM;
 use Siganushka\PaymentBundle\Entity\Payment;
 
 #[ORM\Entity]
-#[ORM\HasLifecycleCallbacks]
 class PaymentOrderAggregate extends Payment
 {
     use PaymentContext;
 
     /**
-     * @var Collection<int, Order>
+     * @var Collection<array-key, Order>
      */
-    #[ORM\ManyToMany(targetEntity: Order::class)]
+    #[ORM\ManyToMany(targetEntity: Order::class, inversedBy: 'aggregatePayments')]
     #[ORM\JoinTable('payment_order')]
     #[ORM\JoinColumn('payment_id')]
     private Collection $orders;
 
-    public function __construct()
+    public function __construct(Order ...$orders)
     {
-        $this->orders = new ArrayCollection();
-    }
-
-    public function getAmount(): ?int
-    {
-        return $this->amount ??= $this->orders->reduce(static fn (int $carry, Order $item) => $carry + $item->getTotal(), 0);
+        $this->amount = array_reduce($orders, static fn (int $carry, Order $item) => $carry + $item->getTotal(), 0);
+        $this->currency = 'CNY';
+        $this->orders = new ArrayCollection($orders);
     }
 
     /**
-     * @return Collection<int, Order>
+     * @return Collection<array-key, Order>
      */
     public function getOrders(): Collection
     {
         return $this->orders;
-    }
-
-    public function addOrder(Order $order): static
-    {
-        if (!$this->orders->contains($order)) {
-            $this->orders->add($order);
-        }
-
-        return $this;
-    }
-
-    public function removeOrder(Order $order): static
-    {
-        $this->orders->removeElement($order);
-
-        return $this;
     }
 
     public function getTitleParameters(): array
@@ -62,12 +42,5 @@ class PaymentOrderAggregate extends Payment
         $numbers = $this->orders->map(static fn (Order $item) => $item->getNumber());
 
         return ['%numbers%' => implode(', ', $numbers->toArray())];
-    }
-
-    #[ORM\PrePersist]
-    #[ORM\PreUpdate]
-    public function computed(): void
-    {
-        $this->getAmount();
     }
 }

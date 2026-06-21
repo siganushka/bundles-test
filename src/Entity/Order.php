@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Siganushka\Contracts\Doctrine\DeletableInterface;
 use Siganushka\Contracts\Doctrine\DeletableTrait;
 use Siganushka\OrderBundle\Entity\Order as BaseOrder;
+use Siganushka\PaymentBundle\Entity\Payment;
 
 #[ORM\Entity(repositoryClass: OrderRepository::class)]
 class Order extends BaseOrder implements DeletableInterface
@@ -24,11 +25,18 @@ class Order extends BaseOrder implements DeletableInterface
     #[ORM\OrderBy(['id' => 'ASC'])]
     private Collection $payments;
 
+    /**
+     * @var Collection<int, PaymentOrderAggregate>
+     */
+    #[ORM\ManyToMany(targetEntity: PaymentOrderAggregate::class, mappedBy: 'orders')]
+    private Collection $aggregatePayments;
+
     public function __construct()
     {
-        parent::__construct();
-
         $this->payments = new ArrayCollection();
+        $this->aggregatePayments = new ArrayCollection();
+
+        parent::__construct();
     }
 
     /**
@@ -39,30 +47,16 @@ class Order extends BaseOrder implements DeletableInterface
         return $this->payments;
     }
 
-    public function addPayment(PaymentOrder $payment): static
+    /**
+     * @return Collection<int, PaymentOrderAggregate>
+     */
+    public function getAggregatePayments(): Collection
     {
-        if (!$this->payments->contains($payment)) {
-            $this->payments->add($payment);
-            $payment->setOrder($this);
-        }
-
-        return $this;
+        return $this->aggregatePayments;
     }
 
-    public function removePayment(PaymentOrder $payment): static
+    public function getCurrentPayment(): ?Payment
     {
-        if ($this->payments->removeElement($payment)) {
-            // set the owning side to null (unless already changed)
-            if ($payment->getOrder() === $this) {
-                $payment->setOrder(null);
-            }
-        }
-
-        return $this;
-    }
-
-    public function getCurrentPayment(): ?PaymentOrder
-    {
-        return $this->payments->last() ?: null;
+        return $this->payments->last() ?: ($this->aggregatePayments->last() ?: null);
     }
 }

@@ -12,7 +12,7 @@ use Siganushka\PaymentBundle\Entity\Payment;
 use Siganushka\PaymentBundle\Enum\PaymentState;
 use Siganushka\PaymentBundle\Factory\PaymentFactoryInterface;
 
-class TopupPaymentFactory implements PaymentFactoryInterface
+class PaymentTopupFactory implements PaymentFactoryInterface
 {
     public function __construct(
         private readonly UserRepository $userRepository,
@@ -33,11 +33,7 @@ class TopupPaymentFactory implements PaymentFactoryInterface
             && $item->getGateway() === $gateway
             && PaymentState::Pending === $item->getState();
 
-        $payment = $user->getTopups()->findFirst($fn) ?? new PaymentTopup();
-        $payment->setUser($user);
-        $payment->setTopup($topup);
-
-        return $payment;
+        return $user->getTopups()->findFirst($fn) ?? new PaymentTopup($user, $topup);
     }
 
     public function supportsType(string $type): bool

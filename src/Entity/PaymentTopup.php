@@ -19,29 +19,22 @@ class PaymentTopup extends Payment
     #[ORM\ManyToOne]
     private ?Topup $topup = null;
 
+    public function __construct(User $user, Topup $topup)
+    {
+        $this->amount = $topup->getAmount();
+        $this->currency = 'CNY';
+        $this->topup = $topup;
+        $this->user = $user;
+    }
+
     public function getUser(): ?User
     {
         return $this->user;
     }
 
-    public function setUser(?User $user): static
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
     public function getTopup(): ?Topup
     {
         return $this->topup;
-    }
-
-    public function setTopup(?Topup $topup): static
-    {
-        $this->amount = $topup?->getAmount();
-        $this->topup = $topup;
-
-        return $this;
     }
 
     public function getTitle(): string|TranslatableInterface

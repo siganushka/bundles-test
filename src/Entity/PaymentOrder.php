@@ -13,23 +13,23 @@ class PaymentOrder extends Payment
     use PaymentContext;
 
     #[ORM\ManyToOne(inversedBy: 'payments')]
-    private ?Order $order = null;
+    private readonly Order $order;
+
+    public function __construct(Order $order, ?\DateTimeImmutable $expiredAt = null)
+    {
+        $this->amount = $order->getTotal();
+        $this->currency = 'CNY';
+        $this->order = $order;
+        $this->expiredAt = $expiredAt;
+    }
 
     public function getOrder(): ?Order
     {
         return $this->order;
     }
 
-    public function setOrder(?Order $order): static
-    {
-        $this->amount = $order?->getTotal();
-        $this->order = $order;
-
-        return $this;
-    }
-
     public function getTitleParameters(): array
     {
-        return ['%number%' => $this->order?->getNumber()];
+        return ['%number%' => $this->order->getNumber()];
     }
 }

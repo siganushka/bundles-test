@@ -12,6 +12,8 @@ App\Entity\PaymentTopup:
             groups: [payment.item, payment.collection]
         refundAmount:
             groups: [payment.item, payment.collection]
+        currency:
+            groups: [payment.item, payment.collection]
         gateway:
             groups: [payment.item, payment.collection]
         details:

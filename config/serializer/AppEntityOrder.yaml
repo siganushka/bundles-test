@@ -4,6 +4,8 @@ App\Entity\Order:
             groups: []
         payments:
             groups: []
+        aggregatePayments:
+            groups: []
         number:
             groups: ['order:item', 'order:collection']
         itemsTotal:

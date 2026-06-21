@@ -12,7 +12,7 @@ use Siganushka\PaymentBundle\Enum\PaymentState;
 use Siganushka\PaymentBundle\Factory\PaymentFactoryInterface;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 
-class OrderPaymentFactory implements PaymentFactoryInterface
+class PaymentOrderFactory implements PaymentFactoryInterface
 {
     public function __construct(
         private readonly OrderRepository $orderRepository,
@@ -35,13 +35,8 @@ class OrderPaymentFactory implements PaymentFactoryInterface
         $expiredAt = $createdAt->modify(\sprintf('+%d seconds', $this->seconds));
 
         $fn = static fn ($_, Payment $item) => $gateway === $item->getGateway() && PaymentState::Pending === $item->getState();
-        $payment = $entity->getPayments()->findFirst($fn) ?? new PaymentOrder();
-        if (!$payment->getNumber()) {
-            $payment->setOrder($entity);
-            $payment->setExpiredAt($expiredAt);
-        }
 
-        return $payment;
+        return $entity->getPayments()->findFirst($fn) ?? new PaymentOrder($entity, $expiredAt);
     }
 
     public function supportsType(string $type): bool

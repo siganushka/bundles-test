@@ -48,26 +48,4 @@ class User extends BaseUser
     {
         return $this->topups;
     }
-
-    public function addTopup(PaymentTopup $topup): static
-    {
-        if (!$this->topups->contains($topup)) {
-            $this->topups->add($topup);
-            $topup->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeTopup(PaymentTopup $topup): static
-    {
-        if ($this->topups->removeElement($topup)) {
-            // set the owning side to null (unless already changed)
-            if ($topup->getUser() === $this) {
-                $topup->setUser(null);
-            }
-        }
-
-        return $this;
-    }
 }
