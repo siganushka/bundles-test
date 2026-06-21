@@ -5,9 +5,12 @@ declare(strict_types=1);
 namespace App\Payment\Factory;
 
 use App\Entity\PaymentTopup;
+use App\Entity\Topup;
+use App\Entity\User;
 use App\Payment\Gateway\WalletPay;
 use App\Repository\TopupRepository;
 use App\Repository\UserRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Siganushka\PaymentBundle\Entity\Payment;
 use Siganushka\PaymentBundle\Enum\PaymentState;
 use Siganushka\PaymentBundle\Factory\PaymentFactoryInterface;
@@ -15,6 +18,7 @@ use Siganushka\PaymentBundle\Factory\PaymentFactoryInterface;
 class PaymentTopupFactory implements PaymentFactoryInterface
 {
     public function __construct(
+        private readonly EntityManagerInterface $entityManager,
         private readonly UserRepository $userRepository,
         private readonly TopupRepository $topupRepository)
     {
@@ -28,16 +32,18 @@ class PaymentTopupFactory implements PaymentFactoryInterface
         $topup = $this->topupRepository->find($identifier)
             ?? throw new \RuntimeException(\sprintf('The topup "%s" does not found.', $identifier));
 
-        $fn = static fn ($_, PaymentTopup $item) => $item->getUser() === $user
-            && $item->getTopup() === $topup
-            && $item->getGateway() === $gateway
-            && PaymentState::Pending === $item->getState();
-
-        return $user->getTopups()->findFirst($fn) ?? new PaymentTopup($user, $topup);
+        return $this->findPaymentTopup($user, $topup, $gateway) ?? new PaymentTopup($user, $topup);
     }
 
     public function supportsType(string $type): bool
     {
         return 'topup' === $type;
+    }
+
+    private function findPaymentTopup(User $user, Topup $topup, string $gateway): ?PaymentTopup
+    {
+        return $this->entityManager->getRepository(PaymentTopup::class)
+            ->findOneBy(compact('user', 'topup', 'gateway') + ['state' => PaymentState::Pending])
+        ;
     }
 }

@@ -22,11 +22,15 @@ class PaymentOrderAggregate extends Payment
     #[ORM\JoinColumn('payment_id')]
     private Collection $orders;
 
-    public function __construct(Order ...$orders)
+    /**
+     * @param array<array-key, Order> $orders
+     */
+    public function __construct(array $orders, ?\DateTimeImmutable $expiredAt = null)
     {
         $this->amount = array_reduce($orders, static fn (int $carry, Order $item) => $carry + $item->getTotal(), 0);
         $this->currency = 'CNY';
         $this->orders = new ArrayCollection($orders);
+        $this->expiredAt = $expiredAt;
     }
 
     /**
