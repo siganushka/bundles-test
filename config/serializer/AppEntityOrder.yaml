@@ -23,7 +23,7 @@ App\Entity\Order:
         adjustments:
             groups: ['order:item', 'order:collection']
         currentPayment:
-            groups: []
+            groups: ['order:item', 'order:collection']
         createdAt:
             groups: ['order:item', 'order:collection']
         updatedAt:
