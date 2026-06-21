@@ -6,7 +6,6 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Siganushka\PaymentBundle\Entity\Payment;
-use Symfony\Contracts\Translation\TranslatableInterface;
 
 #[ORM\Entity]
 class PaymentTopup extends Payment
@@ -37,8 +36,8 @@ class PaymentTopup extends Payment
         return $this->topup;
     }
 
-    public function getTitle(): string|TranslatableInterface
+    public function getTitleParameters(): array
     {
-        return $this->topup?->getTitle() ?? $this->getType();
+        return ['%id%' => $this->topup?->getId()];
     }
 }
