@@ -43,6 +43,7 @@
         "symfony/messenger": "7.4.*",
         "symfony/mime": "7.4.*",
         "symfony/monolog-bundle": "^4.0.2",
+        "symfony/object-mapper": "7.4.*",
         "symfony/redis-messenger": "7.4.*",
         "symfony/runtime": "7.4.*",
         "symfony/security-bundle": "7.4.*",

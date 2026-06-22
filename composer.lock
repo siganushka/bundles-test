@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f4569817229e4f1d6dc7dc28f854b34c",
+    "content-hash": "6470d19355433b8deeaff19baf7bad90",
     "packages": [
         {
             "name": "aliyuncs/oss-sdk-php",
@@ -3111,7 +3111,7 @@
             "dist": {
                 "type": "path",
                 "url": "../order-bundle",
-                "reference": "77d7b7629c8e2cc22fe7caa61244ecfd656cc02f"
+                "reference": "e444320175cd8f205066737b4ce60b5977bb40c9"
             },
             "require": {
                 "godruoyi/php-snowflake": "^3.0",
@@ -3172,7 +3172,7 @@
             "dist": {
                 "type": "path",
                 "url": "../payment-bundle",
-                "reference": "8b857d03bb6ccdd6903411425189625e5767b956"
+                "reference": "1b7ea0a765d1bcb7167584274b4b1243dc150262"
             },
             "require": {
                 "knplabs/knp-components": "^5.0",
@@ -3234,7 +3234,7 @@
             "dist": {
                 "type": "path",
                 "url": "../product-bundle",
-                "reference": "4be1631e1415e098b43742fdd6da6e92d99dfac5"
+                "reference": "066c1be0083bdfabc327f710460df09283ace242"
             },
             "require": {
                 "bentools/cartesian-product": "^2.0",
@@ -6262,6 +6262,79 @@
                 }
             ],
             "time": "2026-04-02T18:27:21+00:00"
+        },
+        {
+            "name": "symfony/object-mapper",
+            "version": "v7.4.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/object-mapper.git",
+                "reference": "4f3f4973993b70e88e58dbcc3e332135d593f70d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/object-mapper/zipball/4f3f4973993b70e88e58dbcc3e332135d593f70d",
+                "reference": "4f3f4973993b70e88e58dbcc3e332135d593f70d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.2",
+                "psr/container": "^2.0"
+            },
+            "conflict": {
+                "symfony/property-access": "<7.2"
+            },
+            "require-dev": {
+                "symfony/property-access": "^7.2|^8.0",
+                "symfony/var-exporter": "^7.2|^8.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\ObjectMapper\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Provides a way to map an object to another object",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/object-mapper/tree/v7.4.9"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/nicolas-grekas",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2026-04-22T15:21:55+00:00"
         },
         {
             "name": "symfony/options-resolver",
