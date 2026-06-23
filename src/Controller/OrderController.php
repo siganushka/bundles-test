@@ -63,24 +63,20 @@ class OrderController extends AbstractController
         $redirectUrl = $request->headers->get('referer')
             ?? $this->generateUrl('app_order_index');
 
-        $entityManager->beginTransaction();
-
         try {
-            $orderStateMachine->apply($entity, $transition);
-        } catch (\Throwable $th) {
-            $entityManager->rollback();
+            $entityManager->wrapInTransaction(static function (EntityManagerInterface $em) use ($orderStateMachine, $entity, $transition) {
+                $orderStateMachine->apply($entity, $transition);
+                $em->flush();
+            });
 
+            $this->addFlash('success', 'Your changes were saved!');
+
+            return $this->redirect($redirectUrl);
+        } catch (\Throwable $th) {
             $this->addFlash('danger', $th->getMessage());
 
             return $this->redirect($redirectUrl);
         }
-
-        $entityManager->flush();
-        $entityManager->commit();
-
-        $this->addFlash('success', 'Your changes were saved!');
-
-        return $this->redirect($redirectUrl);
     }
 
     #[Route('/OrderType')]
