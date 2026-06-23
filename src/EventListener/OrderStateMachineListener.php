@@ -7,6 +7,7 @@ namespace App\EventListener;
 use App\Entity\Order;
 use Psr\Log\LoggerInterface;
 use Siganushka\OrderBundle\Enum\OrderStateTransition;
+use Siganushka\PaymentBundle\Entity\PaymentRefund;
 use Siganushka\PaymentBundle\PaymentManagerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Workflow\Event\TransitionEvent;
@@ -36,7 +37,7 @@ class OrderStateMachineListener implements EventSubscriberInterface
             return;
         }
 
-        $refund = $this->paymentManager->createPaymentRefund($payment);
+        $refund = PaymentRefund::createFromPayment($payment);
         $refund->setAmount($refundable);
 
         try {
