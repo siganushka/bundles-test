@@ -45,8 +45,8 @@ class PaymentOrderFactory implements PaymentFactoryInterface
         $expiredAt = $createdAt->modify(\sprintf('+%d seconds', $this->seconds));
 
         return 1 === \count($orders)
-            ? ($this->findPaymentOrder($orders[0], $gateway) ?? new PaymentOrder($orders[0], $expiredAt))
-            : ($this->findPaymentOrderAggregate($orders, $gateway) ?? new PaymentOrderAggregate($orders, $expiredAt));
+            ? ($this->findPaymentOrder($orders[0], $gateway) ?? new PaymentOrder($gateway, $orders[0], $expiredAt))
+            : ($this->findPaymentOrderAggregate($orders, $gateway) ?? new PaymentOrderAggregate($gateway, $orders, $expiredAt));
     }
 
     public function supportsType(string $type): bool

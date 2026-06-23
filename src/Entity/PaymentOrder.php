@@ -15,12 +15,14 @@ class PaymentOrder extends Payment
     #[ORM\ManyToOne(inversedBy: 'payments')]
     private readonly Order $order;
 
-    public function __construct(Order $order, ?\DateTimeImmutable $expiredAt = null)
+    public function __construct(string $gateway, Order $order, ?\DateTimeImmutable $expiredAt = null)
     {
         $this->amount = $order->getTotal();
         $this->currency = 'CNY';
         $this->order = $order;
         $this->expiredAt = $expiredAt;
+
+        parent::__construct($gateway);
     }
 
     public function getOrder(): ?Order

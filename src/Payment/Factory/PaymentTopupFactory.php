@@ -32,7 +32,7 @@ class PaymentTopupFactory implements PaymentFactoryInterface
         $topup = $this->topupRepository->find($identifier)
             ?? throw new \RuntimeException(\sprintf('The topup "%s" does not found.', $identifier));
 
-        return $this->findPaymentTopup($user, $topup, $gateway) ?? new PaymentTopup($user, $topup);
+        return $this->findPaymentTopup($user, $topup, $gateway) ?? new PaymentTopup($gateway, $user, $topup);
     }
 
     public function supportsType(string $type): bool

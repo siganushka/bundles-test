@@ -8,20 +8,28 @@ use App\Entity\Order;
 use App\Entity\PaymentOrder;
 use App\Entity\PaymentOrderAggregate;
 use App\Entity\PaymentTopup;
+use Psr\Log\LoggerInterface;
 use Siganushka\OrderBundle\Enum\OrderStateTransition;
+use Siganushka\PaymentBundle\Event\PaymentFailureEvent;
 use Siganushka\PaymentBundle\Event\PaymentSuccessEvent;
+use Siganushka\PaymentBundle\Event\RefundFailureEvent;
+use Siganushka\PaymentBundle\Event\RefundSuccessEvent;
 use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
 use Symfony\Component\Workflow\Registry;
 
-#[AsEventListener(PaymentSuccessEvent::class)]
-class PaymentSuccessListener
+class PaymentListener
 {
-    public function __construct(private readonly Registry $registry)
+    public function __construct(
+        private readonly LoggerInterface $logger,
+        private readonly Registry $registry)
     {
     }
 
-    public function __invoke(PaymentSuccessEvent $event): void
+    #[AsEventListener(PaymentSuccessEvent::class)]
+    public function onPaymentSuccess(PaymentSuccessEvent $event): void
     {
+        $this->logger->info(__METHOD__);
+
         $payment = $event->getPayment();
         if ($payment instanceof PaymentTopup) {
             $this->handleTopup($payment);
@@ -30,6 +38,30 @@ class PaymentSuccessListener
         } elseif ($payment instanceof PaymentOrderAggregate) {
             $payment->getOrders()->map($this->handleOrder(...));
         }
+    }
+
+    #[AsEventListener(PaymentFailureEvent::class)]
+    public function onPaymentFailure(PaymentFailureEvent $event): void
+    {
+        $this->logger->info(__METHOD__, [
+            'number' => $event->getPayment()->getNumber(),
+        ]);
+    }
+
+    #[AsEventListener(RefundSuccessEvent::class)]
+    public function onRefundSuccess(RefundSuccessEvent $event): void
+    {
+        $this->logger->info(__METHOD__, [
+            'number' => $event->getRefund()->getNumber(),
+        ]);
+    }
+
+    #[AsEventListener(RefundFailureEvent::class)]
+    public function onRefundFailure(RefundFailureEvent $event): void
+    {
+        $this->logger->info(__METHOD__, [
+            'number' => $event->getRefund()->getNumber(),
+        ]);
     }
 
     private function handleOrder(Order $entity): void
