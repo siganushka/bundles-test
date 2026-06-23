@@ -12,8 +12,6 @@ App\Entity\PaymentOrderAggregate:
             groups: [payment.item, payment.collection]
         currency:
             groups: [payment.item, payment.collection]
-        gateway:
-            groups: [payment.item, payment.collection]
         details:
             groups: []
         state:
@@ -22,6 +20,8 @@ App\Entity\PaymentOrderAggregate:
             groups: [payment.item, payment.collection]
         refunds:
             groups: []
+        gateway:
+            groups: [payment.item, payment.collection]
         titleParameters:
             groups: []
         title:

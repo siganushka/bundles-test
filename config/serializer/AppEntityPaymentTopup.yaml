@@ -14,8 +14,6 @@ App\Entity\PaymentTopup:
             groups: [payment.item, payment.collection]
         currency:
             groups: [payment.item, payment.collection]
-        gateway:
-            groups: [payment.item, payment.collection]
         details:
             groups: []
         state:
@@ -24,10 +22,12 @@ App\Entity\PaymentTopup:
             groups: [payment.item, payment.collection]
         refunds:
             groups: []
-        title:
+        gateway:
             groups: [payment.item, payment.collection]
         titleParameters:
             groups: []
+        title:
+            groups: [payment.item, payment.collection]
         type:
             groups: [payment.item, payment.collection]
         refundableAmount:
