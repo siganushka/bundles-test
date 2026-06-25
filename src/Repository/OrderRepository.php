@@ -24,12 +24,12 @@ class OrderRepository extends BaseOrderRepository
      */
     public function countByStateMapping(): array
     {
-        $queryBuilder = $this->createQueryBuilder('o')
+        $qb = $this->createQueryBuilder('o')
             ->select('o.state, COUNT(o) as count')
             ->groupBy('o.state')
         ;
 
-        $query = $queryBuilder->getQuery();
+        $query = $qb->getQuery();
         $result = $query->getScalarResult();
 
         return array_column($result, 'count', 'state');

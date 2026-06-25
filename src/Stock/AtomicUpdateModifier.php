@@ -50,7 +50,7 @@ class AtomicUpdateModifier implements OrderStockModifierInterface
                 continue;
             }
 
-            $queryBuilder = $this->entityManager->createQueryBuilder()
+            $qb = $this->entityManager->createQueryBuilder()
                 ->update($subject::class, 'entity')
                 ->set('entity.stock', $assignment)
                 ->where('entity.id = :id')
@@ -59,10 +59,10 @@ class AtomicUpdateModifier implements OrderStockModifierInterface
             ;
 
             if (self::DECREMENT === $action) {
-                $queryBuilder->andWhere('entity.stock >= :quantity');
+                $qb->andWhere('entity.stock >= :quantity');
             }
 
-            $query = $queryBuilder->getQuery();
+            $query = $qb->getQuery();
             if (!$query->execute()) {
                 throw new OutOfStockException($subject, $stock, $quantity);
             }

@@ -46,10 +46,10 @@ class OrderController extends AbstractController
     #[Route]
     public function index(PaginatorInterface $paginator, #[MapQueryString] OrderQueryDto $dto): Response
     {
-        $queryBuilder = $this->repository->createQueryBuilderByDto('o', $dto);
+        $qb = $this->repository->createQueryBuilderByDto('o', $dto);
         $countForState = $this->repository->countByStateMapping();
 
-        $pagination = $paginator->paginate($queryBuilder);
+        $pagination = $paginator->paginate($qb);
 
         return $this->render('order/index.html.twig', compact('pagination', 'dto', 'countForState'));
     }

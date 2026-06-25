@@ -2925,7 +2925,7 @@
             "dist": {
                 "type": "path",
                 "url": "../generic-bundle",
-                "reference": "8c18c33099efbd4975b348a9474592856b49b38a"
+                "reference": "ba74fcb429288ee9750f4c2e64a18b0aaeadecb1"
             },
             "require": {
                 "php": ">=8.2",
@@ -3047,7 +3047,7 @@
             "dist": {
                 "type": "path",
                 "url": "../media-bundle",
-                "reference": "7c310e2e50e8f1214cee0a06a2e281d6af7d3063"
+                "reference": "afef2b2d5c6ff8c228ea822095ac48ce9f887019"
             },
             "require": {
                 "ext-fileinfo": "*",
@@ -3111,7 +3111,7 @@
             "dist": {
                 "type": "path",
                 "url": "../order-bundle",
-                "reference": "e444320175cd8f205066737b4ce60b5977bb40c9"
+                "reference": "1e119e5561381977c5b5d2d800111f3409be9f80"
             },
             "require": {
                 "godruoyi/php-snowflake": "^3.0",
@@ -3234,7 +3234,7 @@
             "dist": {
                 "type": "path",
                 "url": "../product-bundle",
-                "reference": "066c1be0083bdfabc327f710460df09283ace242"
+                "reference": "92295dacdf5f9b2528a670891464ee443318fd86"
             },
             "require": {
                 "bentools/cartesian-product": "^2.0",
@@ -3352,7 +3352,7 @@
             "dist": {
                 "type": "path",
                 "url": "../user-bundle",
-                "reference": "26a8fd50a868357d1ce62b4fd1bd176ed5ebf16c"
+                "reference": "89ac6b9f21313e9f84d82c5d535844bb2f004a3c"
             },
             "require": {
                 "knplabs/knp-components": "^5.0",
