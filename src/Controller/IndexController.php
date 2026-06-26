@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Entity\Media;
 use App\Form\TestType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
@@ -17,6 +19,7 @@ use Symfony\Component\Form\Extension\Core\Type\TimezoneType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Validator\Constraints\Count;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
 class IndexController extends AbstractController
@@ -102,6 +105,44 @@ class IndexController extends AbstractController
             ->add('timezone', TimezoneType::class)
             ->add('submit', SubmitType::class)
         ;
+
+        $form = $builder->getForm();
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            dd(__METHOD__, $form->getData());
+        }
+
+        return $this->render('index/index.html.twig', [
+            'form' => $form,
+        ]);
+    }
+
+    #[Route('/entity')]
+    public function choice(Request $request): Response
+    {
+        $builder = $this->createFormBuilder(options: ['csrf_protection' => false])
+            // ->add('title', TextType::class, [
+            //     'constraints' => new NotBlank(),
+            // ])
+            ->add('entity', EntityType::class, [
+                'class' => Media::class,
+                'choice_label' => 'name',
+                'multiple' => true,
+                'expanded' => true,
+                'constraints' => new Count(min: 3),
+            ])
+            ->add('submit', SubmitType::class)
+        ;
+
+        // $form = $builder->getForm();
+        // $form->submit($request->getPayload()->all());
+
+        // if (!$form->isValid()) {
+        //     return $this->json($form, Response::HTTP_UNPROCESSABLE_ENTITY);
+        // }
+
+        // dd($form->getData());
 
         $form = $builder->getForm();
         $form->handleRequest($request);
