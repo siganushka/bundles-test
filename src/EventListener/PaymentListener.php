@@ -74,12 +74,8 @@ class PaymentListener
 
     private function handleTopup(PaymentTopup $payment): void
     {
-        $user = $payment->getUser();
         $topup = $payment->getTopup();
-        if (!$user || !$topup) {
-            return;
-        }
-
+        $user = $payment->getUser();
         $user->setBalance($user->getBalance() + $topup->getAmount() + $topup->getBonus());
     }
 }

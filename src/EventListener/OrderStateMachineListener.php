@@ -43,8 +43,7 @@ class OrderStateMachineListener implements EventSubscriberInterface
         try {
             $this->paymentManager->refund($payment, $refund);
         } catch (\Throwable $th) {
-            $error = $th->getMessage();
-            $this->logger->error(__METHOD__, compact('error'));
+            $this->logger->error(__METHOD__, ['error' => $th->getMessage()]);
         }
     }
 

@@ -13,10 +13,10 @@ class PaymentTopup extends Payment
     use PaymentContext;
 
     #[ORM\ManyToOne(inversedBy: 'topups')]
-    private ?User $user = null;
+    private readonly User $user;
 
     #[ORM\ManyToOne]
-    private ?Topup $topup = null;
+    private readonly Topup $topup;
 
     public function __construct(string $gateway, User $user, Topup $topup)
     {
@@ -28,18 +28,18 @@ class PaymentTopup extends Payment
         parent::__construct($gateway);
     }
 
-    public function getUser(): ?User
+    public function getUser(): User
     {
         return $this->user;
     }
 
-    public function getTopup(): ?Topup
+    public function getTopup(): Topup
     {
         return $this->topup;
     }
 
     public function getTitleParameters(): array
     {
-        return ['%id%' => $this->topup?->getId()];
+        return ['%id%' => $this->topup->getId()];
     }
 }
