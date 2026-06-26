@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6470d19355433b8deeaff19baf7bad90",
+    "content-hash": "f1de6f0a8ac442041402807854a8cd55",
     "packages": [
         {
             "name": "aliyuncs/oss-sdk-php",
-            "version": "v2.7.2",
+            "version": "v2.7.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aliyun/aliyun-oss-php-sdk.git",
-                "reference": "483dd0b8bff5d47f0e4ffc99f6077a295c5ccbb5"
+                "reference": "10dbd2a7253131da60629d431c8eb6c216fbbbf7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aliyun/aliyun-oss-php-sdk/zipball/483dd0b8bff5d47f0e4ffc99f6077a295c5ccbb5",
-                "reference": "483dd0b8bff5d47f0e4ffc99f6077a295c5ccbb5",
+                "url": "https://api.github.com/repos/aliyun/aliyun-oss-php-sdk/zipball/10dbd2a7253131da60629d431c8eb6c216fbbbf7",
+                "reference": "10dbd2a7253131da60629d431c8eb6c216fbbbf7",
                 "shasum": ""
             },
             "require": {
@@ -47,9 +47,9 @@
             "homepage": "http://www.aliyun.com/product/oss/",
             "support": {
                 "issues": "https://github.com/aliyun/aliyun-oss-php-sdk/issues",
-                "source": "https://github.com/aliyun/aliyun-oss-php-sdk/tree/v2.7.2"
+                "source": "https://github.com/aliyun/aliyun-oss-php-sdk/tree/v2.7.3"
             },
-            "time": "2024-10-28T10:41:12+00:00"
+            "time": "2026-06-26T07:23:48+00:00"
         },
         {
             "name": "bentools/cartesian-product",
@@ -2925,7 +2925,7 @@
             "dist": {
                 "type": "path",
                 "url": "../generic-bundle",
-                "reference": "ba74fcb429288ee9750f4c2e64a18b0aaeadecb1"
+                "reference": "58663eb0664ae64add9571c48bd807b91e448443"
             },
             "require": {
                 "php": ">=8.2",
@@ -3234,7 +3234,7 @@
             "dist": {
                 "type": "path",
                 "url": "../product-bundle",
-                "reference": "92295dacdf5f9b2528a670891464ee443318fd86"
+                "reference": "5396589a67825bf895a41818f7d59847c46787b6"
             },
             "require": {
                 "bentools/cartesian-product": "^2.0",
@@ -3352,7 +3352,7 @@
             "dist": {
                 "type": "path",
                 "url": "../user-bundle",
-                "reference": "89ac6b9f21313e9f84d82c5d535844bb2f004a3c"
+                "reference": "55da1d56e6b885acc5e7ce12fd705492de01ee52"
             },
             "require": {
                 "knplabs/knp-components": "^5.0",
@@ -3512,21 +3512,21 @@
         },
         {
             "name": "spatie/image-optimizer",
-            "version": "1.8.1",
+            "version": "1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/image-optimizer.git",
-                "reference": "2ad9ac7c19501739183359ae64ea6c15869c23d9"
+                "reference": "6ad4d364e2fdfdfe7f2640d59e946c7fd7b8f3ab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/image-optimizer/zipball/2ad9ac7c19501739183359ae64ea6c15869c23d9",
-                "reference": "2ad9ac7c19501739183359ae64ea6c15869c23d9",
+                "url": "https://api.github.com/repos/spatie/image-optimizer/zipball/6ad4d364e2fdfdfe7f2640d59e946c7fd7b8f3ab",
+                "reference": "6ad4d364e2fdfdfe7f2640d59e946c7fd7b8f3ab",
                 "shasum": ""
             },
             "require": {
                 "ext-fileinfo": "*",
-                "php": "^7.3|^8.0",
+                "php": "^7.4|^8.0",
                 "psr/log": "^1.0 | ^2.0 | ^3.0",
                 "symfony/process": "^4.2|^5.0|^6.0|^7.0|^8.0"
             },
@@ -3561,9 +3561,9 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/image-optimizer/issues",
-                "source": "https://github.com/spatie/image-optimizer/tree/1.8.1"
+                "source": "https://github.com/spatie/image-optimizer/tree/1.9.0"
             },
-            "time": "2025-11-26T10:57:19+00:00"
+            "time": "2026-06-25T21:47:29+00:00"
         },
         {
             "name": "symfony/asset",

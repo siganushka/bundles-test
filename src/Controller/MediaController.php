@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
-#[Route('/media', requirements: ['_id' => '[0-9a-fA-F]{32}'])]
+#[Route('/media', requirements: ['id' => '[0-9a-fA-F]{32}'])]
 class MediaController extends AbstractController
 {
     use IndexTrait;

@@ -107,9 +107,9 @@
               {% endfor %}
             </ul>
           </div>
-          <a href="{{ path('app_order_show', {_id: _item.number}) }}">{{ 'generic.detail'|trans }}</a>
-          <a href="{{ path('app_order_edit', {_id: _item.number}) }}">{{ 'generic.edit'|trans }}</a>
-          <a href="{{ path('app_order_delete', {_id: _item.number, _token: csrf_token('delete' ~ _item.number)}) }}" onclick="return confirm('{{ 'generic.delete_confirmation'|trans }}')">{{ 'generic.delete'|trans }}</a>
+          <a href="{{ path('app_order_show', {id: _item.number}) }}">{{ 'generic.detail'|trans }}</a>
+          <a href="{{ path('app_order_edit', {id: _item.number}) }}">{{ 'generic.edit'|trans }}</a>
+          <a href="{{ path('app_order_delete', {id: _item.number, _token: csrf_token('delete' ~ _item.number)}) }}" onclick="return confirm('{{ 'generic.delete_confirmation'|trans }}')">{{ 'generic.delete'|trans }}</a>
         </td>
     {% endblock %}
   {% endembed %}

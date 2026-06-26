@@ -10,14 +10,6 @@
     <td width="80%"><code class="user-select-all">{{ entity.identifier }}</code></td>
   </tr>
   <tr>
-    <th class="text-end">{{ 'Last Login Ip'|trans([], 'SiganushkaUserBundle') }}</th>
-    <td>{{ entity.lastLoginIp ?? '-' }}</td>
-  </tr>
-  <tr>
-    <th class="text-end">{{ 'Last Login At'|trans([], 'SiganushkaUserBundle') }}</th>
-    <td>{{ entity.lastLoginAt ?? '-' }}</td>
-  </tr>
-  <tr>
     <th class="text-end">{{ 'generic.enable'|trans }}</th>
     <td>
       {% if entity.enabled %}
