@@ -1,22 +1,22 @@
 App\Entity\ProductVariant:
     attributes:
         id:
-            groups: ['product_variant:collection', 'product:item', 'product:collection']
+            groups: [product_variant.collection, product.item, product.collection]
         product:
             groups: []
         code:
-            groups: ['product_variant:collection', 'product:item', 'product:collection']
+            groups: [product_variant.collection, product.item, product.collection]
         name:
-            groups: ['product_variant:collection', 'product:item', 'product:collection']
+            groups: [product_variant.collection, product.item, product.collection]
         price:
-            groups: ['product_variant:collection', 'product:item', 'product:collection']
+            groups: [product_variant.collection, product.item, product.collection]
         stock:
-            groups: ['product_variant:collection', 'product:item', 'product:collection']
+            groups: [product_variant.collection, product.item, product.collection]
         optionValues:
             groups: []
         enabled:
-            groups: ['product_variant:collection', 'product:item', 'product:collection']
+            groups: [product_variant.collection, product.item, product.collection]
         createdAt:
-            groups: ['product_variant:collection', 'product:item', 'product:collection']
+            groups: [product_variant.collection, product.item, product.collection]
         updatedAt:
-            groups: ['product_variant:collection', 'product:item', 'product:collection']
+            groups: [product_variant.collection, product.item, product.collection]

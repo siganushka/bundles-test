@@ -26,11 +26,11 @@ App\Entity\PaymentTopup:
             groups: [payment.item, payment.collection]
         titleParameters:
             groups: []
-        title:
+        refundableAmount:
             groups: [payment.item, payment.collection]
         type:
             groups: [payment.item, payment.collection]
-        refundableAmount:
+        title:
             groups: [payment.item, payment.collection]
         createdAt:
             groups: [payment.item, payment.collection]

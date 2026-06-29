@@ -5,34 +5,34 @@ App\Entity\PaymentOrder:
         order:
             groups: []
         number:
-            groups: [payment.item, payment.collection, 'order:item', 'order:collection']
+            groups: [payment.item, payment.collection]
         amount:
-            groups: [payment.item, payment.collection, 'order:item', 'order:collection']
+            groups: [payment.item, payment.collection]
         refundAmount:
-            groups: [payment.item, payment.collection, 'order:item', 'order:collection']
+            groups: [payment.item, payment.collection]
         currency:
-            groups: [payment.item, payment.collection, 'order:item', 'order:collection']
+            groups: [payment.item, payment.collection]
         details:
             groups: []
         state:
-            groups: [payment.item, payment.collection, 'order:item', 'order:collection']
+            groups: [payment.item, payment.collection]
         failedReason:
-            groups: [payment.item, payment.collection, 'order:item', 'order:collection']
+            groups: [payment.item, payment.collection]
         refunds:
             groups: []
         gateway:
-            groups: [payment.item, payment.collection, 'order:item', 'order:collection']
+            groups: [payment.item, payment.collection]
         titleParameters:
             groups: []
-        title:
-            groups: [payment.item, payment.collection, 'order:item', 'order:collection']
-        type:
-            groups: [payment.item, payment.collection, 'order:item', 'order:collection']
         refundableAmount:
-            groups: [payment.item, payment.collection, 'order:item', 'order:collection']
+            groups: [payment.item, payment.collection]
+        type:
+            groups: [payment.item, payment.collection]
+        title:
+            groups: [payment.item, payment.collection]
         createdAt:
-            groups: [payment.item, payment.collection, 'order:item', 'order:collection']
+            groups: [payment.item, payment.collection]
         updatedAt:
-            groups: [payment.item, payment.collection, 'order:item', 'order:collection']
+            groups: [payment.item, payment.collection]
         expiredAt:
             groups: [payment.item, payment.collection]
