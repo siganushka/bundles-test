@@ -3,22 +3,22 @@ App\Entity\Media:
         id:
             groups: []
         hash:
-            groups: [media.item, media.collection]
+            groups: []
         url:
-            groups: [media.item, media.collection]
+            groups: []
         name:
-            groups: [media.item, media.collection]
+            groups: []
         extension:
-            groups: [media.item, media.collection]
+            groups: []
         mime:
-            groups: [media.item, media.collection]
+            groups: []
         bytes:
-            groups: [media.item, media.collection]
+            groups: []
         size:
-            groups: [media.item, media.collection]
+            groups: []
         width:
-            groups: [media.item, media.collection]
+            groups: []
         height:
-            groups: [media.item, media.collection]
+            groups: []
         createdAt:
-            groups: [media.item, media.collection]
+            groups: []

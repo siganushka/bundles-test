@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f1de6f0a8ac442041402807854a8cd55",
+    "content-hash": "90804c24a06fab276b44105c9eb74b29",
     "packages": [
         {
             "name": "aliyuncs/oss-sdk-php",
@@ -1284,16 +1284,16 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "7.12.3",
+            "version": "7.13.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "9aa17bcdd777ee31df9fc83c337ca4ca2340def3"
+                "reference": "55901a76dfd2006a0cc012b9e3c5b487f796478d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/9aa17bcdd777ee31df9fc83c337ca4ca2340def3",
-                "reference": "9aa17bcdd777ee31df9fc83c337ca4ca2340def3",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/55901a76dfd2006a0cc012b9e3c5b487f796478d",
+                "reference": "55901a76dfd2006a0cc012b9e3c5b487f796478d",
                 "shasum": ""
             },
             "require": {
@@ -1312,7 +1312,7 @@
                 "bamarni/composer-bin-plugin": "^1.8.2",
                 "ext-curl": "*",
                 "guzzle/client-integration-tests": "3.0.2",
-                "guzzlehttp/test-server": "^0.5.1",
+                "guzzlehttp/test-server": "^0.6",
                 "php-http/message-factory": "^1.1",
                 "phpunit/phpunit": "^8.5.52 || ^9.6.34",
                 "psr/log": "^1.1 || ^2.0 || ^3.0"
@@ -1392,7 +1392,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/guzzle/issues",
-                "source": "https://github.com/guzzle/guzzle/tree/7.12.3"
+                "source": "https://github.com/guzzle/guzzle/tree/7.13.1"
             },
             "funding": [
                 {
@@ -1408,7 +1408,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-06-23T15:29:02+00:00"
+            "time": "2026-06-29T20:14:18+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -3047,7 +3047,7 @@
             "dist": {
                 "type": "path",
                 "url": "../media-bundle",
-                "reference": "afef2b2d5c6ff8c228ea822095ac48ce9f887019"
+                "reference": "20c6d8690c2289e7097b2aa335ffcd412921a6c8"
             },
             "require": {
                 "ext-fileinfo": "*",
@@ -3111,7 +3111,7 @@
             "dist": {
                 "type": "path",
                 "url": "../order-bundle",
-                "reference": "b91c03157573678f098c5bb51c963830cdb4dc35"
+                "reference": "4ed93c9c1577d67172fcd542f8b86ecb93564eda"
             },
             "require": {
                 "godruoyi/php-snowflake": "^3.0",
@@ -3234,7 +3234,7 @@
             "dist": {
                 "type": "path",
                 "url": "../product-bundle",
-                "reference": "de35928581f02739a148156ba10db7068b04a47e"
+                "reference": "05a953ef725fabcb3118965b83370ade837736fa"
             },
             "require": {
                 "bentools/cartesian-product": "^2.0",
@@ -3512,16 +3512,16 @@
         },
         {
             "name": "spatie/image-optimizer",
-            "version": "1.9.0",
+            "version": "1.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/image-optimizer.git",
-                "reference": "6ad4d364e2fdfdfe7f2640d59e946c7fd7b8f3ab"
+                "reference": "333c03952289dc2df0a91874636a0dffeb5b6aec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/image-optimizer/zipball/6ad4d364e2fdfdfe7f2640d59e946c7fd7b8f3ab",
-                "reference": "6ad4d364e2fdfdfe7f2640d59e946c7fd7b8f3ab",
+                "url": "https://api.github.com/repos/spatie/image-optimizer/zipball/333c03952289dc2df0a91874636a0dffeb5b6aec",
+                "reference": "333c03952289dc2df0a91874636a0dffeb5b6aec",
                 "shasum": ""
             },
             "require": {
@@ -3561,9 +3561,9 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/image-optimizer/issues",
-                "source": "https://github.com/spatie/image-optimizer/tree/1.9.0"
+                "source": "https://github.com/spatie/image-optimizer/tree/1.10.0"
             },
-            "time": "2026-06-25T21:47:29+00:00"
+            "time": "2026-06-29T08:28:30+00:00"
         },
         {
             "name": "symfony/asset",

@@ -30,7 +30,7 @@
         "siganushka/user-bundle": "dev-main",
         "siganushka/wechat-api": "dev-main",
         "siganushka/wxpay-api": "dev-main",
-        "spatie/image-optimizer": "^1.9.0",
+        "spatie/image-optimizer": "^1.10.0",
         "symfony/asset": "7.4.*",
         "symfony/asset-mapper": "7.4.*",
         "symfony/console": "7.4.*",
