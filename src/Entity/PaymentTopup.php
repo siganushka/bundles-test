@@ -42,4 +42,9 @@ class PaymentTopup extends Payment
     {
         return ['%id%' => $this->topup->getId()];
     }
+
+    public function supportsRefund(): bool
+    {
+        return false;
+    }
 }
