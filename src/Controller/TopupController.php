@@ -18,6 +18,7 @@ class TopupController extends AbstractController
     {
         $this->configureCrud(
             entityName: Topup::class,
+            paginationUsed: false,
         );
     }
 }
