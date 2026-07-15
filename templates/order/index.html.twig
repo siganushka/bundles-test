@@ -47,7 +47,7 @@
       <th class="text-nowrap">{{ knp_pagination_sortable(pagination, 'order.items_total'|trans, 'o.itemsTotal') }}</th>
       <th class="text-nowrap">{{ knp_pagination_sortable(pagination, 'order.adjustments_total'|trans, 'o.adjustmentsTotal') }}</th>
       <th class="text-nowrap">{{ knp_pagination_sortable(pagination, 'order.total'|trans, 'o.total') }}</th>
-      <th class="text-nowrap">{{ 'payment.gateway'|trans }}</th>
+      <th class="text-nowrap">{{ 'payment.state'|trans }}</th>
       <th class="text-nowrap">{{ 'order.state'|trans }}</th>
       <th class="text-nowrap">{{ knp_pagination_sortable(pagination, 'generic.created_at'|trans, 'o.createdAt') }}</th>
       <th class="text-nowrap">{{ 'generic.action'|trans }}</th>
@@ -83,11 +83,18 @@
         <td class="text-nowrap">{{ _item.total|intl_currency }}</td>
         <td class="text-nowrap">
           {% if _item.currentPayment %}
-            {{ ('payment.gateway.' ~ _item.currentPayment.gateway)|trans }}
             {{ _item.currentPayment.state|trans }}
-            {% if _item.currentPayment.refundAmount %}
-              <p class="fs-sm text-warning m-0">已退款 {{ _item.currentPayment.refundAmount|intl_currency }}</p>
-            {% endif %}
+            [{{ ('payment.gateway.' ~ _item.currentPayment.gateway)|trans }}]
+
+              <div class="fs-sm m-0">
+                {% if _item.currentPayment.refundAmount %}
+                  <span class="text-warning">已退款 {{ _item.currentPayment.refundAmount|intl_currency }}</span>
+                {% endif %}
+
+                {% if _item.currentPayment.refundableAmount %}
+                  <a href="{{ path('app_payment_refund', {number: _item.currentPayment.number}) }}">退款</a>
+                {% endif %}
+              </div>
           {% else %}
             -
           {% endif %}

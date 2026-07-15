@@ -1237,8 +1237,8 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     order_number_generator?: scalar|Param|null, // Default: "Siganushka\\OrderBundle\\Generator\\OrderNumberGenerator"
  *     order_stock_modifier?: scalar|Param|null, // Default: "Siganushka\\OrderBundle\\Stock\\OrderStockModifier"
  *     order_item_subject_type?: scalar|Param|null, // Default: "Siganushka\\OrderBundle\\Form\\Type\\OrderItemSubjectType"
- *     order_cancel_transport?: string|Param, // Default: null
- *     order_cancel_seconds?: int|Param, // Default: 3600
+ *     order_expire_transport?: string|Param, // Default: null
+ *     order_expire_seconds?: int|Param, // Default: 3600
  * }
  * @psalm-type SiganushkaProductConfig = array{
  *     product_class?: scalar|Param|null, // Default: "Siganushka\\ProductBundle\\Entity\\Product"

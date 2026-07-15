@@ -34,9 +34,9 @@ class PaymentListener
         if ($payment instanceof PaymentTopup) {
             $this->handleTopup($payment);
         } elseif ($payment instanceof PaymentOrder && $payment->getOrder()) {
-            $this->handleOrder($payment->getOrder());
+            $this->handleOrderConfirm($payment->getOrder());
         } elseif ($payment instanceof PaymentOrderAggregate) {
-            $payment->getOrders()->map($this->handleOrder(...));
+            $payment->getOrders()->map($this->handleOrderConfirm(...));
         }
     }
 
@@ -54,6 +54,13 @@ class PaymentListener
         $this->logger->info(__METHOD__, [
             'number' => $event->getRefund()->getNumber(),
         ]);
+
+        $payment = $event->getPayment();
+        if ($payment instanceof PaymentOrder && $payment->getOrder()) {
+            $this->handleOrderRefund($payment->getOrder());
+        } elseif ($payment instanceof PaymentOrderAggregate) {
+            $payment->getOrders()->map($this->handleOrderRefund(...));
+        }
     }
 
     #[AsEventListener(RefundFailureEvent::class)]
@@ -64,11 +71,19 @@ class PaymentListener
         ]);
     }
 
-    private function handleOrder(Order $entity): void
+    private function handleOrderConfirm(Order $entity): void
     {
-        try {
-            $this->registry->get($entity)->apply($entity, OrderStateTransition::Confirm->value);
-        } catch (\Throwable) {
+        $workflow = $this->registry->get($entity);
+        if ($workflow->can($entity, $transitionName = OrderStateTransition::Confirm->value)) {
+            $workflow->apply($entity, $transitionName);
+        }
+    }
+
+    private function handleOrderRefund(Order $entity): void
+    {
+        $workflow = $this->registry->get($entity);
+        if ($workflow->can($entity, $transitionName = OrderStateTransition::Refund->value)) {
+            $workflow->apply($entity, $transitionName);
         }
     }
 

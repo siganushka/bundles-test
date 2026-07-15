@@ -4,5 +4,5 @@ siganushka_order:
     order_number_generator: App\Generator\OrderNumberGenerator
     order_item_subject_type: Siganushka\ProductBundle\Form\Field\ProductVariantAutocompleteField
     # order_stock_modifier: App\Stock\AtomicUpdateModifier
-    order_cancel_transport: async
-    order_cancel_seconds: 120
+    order_expire_transport: async
+    order_expire_seconds: 120

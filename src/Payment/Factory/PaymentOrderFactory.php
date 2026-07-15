@@ -20,7 +20,7 @@ class PaymentOrderFactory implements PaymentFactoryInterface
     public function __construct(
         private readonly EntityManagerInterface $entityManager,
         private readonly OrderRepository $orderRepository,
-        #[Autowire(param: 'siganushka_order.order_cancel_seconds')]
+        #[Autowire(param: 'siganushka_order.order_expire_seconds')]
         private readonly int $seconds)
     {
     }
