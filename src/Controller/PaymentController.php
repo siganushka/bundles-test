@@ -10,9 +10,12 @@ use Doctrine\ORM\EntityManagerInterface;
 use Siganushka\GenericBundle\Controller\Crud\Web\IndexTrait;
 use Siganushka\PaymentBundle\Entity\Payment;
 use Siganushka\PaymentBundle\Entity\PaymentRefund;
+use Siganushka\PaymentBundle\Form\PaymentRefundType;
 use Siganushka\PaymentBundle\Gateway\WxpayJsapi;
 use Siganushka\PaymentBundle\PaymentManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -53,5 +56,22 @@ class PaymentController extends AbstractController
         // dd(__METHOD__, $result);
 
         return new Response(__METHOD__);
+    }
+
+    #[Route('/PaymentRefundType')]
+    public function PaymentRefundType(Request $request): Response
+    {
+        $form = $this->createForm(PaymentRefundType::class)
+            ->add('submit', SubmitType::class)
+        ;
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            dd(__METHOD__, $form->getData());
+        }
+
+        return $this->render('payment/form.html.twig', [
+            'form' => $form,
+        ]);
     }
 }
