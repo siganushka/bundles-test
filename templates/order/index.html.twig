@@ -83,7 +83,7 @@
         <td class="text-nowrap">{{ _item.total|intl_currency }}</td>
         <td class="text-nowrap">
           {% if _item.currentPayment %}
-            {{ _item.currentPayment.state|trans }}
+            <span class="text-{{ _item.currentPayment.state.theme }}">{{ _item.currentPayment.state|trans }}</span>
             [{{ ('payment.gateway.' ~ _item.currentPayment.gateway)|trans }}]
 
               <div class="fs-sm m-0">
