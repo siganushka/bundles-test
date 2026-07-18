@@ -25,10 +25,12 @@ class PaymentListener
     {
     }
 
-    #[AsEventListener(PaymentSuccessEvent::class)]
+    #[AsEventListener]
     public function onPaymentSuccess(PaymentSuccessEvent $event): void
     {
-        $this->logger->info(__METHOD__);
+        $this->logger->info(__METHOD__, [
+            'number' => $event->getPayment()->getNumber(),
+        ]);
 
         $payment = $event->getPayment();
         if ($payment instanceof PaymentTopup) {
@@ -40,7 +42,7 @@ class PaymentListener
         }
     }
 
-    #[AsEventListener(PaymentFailureEvent::class)]
+    #[AsEventListener]
     public function onPaymentFailure(PaymentFailureEvent $event): void
     {
         $this->logger->info(__METHOD__, [
@@ -48,11 +50,11 @@ class PaymentListener
         ]);
     }
 
-    #[AsEventListener(RefundSuccessEvent::class)]
+    #[AsEventListener]
     public function onRefundSuccess(RefundSuccessEvent $event): void
     {
         $this->logger->info(__METHOD__, [
-            'number' => $event->getRefund()->getNumber(),
+            'number' => $event->getPayment()->getNumber(),
         ]);
 
         $payment = $event->getPayment();
@@ -63,11 +65,11 @@ class PaymentListener
         }
     }
 
-    #[AsEventListener(RefundFailureEvent::class)]
+    #[AsEventListener]
     public function onRefundFailure(RefundFailureEvent $event): void
     {
         $this->logger->info(__METHOD__, [
-            'number' => $event->getRefund()->getNumber(),
+            'number' => $event->getPayment()->getNumber(),
         ]);
     }
 
