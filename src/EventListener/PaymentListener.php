@@ -15,13 +15,13 @@ use Siganushka\PaymentBundle\Event\PaymentSuccessEvent;
 use Siganushka\PaymentBundle\Event\RefundFailureEvent;
 use Siganushka\PaymentBundle\Event\RefundSuccessEvent;
 use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
-use Symfony\Component\Workflow\Registry;
+use Symfony\Component\Workflow\WorkflowInterface;
 
 class PaymentListener
 {
     public function __construct(
         private readonly LoggerInterface $logger,
-        private readonly Registry $registry)
+        private readonly WorkflowInterface $orderStateMachine)
     {
     }
 
@@ -73,17 +73,15 @@ class PaymentListener
 
     private function handleOrderConfirm(Order $entity): void
     {
-        $workflow = $this->registry->get($entity);
-        if ($workflow->can($entity, $transitionName = OrderStateTransition::Confirm->value)) {
-            $workflow->apply($entity, $transitionName);
+        if ($this->orderStateMachine->can($entity, $transitionName = OrderStateTransition::Confirm->value)) {
+            $this->orderStateMachine->apply($entity, $transitionName);
         }
     }
 
     private function handleOrderRefund(Order $entity): void
     {
-        $workflow = $this->registry->get($entity);
-        if ($workflow->can($entity, $transitionName = OrderStateTransition::Refund->value)) {
-            $workflow->apply($entity, $transitionName);
+        if ($this->orderStateMachine->can($entity, $transitionName = OrderStateTransition::Refund->value)) {
+            $this->orderStateMachine->apply($entity, $transitionName);
         }
     }
 
