@@ -47,3 +47,6 @@ siganushka_user:
     resource: "@SiganushkaUserBundle/config/routes.php"
     prefix: /rest
     stateless: true
+
+wechat_jscode:
+    path: /wechat/jscode

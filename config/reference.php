@@ -985,6 +985,10 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *             always_remember_me?: bool|Param, // Default: false
  *             remember_me_parameter?: scalar|Param|null, // Default: "_remember_me"
  *         },
+ *         wechat_jscode?: array{
+ *             check_path?: scalar|Param|null, // Default: "/wechat/jscode"
+ *             jscode_parameter?: scalar|Param|null, // Default: "jscode"
+ *         },
  *     }>,
  *     access_control?: list<array{ // Default: []
  *         request_matcher?: scalar|Param|null, // Default: null

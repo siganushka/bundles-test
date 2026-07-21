@@ -1,7 +1,16 @@
 siganushka_api_factory:
     wechat:
-        appid: test
-        secret: test
+        default_configuration: miniapp
+        configurations:
+            mp:
+                appid: '%env(string:WECHAT_MP_APPID)%'
+                secret: '%env(string:WECHAT_MP_SECRET)%'
+            open:
+                appid: '%env(string:WECHAT_OPEN_APPID)%'
+                secret: '%env(string:WECHAT_OPEN_SECRET)%'
+            miniapp: 
+                appid: '%env(string:WECHAT_MINIAPP_APPID)%'
+                secret: '%env(string:WECHAT_MINIAPP_SECRET)%'
     wxpay:
         appid: '%env(string:WXPAY_APPID)%'
         mchid: '%env(string:WXPAY_MCHID)%'
