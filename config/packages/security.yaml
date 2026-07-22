@@ -7,8 +7,6 @@ security:
     providers:
         user_provider:
             entity: { class: App\Entity\User, property: identifier }
-        wechat_jscode_provider:
-            id: App\Security\Core\User\WechatJscodeUserProvider
 
     firewalls:
         dev:
@@ -17,15 +15,13 @@ security:
             security: false
         main:
             lazy: true
-            provider: user_provider
             pattern: ^/admin
             http_basic: ~
 
-        rest_wechat_jscode:
-            # pattern: ^/rest/wechat/jscode
-            stateless: true
-            provider: wechat_jscode_provider
-            wechat_jscode: ~
+        wechat_jscode_login:
+            lazy: true
+            wechat_jscode:
+                user_persister: App\Security\Core\User\WechatJscodeUserPersister
 
             # Activate different ways to authenticate:
             # https://symfony.com/doc/current/security.html#the-firewall

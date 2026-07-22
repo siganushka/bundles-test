@@ -376,16 +376,16 @@
         },
         {
             "name": "doctrine/dbal",
-            "version": "4.4.3",
+            "version": "4.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "61e730f1658814821a85f2402c945f3883407dec"
+                "reference": "fb9e0ffe15e1590e24dc61c0c0a23f9a33ee42ce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/61e730f1658814821a85f2402c945f3883407dec",
-                "reference": "61e730f1658814821a85f2402c945f3883407dec",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/fb9e0ffe15e1590e24dc61c0c0a23f9a33ee42ce",
+                "reference": "fb9e0ffe15e1590e24dc61c0c0a23f9a33ee42ce",
                 "shasum": ""
             },
             "require": {
@@ -462,7 +462,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/dbal/issues",
-                "source": "https://github.com/doctrine/dbal/tree/4.4.3"
+                "source": "https://github.com/doctrine/dbal/tree/4.4.4"
             },
             "funding": [
                 {
@@ -478,7 +478,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-03-20T08:52:12+00:00"
+            "time": "2026-07-21T14:34:40+00:00"
         },
         {
             "name": "doctrine/deprecations",
@@ -2817,7 +2817,7 @@
             "dist": {
                 "type": "path",
                 "url": "../api-factory-bundle",
-                "reference": "a8ae177ebcf3e062529834b5f87b7cdfdbdd5703"
+                "reference": "d58752ceab686368c5b825986f74e32ae906db39"
             },
             "require": {
                 "composer-runtime-api": ">=2.1",
@@ -2831,7 +2831,8 @@
                 "siganushka/alipay-api": "dev-main",
                 "siganushka/github-api": "dev-main",
                 "siganushka/wechat-api": "dev-main",
-                "siganushka/wxpay-api": "dev-main"
+                "siganushka/wxpay-api": "dev-main",
+                "symfony/security-bundle": "^7.4|^8.0"
             },
             "type": "symfony-bundle",
             "autoload": {
@@ -2925,7 +2926,7 @@
             "dist": {
                 "type": "path",
                 "url": "../generic-bundle",
-                "reference": "2320ec3c4fa4478b97eb8a7327820f78cc37d446"
+                "reference": "fa1af941b617d37df83d11414dba98043f7eef35"
             },
             "require": {
                 "php": ">=8.2",
@@ -3352,7 +3353,7 @@
             "dist": {
                 "type": "path",
                 "url": "../user-bundle",
-                "reference": "55da1d56e6b885acc5e7ce12fd705492de01ee52"
+                "reference": "ccce37aa7e7f96b4143c6063d64524965ed613b6"
             },
             "require": {
                 "knplabs/knp-components": "^5.0",
