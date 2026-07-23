@@ -985,10 +985,36 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *             always_remember_me?: bool|Param, // Default: false
  *             remember_me_parameter?: scalar|Param|null, // Default: "_remember_me"
  *         },
+ *         github?: array{
+ *             user_persister?: scalar|Param|null, // Default: "Siganushka\\ApiFactoryBundle\\Security\\Core\\User\\NullUserPersister"
+ *             check_path?: scalar|Param|null, // Default: "/github/oauth"
+ *             success_path?: scalar|Param|null, // Default: "/"
+ *             failure_path?: scalar|Param|null, // Default: "/"
+ *             code_parameter?: scalar|Param|null, // Default: "code"
+ *             interactive?: bool|Param, // Default: true
+ *         },
+ *         wechat_mp?: array{
+ *             user_persister?: scalar|Param|null, // Default: "Siganushka\\ApiFactoryBundle\\Security\\Core\\User\\NullUserPersister"
+ *             check_path?: scalar|Param|null, // Default: "/wechat/mp"
+ *             success_path?: scalar|Param|null, // Default: "/"
+ *             failure_path?: scalar|Param|null, // Default: "/"
+ *             code_parameter?: scalar|Param|null, // Default: "code"
+ *             interactive?: bool|Param, // Default: true
+ *         },
+ *         wechat_open?: array{
+ *             user_persister?: scalar|Param|null, // Default: "Siganushka\\ApiFactoryBundle\\Security\\Core\\User\\NullUserPersister"
+ *             check_path?: scalar|Param|null, // Default: "/wechat/open"
+ *             success_path?: scalar|Param|null, // Default: "/"
+ *             failure_path?: scalar|Param|null, // Default: "/"
+ *             code_parameter?: scalar|Param|null, // Default: "code"
+ *             interactive?: bool|Param, // Default: true
+ *         },
  *         wechat_jscode?: array{
- *             user_persister?: scalar|Param|null, // Default: null
+ *             user_persister?: scalar|Param|null, // Default: "Siganushka\\ApiFactoryBundle\\Security\\Core\\User\\NullUserPersister"
  *             check_path?: scalar|Param|null, // Default: "/wechat/jscode"
- *             jscode_parameter?: scalar|Param|null, // Default: "jscode"
+ *             success_path?: scalar|Param|null, // Default: "/"
+ *             failure_path?: scalar|Param|null, // Default: "/"
+ *             code_parameter?: scalar|Param|null, // Default: "jscode"
  *             interactive?: bool|Param, // Default: true
  *         },
  *     }>,

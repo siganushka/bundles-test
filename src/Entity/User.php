@@ -16,6 +16,9 @@ class User extends BaseUser
     #[ORM\Column]
     private int $balance = 0;
 
+    #[ORM\Column(nullable: true)]
+    private ?array $attributes = null;
+
     /**
      * @var Collection<int, PaymentTopup>
      */
@@ -37,6 +40,18 @@ class User extends BaseUser
     public function setBalance(int $balance): static
     {
         $this->balance = $balance;
+
+        return $this;
+    }
+
+    public function getAttributes(): ?array
+    {
+        return $this->attributes;
+    }
+
+    public function setAttributes(?array $attributes): static
+    {
+        $this->attributes = $attributes;
 
         return $this;
     }

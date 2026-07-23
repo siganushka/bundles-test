@@ -18,10 +18,29 @@ security:
             pattern: ^/admin
             http_basic: ~
 
+        github_login:
+            lazy: true
+            pattern: ^/github/oauth
+            github:
+                user_persister: App\Security\Core\User\UserPersister
+
+        wechat_mp_login:
+            lazy: true
+            pattern: ^/wechat/mp
+            wechat_mp:
+                user_persister: App\Security\Core\User\UserPersister
+
+        wechat_open_login:
+            lazy: true
+            pattern: ^/wechat/open
+            wechat_open:
+                user_persister: App\Security\Core\User\UserPersister
+
         wechat_jscode_login:
             lazy: true
+            pattern: ^/wechat/jscode
             wechat_jscode:
-                user_persister: App\Security\Core\User\WechatJscodeUserPersister
+                user_persister: App\Security\Core\User\UserPersister
 
             # Activate different ways to authenticate:
             # https://symfony.com/doc/current/security.html#the-firewall

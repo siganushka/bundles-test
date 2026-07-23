@@ -9,20 +9,17 @@ use Doctrine\ORM\EntityManagerInterface;
 use Siganushka\ApiFactoryBundle\Security\Core\User\UserPersisterInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-class WechatJscodeUserPersister implements UserPersisterInterface
+class UserPersister implements UserPersisterInterface
 {
     public function __construct(private readonly EntityManagerInterface $entityManager)
     {
     }
 
-    /**
-     * @param array{ session_key: string, openid: string, unionid: string } $credentials
-     */
-    public function persist(array $credentials): UserInterface
+    public function persist(string $userIdentifier, array $attributes): UserInterface
     {
         $user = new User();
-        $user->setIdentifier($credentials['unionid']);
-        $user->setPassword($credentials['session_key']);
+        $user->setIdentifier($userIdentifier);
+        $user->setAttributes($attributes);
 
         $this->entityManager->persist($user);
         $this->entityManager->flush();

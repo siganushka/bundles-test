@@ -6,6 +6,7 @@ namespace App\Controller;
 
 use App\Entity\Media;
 use App\Form\TestType;
+use Siganushka\ApiFactory\Github\OAuth\Client;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
@@ -19,15 +20,22 @@ use Symfony\Component\Form\Extension\Core\Type\TimezoneType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Validator\Constraints\Count;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
 class IndexController extends AbstractController
 {
     #[Route('/')]
-    public function index(): Response
+    public function index(Client $client, UrlGeneratorInterface $urlGenerator, AuthenticationUtils $authenticationUtils): Response
     {
-        return $this->render('index/index.html.twig');
+        $error = $authenticationUtils->getLastAuthenticationError();
+        $authorizeUrl = $client->getRedirectUrl([
+            'redirect_uri' => $urlGenerator->generate('app_github_login', [], UrlGeneratorInterface::ABSOLUTE_URL),
+        ]);
+
+        return $this->render('index/index.html.twig', compact('error', 'authorizeUrl'));
     }
 
     #[Route('/collection')]

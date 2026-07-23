@@ -1,4 +1,7 @@
 siganushka_api_factory:
+    github:
+        client_id: '%env(string:GITHUB_CLIENT_ID)%'
+        client_secret: '%env(string:GITHUB_CLIENT_SECRET)%'
     wechat:
         default_configuration: miniapp
         configurations:
