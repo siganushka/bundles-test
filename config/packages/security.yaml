@@ -22,12 +22,13 @@ security:
             lazy: true
             stateless: true
             pattern: ^/rest
-            wechat_jscode:
-                check_path: /rest/wechat/jscode
+            wechat_miniapp:
+                check_path: /rest/wechat/miniapp
 
         app:
             lazy: true
             pattern: ^/
+            entry_point: github
             github:
                 success_path: /security
                 failure_path: /security

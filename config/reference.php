@@ -1009,9 +1009,9 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *             code_parameter?: scalar|Param|null, // Default: "code"
  *             interactive?: bool|Param, // Default: true
  *         },
- *         wechat_jscode?: array{
+ *         wechat_miniapp?: array{
  *             user_persister?: scalar|Param|null, // Default: "Siganushka\\ApiFactoryBundle\\Security\\Core\\User\\NullUserPersister"
- *             check_path?: scalar|Param|null, // Default: "/login/wechat/jscode"
+ *             check_path?: scalar|Param|null, // Default: "/login/wechat/miniapp"
  *             success_path?: scalar|Param|null, // Default: "/"
  *             failure_path?: scalar|Param|null, // Default: "/"
  *             code_parameter?: scalar|Param|null, // Default: "code"

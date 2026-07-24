@@ -60,5 +60,5 @@ app_login_wechat_mp:
 app_login_wechat_open:
     path: /login/wechat/open
 
-app_login_wechat_jscode:
-    path: /rest/wechat/jscode
+app_rest_wechat_miniapp:
+    path: /rest/wechat/miniapp

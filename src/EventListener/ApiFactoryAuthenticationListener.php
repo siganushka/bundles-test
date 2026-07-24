@@ -6,7 +6,7 @@ namespace App\EventListener;
 
 use Siganushka\ApiFactoryBundle\Event\AuthenticationFailureEvent;
 use Siganushka\ApiFactoryBundle\Event\AuthenticationSuccessEvent;
-use Siganushka\ApiFactoryBundle\Security\Http\Authenticator\WechatJscodeAuthenticator;
+use Siganushka\ApiFactoryBundle\Security\Http\Authenticator\WechatMiniappAuthenticator;
 use Siganushka\GenericBundle\Response\ProblemJsonResponse;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -46,8 +46,8 @@ class ApiFactoryAuthenticationListener implements EventSubscriberInterface
     public static function getSubscribedEvents(): array
     {
         return [
-            AuthenticationSuccessEvent::getAuthenticator(WechatJscodeAuthenticator::class) => 'onAuthenticationSuccess',
-            AuthenticationFailureEvent::getAuthenticator(WechatJscodeAuthenticator::class) => 'onAuthenticationFailure',
+            AuthenticationSuccessEvent::getAuthenticator(WechatMiniappAuthenticator::class) => 'onAuthenticationSuccess',
+            AuthenticationFailureEvent::getAuthenticator(WechatMiniappAuthenticator::class) => 'onAuthenticationFailure',
         ];
     }
 }

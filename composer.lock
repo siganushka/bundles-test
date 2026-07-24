@@ -2819,7 +2819,7 @@
             "dist": {
                 "type": "path",
                 "url": "../api-factory-bundle",
-                "reference": "3747059bbf774d50883791e628cfd5613e1a5455"
+                "reference": "f8da86ebe75992cd4ea91adf7f6893868959f0f1"
             },
             "require": {
                 "composer-runtime-api": ">=2.1",
