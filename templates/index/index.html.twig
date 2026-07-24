@@ -2,17 +2,8 @@
 
 {% block body %}
   <h3>Bundles Test!</h3>
-  <div {{ stimulus_controller('hello') }}></div>
 
   <hr />
-
-  <a href="{{ authorizeUrl }}">Github Login</a>
-
-  {% if error %}
-    <small class="text-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</small>
-  {% elseif app.user %}
-    <small class="text-success">{{ app.user.userIdentifier }}</small>
-  {% endif %}
 
   {% if form is defined %}
   <div class="bg-body-secondary p-3">

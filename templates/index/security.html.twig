@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  <h3>Bundles Test!</h3>
+
+  <hr />
+
+  {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+    你好，<small class="text-success">{{ app.user.userIdentifier }}</small>
+    <a href="{{ logout_url() }}">退出登录</a>
+  {% else %}
+    <a href="{{ authorizeUrl }}">Github Login</a>
+    {% if error %}
+      <small class="text-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</small>
+    {% endif %}
+  {% endif %}
+{% endblock %}

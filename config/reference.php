@@ -987,7 +987,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         },
  *         github?: array{
  *             user_persister?: scalar|Param|null, // Default: "Siganushka\\ApiFactoryBundle\\Security\\Core\\User\\NullUserPersister"
- *             check_path?: scalar|Param|null, // Default: "/github/oauth"
+ *             check_path?: scalar|Param|null, // Default: "/login/github"
  *             success_path?: scalar|Param|null, // Default: "/"
  *             failure_path?: scalar|Param|null, // Default: "/"
  *             code_parameter?: scalar|Param|null, // Default: "code"
@@ -995,7 +995,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         },
  *         wechat_mp?: array{
  *             user_persister?: scalar|Param|null, // Default: "Siganushka\\ApiFactoryBundle\\Security\\Core\\User\\NullUserPersister"
- *             check_path?: scalar|Param|null, // Default: "/wechat/mp"
+ *             check_path?: scalar|Param|null, // Default: "/login/wechat/mp"
  *             success_path?: scalar|Param|null, // Default: "/"
  *             failure_path?: scalar|Param|null, // Default: "/"
  *             code_parameter?: scalar|Param|null, // Default: "code"
@@ -1003,7 +1003,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         },
  *         wechat_open?: array{
  *             user_persister?: scalar|Param|null, // Default: "Siganushka\\ApiFactoryBundle\\Security\\Core\\User\\NullUserPersister"
- *             check_path?: scalar|Param|null, // Default: "/wechat/open"
+ *             check_path?: scalar|Param|null, // Default: "/login/wechat/open"
  *             success_path?: scalar|Param|null, // Default: "/"
  *             failure_path?: scalar|Param|null, // Default: "/"
  *             code_parameter?: scalar|Param|null, // Default: "code"
@@ -1011,10 +1011,10 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         },
  *         wechat_jscode?: array{
  *             user_persister?: scalar|Param|null, // Default: "Siganushka\\ApiFactoryBundle\\Security\\Core\\User\\NullUserPersister"
- *             check_path?: scalar|Param|null, // Default: "/wechat/jscode"
+ *             check_path?: scalar|Param|null, // Default: "/login/wechat/jscode"
  *             success_path?: scalar|Param|null, // Default: "/"
  *             failure_path?: scalar|Param|null, // Default: "/"
- *             code_parameter?: scalar|Param|null, // Default: "jscode"
+ *             code_parameter?: scalar|Param|null, // Default: "code"
  *             interactive?: bool|Param, // Default: true
  *         },
  *     }>,

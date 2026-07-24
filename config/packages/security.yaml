@@ -13,34 +13,33 @@ security:
             # Ensure dev tools and static assets are always allowed
             pattern: ^/(_profiler|_wdt|assets|build)/
             security: false
-        main:
+        admin:
             lazy: true
             pattern: ^/admin
             http_basic: ~
 
-        github_login:
+        rest:
             lazy: true
-            pattern: ^/github/oauth
-            github:
-                user_persister: App\Security\Core\User\UserPersister
-
-        wechat_mp_login:
-            lazy: true
-            pattern: ^/wechat/mp
-            wechat_mp:
-                user_persister: App\Security\Core\User\UserPersister
-
-        wechat_open_login:
-            lazy: true
-            pattern: ^/wechat/open
-            wechat_open:
-                user_persister: App\Security\Core\User\UserPersister
-
-        wechat_jscode_login:
-            lazy: true
-            pattern: ^/wechat/jscode
+            stateless: true
+            pattern: ^/rest
             wechat_jscode:
-                user_persister: App\Security\Core\User\UserPersister
+                check_path: /rest/wechat/jscode
+
+        app:
+            lazy: true
+            pattern: ^/
+            github:
+                success_path: /security
+                failure_path: /security
+            wechat_mp:
+                success_path: /security
+                failure_path: /security
+            wechat_open:
+                success_path: /security
+                failure_path: /security
+            logout:
+                path: /logout
+                target: /
 
             # Activate different ways to authenticate:
             # https://symfony.com/doc/current/security.html#the-firewall
@@ -50,8 +49,7 @@ security:
 
     # Note: Only the *first* matching rule is applied
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/rest, roles: ROLE_USER }
 
 when@test:
     security:

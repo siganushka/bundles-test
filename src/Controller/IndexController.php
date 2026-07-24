@@ -28,14 +28,9 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 class IndexController extends AbstractController
 {
     #[Route('/')]
-    public function index(Client $client, UrlGeneratorInterface $urlGenerator, AuthenticationUtils $authenticationUtils): Response
+    public function index(): Response
     {
-        $error = $authenticationUtils->getLastAuthenticationError();
-        $authorizeUrl = $client->getRedirectUrl([
-            'redirect_uri' => $urlGenerator->generate('app_github_login', [], UrlGeneratorInterface::ABSOLUTE_URL),
-        ]);
-
-        return $this->render('index/index.html.twig', compact('error', 'authorizeUrl'));
+        return $this->render('index/index.html.twig');
     }
 
     #[Route('/collection')]
@@ -162,5 +157,16 @@ class IndexController extends AbstractController
         return $this->render('index/index.html.twig', [
             'form' => $form,
         ]);
+    }
+
+    #[Route('/security')]
+    public function security(Client $client, UrlGeneratorInterface $urlGenerator, AuthenticationUtils $authenticationUtils): Response
+    {
+        $error = $authenticationUtils->getLastAuthenticationError();
+        $authorizeUrl = $client->getRedirectUrl([
+            'redirect_uri' => $urlGenerator->generate('app_login_github', [], UrlGeneratorInterface::ABSOLUTE_URL),
+        ]);
+
+        return $this->render('index/security.html.twig', compact('error', 'authorizeUrl'));
     }
 }

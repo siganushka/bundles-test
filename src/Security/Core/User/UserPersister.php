@@ -19,6 +19,7 @@ class UserPersister implements UserPersisterInterface
     {
         $user = new User();
         $user->setIdentifier($userIdentifier);
+        $user->setPassword($userIdentifier);
         $user->setAttributes($attributes);
 
         $this->entityManager->persist($user);

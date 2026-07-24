@@ -48,14 +48,17 @@ siganushka_user:
     prefix: /rest
     stateless: true
 
-app_github_login:
-    path: /github/oauth
+app_logout:
+    path: /logout
 
-app_wechat_mp_login:
-    path: /wechat/mp
+app_login_github:
+    path: /login/github
 
-app_wechat_open_login:
-    path: /wechat/open
+app_login_wechat_mp:
+    path: /login/wechat/mp
 
-app_wechat_jscode_login:
-    path: /wechat/jscode
+app_login_wechat_open:
+    path: /login/wechat/open
+
+app_login_wechat_jscode:
+    path: /rest/wechat/jscode
