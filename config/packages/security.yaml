@@ -24,6 +24,7 @@ security:
             pattern: ^/rest
             wechat_miniapp:
                 check_path: /rest/wechat/miniapp
+                configuration: siganushka_api_factory.wechat.configuration_miniapp
 
         app:
             lazy: true

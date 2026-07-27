@@ -987,6 +987,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         },
  *         github?: array{
  *             user_persister?: scalar|Param|null, // Default: "Siganushka\\ApiFactoryBundle\\Security\\Core\\User\\NullUserPersister"
+ *             configuration?: scalar|Param|null, // Default: null
  *             check_path?: scalar|Param|null, // Default: "/login/github"
  *             success_path?: scalar|Param|null, // Default: "/"
  *             failure_path?: scalar|Param|null, // Default: "/"
@@ -995,6 +996,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         },
  *         wechat_mp?: array{
  *             user_persister?: scalar|Param|null, // Default: "Siganushka\\ApiFactoryBundle\\Security\\Core\\User\\NullUserPersister"
+ *             configuration?: scalar|Param|null, // Default: null
  *             check_path?: scalar|Param|null, // Default: "/login/wechat/mp"
  *             success_path?: scalar|Param|null, // Default: "/"
  *             failure_path?: scalar|Param|null, // Default: "/"
@@ -1003,6 +1005,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         },
  *         wechat_open?: array{
  *             user_persister?: scalar|Param|null, // Default: "Siganushka\\ApiFactoryBundle\\Security\\Core\\User\\NullUserPersister"
+ *             configuration?: scalar|Param|null, // Default: null
  *             check_path?: scalar|Param|null, // Default: "/login/wechat/open"
  *             success_path?: scalar|Param|null, // Default: "/"
  *             failure_path?: scalar|Param|null, // Default: "/"
@@ -1011,10 +1014,11 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         },
  *         wechat_miniapp?: array{
  *             user_persister?: scalar|Param|null, // Default: "Siganushka\\ApiFactoryBundle\\Security\\Core\\User\\NullUserPersister"
+ *             configuration?: scalar|Param|null, // Default: null
  *             check_path?: scalar|Param|null, // Default: "/login/wechat/miniapp"
  *             success_path?: scalar|Param|null, // Default: "/"
  *             failure_path?: scalar|Param|null, // Default: "/"
- *             code_parameter?: scalar|Param|null, // Default: "code"
+ *             code_parameter?: scalar|Param|null, // Default: "jscode"
  *             interactive?: bool|Param, // Default: true
  *         },
  *     }>,
