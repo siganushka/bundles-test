@@ -997,7 +997,6 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *             success_path?: scalar|Param|null, // Default: "/"
  *             failure_path?: scalar|Param|null, // Default: "/"
  *             code_parameter?: scalar|Param|null, // Default: "code"
- *             interactive?: bool|Param, // Default: true
  *         },
  *         wechat_mp?: array{
  *             user_persister?: scalar|Param|null, // Default: "Siganushka\\ApiFactoryBundle\\Security\\Core\\User\\NullUserPersister"
@@ -1006,7 +1005,6 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *             success_path?: scalar|Param|null, // Default: "/"
  *             failure_path?: scalar|Param|null, // Default: "/"
  *             code_parameter?: scalar|Param|null, // Default: "code"
- *             interactive?: bool|Param, // Default: true
  *         },
  *         wechat_open?: array{
  *             user_persister?: scalar|Param|null, // Default: "Siganushka\\ApiFactoryBundle\\Security\\Core\\User\\NullUserPersister"
@@ -1015,7 +1013,6 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *             success_path?: scalar|Param|null, // Default: "/"
  *             failure_path?: scalar|Param|null, // Default: "/"
  *             code_parameter?: scalar|Param|null, // Default: "code"
- *             interactive?: bool|Param, // Default: true
  *         },
  *         wechat_miniapp?: array{
  *             user_persister?: scalar|Param|null, // Default: "Siganushka\\ApiFactoryBundle\\Security\\Core\\User\\NullUserPersister"
@@ -1024,7 +1021,6 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *             success_path?: scalar|Param|null, // Default: "/"
  *             failure_path?: scalar|Param|null, // Default: "/"
  *             code_parameter?: scalar|Param|null, // Default: "jscode"
- *             interactive?: bool|Param, // Default: true
  *         },
  *     }>,
  *     access_control?: list<array{ // Default: []
