@@ -39,6 +39,9 @@ security:
             wechat_open:
                 success_path: /security
                 failure_path: /security
+            mock:
+                success_path: /security
+                failure_path: /security
             logout:
                 path: /logout
                 target: /

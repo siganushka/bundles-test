@@ -985,6 +985,11 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *             always_remember_me?: bool|Param, // Default: false
  *             remember_me_parameter?: scalar|Param|null, // Default: "_remember_me"
  *         },
+ *         mock?: array{
+ *             success_path?: scalar|Param|null, // Default: "/"
+ *             failure_path?: scalar|Param|null, // Default: "/"
+ *             identifier_parameter?: scalar|Param|null, // Default: "_identifier"
+ *         },
  *         github?: array{
  *             user_persister?: scalar|Param|null, // Default: "Siganushka\\ApiFactoryBundle\\Security\\Core\\User\\NullUserPersister"
  *             configuration?: scalar|Param|null, // Default: null

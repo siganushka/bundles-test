@@ -2819,7 +2819,7 @@
             "dist": {
                 "type": "path",
                 "url": "../api-factory-bundle",
-                "reference": "2ec4cb4ca024995a25ff3ecc550b4ae8e82b66f1"
+                "reference": "0d37fa66de67a4a19ccdff52b35dee974a8113b4"
             },
             "require": {
                 "composer-runtime-api": ">=2.1",
@@ -3355,7 +3355,7 @@
             "dist": {
                 "type": "path",
                 "url": "../user-bundle",
-                "reference": "ccce37aa7e7f96b4143c6063d64524965ed613b6"
+                "reference": "ae7d52b14e69cf8de80e9e2e88a32943e2781df6"
             },
             "require": {
                 "knplabs/knp-components": "^5.0",

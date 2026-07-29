@@ -17,8 +17,10 @@ use Symfony\Component\Form\Extension\Core\Type\LocaleType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TimezoneType;
+use Symfony\Component\HttpFoundation\EventStreamResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\ServerEvent;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
@@ -168,5 +170,17 @@ class IndexController extends AbstractController
         ]);
 
         return $this->render('index/security.html.twig', compact('error', 'authorizeUrl'));
+    }
+
+    #[Route('/sse')]
+    public function sse(): Response
+    {
+        return new EventStreamResponse(static function (EventStreamResponse $response): void {
+            $redis = new \Redis();
+            $redis->connect('127.0.0.1');
+            $redis->subscribe(['sse'], static function (\Redis $instance, string $channel, string $message) use ($response): void {
+                $response->sendEvent(new ServerEvent($message));
+            });
+        });
     }
 }

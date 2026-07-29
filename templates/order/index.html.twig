@@ -1,5 +1,31 @@
 {% extends 'base.html.twig' %}
 
+{% block javascripts %}
+  {{ parent() }}
+  <script>
+    const eventSource = new EventSource('{{ path("app_index_sse") }}');
+
+    eventSource.onmessage = function(event) {
+      console.log('收到消息:', event.data);
+
+      const data = JSON.parse(event.data)
+      console.log('111', data)
+      if (data.number) {
+        const el = document.querySelector(`#order-state-${data.number}`)
+        console.log('222', el)
+        if (el) {
+          el.classList.add(`text-bg-${data.theme}`)
+          el.textContent = data.label
+        }
+      }
+    };
+
+    eventSource.onerror = function(error) {
+      console.error('连接出错：', error);
+    };
+  </script>
+{% endblock %}
+
 {% block stylesheets %}
   <style>
     [data-bs-toggle] .bi:before {
@@ -100,7 +126,7 @@
           {% endif %}
         </td>
         <td class="text-nowrap">
-          <span class="badge text-bg-{{ _item.state.theme }}">{{ _item.state|trans }}</span>
+          <span id="order-state-{{ _item.number }}" class="badge text-bg-{{ _item.state.theme }}">{{ _item.state|trans }}</span>
         </td>
         <td class="text-nowrap">{{ _item.createdAt|intl_date }}</td>
         <td class="text-nowrap">
