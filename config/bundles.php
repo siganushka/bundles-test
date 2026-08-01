@@ -25,4 +25,5 @@ return [
     Knp\Bundle\PaginatorBundle\KnpPaginatorBundle::class => ['all' => true],
     Knp\Bundle\MenuBundle\KnpMenuBundle::class => ['all' => true],
     Nelmio\CorsBundle\NelmioCorsBundle::class => ['all' => true],
+    Siganushka\RequestTokenBundle\SiganushkaRequestTokenBundle::class => ['all' => true],
 ];

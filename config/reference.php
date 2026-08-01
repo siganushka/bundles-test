@@ -1674,6 +1674,11 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         skip_same_as_origin?: bool|Param,
  *     }>,
  * }
+ * @psalm-type SiganushkaRequestTokenConfig = array{
+ *     enabled?: bool|Param, // Default: false
+ *     header_name?: scalar|Param|null, // Default: "X-Request-Id"
+ *     token_generator?: scalar|Param|null, // Default: "Siganushka\\RequestTokenBundle\\Generator\\UniqidTokenGenerator"
+ * }
  * @psalm-type ConfigType = array{
  *     imports?: ImportsConfig,
  *     parameters?: ParametersConfig,
@@ -1697,6 +1702,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     knp_paginator?: KnpPaginatorConfig,
  *     knp_menu?: KnpMenuConfig,
  *     nelmio_cors?: NelmioCorsConfig,
+ *     siganushka_request_token?: SiganushkaRequestTokenConfig,
  *     "when@dev"?: array{
  *         imports?: ImportsConfig,
  *         parameters?: ParametersConfig,
@@ -1723,6 +1729,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         knp_paginator?: KnpPaginatorConfig,
  *         knp_menu?: KnpMenuConfig,
  *         nelmio_cors?: NelmioCorsConfig,
+ *         siganushka_request_token?: SiganushkaRequestTokenConfig,
  *     },
  *     "when@prod"?: array{
  *         imports?: ImportsConfig,
@@ -1747,6 +1754,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         knp_paginator?: KnpPaginatorConfig,
  *         knp_menu?: KnpMenuConfig,
  *         nelmio_cors?: NelmioCorsConfig,
+ *         siganushka_request_token?: SiganushkaRequestTokenConfig,
  *     },
  *     "when@test"?: array{
  *         imports?: ImportsConfig,
@@ -1772,6 +1780,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         knp_paginator?: KnpPaginatorConfig,
  *         knp_menu?: KnpMenuConfig,
  *         nelmio_cors?: NelmioCorsConfig,
+ *         siganushka_request_token?: SiganushkaRequestTokenConfig,
  *     },
  *     ...<string, ExtensionType|array{ // extra keys must follow the when@%env% pattern or match an extension alias
  *         imports?: ImportsConfig,

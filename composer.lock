@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "20d8ec6571037aed7d7c0953bcf82d97",
+    "content-hash": "2120789226694d39600904e4bb2b369d",
     "packages": [
         {
             "name": "aliyuncs/oss-sdk-php",
@@ -2876,7 +2876,7 @@
             "dist": {
                 "type": "path",
                 "url": "../doctrine-contracts",
-                "reference": "d25434998eaa0128a98990040e7c17352cbeaf62"
+                "reference": "b4754a2e003b76cb363097009f2605a190cc9455"
             },
             "require": {
                 "doctrine/orm": "^3.0",
@@ -2925,7 +2925,7 @@
             "dist": {
                 "type": "path",
                 "url": "../generic-bundle",
-                "reference": "3050b1519952004c4eb75d317c1ddc7a07fe5b33"
+                "reference": "525a31bcb922296b334b31ceda24ed41a7a9d28f"
             },
             "require": {
                 "php": ">=8.2",
@@ -2937,7 +2937,7 @@
             "require-dev": {
                 "composer/semver": "^3.0",
                 "knplabs/knp-components": "^5.0",
-                "siganushka/doctrine-contracts": "dev-main",
+                "siganushka/doctrine-contracts": "^1.2",
                 "symfony/form": "^7.4|^8.0",
                 "symfony/http-foundation": "^7.4|^8.0",
                 "symfony/intl": "^7.4|^8.0",
@@ -3341,6 +3341,56 @@
                 "symlink": true,
                 "relative": true
             }
+        },
+        {
+            "name": "siganushka/request-token-bundle",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/siganushka/request-token-bundle.git",
+                "reference": "6adec1b2e11c62723792e4a7af7ba924aa287c10"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/siganushka/request-token-bundle/zipball/6adec1b2e11c62723792e4a7af7ba924aa287c10",
+                "reference": "6adec1b2e11c62723792e4a7af7ba924aa287c10",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.2",
+                "symfony/framework-bundle": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "monolog/monolog": "^3.0",
+                "symfony/uid": "^7.4|^8.0"
+            },
+            "default-branch": true,
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Siganushka\\RequestTokenBundle\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "siganushka",
+                    "email": "siganushka@gmail.com"
+                }
+            ],
+            "description": "Add X-Request-Id for request/response headers.",
+            "homepage": "https://github.com/siganushka/request-token-bundle",
+            "keywords": [
+                "request-token-bundle"
+            ],
+            "support": {
+                "issues": "https://github.com/siganushka/request-token-bundle/issues",
+                "source": "https://github.com/siganushka/request-token-bundle/tree/main"
+            },
+            "time": "2026-08-01T05:27:14+00:00"
         },
         {
             "name": "siganushka/user-bundle",
@@ -10208,6 +10258,7 @@
         "siganushka/payment-bundle": 20,
         "siganushka/product-bundle": 20,
         "siganushka/region-bundle": 20,
+        "siganushka/request-token-bundle": 20,
         "siganushka/user-bundle": 20,
         "siganushka/wechat-api": 20,
         "siganushka/wxpay-api": 20
