@@ -5,18 +5,18 @@ Siganushka\PaymentBundle\Entity\PaymentRefund:
         payment:
             groups: []
         number:
-            groups: [payment_refund.item, payment_refund.collection]
+            groups: [payment.item, payment.collection, payment_refund.item, payment_refund.collection]
         amount:
-            groups: [payment_refund.item, payment_refund.collection]
+            groups: [payment.item, payment.collection, payment_refund.item, payment_refund.collection]
         details:
             groups: []
         successful:
-            groups: [payment_refund.item, payment_refund.collection]
+            groups: [payment.item, payment.collection, payment_refund.item, payment_refund.collection]
         failedReason:
-            groups: [payment_refund.item, payment_refund.collection]
+            groups: [payment.item, payment.collection, payment_refund.item, payment_refund.collection]
         note:
-            groups: [payment_refund.item, payment_refund.collection]
+            groups: [payment.item, payment.collection, payment_refund.item, payment_refund.collection]
         createdAt:
-            groups: [payment_refund.item, payment_refund.collection]
+            groups: [payment.item, payment.collection, payment_refund.item, payment_refund.collection]
         updatedAt:
-            groups: [payment_refund.item, payment_refund.collection]
+            groups: [payment.item, payment.collection, payment_refund.item, payment_refund.collection]

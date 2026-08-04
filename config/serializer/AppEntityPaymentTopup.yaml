@@ -21,7 +21,7 @@ App\Entity\PaymentTopup:
         failedReason:
             groups: [payment.item, payment.collection]
         refunds:
-            groups: []
+            groups: [payment.item, payment.collection]
         gateway:
             groups: [payment.item, payment.collection]
         titleParameters:
