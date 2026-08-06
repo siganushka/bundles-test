@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2120789226694d39600904e4bb2b369d",
+    "content-hash": "6e0e2b9d83d0bf42f5c0b37130811909",
     "packages": [
         {
             "name": "aliyuncs/oss-sdk-php",
@@ -982,16 +982,16 @@
         },
         {
             "name": "doctrine/orm",
-            "version": "3.6.7",
+            "version": "3.6.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/orm.git",
-                "reference": "bc217c0e19c3a9eadfa67697143b87c9ba01272c"
+                "reference": "a4d13ed5b11e7f7b4d654b1adf95432031ae3ffc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/orm/zipball/bc217c0e19c3a9eadfa67697143b87c9ba01272c",
-                "reference": "bc217c0e19c3a9eadfa67697143b87c9ba01272c",
+                "url": "https://api.github.com/repos/doctrine/orm/zipball/a4d13ed5b11e7f7b4d654b1adf95432031ae3ffc",
+                "reference": "a4d13ed5b11e7f7b4d654b1adf95432031ae3ffc",
                 "shasum": ""
             },
             "require": {
@@ -1021,6 +1021,7 @@
                 "symfony/cache": "^5.4 || ^6.2 || ^7.0 || ^8.0"
             },
             "suggest": {
+                "ext-deepclone": "Improves performance when not using native lazy objects (Symfony 8.1+)",
                 "ext-dom": "Provides support for XSD validation for XML mapping files",
                 "symfony/cache": "Provides cache support for Setup Tool with doctrine/cache 2.0"
             },
@@ -1064,9 +1065,9 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/orm/issues",
-                "source": "https://github.com/doctrine/orm/tree/3.6.7"
+                "source": "https://github.com/doctrine/orm/tree/3.6.8"
             },
-            "time": "2026-05-25T16:45:47+00:00"
+            "time": "2026-08-05T19:05:32+00:00"
         },
         {
             "name": "doctrine/persistence",
@@ -1286,21 +1287,21 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "7.15.2",
+            "version": "7.15.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "744101956d78b7c1384d0cbf379db13e859167bf"
+                "reference": "ae311b8f045ea93ce7b1c9cdb7cec06c53f944bc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/744101956d78b7c1384d0cbf379db13e859167bf",
-                "reference": "744101956d78b7c1384d0cbf379db13e859167bf",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/ae311b8f045ea93ce7b1c9cdb7cec06c53f944bc",
+                "reference": "ae311b8f045ea93ce7b1c9cdb7cec06c53f944bc",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "guzzlehttp/promises": "^2.5.1",
+                "guzzlehttp/promises": "^2.5.2",
                 "guzzlehttp/psr7": "^2.13",
                 "php": "^7.2.5 || ^8.0",
                 "psr/http-client": "^1.0",
@@ -1394,7 +1395,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/guzzle/issues",
-                "source": "https://github.com/guzzle/guzzle/tree/7.15.2"
+                "source": "https://github.com/guzzle/guzzle/tree/7.15.3"
             },
             "funding": [
                 {
@@ -1410,20 +1411,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-07-26T23:23:20+00:00"
+            "time": "2026-08-05T19:48:21+00:00"
         },
         {
             "name": "guzzlehttp/promises",
-            "version": "2.5.1",
+            "version": "2.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/promises.git",
-                "reference": "9ad1e4fc607446a055b95870c7f668e93b5cff29"
+                "reference": "2823687acff28b2dbe67b2508a6b300e2c3fa4ce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/promises/zipball/9ad1e4fc607446a055b95870c7f668e93b5cff29",
-                "reference": "9ad1e4fc607446a055b95870c7f668e93b5cff29",
+                "url": "https://api.github.com/repos/guzzle/promises/zipball/2823687acff28b2dbe67b2508a6b300e2c3fa4ce",
+                "reference": "2823687acff28b2dbe67b2508a6b300e2c3fa4ce",
                 "shasum": ""
             },
             "require": {
@@ -1478,7 +1479,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/promises/issues",
-                "source": "https://github.com/guzzle/promises/tree/2.5.1"
+                "source": "https://github.com/guzzle/promises/tree/2.5.2"
             },
             "funding": [
                 {
@@ -1494,7 +1495,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-07-08T15:48:39+00:00"
+            "time": "2026-08-05T19:30:54+00:00"
         },
         {
             "name": "guzzlehttp/psr7",
@@ -2657,19 +2658,18 @@
             "dist": {
                 "type": "path",
                 "url": "../admin-bundle",
-                "reference": "296d7142415d575df3c8751bc6d2c48e926bf5e8"
+                "reference": "198cf64a468160aacb1f919049f9319308df1921"
             },
             "require": {
                 "knplabs/knp-menu-bundle": "^3.7",
                 "php": ">=8.2",
-                "siganushka/generic-bundle": "dev-main",
-                "symfony/asset-mapper": "^7.4|^8.0",
                 "symfony/framework-bundle": "^7.4|^8.0",
-                "symfony/property-access": "^7.4|^8.0"
+                "symfony/property-access": "^7.4|^8.0",
+                "symfony/security-core": "^7.4|^8.0",
+                "symfony/security-http": "^7.4|^8.0"
             },
             "require-dev": {
-                "doctrine/dbal": "^4.3",
-                "symfony/security-bundle": "^7.4|^8.0"
+                "doctrine/dbal": "^4.3"
             },
             "type": "symfony-bundle",
             "autoload": {
@@ -2716,14 +2716,19 @@
             "dist": {
                 "type": "path",
                 "url": "../alipay-api",
-                "reference": "cf593f33c3faf136f8a5a85c5571c7e1cd47b9c2"
+                "reference": "b3f21338c829556ccacc822b360496be567754fb"
             },
             "require": {
                 "php": ">=8.2",
-                "siganushka/api-factory": "dev-main",
+                "siganushka/api-factory": "^1.2",
                 "symfony/http-foundation": "^7.4|^8.0"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "1.2.x-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Siganushka\\ApiFactory\\Alipay\\": "src/"
@@ -2766,7 +2771,7 @@
             "dist": {
                 "type": "path",
                 "url": "../api-factory",
-                "reference": "5cd54dd2f8443a9376a5da2327979ceefb4c4cb8"
+                "reference": "2c71198da94051a7a485b7fe15590f657d6bd6ec"
             },
             "require": {
                 "php": ">=8.2",
@@ -2774,6 +2779,11 @@
                 "symfony/options-resolver": "^7.4|^8.0"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "1.2.x-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Siganushka\\ApiFactory\\": "src/"
@@ -2816,24 +2826,29 @@
             "dist": {
                 "type": "path",
                 "url": "../api-factory-bundle",
-                "reference": "e3a8662f57c5501ce78af62f1301e75399c68c3c"
+                "reference": "dbe2c36becabee0ae2611b0f13442857e5e79ce3"
             },
             "require": {
                 "composer-runtime-api": ">=2.1",
                 "php": ">=8.2",
-                "siganushka/api-factory": "dev-main",
+                "siganushka/api-factory": "^1.2",
                 "symfony/config": "^7.4|^8.0",
                 "symfony/dependency-injection": "^7.4|^8.0",
                 "symfony/http-kernel": "^7.4|^8.0"
             },
             "require-dev": {
-                "siganushka/alipay-api": "dev-main",
-                "siganushka/github-api": "dev-main",
-                "siganushka/wechat-api": "dev-main",
-                "siganushka/wxpay-api": "dev-main",
+                "siganushka/alipay-api": "^1.2",
+                "siganushka/github-api": "^1.2",
+                "siganushka/wechat-api": "^1.2",
+                "siganushka/wxpay-api": "^1.2",
                 "symfony/security-bundle": "^7.4|^8.0"
             },
             "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "1.2.x-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Siganushka\\ApiFactoryBundle\\": "src/"
@@ -2876,13 +2891,18 @@
             "dist": {
                 "type": "path",
                 "url": "../doctrine-contracts",
-                "reference": "b4754a2e003b76cb363097009f2605a190cc9455"
+                "reference": "bc9ae1373135845e602d878244b15fdbe959881c"
             },
             "require": {
                 "doctrine/orm": "^3.0",
                 "php": ">=8.2"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "1.2.x-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Siganushka\\Contracts\\Doctrine\\": "src/"
@@ -2925,7 +2945,7 @@
             "dist": {
                 "type": "path",
                 "url": "../generic-bundle",
-                "reference": "525a31bcb922296b334b31ceda24ed41a7a9d28f"
+                "reference": "7000fa15e6a3b9094e003f00731847aa70cca686"
             },
             "require": {
                 "php": ">=8.2",
@@ -2949,6 +2969,11 @@
                 "twig/twig": "^3.20"
             },
             "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "1.2.x-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Siganushka\\GenericBundle\\": "src/"
@@ -2993,14 +3018,19 @@
             "dist": {
                 "type": "path",
                 "url": "../github-api",
-                "reference": "0b2c1973fbd3cc9086de5b459127ec2c48194647"
+                "reference": "afed06dec888c6c855cb4d9e3e8d1c5ad15a6f9b"
             },
             "require": {
                 "php": ">=8.2",
-                "siganushka/api-factory": "dev-main",
+                "siganushka/api-factory": "^1.2",
                 "symfony/cache": "^7.4|^8.0"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "1.2.x-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Siganushka\\ApiFactory\\Github\\": "src/"
@@ -3043,14 +3073,14 @@
             "dist": {
                 "type": "path",
                 "url": "../media-bundle",
-                "reference": "2fd486e957913ade3221cf20421553538bf423cd"
+                "reference": "92f6fc406689e8a0c16cdd5561253428083ac70f"
             },
             "require": {
                 "ext-fileinfo": "*",
                 "knplabs/knp-components": "^5.0",
                 "php": ">=8.2",
-                "siganushka/doctrine-contracts": "dev-main",
-                "siganushka/generic-bundle": "dev-main",
+                "siganushka/doctrine-contracts": "^1.2",
+                "siganushka/generic-bundle": "^1.2",
                 "symfony/form": "^7.4|^8.0",
                 "symfony/framework-bundle": "^7.4|^8.0",
                 "symfony/mime": "^7.4|^8.0",
@@ -3063,6 +3093,11 @@
                 "spatie/image-optimizer": "^1.7"
             },
             "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "1.2.x-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Siganushka\\MediaBundle\\": "src/"
@@ -3107,14 +3142,14 @@
             "dist": {
                 "type": "path",
                 "url": "../order-bundle",
-                "reference": "ffbf4bc9461e23780082ed9d25e1f1b0d58a6d36"
+                "reference": "097163b2e946e22643c0704cf77ab1cae7e76776"
             },
             "require": {
                 "godruoyi/php-snowflake": "^3.0",
                 "knplabs/knp-components": "^5.0",
                 "php": ">=8.2",
-                "siganushka/doctrine-contracts": "dev-main",
-                "siganushka/generic-bundle": "dev-main",
+                "siganushka/doctrine-contracts": "^1.2",
+                "siganushka/generic-bundle": "^1.2",
                 "symfony/doctrine-bridge": "^7.4|^8.0",
                 "symfony/form": "^7.4|^8.0",
                 "symfony/framework-bundle": "^7.4|^8.0",
@@ -3168,13 +3203,13 @@
             "dist": {
                 "type": "path",
                 "url": "../payment-bundle",
-                "reference": "596ce0265419d2a261865ed8dea92b305196d7ea"
+                "reference": "beb1afb3173c5c0211536b86d7337ee12d0282fa"
             },
             "require": {
                 "knplabs/knp-components": "^5.0",
                 "php": ">=8.2",
-                "siganushka/doctrine-contracts": "dev-main",
-                "siganushka/generic-bundle": "dev-main",
+                "siganushka/doctrine-contracts": "^1.2",
+                "siganushka/generic-bundle": "^1.2",
                 "symfony/form": "^7.4|^8.0",
                 "symfony/framework-bundle": "^7.4|^8.0",
                 "symfony/translation": "^7.4|^8.0",
@@ -3182,9 +3217,9 @@
             },
             "require-dev": {
                 "godruoyi/php-snowflake": "^3.0",
-                "siganushka/alipay-api": "dev-main",
-                "siganushka/api-factory": "dev-main",
-                "siganushka/wxpay-api": "dev-main",
+                "siganushka/alipay-api": "^1.2",
+                "siganushka/api-factory": "^1.2",
+                "siganushka/wxpay-api": "^1.2",
                 "symfony/messenger": "^7.4|^8.0"
             },
             "type": "symfony-bundle",
@@ -3230,15 +3265,15 @@
             "dist": {
                 "type": "path",
                 "url": "../product-bundle",
-                "reference": "05a953ef725fabcb3118965b83370ade837736fa"
+                "reference": "61a2602c96d1f5d9df5360079971c180f451db3d"
             },
             "require": {
                 "bentools/cartesian-product": "^2.0",
                 "knplabs/knp-components": "^5.0",
                 "php": ">=8.2",
-                "siganushka/doctrine-contracts": "dev-main",
-                "siganushka/generic-bundle": "dev-main",
-                "siganushka/media-bundle": "dev-main",
+                "siganushka/doctrine-contracts": "^1.2",
+                "siganushka/generic-bundle": "^1.2",
+                "siganushka/media-bundle": "^1.2",
                 "symfony/form": "^7.4|^8.0",
                 "symfony/framework-bundle": "^7.4|^8.0",
                 "symfony/validator": "^7.4|^8.0"
@@ -3290,12 +3325,13 @@
             "dist": {
                 "type": "path",
                 "url": "../region-bundle",
-                "reference": "8d48b2e4d235b1860496a05aa0b0b1d301bb9320"
+                "reference": "b34f1546afc1109982445cd1f35c24a04a346d62"
             },
             "require": {
+                "doctrine/doctrine-bundle": "^2.8",
                 "php": ">=8.2",
-                "siganushka/doctrine-contracts": "dev-main",
-                "siganushka/generic-bundle": "dev-main",
+                "siganushka/doctrine-contracts": "^1.2",
+                "siganushka/generic-bundle": "^1.2",
                 "symfony/form": "^7.4|^8.0",
                 "symfony/framework-bundle": "^7.4|^8.0",
                 "symfony/http-client": "^7.4|^8.0"
@@ -3305,6 +3341,11 @@
                 "symfony/yaml": "^7.4|^8.0"
             },
             "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "1.2.x-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Siganushka\\RegionBundle\\": "src/"
@@ -3344,7 +3385,7 @@
         },
         {
             "name": "siganushka/request-token-bundle",
-            "version": "dev-main",
+            "version": "v1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/siganushka/request-token-bundle.git",
@@ -3364,7 +3405,6 @@
                 "monolog/monolog": "^3.0",
                 "symfony/uid": "^7.4|^8.0"
             },
-            "default-branch": true,
             "type": "symfony-bundle",
             "autoload": {
                 "psr-4": {
@@ -3388,7 +3428,7 @@
             ],
             "support": {
                 "issues": "https://github.com/siganushka/request-token-bundle/issues",
-                "source": "https://github.com/siganushka/request-token-bundle/tree/main"
+                "source": "https://github.com/siganushka/request-token-bundle/tree/v1.2.0"
             },
             "time": "2026-08-01T05:27:14+00:00"
         },
@@ -3398,13 +3438,13 @@
             "dist": {
                 "type": "path",
                 "url": "../user-bundle",
-                "reference": "ae7d52b14e69cf8de80e9e2e88a32943e2781df6"
+                "reference": "021e7a91669895d9d9cf1796e30507f3315f246f"
             },
             "require": {
                 "knplabs/knp-components": "^5.0",
                 "php": ">=8.2",
-                "siganushka/doctrine-contracts": "dev-main",
-                "siganushka/generic-bundle": "dev-main",
+                "siganushka/doctrine-contracts": "^1.2",
+                "siganushka/generic-bundle": "^1.2",
                 "symfony/doctrine-bridge": "^7.4|^8.0",
                 "symfony/form": "^7.4|^8.0",
                 "symfony/framework-bundle": "^7.4|^8.0",
@@ -3413,6 +3453,11 @@
                 "symfony/validator": "^7.4|^8.0"
             },
             "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "1.2.x-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Siganushka\\UserBundle\\": "src/"
@@ -3455,14 +3500,19 @@
             "dist": {
                 "type": "path",
                 "url": "../wechat-api",
-                "reference": "724647a9fc877cf8e4382dc658984cb4f017fe0d"
+                "reference": "25a4392add95de4e034484f759bdc81d991c3798"
             },
             "require": {
                 "php": ">=8.2",
-                "siganushka/api-factory": "dev-main",
+                "siganushka/api-factory": "^1.2",
                 "symfony/cache": "^7.4|^8.0"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "1.2.x-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Siganushka\\ApiFactory\\Wechat\\": "src/"
@@ -3505,15 +3555,20 @@
             "dist": {
                 "type": "path",
                 "url": "../wxpay-api",
-                "reference": "9759c7db43dc1ab27c806dc87a031c36e4e40050"
+                "reference": "df0a4a53c1f6ad90f29b0b870670331e1eb68063"
             },
             "require": {
                 "php": ">=8.2",
-                "siganushka/api-factory": "dev-main",
+                "siganushka/api-factory": "^1.2",
                 "symfony/http-foundation": "^7.4|^8.0",
                 "symfony/serializer": "^7.4|^8.0"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "1.2.x-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Siganushka\\ApiFactory\\Wxpay\\": "src/"
@@ -10244,24 +10299,12 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "stability-flags": {
         "siganushka/admin-bundle": 20,
-        "siganushka/alipay-api": 20,
-        "siganushka/api-factory": 20,
-        "siganushka/api-factory-bundle": 20,
-        "siganushka/doctrine-contracts": 20,
-        "siganushka/generic-bundle": 20,
-        "siganushka/github-api": 20,
-        "siganushka/media-bundle": 20,
         "siganushka/order-bundle": 20,
         "siganushka/payment-bundle": 20,
-        "siganushka/product-bundle": 20,
-        "siganushka/region-bundle": 20,
-        "siganushka/request-token-bundle": 20,
-        "siganushka/user-bundle": 20,
-        "siganushka/wechat-api": 20,
-        "siganushka/wxpay-api": 20
+        "siganushka/product-bundle": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
