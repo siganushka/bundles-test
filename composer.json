@@ -15,7 +15,7 @@
         "knplabs/knp-paginator-bundle": "^6.10",
         "nelmio/cors-bundle": "^2.6.1",
         "obs/esdk-obs-php": "^3.24.9",
-        "siganushka/admin-bundle": "dev-main",
+        "siganushka/admin-bundle": "^1.2",
         "siganushka/alipay-api": "^1.2",
         "siganushka/api-factory": "^1.2",
         "siganushka/api-factory-bundle": "^1.2",
@@ -23,9 +23,9 @@
         "siganushka/generic-bundle": "^1.2",
         "siganushka/github-api": "^1.2",
         "siganushka/media-bundle": "^1.2",
-        "siganushka/order-bundle": "dev-main",
-        "siganushka/payment-bundle": "dev-main",
-        "siganushka/product-bundle": "dev-main",
+        "siganushka/order-bundle": "^1.2",
+        "siganushka/payment-bundle": "^1.2",
+        "siganushka/product-bundle": "^1.2",
         "siganushka/region-bundle": "^1.2",
         "siganushka/request-token-bundle": "^1.2",
         "siganushka/user-bundle": "^1.2",
@@ -185,6 +185,13 @@
         {
             "type": "path",
             "url": "../payment-bundle",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url": "../request-token-bundle",
             "options": {
                 "symlink": true
             }

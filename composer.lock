@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6e0e2b9d83d0bf42f5c0b37130811909",
+    "content-hash": "4b93d9d0e057027faa8d261a54f9319e",
     "packages": [
         {
             "name": "aliyuncs/oss-sdk-php",
@@ -2658,7 +2658,7 @@
             "dist": {
                 "type": "path",
                 "url": "../admin-bundle",
-                "reference": "198cf64a468160aacb1f919049f9319308df1921"
+                "reference": "7ac54b67c82946df5eccdea27a437e8ddf0edf0a"
             },
             "require": {
                 "knplabs/knp-menu-bundle": "^3.7",
@@ -2672,6 +2672,11 @@
                 "doctrine/dbal": "^4.3"
             },
             "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "1.2.x-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Siganushka\\AdminBundle\\": "src/"
@@ -2945,7 +2950,7 @@
             "dist": {
                 "type": "path",
                 "url": "../generic-bundle",
-                "reference": "7000fa15e6a3b9094e003f00731847aa70cca686"
+                "reference": "8bfad0e99e2cb14f409b6a0efd9beef169586c43"
             },
             "require": {
                 "php": ">=8.2",
@@ -3142,7 +3147,7 @@
             "dist": {
                 "type": "path",
                 "url": "../order-bundle",
-                "reference": "097163b2e946e22643c0704cf77ab1cae7e76776"
+                "reference": "cc5490762512958fb2225b933b54804260f619ca"
             },
             "require": {
                 "godruoyi/php-snowflake": "^3.0",
@@ -3161,6 +3166,11 @@
                 "symfony/translation-contracts": "^2.5.3|^3.3"
             },
             "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "1.2.x-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Siganushka\\OrderBundle\\": "src/"
@@ -3203,7 +3213,7 @@
             "dist": {
                 "type": "path",
                 "url": "../payment-bundle",
-                "reference": "beb1afb3173c5c0211536b86d7337ee12d0282fa"
+                "reference": "b9881e636059730824c3367a6fd752e96a3917ec"
             },
             "require": {
                 "knplabs/knp-components": "^5.0",
@@ -3223,6 +3233,11 @@
                 "symfony/messenger": "^7.4|^8.0"
             },
             "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "1.2.x-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Siganushka\\PaymentBundle\\": "src/"
@@ -3265,7 +3280,7 @@
             "dist": {
                 "type": "path",
                 "url": "../product-bundle",
-                "reference": "61a2602c96d1f5d9df5360079971c180f451db3d"
+                "reference": "cb3b2a2dd67e59d8c9b3bf537e6768eb9783c44d"
             },
             "require": {
                 "bentools/cartesian-product": "^2.0",
@@ -3282,6 +3297,11 @@
                 "symfony/ux-autocomplete": "^2.14"
             },
             "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "1.2.x-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Siganushka\\ProductBundle\\": "src/"
@@ -3385,17 +3405,11 @@
         },
         {
             "name": "siganushka/request-token-bundle",
-            "version": "v1.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/siganushka/request-token-bundle.git",
-                "reference": "6adec1b2e11c62723792e4a7af7ba924aa287c10"
-            },
+            "version": "dev-main",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/siganushka/request-token-bundle/zipball/6adec1b2e11c62723792e4a7af7ba924aa287c10",
-                "reference": "6adec1b2e11c62723792e4a7af7ba924aa287c10",
-                "shasum": ""
+                "type": "path",
+                "url": "../request-token-bundle",
+                "reference": "8930b2bb91a18abff9641035da9fdb78c3b6c877"
             },
             "require": {
                 "php": ">=8.2",
@@ -3406,12 +3420,28 @@
                 "symfony/uid": "^7.4|^8.0"
             },
             "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "1.2.x-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Siganushka\\RequestTokenBundle\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "Siganushka\\RequestTokenBundle\\Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "tools:run": [
+                    "tools/vendor/bin/php-cs-fixer fix",
+                    "tools/vendor/bin/simple-phpunit",
+                    "tools/vendor/bin/phpstan"
+                ]
+            },
             "license": [
                 "MIT"
             ],
@@ -3426,11 +3456,10 @@
             "keywords": [
                 "request-token-bundle"
             ],
-            "support": {
-                "issues": "https://github.com/siganushka/request-token-bundle/issues",
-                "source": "https://github.com/siganushka/request-token-bundle/tree/v1.2.0"
-            },
-            "time": "2026-08-01T05:27:14+00:00"
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
         },
         {
             "name": "siganushka/user-bundle",
@@ -10300,12 +10329,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "siganushka/admin-bundle": 20,
-        "siganushka/order-bundle": 20,
-        "siganushka/payment-bundle": 20,
-        "siganushka/product-bundle": 20
-    },
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
