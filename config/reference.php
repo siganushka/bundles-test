@@ -1245,7 +1245,6 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     doctrine?: array{
  *         schema_resort?: bool|Param, // Default: true
  *         table_prefix?: scalar|Param|null, // Default: null
- *         mapping_override?: array<string, scalar|Param|null>,
  *     },
  *     serializer?: array{
  *         form_error_normalizer?: bool|Param, // Default: false

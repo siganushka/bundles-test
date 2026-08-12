@@ -2951,7 +2951,7 @@
             "dist": {
                 "type": "path",
                 "url": "../generic-bundle",
-                "reference": "2875263a8ae7c3abc93ac0ce667989bef9df8903"
+                "reference": "0b7f327a59a78a9503296657994d91f0acd6c8cf"
             },
             "require": {
                 "php": ">=8.2",
