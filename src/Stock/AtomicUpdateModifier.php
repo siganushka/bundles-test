@@ -6,7 +6,7 @@ namespace App\Stock;
 
 use Doctrine\DBAL\ParameterType;
 use Doctrine\ORM\EntityManagerInterface;
-use Siganushka\OrderBundle\Entity\Order;
+use Siganushka\OrderBundle\Entity\AbstractOrder;
 use Siganushka\OrderBundle\Exception\OutOfStockException;
 use Siganushka\OrderBundle\Model\StockableInterface;
 use Siganushka\OrderBundle\Stock\OrderStockModifierInterface;
@@ -20,17 +20,17 @@ class AtomicUpdateModifier implements OrderStockModifierInterface
     {
     }
 
-    public function increment(Order $order): void
+    public function increment(AbstractOrder $order): void
     {
         $this->modifiy($order, self::INCREMENT);
     }
 
-    public function decrement(Order $order): void
+    public function decrement(AbstractOrder $order): void
     {
         $this->modifiy($order, self::DECREMENT);
     }
 
-    private function modifiy(Order $order, int $action): void
+    private function modifiy(AbstractOrder $order, int $action): void
     {
         $assignment = match ($action) {
             self::INCREMENT => 'entity.stock + :quantity',

@@ -8,10 +8,6 @@ use App\Entity\Product;
 use App\Entity\ProductOption;
 use App\Entity\ProductOptionValue;
 use App\Entity\ProductVariant;
-use Doctrine\ORM\EntityManagerInterface;
-use Siganushka\MediaBundle\Entity\Media;
-use Siganushka\MediaBundle\MediaManagerInterface;
-use Siganushka\MediaBundle\Utils\FileUtils;
 use Siganushka\ProductBundle\Model\ProductVariantChoice;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
@@ -24,12 +20,12 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 #[AsCommand('app:collect:xiaomi', 'Collect xiaomi data.')]
 class CollectXiaomiCommand extends Command
 {
+    use AddMediaHandlerTrait;
+
     private readonly HttpClientInterface $httpClient;
 
-    public function __construct(
-        private readonly EntityManagerInterface $entityManager,
-        private readonly MediaManagerInterface $mediaManager,
-    ) {
+    public function __construct()
+    {
         $this->httpClient = HttpClient::create([
             'base_uri' => 'https://api2.order.mi.com',
             'headers' => [
@@ -80,7 +76,7 @@ class CollectXiaomiCommand extends Command
             ]);
 
             $output->writeln(\sprintf('<info>%s: 下载主图</info>', $message));
-            $media = $this->handleMedia($product['goods_list'][0]['goods_info']['img_url']);
+            $media = $this->handleMedia('product_img', $product['goods_list'][0]['goods_info']['img_url']);
 
             $entity = new Product();
             $entity->setImg($media);
@@ -107,7 +103,7 @@ class CollectXiaomiCommand extends Command
                     });
 
                     $imgUrl = $result['goods_info']['img_url'] ?? null;
-                    $media = $imgUrl ? $this->handleMedia($imgUrl) : null;
+                    $media = $imgUrl ? $this->handleMedia('product_img', $imgUrl) : null;
 
                     $option->addValue(new ProductOptionValue(\sprintf('prop_value_id_%d', $v2['prop_value_id']), $v2['name'], $media));
                 }
@@ -179,19 +175,5 @@ class CollectXiaomiCommand extends Command
         // dd(__METHOD__, $data);
 
         return $parsedResponse['data'] ?? [];
-    }
-
-    private function handleMedia(string $imgUrl): Media
-    {
-        if (str_starts_with($imgUrl, '//')) {
-            $imgUrl = 'https:'.$imgUrl;
-        }
-
-        $meida = $this->mediaManager->save('product_img', FileUtils::createFromUrl($imgUrl));
-
-        $this->entityManager->persist($meida);
-        $this->entityManager->flush();
-
-        return $meida;
     }
 }

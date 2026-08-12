@@ -1,4 +1,4 @@
-Siganushka\UserBundle\Entity\UserLogin:
+App\Entity\UserLogin:
     attributes:
         id:
             groups: [user_login.collection]

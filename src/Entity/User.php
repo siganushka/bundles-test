@@ -8,10 +8,10 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Siganushka\UserBundle\Entity\User as BaseUser;
+use Siganushka\UserBundle\Entity\AbstractUser;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-class User extends BaseUser
+class User extends AbstractUser
 {
     #[ORM\Column]
     private int $balance = 0;

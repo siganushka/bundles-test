@@ -9,13 +9,13 @@ use Doctrine\ORM\Mapping as ORM;
 use Siganushka\OrderBundle\Model\OrderItemSubjectData;
 use Siganushka\OrderBundle\Model\OrderItemSubjectInterface;
 use Siganushka\OrderBundle\Model\StockableInterface;
-use Siganushka\ProductBundle\Entity\ProductVariant as BaseProductVariant;
+use Siganushka\ProductBundle\Entity\AbstractProductVariant;
 
 /**
- * @extends BaseProductVariant<Product, ProductOptionValue>
+ * @extends AbstractProductVariant<Product, ProductOptionValue>
  */
 #[ORM\Entity(repositoryClass: ProductVariantRepository::class)]
-class ProductVariant extends BaseProductVariant implements OrderItemSubjectInterface, StockableInterface
+class ProductVariant extends AbstractProductVariant implements OrderItemSubjectInterface, StockableInterface
 {
     public function createForOrderItem(int $quantity): OrderItemSubjectData
     {

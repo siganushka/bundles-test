@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Siganushka\PaymentBundle\Entity\Payment;
+use Siganushka\PaymentBundle\Entity\AbstractPayment;
 
 #[ORM\Entity]
-class PaymentTopup extends Payment
+class PaymentTopup extends AbstractPayment
 {
     use PaymentContext;
 

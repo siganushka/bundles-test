@@ -1,3 +1,4 @@
 siganushka_payment:
+    payment_refund_class: App\Entity\PaymentRefund
     payment_cancel_transport: async
     payment_cancel_seconds: 180

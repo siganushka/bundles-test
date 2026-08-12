@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Siganushka\OrderBundle\Entity\AbstractOrderItem;
+use Siganushka\UserBundle\Entity\AbstractUserLogin;
 
 #[ORM\Entity]
-class OrderItem extends AbstractOrderItem
+class UserLogin extends AbstractUserLogin
 {
 }

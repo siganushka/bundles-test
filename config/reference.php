@@ -1048,6 +1048,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         id?: scalar|Param|null,
  *         type?: scalar|Param|null,
  *         value?: mixed,
+ *         ...<string, mixed>
  *     }>,
  *     autoescape_service?: scalar|Param|null, // Default: null
  *     autoescape_service_method?: scalar|Param|null, // Default: null
@@ -1112,6 +1113,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *             enabled?: bool|Param|null, // Default: null
  *             date_format?: scalar|Param|null,
  *             remove_used_context_fields?: bool|Param,
+ *             ...<string, mixed>
  *         },
  *         path?: scalar|Param|null, // Default: "%kernel.logs_dir%/%kernel.environment%.log"
  *         file_permission?: scalar|Param|null, // Default: null
@@ -1235,6 +1237,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         channels?: Param|string|array{
  *             type?: scalar|Param|null,
  *             elements?: list<scalar|Param|null>,
+ *             ...<string, mixed>
  *         },
  *     }>,
  * }
@@ -1250,7 +1253,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     },
  * }
  * @psalm-type SiganushkaMediaConfig = array{
- *     media_class?: scalar|Param|null, // Default: "Siganushka\\MediaBundle\\Entity\\Media"
+ *     media_class?: scalar|Param|null,
  *     storage?: scalar|Param|null, // Default: "Siganushka\\MediaBundle\\Storage\\LocalStorage"
  *     naming?: scalar|Param|null, // This value defines the default file naming strategy (Available placeholders: yy/yyyy/m/mm/d/dd/timestamp/random/random:{LENGTH}:{START}/rule/ext/original_name/original_ext). // Default: "[random:2]/[random:2:2]/[random:12:4].[ext]"
  *     rules?: list<array{ // Default: []
@@ -1261,16 +1264,18 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *             enabled?: bool|Param, // Default: false
  *             max_width?: int|Param, // Default: 1920
  *             max_height?: int|Param, // Default: 7680
+ *             ...<string, mixed>
  *         },
  *         optimize?: bool|array{ // This value is used to optimize the image quality.
  *             enabled?: bool|Param, // Default: false
  *             quality?: int|Param, // Default: 90
+ *             ...<string, mixed>
  *         },
  *     }>,
  * }
  * @psalm-type SiganushkaOrderConfig = array{
- *     order_class?: scalar|Param|null, // Default: "Siganushka\\OrderBundle\\Entity\\Order"
- *     order_item_class?: scalar|Param|null, // Default: "Siganushka\\OrderBundle\\Entity\\OrderItem"
+ *     order_class?: scalar|Param|null,
+ *     order_item_class?: scalar|Param|null,
  *     order_number_generator?: scalar|Param|null, // Default: "Siganushka\\OrderBundle\\Generator\\OrderNumberGenerator"
  *     order_stock_modifier?: scalar|Param|null, // Default: "Siganushka\\OrderBundle\\Stock\\OrderStockModifier"
  *     order_item_subject_type?: scalar|Param|null, // Default: "Siganushka\\OrderBundle\\Form\\Type\\OrderItemSubjectType"
@@ -1278,16 +1283,17 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     order_expire_seconds?: int|Param, // Default: 3600
  * }
  * @psalm-type SiganushkaProductConfig = array{
- *     product_class?: scalar|Param|null, // Default: "Siganushka\\ProductBundle\\Entity\\Product"
- *     product_option_class?: scalar|Param|null, // Default: "Siganushka\\ProductBundle\\Entity\\ProductOption"
- *     product_option_value_class?: scalar|Param|null, // Default: "Siganushka\\ProductBundle\\Entity\\ProductOptionValue"
- *     product_variant_class?: scalar|Param|null, // Default: "Siganushka\\ProductBundle\\Entity\\ProductVariant"
+ *     product_class?: scalar|Param|null,
+ *     product_option_class?: scalar|Param|null,
+ *     product_option_value_class?: scalar|Param|null,
+ *     product_variant_class?: scalar|Param|null,
  * }
  * @psalm-type SiganushkaRegionConfig = array{
- *     region_class?: scalar|Param|null, // Default: "Siganushka\\RegionBundle\\Entity\\Region"
+ *     region_class?: scalar|Param|null,
  * }
  * @psalm-type SiganushkaUserConfig = array{
- *     user_class?: scalar|Param|null, // Default: "Siganushka\\UserBundle\\Entity\\User"
+ *     user_class?: scalar|Param|null,
+ *     user_login_class?: scalar|Param|null,
  *     identifier_type?: scalar|Param|null, // Default: "Siganushka\\UserBundle\\Identifier\\IdentifierType"
  *     password_strength_min_score?: -1|1|2|3|4|Param, // Default: 1
  * }
@@ -1296,6 +1302,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     collapse_cookie?: scalar|Param|null, // Default: "siganushka_admin_collapse"
  * }
  * @psalm-type SiganushkaPaymentConfig = array{
+ *     payment_refund_class?: scalar|Param|null,
  *     payment_number_generator?: scalar|Param|null, // Default: "Siganushka\\PaymentBundle\\Generator\\PaymentNumberGenerator"
  *     payment_cancel_transport?: string|Param, // Default: null
  *     payment_cancel_seconds?: int|Param, // Default: 3600
@@ -1308,6 +1315,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *             client_id?: mixed,
  *             client_secret?: mixed,
  *         }>,
+ *         ...<string, mixed>
  *     },
  *     wechat?: bool|array{ // Wechat configuration
  *         enabled?: bool|Param, // Default: false
@@ -1316,6 +1324,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *             appid?: mixed,
  *             secret?: mixed,
  *         }>,
+ *         ...<string, mixed>
  *     },
  *     wxpay?: bool|array{ // Wxpay configuration
  *         enabled?: bool|Param, // Default: false
@@ -1327,6 +1336,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *             mch_client_cert?: mixed,
  *             mch_client_key?: mixed,
  *         }>,
+ *         ...<string, mixed>
  *     },
  *     alipay?: bool|array{ // Alipay configuration
  *         enabled?: bool|Param, // Default: false
@@ -1336,6 +1346,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *             app_private_key?: mixed,
  *             alipay_public_key?: mixed,
  *         }>,
+ *         ...<string, mixed>
  *     },
  * }
  * @psalm-type DoctrineConfig = array{
@@ -1428,6 +1439,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *                 use_savepoints?: bool|Param, // Use savepoints for nested transactions
  *                 instancename?: scalar|Param|null, // Optional parameter, complete whether to add the INSTANCE_NAME parameter in the connection. It is generally used to connect to an Oracle RAC server to select the name of a particular instance.
  *                 connectstring?: scalar|Param|null, // Complete Easy Connect connection descriptor, see https://docs.oracle.com/database/121/NETAG/naming.htm.When using this option, you will still need to provide the user and password parameters, but the other parameters will no longer be used. Note that when using this parameter, the getHost and getPort methods from Doctrine\DBAL\Connection will no longer function as expected.
+ *                 ...<string, mixed>
  *             }>,
  *             replicas?: array<string, array{ // Default: []
  *                 url?: scalar|Param|null, // A URL with connection information; any parameter value parsed from this string will override explicitly set parameters
@@ -1460,8 +1472,11 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *                 use_savepoints?: bool|Param, // Use savepoints for nested transactions
  *                 instancename?: scalar|Param|null, // Optional parameter, complete whether to add the INSTANCE_NAME parameter in the connection. It is generally used to connect to an Oracle RAC server to select the name of a particular instance.
  *                 connectstring?: scalar|Param|null, // Complete Easy Connect connection descriptor, see https://docs.oracle.com/database/121/NETAG/naming.htm.When using this option, you will still need to provide the user and password parameters, but the other parameters will no longer be used. Note that when using this parameter, the getHost and getPort methods from Doctrine\DBAL\Connection will no longer function as expected.
+ *                 ...<string, mixed>
  *             }>,
+ *             ...<string, mixed>
  *         }>,
+ *         ...<string, mixed>
  *     },
  *     orm?: array{
  *         default_entity_manager?: scalar|Param|null,
@@ -1500,6 +1515,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *                         }>,
  *                     }>,
  *                 }>,
+ *                 ...<string, mixed>
  *             },
  *             connection?: scalar|Param|null,
  *             class_metadata_factory_name?: scalar|Param|null, // Default: "Doctrine\\ORM\\Mapping\\ClassMetadataFactory"
@@ -1561,10 +1577,12 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *                 class?: scalar|Param|null,
  *                 enabled?: bool|Param, // Default: false
  *                 parameters?: array<string, mixed>,
+ *                 ...<string, mixed>
  *             }>,
  *             identity_generation_preferences?: array<string, scalar|Param|null>,
  *         }>,
  *         resolve_target_entities?: array<string, scalar|Param|null>,
+ *         ...<string, mixed>
  *     },
  * }
  * @psalm-type TwigExtraConfig = array{

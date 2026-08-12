@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Siganushka\ProductBundle\Entity\ProductOption as BaseProductOption;
+use Siganushka\ProductBundle\Entity\AbstractProductOption;
 
 #[ORM\Entity]
-class ProductOption extends BaseProductOption
+class ProductOption extends AbstractProductOption
 {
 }

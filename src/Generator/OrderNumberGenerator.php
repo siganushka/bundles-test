@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Generator;
 
-use Siganushka\OrderBundle\Entity\Order;
+use Siganushka\OrderBundle\Entity\AbstractOrder;
 use Siganushka\OrderBundle\Generator\OrderNumberGeneratorInterface;
 
 class OrderNumberGenerator implements OrderNumberGeneratorInterface
@@ -13,7 +13,7 @@ class OrderNumberGenerator implements OrderNumberGeneratorInterface
     {
     }
 
-    public function generate(Order $entity): string
+    public function generate(AbstractOrder $entity): string
     {
         return $this->numberGenerator->generate();
     }

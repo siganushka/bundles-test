@@ -8,12 +8,13 @@ use App\Entity\Order;
 use App\Entity\PaymentOrder;
 use Doctrine\ORM\EntityManagerInterface;
 use Siganushka\GenericBundle\Controller\Crud\Web\IndexTrait;
+use Siganushka\PaymentBundle\Entity\AbstractPayment;
 use Siganushka\PaymentBundle\Entity\Payment;
-use Siganushka\PaymentBundle\Entity\PaymentRefund;
 use Siganushka\PaymentBundle\Exception\PaymentFailedException;
 use Siganushka\PaymentBundle\Form\PaymentRefundType;
 use Siganushka\PaymentBundle\Gateway\WxpayJsapi;
 use Siganushka\PaymentBundle\PaymentManagerInterface;
+use Siganushka\PaymentBundle\Repository\PaymentRefundRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
@@ -29,15 +30,15 @@ class PaymentController extends AbstractController
     public function __construct()
     {
         $this->configureCrud(
-            entityName: Payment::class,
+            entityName: AbstractPayment::class,
             entityIdentifier: 'number',
         );
     }
 
     #[Route('/{number}/refund')]
-    public function refund(Request $request, PaymentManagerInterface $paymentManager, string $number): Response
+    public function refund(Request $request, PaymentManagerInterface $paymentManager, PaymentRefundRepository $paymentRefundRepository, string $number): Response
     {
-        /** @var Payment */
+        /** @var AbstractPayment */
         $entity = $this->findEntity($number);
         if (!$entity->supportsRefund()) {
             throw new BadRequestHttpException('The payment unsupported refund.');
@@ -48,7 +49,7 @@ class PaymentController extends AbstractController
             throw new BadRequestHttpException(null === $amount ? 'The payment is non-refundable.' : 'The payment has been fully refunded.');
         }
 
-        $refund = PaymentRefund::createFromPayment($entity);
+        $refund = $paymentRefundRepository->createFromPayment($entity);
         $refund->setAmount($amount);
 
         $form = $this->createForm(PaymentRefundType::class, $refund);
@@ -84,10 +85,10 @@ class PaymentController extends AbstractController
         // dd(__METHOD__, $result);
 
         // // Test Refund
-        // $payment = $entityManager->find(Payment::class, 1)
+        // $payment = $entityManager->find(PaymentInterface::class, 1)
         //     ?? throw $this->createNotFoundException();
 
-        // $refund = PaymentRefund::createFromPayment($payment);
+        // $refund = AbstractPaymentRefund::createFromPayment($payment);
         // $refund->setAmount($payment->getRefundableAmount());
 
         // $result = $paymentManager->refund($payment, $refund);

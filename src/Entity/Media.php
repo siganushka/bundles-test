@@ -5,9 +5,10 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Siganushka\MediaBundle\Entity\Media as BaseMedia;
+use Siganushka\MediaBundle\Entity\AbstractMedia;
 
-#[ORM\Entity]
-class Media extends BaseMedia
+#[ORM\Entity(readOnly: true)]
+#[ORM\Cache(usage: 'NONSTRICT_READ_WRITE')]
+class Media extends AbstractMedia
 {
 }

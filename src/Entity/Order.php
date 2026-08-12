@@ -10,11 +10,10 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Siganushka\Contracts\Doctrine\DeletableInterface;
 use Siganushka\Contracts\Doctrine\DeletableTrait;
-use Siganushka\OrderBundle\Entity\Order as BaseOrder;
-use Siganushka\PaymentBundle\Entity\Payment;
+use Siganushka\OrderBundle\Entity\AbstractOrder;
 
 #[ORM\Entity(repositoryClass: OrderRepository::class)]
-class Order extends BaseOrder implements DeletableInterface
+class Order extends AbstractOrder implements DeletableInterface
 {
     use DeletableTrait;
 
@@ -55,7 +54,7 @@ class Order extends BaseOrder implements DeletableInterface
         return $this->aggregatePayments;
     }
 
-    public function getCurrentPayment(): ?Payment
+    public function getCurrentPayment(): PaymentOrder|PaymentOrderAggregate|null
     {
         return $this->payments->last() ?: ($this->aggregatePayments->last() ?: null);
     }

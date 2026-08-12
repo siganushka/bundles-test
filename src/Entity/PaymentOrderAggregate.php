@@ -7,10 +7,10 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Siganushka\PaymentBundle\Entity\Payment;
+use Siganushka\PaymentBundle\Entity\AbstractPayment;
 
 #[ORM\Entity]
-class PaymentOrderAggregate extends Payment
+class PaymentOrderAggregate extends AbstractPayment
 {
     use PaymentContext;
 

@@ -1,0 +1,22 @@
+App\Entity\PaymentRefund:
+    attributes:
+        id:
+            groups: []
+        payment:
+            groups: []
+        number:
+            groups: [payment.item, payment.collection, payment_refund.item]
+        amount:
+            groups: [payment.item, payment.collection, payment_refund.item]
+        details:
+            groups: []
+        successful:
+            groups: [payment.item, payment.collection, payment_refund.item]
+        failedReason:
+            groups: [payment.item, payment.collection, payment_refund.item]
+        note:
+            groups: [payment.item, payment.collection, payment_refund.item]
+        createdAt:
+            groups: [payment.item, payment.collection, payment_refund.item]
+        updatedAt:
+            groups: [payment.item, payment.collection, payment_refund.item]

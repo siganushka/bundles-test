@@ -8,10 +8,6 @@ use App\Entity\Product;
 use App\Entity\ProductOption;
 use App\Entity\ProductOptionValue;
 use App\Entity\ProductVariant;
-use Doctrine\ORM\EntityManagerInterface;
-use Siganushka\MediaBundle\Entity\Media;
-use Siganushka\MediaBundle\MediaManagerInterface;
-use Siganushka\MediaBundle\Utils\FileUtils;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -23,11 +19,10 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 #[AsCommand('app:collect:fordeal', 'Collect fordeal data.')]
 class CollectFordealCommand extends Command
 {
-    public function __construct(
-        private readonly EntityManagerInterface $entityManager,
-        private readonly MediaManagerInterface $mediaManager,
-        private readonly HttpClientInterface $httpClient,
-    ) {
+    use AddMediaHandlerTrait;
+
+    public function __construct(private readonly HttpClientInterface $httpClient)
+    {
         parent::__construct();
     }
 
@@ -61,7 +56,7 @@ class CollectFordealCommand extends Command
         $entity = new Product();
         $entity->setName($data['detail']['itemDetail']['realTitle']);
         $entity->setSummary($data['detail']['itemDetail']['title']);
-        $entity->setImg($this->handleMedia($data['detail']['itemDetail']['displayImage']));
+        $entity->setImg($this->handleMedia('product_img', $data['detail']['itemDetail']['displayImage']));
 
         foreach ($data['sku']['skuAttrs'] as $key => $value) {
             $multipleValues = \count($value['nValue']) > 1;
@@ -69,7 +64,7 @@ class CollectFordealCommand extends Command
             foreach ($value['nValue'] as ['key' => $code, 'value' => $text]) {
                 if ($multipleValues && 0 === $key) {
                     $imgUrl = array_find($data['sku']['skus'], static fn (array $item) => \in_array($code, $item['attr']))['image'] ?? null;
-                    $img = $imgUrl ? $this->handleMedia($imgUrl) : null;
+                    $img = $imgUrl ? $this->handleMedia('product_img', $imgUrl) : null;
                 } else {
                     $img = null;
                 }
@@ -103,19 +98,5 @@ class CollectFordealCommand extends Command
         $this->entityManager->flush();
 
         return Command::SUCCESS;
-    }
-
-    private function handleMedia(string $imgUrl): Media
-    {
-        if (str_starts_with($imgUrl, '//')) {
-            $imgUrl = 'https:'.$imgUrl;
-        }
-
-        $meida = $this->mediaManager->save('product_img', FileUtils::createFromUrl($imgUrl));
-
-        $this->entityManager->persist($meida);
-        $this->entityManager->flush();
-
-        return $meida;
     }
 }

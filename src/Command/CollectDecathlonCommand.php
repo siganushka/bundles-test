@@ -8,10 +8,6 @@ use App\Entity\Product;
 use App\Entity\ProductOption;
 use App\Entity\ProductOptionValue;
 use App\Entity\ProductVariant;
-use Doctrine\ORM\EntityManagerInterface;
-use Siganushka\MediaBundle\Entity\Media;
-use Siganushka\MediaBundle\MediaManagerInterface;
-use Siganushka\MediaBundle\Utils\FileUtils;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -24,12 +20,12 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 #[AsCommand('app:collect:decathlon', 'Collect decathlon data.')]
 class CollectDecathlonCommand extends Command
 {
+    use AddMediaHandlerTrait;
+
     public function __construct(
-        private readonly EntityManagerInterface $entityManager,
-        private readonly MediaManagerInterface $mediaManager,
         private readonly HttpClientInterface $httpClient,
-        private readonly CacheInterface $cache,
-    ) {
+        private readonly CacheInterface $cache)
+    {
         parent::__construct();
     }
 
@@ -104,7 +100,7 @@ class CollectDecathlonCommand extends Command
         $items = $models[0]['items'] ?? [];
 
         $entity = new Product();
-        $entity->setImg($this->handleMedia($models[0]['media']['images'][0]['image_url']));
+        $entity->setImg($this->handleMedia('product_img', $models[0]['media']['images'][0]['image_url']));
         $entity->setName(array_first(explode(' ', $models[0]['web_label'])));
         $entity->setSummary($data['designed_for']);
 
@@ -116,7 +112,7 @@ class CollectDecathlonCommand extends Command
                     $label = '-';
                 }
 
-                $option->addValue(new ProductOptionValue(\sprintf('model_code_%s', $model['model_code']), $label, $this->handleMedia($model['media']['images'][0]['image_url'])));
+                $option->addValue(new ProductOptionValue(\sprintf('model_code_%s', $model['model_code']), $label, $this->handleMedia('product_img', $model['media']['images'][0]['image_url'])));
             }
 
             $entity->addOption($option);
@@ -159,19 +155,5 @@ class CollectDecathlonCommand extends Command
         };
 
         return $this->cache->get(__METHOD__, $callback);
-    }
-
-    private function handleMedia(string $imgUrl): Media
-    {
-        if (str_starts_with($imgUrl, '//')) {
-            $imgUrl = 'https:'.$imgUrl;
-        }
-
-        $meida = $this->mediaManager->save('product_img', FileUtils::createFromUrl($imgUrl));
-
-        $this->entityManager->persist($meida);
-        $this->entityManager->flush();
-
-        return $meida;
     }
 }

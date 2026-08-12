@@ -1,3 +1,4 @@
 siganushka_user:
     user_class: App\Entity\User
+    user_login_class: App\Entity\UserLogin
     password_strength_min_score: -1

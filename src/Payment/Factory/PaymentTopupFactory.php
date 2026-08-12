@@ -11,7 +11,7 @@ use App\Payment\Gateway\WalletPay;
 use App\Repository\TopupRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Siganushka\PaymentBundle\Entity\Payment;
+use Siganushka\PaymentBundle\Entity\AbstractPayment;
 use Siganushka\PaymentBundle\Enum\PaymentState;
 use Siganushka\PaymentBundle\Factory\PaymentFactoryInterface;
 
@@ -24,7 +24,7 @@ class PaymentTopupFactory implements PaymentFactoryInterface
     {
     }
 
-    public function createPayment(string $type, int|string $identifier, string $gateway): Payment
+    public function createPayment(string $type, int|string $identifier, string $gateway): AbstractPayment
     {
         $user = $this->userRepository->findOneByIdentifier(WalletPay::CURRENT_USER_IDENTIFIER)
             ?? throw new \RuntimeException(\sprintf('The user "%s" does not found.', WalletPay::CURRENT_USER_IDENTIFIER));

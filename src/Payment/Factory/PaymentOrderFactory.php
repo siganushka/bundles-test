@@ -10,7 +10,7 @@ use App\Entity\PaymentOrderAggregate;
 use App\Repository\OrderRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Siganushka\OrderBundle\Enum\OrderState;
-use Siganushka\PaymentBundle\Entity\Payment;
+use Siganushka\PaymentBundle\Entity\AbstractPayment;
 use Siganushka\PaymentBundle\Enum\PaymentState;
 use Siganushka\PaymentBundle\Factory\PaymentFactoryInterface;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
@@ -25,7 +25,7 @@ class PaymentOrderFactory implements PaymentFactoryInterface
     {
     }
 
-    public function createPayment(string $type, int|string $identifier, string $gateway): Payment
+    public function createPayment(string $type, int|string $identifier, string $gateway): AbstractPayment
     {
         $orders = $created = [];
         foreach (explode(',', (string) $identifier) as $number) {
