@@ -2951,7 +2951,7 @@
             "dist": {
                 "type": "path",
                 "url": "../generic-bundle",
-                "reference": "0b7f327a59a78a9503296657994d91f0acd6c8cf"
+                "reference": "86695ba34152031b50413c5b0f4be9491b638802"
             },
             "require": {
                 "php": ">=8.2",
@@ -3346,10 +3346,10 @@
             "dist": {
                 "type": "path",
                 "url": "../region-bundle",
-                "reference": "1148acd005362e83b8f6d79f4b8fae9c534dfd8e"
+                "reference": "d68af6218a254e6f919680fd8e452599314b627a"
             },
             "require": {
-                "doctrine/doctrine-bundle": "^2.8",
+                "doctrine/doctrine-bundle": "^2.12|^3.0",
                 "php": ">=8.2",
                 "siganushka/doctrine-contracts": "^1.2",
                 "siganushka/generic-bundle": "dev-main",

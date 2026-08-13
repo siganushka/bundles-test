@@ -7,8 +7,6 @@ namespace App\Controller;
 use App\Entity\Media;
 use App\Form\TestType;
 use Siganushka\ApiFactory\Github\OAuth\Client;
-use Siganushka\OrderBundle\Repository\OrderAdjustmentRepository;
-use Siganushka\PaymentBundle\Repository\PaymentRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
@@ -32,10 +30,8 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 class IndexController extends AbstractController
 {
     #[Route('/')]
-    public function index(PaymentRepository $paymentRepository, OrderAdjustmentRepository $orderAdjustmentRepository): Response
+    public function index(): Response
     {
-        dump(__METHOD__, $paymentRepository->findAll(), $orderAdjustmentRepository->findAll());
-
         return $this->render('index/index.html.twig');
     }
 
