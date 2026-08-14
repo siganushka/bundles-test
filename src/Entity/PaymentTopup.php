@@ -6,6 +6,8 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Siganushka\PaymentBundle\Entity\AbstractPayment;
+use Symfony\Component\Translation\TranslatableMessage;
+use Symfony\Contracts\Translation\TranslatableInterface;
 
 #[ORM\Entity]
 class PaymentTopup extends AbstractPayment
@@ -38,9 +40,9 @@ class PaymentTopup extends AbstractPayment
         return $this->topup;
     }
 
-    public function getTitleParameters(): array
+    public function getTitle(): string|TranslatableInterface
     {
-        return ['%id%' => $this->topup->getId()];
+        return new TranslatableMessage(\sprintf('payment.type.%s', $this->getType()), ['%id%' => $this->topup->getId()]);
     }
 
     public function supportsRefund(): bool

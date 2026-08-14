@@ -8,6 +8,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Siganushka\PaymentBundle\Entity\AbstractPayment;
+use Symfony\Component\Translation\TranslatableMessage;
+use Symfony\Contracts\Translation\TranslatableInterface;
 
 #[ORM\Entity]
 class PaymentOrderAggregate extends AbstractPayment
@@ -43,10 +45,10 @@ class PaymentOrderAggregate extends AbstractPayment
         return $this->orders;
     }
 
-    public function getTitleParameters(): array
+    public function getTitle(): string|TranslatableInterface
     {
         $numbers = $this->orders->map(static fn (Order $item) => $item->getNumber());
 
-        return ['%numbers%' => implode(', ', $numbers->toArray())];
+        return new TranslatableMessage(\sprintf('payment.type.%s', $this->getType()), ['%numbers%' => implode(', ', $numbers->toArray())]);
     }
 }

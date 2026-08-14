@@ -6,6 +6,8 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Siganushka\PaymentBundle\Entity\AbstractPayment;
+use Symfony\Component\Translation\TranslatableMessage;
+use Symfony\Contracts\Translation\TranslatableInterface;
 
 #[ORM\Entity]
 class PaymentOrder extends AbstractPayment
@@ -30,8 +32,8 @@ class PaymentOrder extends AbstractPayment
         return $this->order;
     }
 
-    public function getTitleParameters(): array
+    public function getTitle(): string|TranslatableInterface
     {
-        return ['%number%' => $this->order->getNumber()];
+        return new TranslatableMessage(\sprintf('payment.type.%s', $this->getType()), ['%number%' => $this->order->getNumber()]);
     }
 }
