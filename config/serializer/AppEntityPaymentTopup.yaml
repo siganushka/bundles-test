@@ -10,7 +10,7 @@ App\Entity\PaymentTopup:
             groups: [payment.item, payment.collection]
         amount:
             groups: [payment.item, payment.collection]
-        refundAmount:
+        refundedAmount:
             groups: [payment.item, payment.collection]
         currency:
             groups: [payment.item, payment.collection]

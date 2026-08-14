@@ -8,7 +8,7 @@
       <th class="text-nowrap">{{ 'payment.number'|trans }}</th>
       <th class="text-nowrap">{{ 'payment.type'|trans }}</th>
       <th class="text-nowrap">{{ 'payment.amount'|trans }}</th>
-      <th class="text-nowrap">{{ 'payment.refund_amount'|trans }}</th>
+      <th class="text-nowrap">{{ 'payment.refunded_amount'|trans }}</th>
       <th class="text-nowrap">{{ 'payment.gateway'|trans }}</th>
       <th class="text-nowrap">{{ 'payment.state'|trans }}</th>
       <th class="text-nowrap">{{ 'generic.expired_at'|trans }}</th>
@@ -25,7 +25,7 @@
         {% endif %}
       </td>
       <td class="text-nowrap">{{ _item.amount|intl_currency }}</td>
-      <td class="text-nowrap">{{ _item.refundAmount|intl_currency }}</td>
+      <td class="text-nowrap">{{ _item.refundedAmount|intl_currency }}</td>
       <td class="text-nowrap">{{ ('payment.gateway.' ~ _item.gateway)|trans }}</td>
       <td class="text-nowrap">
         <span class="badge text-bg-{{ _item.state.theme }}"

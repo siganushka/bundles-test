@@ -113,8 +113,8 @@
             [{{ ('payment.gateway.' ~ _item.currentPayment.gateway)|trans }}]
 
               <div class="fs-sm m-0">
-                {% if _item.currentPayment.refundAmount %}
-                  <span class="text-warning">已退款 {{ _item.currentPayment.refundAmount|intl_currency }}</span>
+                {% if _item.currentPayment.refundedAmount %}
+                  <span class="text-warning">已退款 {{ _item.currentPayment.refundedAmount|intl_currency }}</span>
                 {% endif %}
 
                 {% if _item.currentPayment.refundableAmount %}

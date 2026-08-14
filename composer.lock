@@ -3214,7 +3214,7 @@
             "dist": {
                 "type": "path",
                 "url": "../payment-bundle",
-                "reference": "73537d78e4ba30cb598b9a3474269f5ca7203748"
+                "reference": "ad54d15f9a208de08cad2916e2a101f5e9b70ea7"
             },
             "require": {
                 "knplabs/knp-components": "^5.0",
