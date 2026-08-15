@@ -1,4 +1,4 @@
-App\Entity\CouponDiscount:
+App\Entity\OrderAdjustmentShipping:
     attributes:
         id:
             groups: [order.item, order.collection]

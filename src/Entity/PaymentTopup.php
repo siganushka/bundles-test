@@ -10,10 +10,8 @@ use Symfony\Component\Translation\TranslatableMessage;
 use Symfony\Contracts\Translation\TranslatableInterface;
 
 #[ORM\Entity]
-class PaymentTopup extends AbstractPayment
+class PaymentTopup extends Payment
 {
-    use PaymentContext;
-
     #[ORM\ManyToOne(inversedBy: 'topups')]
     private readonly User $user;
 

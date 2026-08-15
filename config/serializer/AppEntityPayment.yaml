@@ -1,10 +1,6 @@
-App\Entity\PaymentTopup:
+App\Entity\Payment:
     attributes:
         id:
-            groups: []
-        user:
-            groups: []
-        topup:
             groups: []
         number:
             groups: [payment.item, payment.collection]
@@ -24,13 +20,13 @@ App\Entity\PaymentTopup:
             groups: [payment.item, payment.collection]
         gateway:
             groups: [payment.item, payment.collection]
-        title:
-            groups: [payment.item, payment.collection]
-        refundableAmount:
-            groups: [payment.item, payment.collection]
         type:
             groups: [payment.item, payment.collection]
+        title:
+            groups: [payment.item, payment.collection]
         refundable:
+            groups: [payment.item, payment.collection]
+        refundableAmount:
             groups: [payment.item, payment.collection]
         createdAt:
             groups: [payment.item, payment.collection]

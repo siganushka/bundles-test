@@ -3148,7 +3148,7 @@
             "dist": {
                 "type": "path",
                 "url": "../order-bundle",
-                "reference": "b71d1ab10b32e842330a53d9c9bdc7c6bbab5eee"
+                "reference": "5fdcf41d8e4c1d3751c429bc17a5134ef0ed3783"
             },
             "require": {
                 "godruoyi/php-snowflake": "^3.0",
@@ -3214,7 +3214,7 @@
             "dist": {
                 "type": "path",
                 "url": "../payment-bundle",
-                "reference": "ad54d15f9a208de08cad2916e2a101f5e9b70ea7"
+                "reference": "02200a795b262221249fc6dba548a13eca0b4e99"
             },
             "require": {
                 "knplabs/knp-components": "^5.0",

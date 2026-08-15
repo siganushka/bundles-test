@@ -40,8 +40,8 @@ class PaymentController extends AbstractController
     {
         /** @var AbstractPayment */
         $entity = $this->findEntity($number);
-        if (!$entity->supportsRefund()) {
-            throw new BadRequestHttpException('The payment unsupported refund.');
+        if (!$entity->isRefundSupported()) {
+            throw new BadRequestHttpException('The payment does not support refund.');
         }
 
         $amount = $entity->getRefundableAmount();

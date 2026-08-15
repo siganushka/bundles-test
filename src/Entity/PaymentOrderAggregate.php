@@ -12,10 +12,8 @@ use Symfony\Component\Translation\TranslatableMessage;
 use Symfony\Contracts\Translation\TranslatableInterface;
 
 #[ORM\Entity]
-class PaymentOrderAggregate extends AbstractPayment
+class PaymentOrderAggregate extends Payment
 {
-    use PaymentContext;
-
     /**
      * @var Collection<array-key, Order>
      */

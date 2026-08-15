@@ -1,4 +1,4 @@
-App\Entity\RandomDiscount:
+App\Entity\OrderAdjustment:
     attributes:
         id:
             groups: [order.item, order.collection]

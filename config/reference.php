@@ -1275,6 +1275,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  * @psalm-type SiganushkaOrderConfig = array{
  *     order_class?: scalar|Param|null,
  *     order_item_class?: scalar|Param|null,
+ *     order_adjustment_class?: scalar|Param|null,
  *     order_number_generator?: scalar|Param|null, // Default: "Siganushka\\OrderBundle\\Generator\\OrderNumberGenerator"
  *     order_stock_modifier?: scalar|Param|null, // Default: "Siganushka\\OrderBundle\\Stock\\OrderStockModifier"
  *     order_item_subject_type?: scalar|Param|null, // Default: "Siganushka\\OrderBundle\\Form\\Type\\OrderItemSubjectType"
@@ -1301,6 +1302,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     collapse_cookie?: scalar|Param|null, // Default: "siganushka_admin_collapse"
  * }
  * @psalm-type SiganushkaPaymentConfig = array{
+ *     payment_class?: scalar|Param|null,
  *     payment_refund_class?: scalar|Param|null,
  *     payment_number_generator?: scalar|Param|null, // Default: "Siganushka\\PaymentBundle\\Generator\\PaymentNumberGenerator"
  *     payment_cancel_transport?: string|Param, // Default: null

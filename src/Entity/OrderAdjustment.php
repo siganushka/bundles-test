@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Siganushka\OrderBundle\Entity\AbstractOrderAdjustment;
 
 #[ORM\Entity]
-class CouponDiscount extends AbstractOrderAdjustment
+#[ORM\InheritanceType(value: 'SINGLE_TABLE')]
+class OrderAdjustment extends AbstractOrderAdjustment
 {
 }

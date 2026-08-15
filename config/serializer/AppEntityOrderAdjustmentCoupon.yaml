@@ -1,4 +1,4 @@
-App\Entity\ShippingFee:
+App\Entity\OrderAdjustmentCoupon:
     attributes:
         id:
             groups: [order.item, order.collection]

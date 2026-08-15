@@ -10,10 +10,8 @@ use Symfony\Component\Translation\TranslatableMessage;
 use Symfony\Contracts\Translation\TranslatableInterface;
 
 #[ORM\Entity]
-class PaymentOrder extends AbstractPayment
+class PaymentOrder extends Payment
 {
-    use PaymentContext;
-
     #[ORM\ManyToOne(inversedBy: 'payments')]
     private readonly Order $order;
 

@@ -4,22 +4,22 @@ declare(strict_types=1);
 
 namespace App\EventListener;
 
-use App\Entity\CouponDiscount;
 use App\Entity\Order;
-use App\Entity\RandomDiscount;
-use App\Entity\ShippingFee;
+use App\Entity\OrderAdjustmentCoupon;
+use App\Entity\OrderAdjustmentRandom;
+use App\Entity\OrderAdjustmentShipping;
 use Doctrine\Bundle\DoctrineBundle\Attribute\AsEntityListener;
 use Doctrine\ORM\Events;
 
 #[AsEntityListener(Events::prePersist, entity: Order::class)]
-class OrderAddAdjustmentListener
+class OrderAdjustmentListener
 {
     public function __invoke(Order $entity): void
     {
         $adjustments = [
-            new RandomDiscount(-300),
-            new CouponDiscount(-500),
-            new ShippingFee(600),
+            new OrderAdjustmentRandom(-300),
+            new OrderAdjustmentCoupon(-500),
+            new OrderAdjustmentShipping(600),
         ];
 
         $num = random_int(0, 3);
