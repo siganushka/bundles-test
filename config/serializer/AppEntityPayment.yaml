@@ -24,9 +24,9 @@ App\Entity\Payment:
             groups: [payment.item, payment.collection]
         title:
             groups: [payment.item, payment.collection]
-        refundable:
-            groups: [payment.item, payment.collection]
         refundableAmount:
+            groups: [payment.item, payment.collection]
+        refundSupported:
             groups: [payment.item, payment.collection]
         createdAt:
             groups: [payment.item, payment.collection]

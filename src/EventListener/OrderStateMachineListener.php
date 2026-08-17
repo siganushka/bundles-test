@@ -34,7 +34,7 @@ class OrderStateMachineListener implements EventSubscriberInterface
         }
 
         $refundable = $payment->getRefundableAmount();
-        if (null === $refundable || $refundable <= 0) {
+        if ($refundable <= 0) {
             return;
         }
 

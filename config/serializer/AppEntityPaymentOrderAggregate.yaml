@@ -28,7 +28,7 @@ App\Entity\PaymentOrderAggregate:
             groups: [payment.item, payment.collection]
         type:
             groups: [payment.item, payment.collection]
-        refundable:
+        refundSupported:
             groups: [payment.item, payment.collection]
         createdAt:
             groups: [payment.item, payment.collection]

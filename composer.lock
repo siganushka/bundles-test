@@ -2832,7 +2832,7 @@
             "dist": {
                 "type": "path",
                 "url": "../api-factory-bundle",
-                "reference": "dbe2c36becabee0ae2611b0f13442857e5e79ce3"
+                "reference": "77b958be9ee2218078d27f84beb505964e92cd17"
             },
             "require": {
                 "composer-runtime-api": ">=2.1",
@@ -3079,7 +3079,7 @@
             "dist": {
                 "type": "path",
                 "url": "../media-bundle",
-                "reference": "dcd60495acb80d33dac92830e601e1656688bd92"
+                "reference": "cce45260b58f82940f48bcd373216964d1d15823"
             },
             "require": {
                 "ext-fileinfo": "*",
@@ -3214,7 +3214,7 @@
             "dist": {
                 "type": "path",
                 "url": "../payment-bundle",
-                "reference": "02200a795b262221249fc6dba548a13eca0b4e99"
+                "reference": "d8670bb24ad394c60583a740336d473ff6a30a0e"
             },
             "require": {
                 "knplabs/knp-components": "^5.0",
