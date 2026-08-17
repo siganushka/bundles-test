@@ -6,11 +6,11 @@ namespace App\Payment\Gateway;
 
 use App\Entity\PaymentTopup;
 use App\Repository\UserRepository;
-use Siganushka\PaymentBundle\Entity\AbstractPayment;
-use Siganushka\PaymentBundle\Entity\AbstractPaymentRefund;
 use Siganushka\PaymentBundle\Enum\PaymentState;
 use Siganushka\PaymentBundle\Exception\PaymentFailedException;
 use Siganushka\PaymentBundle\Gateway\AbstractPaymentGateway;
+use Siganushka\PaymentBundle\Model\PaymentInterface;
+use Siganushka\PaymentBundle\Model\PaymentRefundInterface;
 use Siganushka\PaymentBundle\Result\NotifyResult;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,12 +24,12 @@ class WalletPay extends AbstractPaymentGateway
     {
     }
 
-    public function supports(AbstractPayment $payment): bool
+    public function supports(PaymentInterface $payment): bool
     {
         return !$payment instanceof PaymentTopup;
     }
 
-    public function pay(AbstractPayment $payment): array
+    public function pay(PaymentInterface $payment): array
     {
         $user = $this->userRepository->findOneByIdentifier(self::CURRENT_USER_IDENTIFIER)
             ?? throw new PaymentFailedException(\sprintf('The user "%s" does not found.', self::CURRENT_USER_IDENTIFIER));
@@ -48,7 +48,7 @@ class WalletPay extends AbstractPaymentGateway
         return $details;
     }
 
-    public function refund(AbstractPayment $payment, AbstractPaymentRefund $refund): array
+    public function refund(PaymentInterface $payment, PaymentRefundInterface $refund): array
     {
         $identifier = $payment->getDetails()[self::DETAILS_IDENTIFIER] ?? null;
         if (!$identifier) {
