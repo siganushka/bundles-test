@@ -997,6 +997,8 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *             success_path?: scalar|Param|null, // Default: "/"
  *             failure_path?: scalar|Param|null, // Default: "/"
  *             code_parameter?: scalar|Param|null, // Default: "code"
+ *             state_parameter?: scalar|Param|null, // Default: "state"
+ *             state_enabled?: bool|Param, // Default: true
  *         },
  *         wechat_mp?: array{
  *             user_persister?: scalar|Param|null, // Default: "Siganushka\\ApiFactoryBundle\\Security\\Core\\User\\NullUserPersister"
@@ -1005,6 +1007,8 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *             success_path?: scalar|Param|null, // Default: "/"
  *             failure_path?: scalar|Param|null, // Default: "/"
  *             code_parameter?: scalar|Param|null, // Default: "code"
+ *             state_parameter?: scalar|Param|null, // Default: "state"
+ *             state_enabled?: bool|Param, // Default: true
  *         },
  *         wechat_open?: array{
  *             user_persister?: scalar|Param|null, // Default: "Siganushka\\ApiFactoryBundle\\Security\\Core\\User\\NullUserPersister"
@@ -1013,6 +1017,8 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *             success_path?: scalar|Param|null, // Default: "/"
  *             failure_path?: scalar|Param|null, // Default: "/"
  *             code_parameter?: scalar|Param|null, // Default: "code"
+ *             state_parameter?: scalar|Param|null, // Default: "state"
+ *             state_enabled?: bool|Param, // Default: true
  *         },
  *         wechat_miniapp?: array{
  *             user_persister?: scalar|Param|null, // Default: "Siganushka\\ApiFactoryBundle\\Security\\Core\\User\\NullUserPersister"
@@ -1021,6 +1027,8 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *             success_path?: scalar|Param|null, // Default: "/"
  *             failure_path?: scalar|Param|null, // Default: "/"
  *             code_parameter?: scalar|Param|null, // Default: "jscode"
+ *             state_parameter?: scalar|Param|null, // Default: "state"
+ *             state_enabled?: bool|Param, // Default: false
  *         },
  *     }>,
  *     access_control?: list<array{ // Default: []
