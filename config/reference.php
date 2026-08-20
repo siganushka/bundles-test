@@ -999,6 +999,12 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *             code_parameter?: scalar|Param|null, // Default: "code"
  *             state_parameter?: scalar|Param|null, // Default: "state"
  *             state_enabled?: bool|Param, // Default: true
+ *             login?: scalar|Param|null, // Default: null
+ *             scope?: scalar|Param|null, // Default: null
+ *             code_challenge?: scalar|Param|null, // Default: null
+ *             code_challenge_method?: scalar|Param|null, // Default: null
+ *             allow_signup?: scalar|Param|null, // Default: null
+ *             prompt?: scalar|Param|null, // Default: null
  *         },
  *         wechat_mp?: array{
  *             user_persister?: scalar|Param|null, // Default: "Siganushka\\ApiFactoryBundle\\Security\\Core\\User\\NullUserPersister"
@@ -1009,6 +1015,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *             code_parameter?: scalar|Param|null, // Default: "code"
  *             state_parameter?: scalar|Param|null, // Default: "state"
  *             state_enabled?: bool|Param, // Default: true
+ *             scope?: scalar|Param|null, // Default: null
  *         },
  *         wechat_open?: array{
  *             user_persister?: scalar|Param|null, // Default: "Siganushka\\ApiFactoryBundle\\Security\\Core\\User\\NullUserPersister"
@@ -1019,6 +1026,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *             code_parameter?: scalar|Param|null, // Default: "code"
  *             state_parameter?: scalar|Param|null, // Default: "state"
  *             state_enabled?: bool|Param, // Default: true
+ *             scope?: scalar|Param|null, // Default: null
  *         },
  *         wechat_miniapp?: array{
  *             user_persister?: scalar|Param|null, // Default: "Siganushka\\ApiFactoryBundle\\Security\\Core\\User\\NullUserPersister"
