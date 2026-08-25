@@ -12,7 +12,7 @@ use Siganushka\PaymentBundle\Repository\PaymentRefundRepository;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Workflow\Event\TransitionEvent;
 
-class OrderStateMachineListener implements EventSubscriberInterface
+class OrderRefundListener implements EventSubscriberInterface
 {
     public function __construct(
         private readonly LoggerInterface $logger,
