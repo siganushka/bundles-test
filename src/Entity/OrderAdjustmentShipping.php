@@ -9,4 +9,8 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity]
 class OrderAdjustmentShipping extends OrderAdjustment
 {
+    public function getType(): string
+    {
+        return 'shipping';
+    }
 }

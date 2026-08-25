@@ -9,4 +9,8 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity]
 class OrderAdjustmentRandom extends OrderAdjustment
 {
+    public function getType(): string
+    {
+        return 'random';
+    }
 }
