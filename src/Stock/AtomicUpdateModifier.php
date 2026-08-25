@@ -45,8 +45,7 @@ class AtomicUpdateModifier implements OrderStockModifierInterface
             }
 
             $quantity = $item->getQuantity();
-            $stock = $subject->availableStock();
-            if (null === $quantity || null === $stock) {
+            if (null === $quantity) {
                 continue;
             }
 
@@ -63,8 +62,8 @@ class AtomicUpdateModifier implements OrderStockModifierInterface
             }
 
             $query = $qb->getQuery();
-            if (!$query->execute()) {
-                throw new OutOfStockException($subject, $stock, $quantity);
+            if (0 === $query->execute()) {
+                throw new OutOfStockException($subject, $quantity);
             }
         }
     }
