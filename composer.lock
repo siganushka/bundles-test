@@ -2951,7 +2951,7 @@
             "dist": {
                 "type": "path",
                 "url": "../generic-bundle",
-                "reference": "5574c1990bf45e15900bd3ee0a8f04ca744c3126"
+                "reference": "272280a0e111c0e3ca1393a3cdfa77e0cb548150"
             },
             "require": {
                 "php": ">=8.2",
@@ -3148,7 +3148,7 @@
             "dist": {
                 "type": "path",
                 "url": "../order-bundle",
-                "reference": "4b0415fa4f3af1e937f16358b8cdce35825f2a64"
+                "reference": "dc0aede03cdb22b7894d0bc6cfa3e22c978fc9b5"
             },
             "require": {
                 "godruoyi/php-snowflake": "^3.0",
@@ -3281,7 +3281,7 @@
             "dist": {
                 "type": "path",
                 "url": "../product-bundle",
-                "reference": "2b9350541008178bddf137c9954d73e5d03b9e26"
+                "reference": "beb3910701edf0f371e4f814614f884b2a02cf12"
             },
             "require": {
                 "bentools/cartesian-product": "^2.0",

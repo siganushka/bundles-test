@@ -6,7 +6,7 @@ App\Entity\ProductOptionValue:
             groups: []
         code:
             groups: [product_option.item, product.item, product.collection]
-        text:
+        name:
             groups: [product_option.item, product.item, product.collection]
         img:
             groups: [product_option.item, product.item, product.collection]
