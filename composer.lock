@@ -2951,7 +2951,7 @@
             "dist": {
                 "type": "path",
                 "url": "../generic-bundle",
-                "reference": "272280a0e111c0e3ca1393a3cdfa77e0cb548150"
+                "reference": "e8072116ff598e51c30fc462974713639dd952de"
             },
             "require": {
                 "php": ">=8.2",
@@ -3079,7 +3079,7 @@
             "dist": {
                 "type": "path",
                 "url": "../media-bundle",
-                "reference": "cce45260b58f82940f48bcd373216964d1d15823"
+                "reference": "fa71434e8b98ae48ce1a38e8d2f06a560266cc2e"
             },
             "require": {
                 "ext-fileinfo": "*",
@@ -3148,7 +3148,7 @@
             "dist": {
                 "type": "path",
                 "url": "../order-bundle",
-                "reference": "dc0aede03cdb22b7894d0bc6cfa3e22c978fc9b5"
+                "reference": "3aafddbbef0499482c09050764893fe0c962ab11"
             },
             "require": {
                 "godruoyi/php-snowflake": "^3.0",
@@ -3214,7 +3214,7 @@
             "dist": {
                 "type": "path",
                 "url": "../payment-bundle",
-                "reference": "e26d9ef2b0e8e160c5fd2d091f0fb7934b2d5c9c"
+                "reference": "a105bbe3b32e3b83279fd68f3eba87a85360e85f"
             },
             "require": {
                 "knplabs/knp-components": "^5.0",
@@ -3281,7 +3281,7 @@
             "dist": {
                 "type": "path",
                 "url": "../product-bundle",
-                "reference": "05e9370838d5224741d3e691b862ab990f413ac5"
+                "reference": "e87720bd896065d7945e3e8b020aaa7a398bfc8a"
             },
             "require": {
                 "bentools/cartesian-product": "^2.0",
@@ -3468,7 +3468,7 @@
             "dist": {
                 "type": "path",
                 "url": "../user-bundle",
-                "reference": "25c99ca5137c096683045cd2a3a44ffb43112815"
+                "reference": "1d405de9d954f7adb842762c729602eb335607b0"
             },
             "require": {
                 "knplabs/knp-components": "^5.0",
@@ -3585,7 +3585,7 @@
             "dist": {
                 "type": "path",
                 "url": "../wxpay-api",
-                "reference": "df0a4a53c1f6ad90f29b0b870670331e1eb68063"
+                "reference": "dd0ac546e4c39b395ff5ca5721a8b457ba981642"
             },
             "require": {
                 "php": ">=8.2",
