@@ -46,8 +46,8 @@ class ApiFactoryAuthenticationListener implements EventSubscriberInterface
     public static function getSubscribedEvents(): array
     {
         return [
-            AuthenticationSuccessEvent::getAuthenticator(WechatMiniappAuthenticator::class) => 'onAuthenticationSuccess',
-            AuthenticationFailureEvent::getAuthenticator(WechatMiniappAuthenticator::class) => 'onAuthenticationFailure',
+            AuthenticationSuccessEvent::getName(WechatMiniappAuthenticator::class) => 'onAuthenticationSuccess',
+            AuthenticationFailureEvent::getName(WechatMiniappAuthenticator::class) => 'onAuthenticationFailure',
         ];
     }
 }

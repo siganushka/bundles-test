@@ -2832,7 +2832,7 @@
             "dist": {
                 "type": "path",
                 "url": "../api-factory-bundle",
-                "reference": "55a960074782e05e11e0eb4cd12bce015cac521b"
+                "reference": "1751e6f381133f733de2531188b16c8e5c5ae90b"
             },
             "require": {
                 "composer-runtime-api": ">=2.1",
