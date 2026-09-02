@@ -22,6 +22,7 @@
 ###< symfony/phpunit-bridge ###
 
 ###> app ###
+/config/wxpay/*.pem
 /tools/vendor
 /tools/composer.lock
 /public/uploads/

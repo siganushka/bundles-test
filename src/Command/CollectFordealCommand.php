@@ -63,7 +63,9 @@ class CollectFordealCommand extends Command
             $productOption = new ProductOption($value['title']);
             foreach ($value['nValue'] as ['key' => $code, 'value' => $name]) {
                 if ($multipleValues && 0 === $key) {
-                    $imgUrl = array_find($data['sku']['skus'], static fn (array $item) => \in_array($code, $item['attr']))['image'] ?? null;
+                    /** @var array */
+                    $sku = array_find($data['sku']['skus'], static fn (array $item) => \in_array($code, $item['attr']));
+                    $imgUrl = $sku['image'] ?? null;
                     $img = $imgUrl ? $this->handleMedia('product_img', $imgUrl) : null;
                 } else {
                     $img = null;
@@ -78,6 +80,7 @@ class CollectFordealCommand extends Command
         foreach ($entity->generateChoices() as $choice) {
             $variant = new ProductVariant($choice);
 
+            /** @var array */
             $result = array_find($data['sku']['skus'], static function (array $item) use ($choice): bool {
                 sort($item['attr']);
 
