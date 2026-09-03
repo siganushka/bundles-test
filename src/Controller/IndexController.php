@@ -7,6 +7,7 @@ namespace App\Controller;
 use App\Entity\Media;
 use App\Form\TestType;
 use Siganushka\ApiFactory\Github\OAuth\Client;
+use Siganushka\ApiFactoryBundle\Security\Http\Authenticator\GithubAuthenticator;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
@@ -23,6 +24,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ServerEvent;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Validator\Constraints\Count;
 use Symfony\Component\Validator\Constraints\NotBlank;
@@ -162,11 +164,12 @@ class IndexController extends AbstractController
     }
 
     #[Route('/security')]
-    public function security(Client $client, UrlGeneratorInterface $urlGenerator, AuthenticationUtils $authenticationUtils): Response
+    public function security(Client $client, UrlGeneratorInterface $urlGenerator, CsrfTokenManagerInterface $csrfTokenManager, AuthenticationUtils $authenticationUtils): Response
     {
         $error = $authenticationUtils->getLastAuthenticationError();
         $authorizeUrl = $client->getRedirectUrl([
             'redirect_uri' => $urlGenerator->generate('app_login_github', [], UrlGeneratorInterface::ABSOLUTE_URL),
+            'state' => $csrfTokenManager->getToken(GithubAuthenticator::class)->getValue(),
         ]);
 
         return $this->render('index/security.html.twig', compact('error', 'authorizeUrl'));

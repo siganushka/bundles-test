@@ -12,9 +12,11 @@ use Siganushka\PaymentBundle\Gateway\AbstractPaymentGateway;
 use Siganushka\PaymentBundle\Model\PaymentInterface;
 use Siganushka\PaymentBundle\Model\PaymentRefundInterface;
 use Siganushka\PaymentBundle\Result\NotifyResult;
+use Symfony\Component\DependencyInjection\Attribute\AsTaggedItem;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
+#[AsTaggedItem('wallet_pay')]
 class WalletPay extends AbstractPaymentGateway
 {
     public const CURRENT_USER_IDENTIFIER = 'siganushka';

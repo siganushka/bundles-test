@@ -1,128 +1,134 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
+  <head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+    {% block stylesheets %}
+    {% endblock %}
 
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
-    </head>
-    <body>
-        <div class="container-fluid my-3">
-          <div class="row">
-            <div class="col-lg-4 col-xl-3 col-xxl-2">
-              <ul class="dropdown-menu position-static d-grid rounded-3 mb-3" data-bs-theme="light">
-                <li>
-                  <a class="dropdown-item rounded-2" href="{{ path('app_index_index') }}">Index</a>
-                </li>
-                <li>
-                  <h6 class="dropdown-header">siganushka/generic-bundle</h6>
-                </li>
-                <li>
-                  <a class="dropdown-item rounded-2" href="{{ path('app_index_collection') }}">collection</a>
-                </li>
-                <li>
-                  <a class="dropdown-item rounded-2" href="{{ path('app_index_intl') }}">intl</a>
-                </li>
-                <li>
-                  <a class="dropdown-item rounded-2" href="{{ path('app_index_security') }}">security</a>
-                </li>
-                <li>
-                  <h6 class="dropdown-header">siganushka/region-bundle</h6>
-                </li>
-                <li>
-                  <a class="dropdown-item rounded-2" href="{{ path('app_region_regiontype') }}">RegionType</a>
-                </li>
-                <li>
-                  <h6 class="dropdown-header">siganushka/media-bundle</h6>
-                </li>
-                <li>
-                  <a class="dropdown-item rounded-2" href="{{ path('app_media_index') }}">media</a>
-                </li>
-                <li>
-                  <a class="dropdown-item rounded-2" href="{{ path('app_media_mediauploadtype') }}">MediaUploadType</a>
-                </li>
-                <li>
-                  <a class="dropdown-item rounded-2" href="{{ path('app_media_mediatype') }}">MediaType</a>
-                </li>
-                <li>
-                  <h6 class="dropdown-header">siganushka/product-bundle</h6>
-                </li>
-                <li>
-                  <a class="dropdown-item rounded-2" href="{{ path('app_product_index') }}">products</a>
-                </li>
-                <li>
-                  <a class="dropdown-item rounded-2" href="{{ path('app_product_producttype') }}">ProductType</a>
-                </li>
-                <li>
-                  <a class="dropdown-item rounded-2" href="{{ path('app_product_productoptiontype') }}">ProductOptionType</a>
-                </li>
-                <li>
-                  <a class="dropdown-item rounded-2" href="{{ path('app_product_productoptionvaluetype') }}">ProductOptionValueType</a>
-                </li>
-                <li>
-                  <a class="dropdown-item rounded-2" href="{{ path('app_product_productvariantcollectiontype') }}">ProductVariantCollectionType</a>
-                </li>
-                <li>
-                  <a class="dropdown-item rounded-2" href="{{ path('app_product_productvarianttype') }}">ProductVariantType</a>
-                </li>
-                <li>
-                  <h6 class="dropdown-header">siganushka/order-bundle</h6>
-                </li>
-                <li>
-                  <a class="dropdown-item rounded-2" href="{{ path('app_order_index') }}">orders</a>
-                </li>
-                <li>
-                  <a class="dropdown-item rounded-2" href="{{ path('app_order_ordertype') }}">OrderType</a>
-                </li>
-                <li>
-                  <a class="dropdown-item rounded-2" href="{{ path('app_order_orderitemtype') }}">OrderItemType</a>
-                </li>
-                <li>
-                  <h6 class="dropdown-header">siganushka/payment-bundle</h6>
-                </li>
-                <li>
-                  <a class="dropdown-item rounded-2" href="{{ path('app_payment_index') }}">payments</a>
-                </li>
-                <li>
-                  <a class="dropdown-item rounded-2" href="{{ path('app_payment_paymentrefundtype') }}">PaymentRefundType</a>
-                </li>
-                <li>
-                  <h6 class="dropdown-header">siganushka/user-bundle</h6>
-                </li>
-                <li>
-                  <a class="dropdown-item rounded-2" href="{{ path('app_user_index') }}">users</a>
-                </li>
-                <li>
-                  <a class="dropdown-item rounded-2" href="{{ path('app_user_usertype') }}">UserType</a>
-                </li>
-                <li>
-                  <a class="dropdown-item rounded-2" href="{{ path('app_user_registrationtype') }}">RegistrationType</a>
-                </li>
-                <li>
-                  <a class="dropdown-item rounded-2" href="{{ path('app_user_changepasswordtype') }}">ChangePasswordType</a>
-                </li>
-                <li>
-                  <a class="dropdown-item rounded-2" href="{{ path('app_user_resetpasswordtype') }}">ResetPasswordType</a>
-                </li>
-                <li>
-                  <h6 class="dropdown-header">siganushka/admin-bundle</h6>
-                </li>
-                <li>
-                  <a class="dropdown-item rounded-2" href="{{ path('app_admin_dashboard') }}">Dashboard</a>
-                </li>
-              </ul>
-            </div>
-            <div class="col-lg-8 col-xl-9 col-xxl-10">
-              {% include 'flash.html.twig' %}
-              {% block body %}{% endblock %}
-            </div>
-          </div>
+    {% block javascripts %}
+      {% block importmap %}{{ importmap('app') }}{% endblock %}
+    {% endblock %}
+
+    {% set frankenphp_hot_reload = app.request.server.get('FRANKENPHP_HOT_RELOAD') %}
+    {% if frankenphp_hot_reload %}
+    <meta name="frankenphp-hot-reload:url" content="{{ frankenphp_hot_reload }}">
+    <script src="https://cdn.jsdelivr.net/npm/idiomorph"></script>
+    <script src="https://cdn.jsdelivr.net/npm/frankenphp-hot-reload/+esm" type="module"></script>
+    {% endif %}
+  </head>
+  <body>
+    <div class="container-fluid my-3">
+      <div class="row">
+        <div class="col-lg-4 col-xl-3 col-xxl-2">
+          <ul class="dropdown-menu position-static d-grid rounded-3 mb-3" data-bs-theme="light">
+            <li>
+              <a class="dropdown-item rounded-2" href="{{ path('app_index_index') }}">Index</a>
+            </li>
+            <li>
+              <h6 class="dropdown-header">siganushka/generic-bundle</h6>
+            </li>
+            <li>
+              <a class="dropdown-item rounded-2" href="{{ path('app_index_collection') }}">collection</a>
+            </li>
+            <li>
+              <a class="dropdown-item rounded-2" href="{{ path('app_index_intl') }}">intl</a>
+            </li>
+            <li>
+              <a class="dropdown-item rounded-2" href="{{ path('app_index_security') }}">security</a>
+            </li>
+            <li>
+              <h6 class="dropdown-header">siganushka/region-bundle</h6>
+            </li>
+            <li>
+              <a class="dropdown-item rounded-2" href="{{ path('app_region_regiontype') }}">RegionType</a>
+            </li>
+            <li>
+              <h6 class="dropdown-header">siganushka/media-bundle</h6>
+            </li>
+            <li>
+              <a class="dropdown-item rounded-2" href="{{ path('app_media_index') }}">media</a>
+            </li>
+            <li>
+              <a class="dropdown-item rounded-2" href="{{ path('app_media_mediauploadtype') }}">MediaUploadType</a>
+            </li>
+            <li>
+              <a class="dropdown-item rounded-2" href="{{ path('app_media_mediatype') }}">MediaType</a>
+            </li>
+            <li>
+              <h6 class="dropdown-header">siganushka/product-bundle</h6>
+            </li>
+            <li>
+              <a class="dropdown-item rounded-2" href="{{ path('app_product_index') }}">products</a>
+            </li>
+            <li>
+              <a class="dropdown-item rounded-2" href="{{ path('app_product_producttype') }}">ProductType</a>
+            </li>
+            <li>
+              <a class="dropdown-item rounded-2" href="{{ path('app_product_productoptiontype') }}">ProductOptionType</a>
+            </li>
+            <li>
+              <a class="dropdown-item rounded-2" href="{{ path('app_product_productoptionvaluetype') }}">ProductOptionValueType</a>
+            </li>
+            <li>
+              <a class="dropdown-item rounded-2" href="{{ path('app_product_productvariantcollectiontype') }}">ProductVariantCollectionType</a>
+            </li>
+            <li>
+              <a class="dropdown-item rounded-2" href="{{ path('app_product_productvarianttype') }}">ProductVariantType</a>
+            </li>
+            <li>
+              <h6 class="dropdown-header">siganushka/order-bundle</h6>
+            </li>
+            <li>
+              <a class="dropdown-item rounded-2" href="{{ path('app_order_index') }}">orders</a>
+            </li>
+            <li>
+              <a class="dropdown-item rounded-2" href="{{ path('app_order_ordertype') }}">OrderType</a>
+            </li>
+            <li>
+              <a class="dropdown-item rounded-2" href="{{ path('app_order_orderitemtype') }}">OrderItemType</a>
+            </li>
+            <li>
+              <h6 class="dropdown-header">siganushka/payment-bundle</h6>
+            </li>
+            <li>
+              <a class="dropdown-item rounded-2" href="{{ path('app_payment_index') }}">payments</a>
+            </li>
+            <li>
+              <a class="dropdown-item rounded-2" href="{{ path('app_payment_paymentrefundtype') }}">PaymentRefundType</a>
+            </li>
+            <li>
+              <h6 class="dropdown-header">siganushka/user-bundle</h6>
+            </li>
+            <li>
+              <a class="dropdown-item rounded-2" href="{{ path('app_user_index') }}">users</a>
+            </li>
+            <li>
+              <a class="dropdown-item rounded-2" href="{{ path('app_user_usertype') }}">UserType</a>
+            </li>
+            <li>
+              <a class="dropdown-item rounded-2" href="{{ path('app_user_registrationtype') }}">RegistrationType</a>
+            </li>
+            <li>
+              <a class="dropdown-item rounded-2" href="{{ path('app_user_changepasswordtype') }}">ChangePasswordType</a>
+            </li>
+            <li>
+              <a class="dropdown-item rounded-2" href="{{ path('app_user_resetpasswordtype') }}">ResetPasswordType</a>
+            </li>
+            <li>
+              <h6 class="dropdown-header">siganushka/admin-bundle</h6>
+            </li>
+            <li>
+              <a class="dropdown-item rounded-2" href="{{ path('app_admin_dashboard') }}">Dashboard</a>
+            </li>
+          </ul>
         </div>
-    </body>
+        <div class="col-lg-8 col-xl-9 col-xxl-10">
+          {% include 'flash.html.twig' %}
+          {% block body %}{% endblock %}
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

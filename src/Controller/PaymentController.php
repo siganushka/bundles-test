@@ -12,7 +12,6 @@ use Siganushka\PaymentBundle\Entity\AbstractPayment;
 use Siganushka\PaymentBundle\Entity\Payment;
 use Siganushka\PaymentBundle\Exception\PaymentFailedException;
 use Siganushka\PaymentBundle\Form\PaymentRefundType;
-use Siganushka\PaymentBundle\Gateway\WxpayJsapi;
 use Siganushka\PaymentBundle\PaymentManagerInterface;
 use Siganushka\PaymentBundle\Repository\PaymentRefundRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -77,7 +76,7 @@ class PaymentController extends AbstractController
         // // Test Payment
         // $order = $entityManager->find(Order::class, 1);
 
-        // $payment = new PaymentOrder(WxpayJsapi::getName(), $order);
+        // $payment = new PaymentOrder('wxpay_jsapi', $order);
         // $entityManager->persist($payment);
 
         // $result = $paymentManager->pay($payment);

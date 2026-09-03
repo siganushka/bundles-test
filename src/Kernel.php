@@ -21,4 +21,12 @@ class Kernel extends BaseKernel
             Type::addType('money', new BrickMoneyType($currency));
         }
     }
+
+    /**
+     * @return list<string> An array of allowed values for APP_ENV
+     */
+    private function getAllowedEnvs(): array
+    {
+        return ['prod', 'dev', 'test'];
+    }
 }

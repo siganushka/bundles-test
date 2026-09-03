@@ -40,7 +40,7 @@ class BrickMoneyType extends Type
             return $value;
         }
 
-        if (\is_int($value) || \is_float($value) || \is_string($value)) {
+        if (\is_int($value) || \is_string($value)) {
             return Money::ofMinor($value, $this->currency);
         }
 

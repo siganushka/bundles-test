@@ -17,6 +17,7 @@ use Siganushka\OrderBundle\Dto\OrderQueryDto;
 use Siganushka\OrderBundle\Form\OrderItemType;
 use Siganushka\OrderBundle\Form\OrderType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\DependencyInjection\Attribute\Target;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -55,7 +56,7 @@ class OrderController extends AbstractController
     }
 
     #[Route('/{number}/workflow/{transition}')]
-    public function workflow(Request $request, EntityManagerInterface $entityManager, WorkflowInterface $orderStateMachine, string $number, string $transition): Response
+    public function workflow(Request $request, EntityManagerInterface $entityManager, #[Target('order')] WorkflowInterface $workflow, string $number, string $transition): Response
     {
         $entity = $this->repository->findOneByNumber($number)
             ?? throw $this->createNotFoundException();
@@ -64,8 +65,8 @@ class OrderController extends AbstractController
             ?? $this->generateUrl('app_order_index');
 
         try {
-            $entityManager->wrapInTransaction(static function (EntityManagerInterface $em) use ($orderStateMachine, $entity, $transition) {
-                $orderStateMachine->apply($entity, $transition);
+            $entityManager->wrapInTransaction(static function (EntityManagerInterface $em) use ($workflow, $entity, $transition) {
+                $workflow->apply($entity, $transition);
                 $em->flush();
             });
 

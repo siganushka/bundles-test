@@ -17,7 +17,6 @@ security:
             lazy: true
             pattern: ^/admin
             http_basic: ~
-
         rest:
             lazy: true
             stateless: true
@@ -25,7 +24,6 @@ security:
             wechat_miniapp:
                 check_path: /rest/wechat/miniapp
                 configuration: siganushka_api_factory.wechat.configuration_miniapp
-
         app:
             lazy: true
             pattern: ^/

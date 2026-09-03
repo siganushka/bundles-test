@@ -21,14 +21,12 @@ class OrderRefundListener implements EventSubscriberInterface
     {
     }
 
+    /**
+     * @param TransitionEvent<Order> $event
+     */
     public function onCancel(TransitionEvent $event): void
     {
-        $subject = $event->getSubject();
-        if (!$subject instanceof Order) {
-            return;
-        }
-
-        $payment = $subject->getCurrentPayment();
+        $payment = $event->getSubject()->getCurrentPayment();
         if (!$payment) {
             return;
         }

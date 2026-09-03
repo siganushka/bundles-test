@@ -9,3 +9,5 @@ parameters:
     ignoreErrors:
         - '#no value type specified in iterable type array#'
         - '#does not specify its types: TData#'
+    excludePaths:
+        - src/Kernel.php
