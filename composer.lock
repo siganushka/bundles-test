@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b249f39f6bc2f3fc7ec799b620000e2f",
+    "content-hash": "d4ed2deb05c1e9b5ab5cc88da245b388",
     "packages": [
         {
             "name": "aliyuncs/oss-sdk-php",
@@ -2635,7 +2635,7 @@
             "dist": {
                 "type": "path",
                 "url": "../admin-bundle",
-                "reference": "7ac54b67c82946df5eccdea27a437e8ddf0edf0a"
+                "reference": "4e4623c71b3d248d104a4460f58fdd75ddb8a2c6"
             },
             "require": {
                 "knplabs/knp-menu-bundle": "^3.7",
@@ -2651,7 +2651,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.2.x-dev"
+                    "dev-main": "1.3.x-dev"
                 }
             },
             "autoload": {
@@ -2698,7 +2698,7 @@
             "dist": {
                 "type": "path",
                 "url": "../alipay-api",
-                "reference": "b3f21338c829556ccacc822b360496be567754fb"
+                "reference": "c282bd9333ffeed069c1fc3a02315198d0cf5e95"
             },
             "require": {
                 "php": ">=8.2",
@@ -2708,7 +2708,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.2.x-dev"
+                    "dev-main": "1.3.x-dev"
                 }
             },
             "autoload": {
@@ -2753,7 +2753,7 @@
             "dist": {
                 "type": "path",
                 "url": "../api-factory",
-                "reference": "2c71198da94051a7a485b7fe15590f657d6bd6ec"
+                "reference": "90c05697728d9611f50fc258bb77a2a0a84d4967"
             },
             "require": {
                 "php": ">=8.2",
@@ -2763,7 +2763,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.2.x-dev"
+                    "dev-main": "1.3.x-dev"
                 }
             },
             "autoload": {
@@ -2808,7 +2808,7 @@
             "dist": {
                 "type": "path",
                 "url": "../api-factory-bundle",
-                "reference": "1751e6f381133f733de2531188b16c8e5c5ae90b"
+                "reference": "685b05b0308f3ed1ce683387234f155b532cd5a4"
             },
             "require": {
                 "composer-runtime-api": ">=2.1",
@@ -2828,7 +2828,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.2.x-dev"
+                    "dev-main": "1.3.x-dev"
                 }
             },
             "autoload": {
@@ -2927,7 +2927,7 @@
             "dist": {
                 "type": "path",
                 "url": "../generic-bundle",
-                "reference": "e8072116ff598e51c30fc462974713639dd952de"
+                "reference": "1758b697e720ffa0114d584ecf0206d99e969600"
             },
             "require": {
                 "php": ">=8.2",
@@ -3000,7 +3000,7 @@
             "dist": {
                 "type": "path",
                 "url": "../github-api",
-                "reference": "afed06dec888c6c855cb4d9e3e8d1c5ad15a6f9b"
+                "reference": "8735fc4abb98ba04b79db4f631d63088093377a0"
             },
             "require": {
                 "php": ">=8.2",
@@ -3010,7 +3010,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.2.x-dev"
+                    "dev-main": "1.3.x-dev"
                 }
             },
             "autoload": {
@@ -3055,9 +3055,10 @@
             "dist": {
                 "type": "path",
                 "url": "../media-bundle",
-                "reference": "fa71434e8b98ae48ce1a38e8d2f06a560266cc2e"
+                "reference": "1f22a35d12f9960a02a156c87230560661f3976a"
             },
             "require": {
+                "doctrine/doctrine-bundle": "^2.18|^3.0",
                 "ext-fileinfo": "*",
                 "knplabs/knp-components": "^5.0",
                 "php": ">=8.2",
@@ -3124,9 +3125,10 @@
             "dist": {
                 "type": "path",
                 "url": "../order-bundle",
-                "reference": "3aafddbbef0499482c09050764893fe0c962ab11"
+                "reference": "04249690ee02d01e0025990f2e0e4c212460b924"
             },
             "require": {
+                "doctrine/doctrine-bundle": "^2.18|^3.0",
                 "godruoyi/php-snowflake": "^3.0",
                 "knplabs/knp-components": "^5.0",
                 "php": ">=8.2",
@@ -3190,9 +3192,10 @@
             "dist": {
                 "type": "path",
                 "url": "../payment-bundle",
-                "reference": "a105bbe3b32e3b83279fd68f3eba87a85360e85f"
+                "reference": "2ebbaec633baa8d9796cf01fd01c336fc9aa25ea"
             },
             "require": {
+                "doctrine/doctrine-bundle": "^2.18|^3.0",
                 "knplabs/knp-components": "^5.0",
                 "php": ">=8.2",
                 "siganushka/doctrine-contracts": "^1.2",
@@ -3257,10 +3260,11 @@
             "dist": {
                 "type": "path",
                 "url": "../product-bundle",
-                "reference": "f829ac8928b22cc5c4dda5055b86d4a37cff4fe0"
+                "reference": "54e4cd7921b1ebf690bb0e1be8f99d795e976605"
             },
             "require": {
                 "bentools/cartesian-product": "^2.0",
+                "doctrine/doctrine-bundle": "^2.18|^3.0",
                 "knplabs/knp-components": "^5.0",
                 "php": ">=8.2",
                 "siganushka/doctrine-contracts": "^1.2",
@@ -3322,10 +3326,10 @@
             "dist": {
                 "type": "path",
                 "url": "../region-bundle",
-                "reference": "ef6cdd8e756b2e5cc8338236dd2814eb0820251a"
+                "reference": "4fc1fa25d369f86555ca6e255d844967300a6baf"
             },
             "require": {
-                "doctrine/doctrine-bundle": "^2.12|^3.0",
+                "doctrine/doctrine-bundle": "^2.18|^3.0",
                 "php": ">=8.2",
                 "siganushka/doctrine-contracts": "^1.2",
                 "siganushka/generic-bundle": "dev-main",
@@ -3386,7 +3390,7 @@
             "dist": {
                 "type": "path",
                 "url": "../request-token-bundle",
-                "reference": "a5599ee8359ae11fa7b28ad6abb2089ad575376a"
+                "reference": "0ff66399303e7230d38a10273a7a94565c717452"
             },
             "require": {
                 "php": ">=8.2",
@@ -3399,7 +3403,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.2.x-dev"
+                    "dev-main": "1.3.x-dev"
                 }
             },
             "autoload": {
@@ -3444,9 +3448,10 @@
             "dist": {
                 "type": "path",
                 "url": "../user-bundle",
-                "reference": "1d405de9d954f7adb842762c729602eb335607b0"
+                "reference": "f8ede6a8a1a3576bba00fb2a498c97d87d82a7cf"
             },
             "require": {
+                "doctrine/doctrine-bundle": "^2.18|^3.0",
                 "knplabs/knp-components": "^5.0",
                 "php": ">=8.2",
                 "siganushka/doctrine-contracts": "^1.2",
@@ -3506,7 +3511,7 @@
             "dist": {
                 "type": "path",
                 "url": "../wechat-api",
-                "reference": "f89bc3123a652ace7fd58237bd719de4f5ba85fc"
+                "reference": "794d946de98759235ddd1258ab82f1d7a91e6d4c"
             },
             "require": {
                 "php": ">=8.2",
@@ -3516,7 +3521,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.2.x-dev"
+                    "dev-main": "1.3.x-dev"
                 }
             },
             "autoload": {
@@ -3561,7 +3566,7 @@
             "dist": {
                 "type": "path",
                 "url": "../wxpay-api",
-                "reference": "dd0ac546e4c39b395ff5ca5721a8b457ba981642"
+                "reference": "6815a882d1c55f3b858cf4cd2fa8d123865547ce"
             },
             "require": {
                 "php": ">=8.2",
@@ -3572,7 +3577,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.2.x-dev"
+                    "dev-main": "1.3.x-dev"
                 }
             },
             "autoload": {
