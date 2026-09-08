@@ -24,8 +24,8 @@ class ProductVariant extends AbstractProductVariant implements OrderItemSubjectI
 
         return new OrderItemSubjectData(
             title: $this->product?->getName(),
-            price: $this->price,
             subtitle: $this->name,
+            price: $this->price,
             img: $img?->getUrl(),
         );
     }

@@ -10,7 +10,7 @@
         "aliyuncs/oss-sdk-php": "^2.7",
         "brick/money": "^0.14.2",
         "doctrine/doctrine-bundle": "^3.3",
-        "doctrine/orm": "^3.6",
+        "doctrine/orm": "^3.7",
         "godruoyi/php-snowflake": "^3.2",
         "knplabs/knp-paginator-bundle": "^6.10",
         "nelmio/cors-bundle": "^2.6",
