@@ -19,7 +19,7 @@
         "siganushka/alipay-api": "^1.3",
         "siganushka/api-factory": "^1.3",
         "siganushka/api-factory-bundle": "^1.3",
-        "siganushka/doctrine-contracts": "^1.2",
+        "siganushka/doctrine-contracts": "^1.3",
         "siganushka/generic-bundle": "^1.3",
         "siganushka/github-api": "^1.3",
         "siganushka/media-bundle": "^1.3",

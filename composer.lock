@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "284fd631149ebec16a885ce765d82de9",
+    "content-hash": "5e464ca4d9c52c220a299d0fccfa920d",
     "packages": [
         {
             "name": "aliyuncs/oss-sdk-php",
@@ -2701,7 +2701,7 @@
             "dist": {
                 "type": "path",
                 "url": "../alipay-api",
-                "reference": "c282bd9333ffeed069c1fc3a02315198d0cf5e95"
+                "reference": "003d8d4e8373f60882c3ecee2269051447f62424"
             },
             "require": {
                 "php": ">=8.2",
@@ -2756,7 +2756,7 @@
             "dist": {
                 "type": "path",
                 "url": "../api-factory",
-                "reference": "90c05697728d9611f50fc258bb77a2a0a84d4967"
+                "reference": "052647cc6fc9397152adb71874edc51776c49038"
             },
             "require": {
                 "php": ">=8.2",
@@ -2876,7 +2876,7 @@
             "dist": {
                 "type": "path",
                 "url": "../doctrine-contracts",
-                "reference": "bc9ae1373135845e602d878244b15fdbe959881c"
+                "reference": "8e1bc3d4b2c9713079258595a3e451ba45172bae"
             },
             "require": {
                 "doctrine/orm": "^3.0",
@@ -2885,7 +2885,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.2.x-dev"
+                    "dev-main": "1.3.x-dev"
                 }
             },
             "autoload": {
@@ -3003,7 +3003,7 @@
             "dist": {
                 "type": "path",
                 "url": "../github-api",
-                "reference": "8735fc4abb98ba04b79db4f631d63088093377a0"
+                "reference": "1ba22c6bd2c843fa647c9f2faebc61f12f034b77"
             },
             "require": {
                 "php": ">=8.2",
@@ -3329,7 +3329,7 @@
             "dist": {
                 "type": "path",
                 "url": "../region-bundle",
-                "reference": "d38e816c89ad2e7e0514c3882c4003ac68521c26"
+                "reference": "62c04ba930570de8b49c862e03bc718ea5003ca2"
             },
             "require": {
                 "doctrine/doctrine-bundle": "^2.18|^3.0",
@@ -3393,7 +3393,7 @@
             "dist": {
                 "type": "path",
                 "url": "../request-token-bundle",
-                "reference": "0ff66399303e7230d38a10273a7a94565c717452"
+                "reference": "9b87465e805e8cad97a62222d04edf74aeca64f5"
             },
             "require": {
                 "php": ">=8.2",
@@ -3514,7 +3514,7 @@
             "dist": {
                 "type": "path",
                 "url": "../wechat-api",
-                "reference": "794d946de98759235ddd1258ab82f1d7a91e6d4c"
+                "reference": "40988af28e3cdf85b7dda0049327c14640ffd323"
             },
             "require": {
                 "php": ">=8.2",
@@ -3569,7 +3569,7 @@
             "dist": {
                 "type": "path",
                 "url": "../wxpay-api",
-                "reference": "6815a882d1c55f3b858cf4cd2fa8d123865547ce"
+                "reference": "ebf9ea71b999895b13c46638a9451033b89823ed"
             },
             "require": {
                 "php": ">=8.2",
