@@ -21,7 +21,7 @@ class Order extends AbstractOrder implements DeletableInterface
      * @var Collection<int, PaymentOrder>
      */
     #[ORM\OneToMany(targetEntity: PaymentOrder::class, mappedBy: 'order')]
-    #[ORM\OrderBy(['id' => 'ASC'])]
+    #[ORM\OrderBy(['id' => \SortDirection::Ascending])]
     private Collection $payments;
 
     /**
