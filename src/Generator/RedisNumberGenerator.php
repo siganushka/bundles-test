@@ -7,7 +7,7 @@ namespace App\Generator;
 class RedisNumberGenerator
 {
     public function __construct(
-        private readonly \Redis|\RedisArray|\RedisCluster|\Predis\ClientInterface|\Relay\Relay|\Relay\Cluster $redis = new \Redis(),
+        private readonly \Redis|\RedisArray|\RedisCluster|\Predis\ClientInterface $redis = new \Redis(),
         private readonly string $redisKey = 'number:generator',
         private readonly int $stepMin = 1,
         private readonly int $stepMax = 30,
