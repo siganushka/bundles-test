@@ -48,7 +48,7 @@ class ProductController extends AbstractController
 
     protected function createEntityQueryBuilder(ProductQueryDto $dto): QueryBuilder
     {
-        return $this->repository->createQueryBuilderByDto('p', $dto);
+        return $this->repository->createQueryBuilderFromDto('p', $dto);
     }
 
     protected function createEntityForm(object $data, array $options = []): FormInterface
