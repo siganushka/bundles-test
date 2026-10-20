@@ -5,17 +5,23 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Siganushka\Contracts\Doctrine\ResourceInterface;
-use Siganushka\Contracts\Doctrine\ResourceTrait;
 
 #[ORM\Entity]
 #[ORM\InheritanceType('SINGLE_TABLE')]
-class TestInheritanceSingleTable implements ResourceInterface
+class TestInheritanceSingleTable
 {
-    use ResourceTrait;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
 
     #[ORM\Column]
     private ?string $foo = null;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
 
     public function getFoo(): ?string
     {

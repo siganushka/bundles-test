@@ -1617,7 +1617,6 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  * @psalm-type SiganushkaGenericConfig = array{
  *     doctrine?: array{
  *         table_prefix?: scalar|Param|null, // Default: null
- *         schema_resort?: bool|Param, // Default: true
  *     },
  *     serializer?: array{
  *         form_error_normalizer?: bool|Param, // Default: false

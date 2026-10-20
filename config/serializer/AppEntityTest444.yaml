@@ -1,8 +1,8 @@
 App\Entity\Test444:
     attributes:
-        id:
-            groups: []
         d:
+            groups: []
+        id:
             groups: []
         foo:
             groups: []

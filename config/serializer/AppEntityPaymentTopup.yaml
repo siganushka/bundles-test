@@ -1,7 +1,5 @@
 App\Entity\PaymentTopup:
     attributes:
-        id:
-            groups: []
         user:
             groups: []
         topup:
@@ -24,6 +22,12 @@ App\Entity\PaymentTopup:
             groups: [payment.item, payment.collection]
         gateway:
             groups: [payment.item, payment.collection]
+        expiredAt:
+            groups: [payment.item, payment.collection]
+        createdAt:
+            groups: [payment.item, payment.collection]
+        updatedAt:
+            groups: [payment.item, payment.collection]
         title:
             groups: [payment.item, payment.collection]
         refundSupported:
@@ -31,10 +35,4 @@ App\Entity\PaymentTopup:
         refundableAmount:
             groups: [payment.item, payment.collection]
         type:
-            groups: [payment.item, payment.collection]
-        createdAt:
-            groups: [payment.item, payment.collection]
-        updatedAt:
-            groups: [payment.item, payment.collection]
-        expiredAt:
             groups: [payment.item, payment.collection]

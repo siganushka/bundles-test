@@ -1,7 +1,5 @@
 App\Entity\PaymentRefund:
     attributes:
-        id:
-            groups: []
         payment:
             groups: []
         number:

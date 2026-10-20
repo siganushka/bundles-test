@@ -1,7 +1,5 @@
 App\Entity\PaymentOrder:
     attributes:
-        id:
-            groups: []
         order:
             groups: []
         number:
@@ -22,6 +20,12 @@ App\Entity\PaymentOrder:
             groups: [payment.item, payment.collection]
         gateway:
             groups: [payment.item, payment.collection]
+        expiredAt:
+            groups: [payment.item, payment.collection]
+        createdAt:
+            groups: [payment.item, payment.collection]
+        updatedAt:
+            groups: [payment.item, payment.collection]
         title:
             groups: [payment.item, payment.collection]
         refundSupported:
@@ -29,10 +33,4 @@ App\Entity\PaymentOrder:
         refundableAmount:
             groups: [payment.item, payment.collection]
         type:
-            groups: [payment.item, payment.collection]
-        createdAt:
-            groups: [payment.item, payment.collection]
-        updatedAt:
-            groups: [payment.item, payment.collection]
-        expiredAt:
             groups: [payment.item, payment.collection]

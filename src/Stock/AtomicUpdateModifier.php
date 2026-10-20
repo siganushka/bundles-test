@@ -52,10 +52,15 @@ class AtomicUpdateModifier implements OrderStockModifierInterface
             $qb = $this->entityManager->createQueryBuilder()
                 ->update($subject::class, 'entity')
                 ->set('entity.stock', $assignment)
-                ->where('entity.id = :id')
-                ->setParameter('id', $subject->getId(), ParameterType::INTEGER)
                 ->setParameter('quantity', $quantity, ParameterType::INTEGER)
             ;
+
+            $metadata = $this->entityManager->getClassMetadata($subject::class);
+            foreach ($metadata->getIdentifierValues($subject) as $key => $value) {
+                $qb->andWhere(\sprintf('entity.%s = :%s', $key, $key))
+                    ->setParameter($key, $value)
+                ;
+            }
 
             if (self::DECREMENT === $action) {
                 $qb->andWhere('entity.stock >= :quantity');

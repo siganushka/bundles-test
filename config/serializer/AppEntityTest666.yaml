@@ -1,8 +1,8 @@
 App\Entity\Test666:
     attributes:
-        id:
-            groups: []
         f:
+            groups: []
+        id:
             groups: []
         foo:
             groups: []

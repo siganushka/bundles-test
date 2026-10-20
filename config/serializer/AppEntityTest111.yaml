@@ -1,10 +1,10 @@
 App\Entity\Test111:
     attributes:
-        id:
-            groups: []
         a:
             groups: []
         range:
+            groups: []
+        id:
             groups: []
         foo:
             groups: []

@@ -6,7 +6,7 @@ App\Entity\OrderAdjustmentRandom:
             groups: []
         amount:
             groups: [order.item, order.collection]
-        type:
-            groups: [order.item, order.collection]
         createdAt:
+            groups: [order.item, order.collection]
+        type:
             groups: [order.item, order.collection]

@@ -1278,22 +1278,22 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "7.15.5",
+            "version": "7.16.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "ee80339fd9177ba44c49cdb653ff02a4d1106b9a"
+                "reference": "ffb62ec787050ae4fa9449cdd6b80335db69bda2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/ee80339fd9177ba44c49cdb653ff02a4d1106b9a",
-                "reference": "ee80339fd9177ba44c49cdb653ff02a4d1106b9a",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/ffb62ec787050ae4fa9449cdd6b80335db69bda2",
+                "reference": "ffb62ec787050ae4fa9449cdd6b80335db69bda2",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "guzzlehttp/promises": "^2.5.3",
-                "guzzlehttp/psr7": "^2.13.1",
+                "guzzlehttp/promises": "^2.6",
+                "guzzlehttp/psr7": "^2.13.2",
                 "php": "^7.2.5 || ^8.0",
                 "psr/http-client": "^1.0",
                 "symfony/deprecation-contracts": "^2.5 || ^3.0",
@@ -1386,7 +1386,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/guzzle/issues",
-                "source": "https://github.com/guzzle/guzzle/tree/7.15.5"
+                "source": "https://github.com/guzzle/guzzle/tree/7.16.0"
             },
             "funding": [
                 {
@@ -1402,20 +1402,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-08-24T09:21:06+00:00"
+            "time": "2026-10-18T13:38:36+00:00"
         },
         {
             "name": "guzzlehttp/promises",
-            "version": "2.5.3",
+            "version": "2.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/promises.git",
-                "reference": "cde49999552d185d64715fe9c1f77a2aadd2f9f1"
+                "reference": "3d88c829bd5f13d13847b39067dbf09a60af2154"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/promises/zipball/cde49999552d185d64715fe9c1f77a2aadd2f9f1",
-                "reference": "cde49999552d185d64715fe9c1f77a2aadd2f9f1",
+                "url": "https://api.github.com/repos/guzzle/promises/zipball/3d88c829bd5f13d13847b39067dbf09a60af2154",
+                "reference": "3d88c829bd5f13d13847b39067dbf09a60af2154",
                 "shasum": ""
             },
             "require": {
@@ -1470,7 +1470,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/promises/issues",
-                "source": "https://github.com/guzzle/promises/tree/2.5.3"
+                "source": "https://github.com/guzzle/promises/tree/2.6.0"
             },
             "funding": [
                 {
@@ -1486,20 +1486,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-08-24T09:11:28+00:00"
+            "time": "2026-10-18T12:46:59+00:00"
         },
         {
             "name": "guzzlehttp/psr7",
-            "version": "2.13.1",
+            "version": "2.13.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "95e7828100de18b4e269fb1703be530082d5166d"
+                "reference": "adee536f95101929f262b8c59e8a61472f347d58"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/95e7828100de18b4e269fb1703be530082d5166d",
-                "reference": "95e7828100de18b4e269fb1703be530082d5166d",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/adee536f95101929f262b8c59e8a61472f347d58",
+                "reference": "adee536f95101929f262b8c59e8a61472f347d58",
                 "shasum": ""
             },
             "require": {
@@ -1589,7 +1589,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/psr7/issues",
-                "source": "https://github.com/guzzle/psr7/tree/2.13.1"
+                "source": "https://github.com/guzzle/psr7/tree/2.13.2"
             },
             "funding": [
                 {
@@ -1605,7 +1605,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-08-24T09:13:11+00:00"
+            "time": "2026-10-17T23:49:46+00:00"
         },
         {
             "name": "knplabs/knp-components",
@@ -2873,7 +2873,7 @@
             "dist": {
                 "type": "path",
                 "url": "../doctrine-contracts",
-                "reference": "8e1bc3d4b2c9713079258595a3e451ba45172bae"
+                "reference": "b2cb16527c7277ec80fd1656e976e2d9bcbafc49"
             },
             "require": {
                 "doctrine/orm": "^3.0",
@@ -2927,7 +2927,7 @@
             "dist": {
                 "type": "path",
                 "url": "../generic-bundle",
-                "reference": "7a76a7054fcce756af1eb83901138adcc08228e9"
+                "reference": "732e6a97977f9ffabef637250f3dba7a3b927531"
             },
             "require": {
                 "php": ">=8.2",
@@ -3055,7 +3055,7 @@
             "dist": {
                 "type": "path",
                 "url": "../media-bundle",
-                "reference": "f93b8449023c233c3fcc1de6dceb19715c1d26c1"
+                "reference": "5b5835e92956876093969559e20361952c9f52de"
             },
             "require": {
                 "doctrine/doctrine-bundle": "^2.18|^3.0",
@@ -3125,7 +3125,7 @@
             "dist": {
                 "type": "path",
                 "url": "../order-bundle",
-                "reference": "2fa10c31d2104a7da61b8d5c746fae446f306885"
+                "reference": "d46f5446a507cd3bec4be39aa33520b6b6ec24cc"
             },
             "require": {
                 "doctrine/doctrine-bundle": "^2.18|^3.0",
@@ -3192,7 +3192,7 @@
             "dist": {
                 "type": "path",
                 "url": "../payment-bundle",
-                "reference": "33f0a43a142eec428487b19c88c01663833bfdf9"
+                "reference": "93c34d9bf82fe7ed836e496acc8a79f741efc3f3"
             },
             "require": {
                 "doctrine/doctrine-bundle": "^2.18|^3.0",
@@ -3260,7 +3260,7 @@
             "dist": {
                 "type": "path",
                 "url": "../product-bundle",
-                "reference": "1d39c7ef42afe5af44317c8ee62a9c364a1f67e2"
+                "reference": "8fbb7a11318a97122d5d1dae15b743c3163061a8"
             },
             "require": {
                 "bentools/cartesian-product": "^2.0",
@@ -3448,7 +3448,7 @@
             "dist": {
                 "type": "path",
                 "url": "../user-bundle",
-                "reference": "75cc0089d2d845d184f3343469eebdf3bb33726d"
+                "reference": "dcb88409cf6288d68b6283c979f18dca26fd7e73"
             },
             "require": {
                 "doctrine/doctrine-bundle": "^2.18|^3.0",

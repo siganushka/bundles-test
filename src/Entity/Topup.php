@@ -6,16 +6,18 @@ namespace App\Entity;
 
 use App\Repository\TopupRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Siganushka\Contracts\Doctrine\ResourceInterface;
-use Siganushka\Contracts\Doctrine\ResourceTrait;
 use Siganushka\Contracts\Doctrine\TimestampableInterface;
 use Siganushka\Contracts\Doctrine\TimestampableTrait;
 
 #[ORM\Entity(repositoryClass: TopupRepository::class)]
-class Topup implements ResourceInterface, TimestampableInterface
+class Topup implements TimestampableInterface
 {
-    use ResourceTrait;
     use TimestampableTrait;
+
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
 
     #[ORM\Column]
     private ?string $title = null;
@@ -25,6 +27,11 @@ class Topup implements ResourceInterface, TimestampableInterface
 
     #[ORM\Column]
     private ?int $bonus = null;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
 
     public function getTitle(): ?string
     {

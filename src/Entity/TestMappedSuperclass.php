@@ -6,16 +6,22 @@ namespace App\Entity;
 
 use App\Repository\TestMappedSuperclassRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Siganushka\Contracts\Doctrine\ResourceInterface;
-use Siganushka\Contracts\Doctrine\ResourceTrait;
 
 #[ORM\MappedSuperclass(repositoryClass: TestMappedSuperclassRepository::class)]
-abstract class TestMappedSuperclass implements ResourceInterface
+abstract class TestMappedSuperclass
 {
-    use ResourceTrait;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
 
     #[ORM\Column]
     private ?string $foo = null;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
 
     public function getFoo(): ?string
     {

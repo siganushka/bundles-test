@@ -1,10 +1,10 @@
 App\Entity\Order:
     attributes:
-        id:
-            groups: []
         payments:
             groups: []
         aggregatePayments:
+            groups: []
+        id:
             groups: []
         number:
             groups: [order.item, order.collection]
@@ -22,11 +22,11 @@ App\Entity\Order:
             groups: [order.item, order.collection]
         adjustments:
             groups: [order.item, order.collection]
-        currentPayment:
-            groups: [order.item, order.collection]
         createdAt:
             groups: [order.item, order.collection]
         updatedAt:
             groups: [order.item, order.collection]
         deleted:
             groups: []
+        currentPayment:
+            groups: [order.item, order.collection]
