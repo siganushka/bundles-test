@@ -23,6 +23,7 @@ class ProductVariant extends AbstractProductVariant implements OrderItemSubjectI
         $img = $this->optionValues->findFirst($fn)?->getImg() ?? $this->product?->getImg();
 
         return new OrderItemSubjectData(
+            identifier: $this->id ?? spl_object_hash($this),
             title: $this->product?->getName(),
             subtitle: $this->name,
             price: $this->price,
