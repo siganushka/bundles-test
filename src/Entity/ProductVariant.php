@@ -6,8 +6,8 @@ namespace App\Entity;
 
 use App\Repository\ProductVariantRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Siganushka\OrderBundle\Model\OrderItemSubjectData;
 use Siganushka\OrderBundle\Model\OrderItemSubjectInterface;
+use Siganushka\OrderBundle\Model\OrderItemSubjectSnapshot;
 use Siganushka\OrderBundle\Model\StockableInterface;
 use Siganushka\ProductBundle\Entity\AbstractProductVariant;
 
@@ -17,13 +17,17 @@ use Siganushka\ProductBundle\Entity\AbstractProductVariant;
 #[ORM\Entity(repositoryClass: ProductVariantRepository::class)]
 class ProductVariant extends AbstractProductVariant implements OrderItemSubjectInterface, StockableInterface
 {
-    public function createForOrderItem(int $quantity): OrderItemSubjectData
+    public function getSubjectIdentifier(): int|string
+    {
+        return $this->id ?? spl_object_hash($this);
+    }
+
+    public function getSubjectSnapshot(int $quantity): OrderItemSubjectSnapshot
     {
         $fn = static fn ($_, ProductOptionValue $item) => null !== $item->getImg();
         $img = $this->optionValues->findFirst($fn)?->getImg() ?? $this->product?->getImg();
 
-        return new OrderItemSubjectData(
-            identifier: $this->id ?? spl_object_hash($this),
+        return new OrderItemSubjectSnapshot(
             title: $this->product?->getName(),
             subtitle: $this->name,
             price: $this->price,
