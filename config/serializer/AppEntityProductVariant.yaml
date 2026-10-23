@@ -20,3 +20,5 @@ App\Entity\ProductVariant:
             groups: [product_variant.collection, product.item, product.collection]
         updatedAt:
             groups: [product_variant.collection, product.item, product.collection]
+        subjectIdentifier:
+            groups: []
