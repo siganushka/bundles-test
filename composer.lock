@@ -3125,7 +3125,7 @@
             "dist": {
                 "type": "path",
                 "url": "../order-bundle",
-                "reference": "e61b53c72b71c101d2d3df09670ef00e393874b6"
+                "reference": "560cffef712c60a8ef0854acdcf84afe7a2812de"
             },
             "require": {
                 "doctrine/doctrine-bundle": "^2.18|^3.0",
