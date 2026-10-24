@@ -42,7 +42,7 @@ class CollectDecathlonCommand extends Command
         $dsmCode = $input->getOption('dsm_code');
         $categoryId = $input->getOption('category_id');
         if (\is_string($dsmCode)) {
-            $this->handleProduct($output, $dsmCode);
+            $this->handleProduct($dsmCode);
         } elseif (\is_string($categoryId)) {
             $this->handleCategory($output, $categoryId);
         } else {
@@ -72,7 +72,7 @@ class CollectDecathlonCommand extends Command
             $message = \sprintf('[%d/%d] #%d', $current, $total, $value['dsm_code']);
 
             try {
-                $this->handleProduct($output, $value['dsm_code']);
+                $this->handleProduct($value['dsm_code']);
             } catch (\Throwable $th) {
                 $output->writeln(\sprintf('<info>%s: 出错（%s）</info>', $message, $th->getMessage()));
                 continue;
@@ -83,7 +83,7 @@ class CollectDecathlonCommand extends Command
         }
     }
 
-    private function handleProduct(OutputInterface $output, string $dsmCode): void
+    private function handleProduct(string $dsmCode): void
     {
         $options = [
             'headers' => ['Authorization' => \sprintf('Bearer %s', $this->getToken())],
@@ -101,7 +101,7 @@ class CollectDecathlonCommand extends Command
 
         $entity = new Product();
         $entity->setImg($this->handleMedia('product_img', $models[0]['media']['images'][0]['image_url']));
-        $entity->setName(array_first(explode(' ', $models[0]['web_label'])));
+        $entity->setName($data['family']);
         $entity->setSummary($data['designed_for']);
 
         if (\count($models) > 1) {
