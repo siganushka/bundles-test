@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "332317d3be7f24c7c26d7c1b76a93065",
+    "content-hash": "3a457505ac13e2e342b581fe06a64eb0",
     "packages": [
         {
             "name": "aliyuncs/oss-sdk-php",
@@ -529,16 +529,16 @@
         },
         {
             "name": "doctrine/doctrine-bundle",
-            "version": "3.3.2",
+            "version": "3.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineBundle.git",
-                "reference": "e6cd6aca912a5701fdc9bf4f0ad8f18f3f1448ed"
+                "reference": "a371e286af45e4971535361f9c1aa2653e37f52f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/e6cd6aca912a5701fdc9bf4f0ad8f18f3f1448ed",
-                "reference": "e6cd6aca912a5701fdc9bf4f0ad8f18f3f1448ed",
+                "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/a371e286af45e4971535361f9c1aa2653e37f52f",
+                "reference": "a371e286af45e4971535361f9c1aa2653e37f52f",
                 "shasum": ""
             },
             "require": {
@@ -572,6 +572,7 @@
                 "symfony/doctrine-messenger": "^6.4 || ^7.0 || ^8.0",
                 "symfony/expression-language": "^6.4 || ^7.0 || ^8.0",
                 "symfony/http-kernel": "^6.4 || ^7.0 || ^8.0",
+                "symfony/lock": "^6.4 || ^7.0 || ^8.0",
                 "symfony/messenger": "^6.4 || ^7.0 || ^8.0",
                 "symfony/property-info": "^6.4 || ^7.0 || ^8.0",
                 "symfony/runtime": "^6.4 || ^7.0 || ^8.0",
@@ -627,7 +628,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/DoctrineBundle/issues",
-                "source": "https://github.com/doctrine/DoctrineBundle/tree/3.3.2"
+                "source": "https://github.com/doctrine/DoctrineBundle/tree/3.3.3"
             },
             "funding": [
                 {
@@ -643,7 +644,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-09-09T11:58:04+00:00"
+            "time": "2026-10-24T21:36:43+00:00"
         },
         {
             "name": "doctrine/event-manager",
@@ -738,23 +739,23 @@
         },
         {
             "name": "doctrine/inflector",
-            "version": "2.1.0",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/inflector.git",
-                "reference": "6d6c96277ea252fc1304627204c3d5e6e15faa3b"
+                "reference": "46351b6812b7b6d52b82c3efa5dfb786a198ec88"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/inflector/zipball/6d6c96277ea252fc1304627204c3d5e6e15faa3b",
-                "reference": "6d6c96277ea252fc1304627204c3d5e6e15faa3b",
+                "url": "https://api.github.com/repos/doctrine/inflector/zipball/46351b6812b7b6d52b82c3efa5dfb786a198ec88",
+                "reference": "46351b6812b7b6d52b82c3efa5dfb786a198ec88",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.2 || ^8.0"
             },
             "require-dev": {
-                "doctrine/coding-standard": "^12.0 || ^13.0",
+                "doctrine/coding-standard": "^12.0 || ^14.0",
                 "phpstan/phpstan": "^1.12 || ^2.0",
                 "phpstan/phpstan-phpunit": "^1.4 || ^2.0",
                 "phpstan/phpstan-strict-rules": "^1.6 || ^2.0",
@@ -808,7 +809,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/inflector/issues",
-                "source": "https://github.com/doctrine/inflector/tree/2.1.0"
+                "source": "https://github.com/doctrine/inflector/tree/2.1.1"
             },
             "funding": [
                 {
@@ -824,7 +825,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-08-10T19:31:58+00:00"
+            "time": "2026-10-26T08:14:14+00:00"
         },
         {
             "name": "doctrine/instantiator",
@@ -1278,16 +1279,16 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "7.16.0",
+            "version": "7.16.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "ffb62ec787050ae4fa9449cdd6b80335db69bda2"
+                "reference": "81755d989b3007ca7f88a069857553cd08e7dc2e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/ffb62ec787050ae4fa9449cdd6b80335db69bda2",
-                "reference": "ffb62ec787050ae4fa9449cdd6b80335db69bda2",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/81755d989b3007ca7f88a069857553cd08e7dc2e",
+                "reference": "81755d989b3007ca7f88a069857553cd08e7dc2e",
                 "shasum": ""
             },
             "require": {
@@ -1386,7 +1387,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/guzzle/issues",
-                "source": "https://github.com/guzzle/guzzle/tree/7.16.0"
+                "source": "https://github.com/guzzle/guzzle/tree/7.16.1"
             },
             "funding": [
                 {
@@ -1402,7 +1403,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-10-18T13:38:36+00:00"
+            "time": "2026-10-25T21:35:21+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -2927,7 +2928,7 @@
             "dist": {
                 "type": "path",
                 "url": "../generic-bundle",
-                "reference": "732e6a97977f9ffabef637250f3dba7a3b927531"
+                "reference": "df4e4b8f535648166910a36aa953d1f13aa857ff"
             },
             "require": {
                 "php": ">=8.2",
@@ -3125,7 +3126,7 @@
             "dist": {
                 "type": "path",
                 "url": "../order-bundle",
-                "reference": "560cffef712c60a8ef0854acdcf84afe7a2812de"
+                "reference": "75895c7bdd83ba7bec50e78e8ceb482615c30087"
             },
             "require": {
                 "doctrine/doctrine-bundle": "^2.18|^3.0",
@@ -3260,7 +3261,7 @@
             "dist": {
                 "type": "path",
                 "url": "../product-bundle",
-                "reference": "32f39947bf1a3d1b59c99de9cff7852b581d83b1"
+                "reference": "8fdaac5c025f06814f848086bf3627e92a2d7478"
             },
             "require": {
                 "bentools/cartesian-product": "^2.0",
@@ -3448,7 +3449,7 @@
             "dist": {
                 "type": "path",
                 "url": "../user-bundle",
-                "reference": "7fbcd8b36e52c1c2e17637d4539ad730ba48f431"
+                "reference": "597ec433d1a0096591ab3165f7d1801db90a5f84"
             },
             "require": {
                 "doctrine/doctrine-bundle": "^2.18|^3.0",

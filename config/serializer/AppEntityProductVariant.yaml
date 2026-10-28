@@ -22,3 +22,7 @@ App\Entity\ProductVariant:
             groups: [product_variant.collection, product.item, product.collection]
         subjectIdentifier:
             groups: []
+        minQuantity:
+            groups: []
+        maxQuantity:
+            groups: []

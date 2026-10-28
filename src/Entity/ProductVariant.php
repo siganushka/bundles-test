@@ -6,6 +6,7 @@ namespace App\Entity;
 
 use App\Repository\ProductVariantRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Siganushka\OrderBundle\Model\LimitableInterface;
 use Siganushka\OrderBundle\Model\OrderItemSubjectInterface;
 use Siganushka\OrderBundle\Model\OrderItemSubjectSnapshot;
 use Siganushka\OrderBundle\Model\StockableInterface;
@@ -15,7 +16,7 @@ use Siganushka\ProductBundle\Entity\AbstractProductVariant;
  * @extends AbstractProductVariant<Product, ProductOptionValue>
  */
 #[ORM\Entity(repositoryClass: ProductVariantRepository::class)]
-class ProductVariant extends AbstractProductVariant implements OrderItemSubjectInterface, StockableInterface
+class ProductVariant extends AbstractProductVariant implements OrderItemSubjectInterface, StockableInterface, LimitableInterface
 {
     public function getSubjectIdentifier(): int|string
     {
@@ -48,5 +49,15 @@ class ProductVariant extends AbstractProductVariant implements OrderItemSubjectI
     public function incrementStock(int $quantity): void
     {
         \is_int($this->stock) && $this->stock += $quantity;
+    }
+
+    public function getMinQuantity(): ?int
+    {
+        return $this->product?->getMinLimit();
+    }
+
+    public function getMaxQuantity(): ?int
+    {
+        return $this->product?->getMaxLimit();
     }
 }
