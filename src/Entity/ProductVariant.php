@@ -20,7 +20,7 @@ class ProductVariant extends AbstractProductVariant implements OrderItemSubjectI
 {
     public function getSubjectIdentifier(): int|string
     {
-        return $this->id ?? spl_object_hash($this);
+        return $this->id ?? spl_object_id($this);
     }
 
     public function getSubjectSnapshot(int $quantity): OrderItemSubjectSnapshot
