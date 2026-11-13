@@ -16,21 +16,26 @@ class TestType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('foo', TextType::class, [
+            ->add('option', TextType::class, [
+                'label' => 'Option',
                 'constraints' => new NotBlank(),
                 'row_attr' => ['class' => 'foo_class'],
             ])
-            ->add('bar', TextType::class, [
-                'constraints' => new NotBlank(),
-                'row_attr' => ['class' => 'bar_class'],
-            ])
-            ->add('baz', CollectionType::class, [
+            ->add('values', CollectionType::class, [
                 'entry_options' => [
-                    'label' => 'bar...',
+                    'label' => 'Value...',
                 ],
                 'row_attr' => ['class' => 'py-0'],
                 'allow_add' => true,
                 'allow_delete' => true,
+                'add_button_options' => [
+                    'label' => '<i class="bi bi-plus-lg"></i>',
+                    'label_html' => true,
+                ],
+                'delete_button_options' => [
+                    'label' => '<i class="bi bi-trash"></i>',
+                    'label_html' => true,
+                ],
             ])
         ;
     }

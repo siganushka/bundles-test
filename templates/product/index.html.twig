@@ -2,7 +2,7 @@
 
 {% block stylesheets %}
   <style>
-    [data-action="product-variants#submit"]:disabled .spinner-border {
+    [data-action="product-variants-edit#submit"]:disabled .spinner-border {
       display: inline-block !important;
     }
   </style>
@@ -11,17 +11,11 @@
 {% block body %}
   <h3 class="mb-3">ProductBundle</h3>
 
-  <div class="dropdown">
-    <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-      {{ 'generic.add'|trans }}
-    </button>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="{{ path('app_product_new') }}">简单的商品</a></li>
-      <li><a class="dropdown-item" href="{{ path('app_product_new', {combinable: true}) }}">多选项商品</a></li>
-    </ul>
-  </div>
+  <p>
+    <a href="{{ path('app_product_new') }}" class="btn btn-primary">{{ 'generic.add'|trans }}</a>
+  </p>
 
-  <div {{ stimulus_controller('product-variants') }}>
+  <div {{ stimulus_controller('product-variants-edit') }}>
     {% embed 'table.html.twig' %}
       {% block th %}
         <th class="text-nowrap">{{ 'product.name'|trans }}</th>
@@ -51,7 +45,7 @@
         </td>
         <td class="text-nowrap">{{ _item.createdAt|intl_date }}</td>
         <td class="text-nowrap">
-          <a role="button" class="btn-link" {{ stimulus_action('product-variants', 'show', null, {url: path('app_product_variants', {id: _item.id}), name: _item.name}) }}>
+          <a role="button" class="btn-link" {{ stimulus_action('product-variants-edit', 'show', null, {url: path('app_product_variants', {id: _item.id}), name: _item.name}) }}>
             {{ 'product.variants'|trans }}
             <small>({{ _item.variants|filter(v => v.enabled)|length }}/{{ _item.variants|length }})</small>
           </a>
@@ -61,7 +55,7 @@
       {% endblock %}
     {% endembed %}
 
-    <div class="offcanvas offcanvas-end w-auto" data-bs-backdrop="static" tabindex="-1" {{ stimulus_target('product-variants', 'offcanvas') }}>
+    <div class="offcanvas offcanvas-end w-auto" data-bs-backdrop="static" tabindex="-1" {{ stimulus_target('product-variants-edit', 'offcanvas') }}>
       <div class="offcanvas-header bg-light border-bottom">
         <h5 class="offcanvas-title">{{ 'product.variants'|trans }}</h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -69,7 +63,7 @@
       <div class="offcanvas-body"></div>
       <div class="d-flex justify-content-end gap-3 bg-light border-top p-3">
         <button type="button" class="btn" data-bs-dismiss="offcanvas">{{ 'generic.cancel'|trans }}</button>
-        <button type="button" class="btn btn-primary" {{ stimulus_action('product-variants', 'submit') }}>
+        <button type="button" class="btn btn-primary" {{ stimulus_action('product-variants-edit', 'submit') }}>
           <span class="spinner-border spinner-border-sm d-none" aria-hidden="true"></span>
           <span role="status">{{ 'generic.save'|trans }}</span>
         </button>

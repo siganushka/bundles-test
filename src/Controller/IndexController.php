@@ -28,6 +28,7 @@ use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Validator\Constraints\Count;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\UX\StimulusBundle\Helper\StimulusHelper;
 
 class IndexController extends AbstractController
 {
@@ -38,17 +39,23 @@ class IndexController extends AbstractController
     }
 
     #[Route('/collection')]
-    public function collection(Request $request): Response
+    public function collection(Request $request, StimulusHelper $stimulusHelper): Response
     {
         $data = [
             'text' => 'CollectionType Demo',
             'tags' => ['foo', 'bar', 'baz'],
             'tests' => [
-                ['foo' => 'aaa', 'bar' => 16],
-                ['foo' => 'bbb', 'bar' => 32],
-                ['foo' => 'ccc', 'bar' => 64],
+                ['option' => 'Color', 'values' => ['White', 'Black']],
+                ['option' => 'Size', 'values' => ['S (50kg)', 'M (60kg)', 'L (70kg)']],
             ],
         ];
+
+        $attributes = $stimulusHelper->createStimulusAttributes();
+        $attributes->addController('tags');
+        $attributes->addAction('tags', 'beforeAdd', 'siganushka-generic-collection:before-add');
+        $attributes->addAction('tags', 'added', 'siganushka-generic-collection:added');
+        $attributes->addAction('tags', 'beforeDelete', 'siganushka-generic-collection:before-delete');
+        $attributes->addAction('tags', 'deleted', 'siganushka-generic-collection:deleted');
 
         $builder = $this->createFormBuilder($data)
             ->add('text', TextType::class)
@@ -59,6 +66,7 @@ class IndexController extends AbstractController
                     'constraints' => new NotBlank(),
                     'row_attr' => ['class' => 'bbb'],
                 ],
+                'attr' => $attributes->toArray(),
                 'add_button_options' => [
                     'row_attr' => ['class' => 'ccc'],
                 ],

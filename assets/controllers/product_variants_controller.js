@@ -1,5 +1,4 @@
 import { Controller } from '@hotwired/stimulus';
-import { Offcanvas } from 'bootstrap';
 
 /*
 * The following line makes this controller "lazy": it won't be downloaded until needed
@@ -8,59 +7,30 @@ import { Offcanvas } from 'bootstrap';
 
 /* stimulusFetch: 'lazy' */
 export default class extends Controller {
-  static targets = ['offcanvas']
   static values = {
     url: String,
   }
 
-  show(event) {
-    const { url, name } = event.params
-    this.urlValue = url
+  optionsChanged(event) {
+    console.log('optionsChanged...', event)
 
-    Offcanvas.getOrCreateInstance(this.offcanvasTarget).show()
-
-    const title = this.offcanvasTarget.querySelector('.offcanvas-title')
-    const body = this.offcanvasTarget.querySelector('.offcanvas-body')
-
-    title.innerText = name
-    body.innerHTML = `
-      <div class="d-flex justify-content-center align-items-center h-100">
-        <div class="spinner-border text-secondary" role="status">
-          <span class="visually-hidden">Loading...</span>
-        </div>
-      </div>
-    `
-
-    fetch(url).then(async response => {
-      return response.ok
-        ? Promise.resolve(await response.text())
-        : Promise.reject(response.statusText)
-    }).then(res => {
-      body.innerHTML = res
-    }).catch(err => {
-      body.innerHTML = `<p class="alert alert-danger m-0">${err}</p>`
+    const variantsEntries = this.element.querySelectorAll('[data-siganushka-generic-collection-target="entry"]')
+    const variants = Array.from(variantsEntries).map(item => {
+      const price = item.querySelector('input[name*="[price]"]').value
+      const stock = item.querySelector('input[name*="[stock]"]').value
+      const enabled = item.querySelector('input[name*="[enabled]"]')?.checked || true
+      return { price, stock, enabled }
     })
-  }
 
-  submit(event) {
-    const body = this.offcanvasTarget.querySelector('.offcanvas-body')
-    const form = body.querySelector('form')
-    if (!form || !this.urlValue) return
-
-    const { currentTarget } = event
-    currentTarget.disabled = true
+    const body = JSON.stringify({ options: event.detail.options, variants })
+    console.log('body...', body)
 
     fetch(this.urlValue, {
       method: 'POST',
-      body: new FormData(form)
+      body,
+      headers: { Accept: 'application/json' },
     }).then(async response => {
-      if (response.ok) {
-        Offcanvas.getOrCreateInstance(this.offcanvasTarget).hide()
-      } else {
-        body.innerHTML = await response.text()
-      }
-    }).catch(alert).finally(() => {
-      currentTarget.disabled = false
+      this.element.outerHTML = await response.text()
     })
   }
 }

@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Entity\Product;
+use App\Entity\ProductOption;
+use App\Entity\ProductOptionValue;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\QueryBuilder;
 use Siganushka\GenericBundle\Controller\Crud\Web\DeleteTrait;
@@ -15,12 +17,11 @@ use Siganushka\ProductBundle\Dto\ProductQueryDto;
 use Siganushka\ProductBundle\Form\ProductOptionType;
 use Siganushka\ProductBundle\Form\ProductOptionValueType;
 use Siganushka\ProductBundle\Form\ProductType;
-use Siganushka\ProductBundle\Form\ProductVariantCollectionType;
 use Siganushka\ProductBundle\Form\ProductVariantType;
+use Siganushka\ProductBundle\Form\Type\ProductVariantCollectionType;
 use Siganushka\ProductBundle\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
@@ -51,13 +52,6 @@ class ProductController extends AbstractController
         return $this->repository->createQueryBuilderFromDto('p', $dto);
     }
 
-    protected function createEntityForm(object $data, array $options = []): FormInterface
-    {
-        $options['combinable'] = $this->requestStack->getCurrentRequest()?->query->getBoolean('combinable') ?? false;
-
-        return $this->createForm($this->entityForm, $data, $options);
-    }
-
     protected function isGrantedForOperation(string $operation): bool
     {
         return match ($operation) {
@@ -67,13 +61,35 @@ class ProductController extends AbstractController
         };
     }
 
+    #[Route('/choices', methods: 'POST')]
+    public function choices(Request $request, Environment $twig): Response
+    {
+        $entity = new Product();
+
+        $form = $this->createForm(ProductType::class, $entity, ['validation_groups' => false]);
+        $form->submit($request->getPayload()->all());
+
+        $template = $twig->createTemplate('{{ form_widget(form.variants) }}');
+        $content = $twig->render($template, [
+            'form' => $form->createView(),
+        ]);
+
+        return new Response($content);
+    }
+
     #[Route('/{id<\d+>}/variants', methods: ['GET', 'POST'])]
     public function variants(Request $request, Environment $twig, EntityManagerInterface $entityManager, int $id): Response
     {
         $entity = $this->repository->find($id)
             ?? throw $this->createNotFoundException();
 
-        $form = $this->createForm(ProductVariantCollectionType::class, $entity, ['csrf_protection' => false]);
+        $builder = $this->createFormBuilder($entity, ['csrf_protection' => false])
+            ->add('variants', ProductVariantCollectionType::class, [
+                'label' => false,
+            ])
+        ;
+
+        $form = $builder->getForm();
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -91,7 +107,20 @@ class ProductController extends AbstractController
     #[Route('/ProductType')]
     public function ProductType(Request $request): Response
     {
-        $form = $this->createForm(ProductType::class)
+        $option1 = new ProductOption('颜色');
+        $option1->addValue(new ProductOptionValue(name: '白色'));
+        $option1->addValue(new ProductOptionValue(name: '黑色'));
+
+        $option2 = new ProductOption('尺码');
+        $option2->addValue(new ProductOptionValue(name: 'S 码 (适合体重 50kg)'));
+        $option2->addValue(new ProductOptionValue(name: 'M 码 (适合体重 60kg)'));
+        $option2->addValue(new ProductOptionValue(name: 'L 码 (适合体重 70kg)'));
+
+        $entity = new Product();
+        $entity->addOption($option1);
+        $entity->addOption($option2);
+
+        $form = $this->createForm(ProductType::class, $entity)
             ->add('submit', SubmitType::class)
         ;
 
@@ -126,25 +155,6 @@ class ProductController extends AbstractController
     public function ProductOptionValueType(Request $request): Response
     {
         $form = $this->createForm(ProductOptionValueType::class)
-            ->add('submit', SubmitType::class)
-        ;
-
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            dd(__METHOD__, $form->getData());
-        }
-
-        return $this->render('product/form.html.twig', [
-            'form' => $form,
-        ]);
-    }
-
-    #[Route('/ProductVariantCollectionType')]
-    public function ProductVariantCollectionType(Request $request): Response
-    {
-        $entity = $this->repository->createNew();
-
-        $form = $this->createForm(ProductVariantCollectionType::class, $entity)
             ->add('submit', SubmitType::class)
         ;
 

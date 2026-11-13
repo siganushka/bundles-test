@@ -1650,8 +1650,8 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         naming?: scalar|Param|null, // This value defines the file naming strategy. // Default: null
  *         resize?: bool|array{ // This value is used when resizing the image.
  *             enabled?: bool|Param, // Default: false
- *             max_width?: int|Param, // Default: 1920
- *             max_height?: int|Param, // Default: 7680
+ *             max_width?: int|Param, // Default: 3840
+ *             max_height?: int|Param, // Default: 8640
  *             ...<string, mixed>
  *         },
  *         optimize?: bool|array{ // This value is used to optimize the image quality.
