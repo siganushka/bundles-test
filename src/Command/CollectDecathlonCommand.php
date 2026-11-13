@@ -8,6 +8,7 @@ use App\Entity\Product;
 use App\Entity\ProductOption;
 use App\Entity\ProductOptionValue;
 use App\Entity\ProductVariant;
+use Siganushka\ProductBundle\Model\ProductVariantChoiceGenerator;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -127,7 +128,7 @@ class CollectDecathlonCommand extends Command
             $entity->addOption($option);
         }
 
-        foreach ($entity->generateChoices() as $choice) {
+        foreach (ProductVariantChoiceGenerator::generateFromProduct($entity) as $choice) {
             $variant = new ProductVariant($choice);
             $variant->setPrice((int) ($items[0]['price']['active_price'] * 100));
             $variant->setEnabled(true);

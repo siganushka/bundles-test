@@ -9,6 +9,7 @@ use App\Entity\ProductOption;
 use App\Entity\ProductOptionValue;
 use App\Entity\ProductVariant;
 use Siganushka\ProductBundle\Model\ProductVariantChoice;
+use Siganushka\ProductBundle\Model\ProductVariantChoiceGenerator;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -131,7 +132,7 @@ class CollectXiaomiCommand extends Command
                 $variants[0] = $product['goods_list'][0]['goods_info'];
             }
 
-            foreach ($entity->generateChoices() as $index => $choice) {
+            foreach (ProductVariantChoiceGenerator::generateFromProduct($entity) as $index => $choice) {
                 $key = $choice->code ?? 0;
                 if (!isset($variants[$key])) {
                     continue;

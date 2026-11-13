@@ -11,6 +11,7 @@ use App\Repository\ProductRepository;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
+use Siganushka\ProductBundle\Model\ProductVariantChoiceGenerator;
 use Siganushka\ProductBundle\Repository\ProductOptionRepository;
 use Siganushka\ProductBundle\Repository\ProductOptionValueRepository;
 
@@ -113,7 +114,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
 
         $prices = [100, 200, 300, 400, 500];
         foreach ($products as $index => $product) {
-            foreach ($product->generateChoices() as $index2 => $choice) {
+            foreach (ProductVariantChoiceGenerator::generateFromProduct($product) as $index2 => $choice) {
                 $variant = new ProductVariant($choice);
                 $variant->setPrice($prices[array_rand($prices)]);
                 $variant->setStock(10000);
