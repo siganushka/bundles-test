@@ -18,7 +18,7 @@ export default class extends Controller {
     const variants = Array.from(variantsEntries).map(item => {
       const price = item.querySelector('input[name*="[price]"]').value
       const stock = item.querySelector('input[name*="[stock]"]').value
-      const enabled = item.querySelector('input[name*="[enabled]"]')?.checked || true
+      const enabled = item.querySelector('input[name*="[enabled]"]')?.checked
       return { price, stock, enabled }
     })
 

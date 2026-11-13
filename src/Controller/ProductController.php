@@ -107,18 +107,13 @@ class ProductController extends AbstractController
     #[Route('/ProductType')]
     public function ProductType(Request $request): Response
     {
-        $option1 = new ProductOption('颜色');
-        $option1->addValue(new ProductOptionValue(name: '白色'));
-        $option1->addValue(new ProductOptionValue(name: '黑色'));
-
-        $option2 = new ProductOption('尺码');
-        $option2->addValue(new ProductOptionValue(name: 'S 码 (适合体重 50kg)'));
-        $option2->addValue(new ProductOptionValue(name: 'M 码 (适合体重 60kg)'));
-        $option2->addValue(new ProductOptionValue(name: 'L 码 (适合体重 70kg)'));
+        $option1 = new ProductOption('Test');
+        $option1->addValue(new ProductOptionValue(name: 'aaa'));
+        $option1->addValue(new ProductOptionValue(name: 'bbb'));
+        $option1->addValue(new ProductOptionValue(name: 'ccc'));
 
         $entity = new Product();
         $entity->addOption($option1);
-        $entity->addOption($option2);
 
         $form = $this->createForm(ProductType::class, $entity)
             ->add('submit', SubmitType::class)
