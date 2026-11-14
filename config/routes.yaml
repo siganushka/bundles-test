@@ -24,7 +24,7 @@ siganushka_media:
     stateless: true
 
 siganushka_product:
-    resource: "@SiganushkaProductBundle/config/routes.php"
+    resource: "@SiganushkaProductBundle/src/Controller/"
     prefix: /rest
     stateless: true
 
