@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Entity\Media;
 use App\Entity\Product;
 use App\Entity\ProductOption;
 use App\Entity\ProductOptionValue;
@@ -105,7 +106,7 @@ class ProductController extends AbstractController
     }
 
     #[Route('/ProductType')]
-    public function ProductType(Request $request): Response
+    public function ProductType(Request $request, EntityManagerInterface $entityManager): Response
     {
         $option1 = new ProductOption('Test');
         $option1->addValue(new ProductOptionValue(name: 'aaa'));
@@ -113,6 +114,8 @@ class ProductController extends AbstractController
         $option1->addValue(new ProductOptionValue(name: 'ccc'));
 
         $entity = new Product();
+        $entity->setImg($entityManager->find(Media::class, 20));
+        $entity->setName('Test');
         $entity->addOption($option1);
 
         $form = $this->createForm(ProductType::class, $entity)
