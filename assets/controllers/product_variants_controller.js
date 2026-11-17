@@ -12,10 +12,8 @@ export default class extends Controller {
   }
 
   optionsChanged(event) {
-    console.log('optionsChanged...', event)
-
-    const variantsEntries = this.element.querySelectorAll('[data-siganushka-generic-collection-target="entry"]')
-    const variants = Array.from(variantsEntries).map(item => {
+    const variantsEntry = this.element.querySelectorAll('[data-siganushka-generic-collection-target="entry"]')
+    const variants = Array.from(variantsEntry).map(item => {
       const price = item.querySelector('input[name*="[price]"]').value
       const stock = item.querySelector('input[name*="[stock]"]').value
       const enabled = item.querySelector('input[name*="[enabled]"]')?.checked
