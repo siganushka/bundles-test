@@ -66,7 +66,6 @@ class IndexController extends AbstractController
                     'constraints' => new NotBlank(),
                     'row_attr' => ['class' => 'bbb'],
                 ],
-                'attr' => $attributes->toArray(),
                 'add_button_options' => [
                     'row_attr' => ['class' => 'ccc'],
                 ],
@@ -75,6 +74,7 @@ class IndexController extends AbstractController
                 ],
                 'allow_add' => true,
                 'allow_delete' => true,
+                'attr' => $attributes->toArray(),
             ])
             ->add('tests', CollectionType::class, [
                 'entry_type' => TestType::class,
