@@ -9,37 +9,10 @@ import { Controller } from '@hotwired/stimulus';
 export default class extends Controller {
   autocompleteConnect(event) {
     const { tomSelect } = event.detail
-    tomSelect.on('item_add', (value, item) => {
-      console.log('item_add...', value, item)
-      tomSelect.updateOriginalInput({ silent: true })
-
+    tomSelect.on('change', (value) => {
+      console.log('change...', value)
       this.update()
     })
-
-    tomSelect.on('item_remove', (value, item) => {
-      console.log('item_remove...', value, item)
-
-      const entry = tomSelect.control.closest('[data-siganushka-generic-collection-target="entry"]')
-      const index = Array.from(entry.parentNode.children).indexOf(entry)
-
-      const entries = document.querySelectorAll('#product_variants [data-siganushka-generic-collection-target="entry"]')
-      entries.forEach(el => {
-        const name = el.querySelector('input[name*="[name]"]').value
-        if (name && typeof name === 'string') {
-          const names = name.split('/')
-          if (names[index] === value) {
-            el.remove()
-          }
-        }
-      })
-
-      this.update()
-    })
-
-    // tomSelect.on('change', (value) => {
-    //   console.log('change...', value)
-    //   this.update()
-    // })
   }
 
   added(event) {

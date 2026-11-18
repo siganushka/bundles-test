@@ -12,8 +12,26 @@ export default class extends Controller {
   }
 
   optionsChanged(event) {
+    const { options } = event.detail
+    const optionsValue = options.map(v => v.values.split(',').map(v => v.trim()).filter(v => v))
+
+    const variantIsInvalid = (el) => {
+      const name = el.querySelector('input[name*="[name]"]')?.value
+      if (!name || typeof name !== 'string') {
+        return true
+      }
+
+      const names = name.split('/')
+      const invalid = names.some((part, idx) => {
+        const valid = optionsValue[idx]
+        return valid ? !valid.includes(part) : true
+      })
+
+      return !invalid && names.length === optionsValue.length
+    }
+
     const variantsEntry = this.element.querySelectorAll('[data-siganushka-generic-collection-target="entry"]')
-    const variants = Array.from(variantsEntry).map(item => {
+    const variants = Array.from(variantsEntry).filter(variantIsInvalid).map(item => {
       const price = item.querySelector('input[name*="[price]"]').value
       const stock = item.querySelector('input[name*="[stock]"]').value
       const enabled = item.querySelector('input[name*="[enabled]"]')?.checked
